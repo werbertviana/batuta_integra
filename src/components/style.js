@@ -28,25 +28,19 @@ export const QuestionsButton = styled.TouchableOpacity`
         margin: 4%;
         border-width: 4px;
         border-style: solid;
-        border-color: ${props => props.color};
     `;
-export const QuestionsButton2 = styled.Pressable`
-    margin-top: 2%;
-    width: 40%;
-    height: 45%;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    background-color: #fff;
-    margin: 4%;
-    border-width: 4px;
-    border-style: solid;
-`;
-
+    
 export const QuestionText = styled.Text`
     font-family: GothamCondensed-Medium;
     font-size: 28px;
     margin-top: 2%;
+`;
+
+export const LifeText = styled.Text`
+    font-family: DINRoundPro-Medi;
+    font-size: 28px;
+    margin-top: 2%;
+    color: #FC4848;
 `;
 
 export const ImageQuestions = styled.Image`
@@ -113,18 +107,20 @@ export const JumpText = styled.Text`
         fontSize: 28px;
         fontFamily: 'GothamCondensed-Medium';
     `;
+
 export const ConfirmButton = styled.TouchableOpacity`
-        width: 40%;
-        height: 65%;
-        justify-content: center;
-        align-items: center;
-        border-radius: 7px;
-        background-color: #FDC500;
-    `;
+    width: 40%;
+    height: 65%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    background-color: ${props => props.bg};
+
+`;
 export const ConfirmText = styled.Text`
-        color: #fff;
-        font-family: GothamCondensed-Medium;
-        font-size: 28px;
+    color: ${props => props.colorText};
+    font-family: GothamCondensed-Medium;
+    font-size: 28px;
 `;
 
 

@@ -11,7 +11,8 @@ import {
     ConfirmButton,
     ConfirmText,
     HeaderContainer,
-    CloseButtonContainer
+    CloseButtonContainer,
+    LifeText
 } from '../../components/style'
 import iconeX from '../../assets/imgs/iconeX.png';
 import iconeLife from '../../assets/imgs/iconeLife.png';
@@ -35,7 +36,7 @@ import {
     Text,
     Animated,
     Image,
-    Alert
+    Alert,
 } from 'react-native';
 import DivFacil from '../../components/DivFacil';
 import DivMedio from '../../components/DivMedio';
@@ -46,9 +47,13 @@ export default function App() {
     const allQuestions = data;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
+    const [colorSelected, setColorSelected] = useState(null);
     const [correctOption, setCorrectOption] = useState(null);
     const [score, setScore] = useState(0);
+    const [lifePoints, setlifePoints] = useState(5);
     const [showScoreModal, setShowScoreModal] = useState(false);
+    const [showLifeModal, setShowLifeModal] = useState(false);
+
 
     const renderQuestion = () => {
         return (
@@ -61,31 +66,42 @@ export default function App() {
             // Last Question
             // Show Score Modal
             setShowScoreModal(true)
+            Animated.timing(progress, {
+                toValue: currentQuestionIndex,
+                duration: 1000,
+                useNativeDriver: false
+            }).start();
         } else {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setCurrentOptionSelected(null);
             setCorrectOption(null);
+            setColorSelected(null);
+            Animated.timing(progress, {
+                toValue: currentQuestionIndex + 1,
+                duration: 1000,
+                useNativeDriver: false
+            }).start();
         }
-        Animated.timing(progress, {
-            toValue: currentQuestionIndex + 1,
-            duration: 1000,
-            useNativeDriver: false
-        }).start();
     }
 
     const restartQuiz = () => {
         setShowScoreModal(false);
-
+        setShowLifeModal(false);
         setCurrentQuestionIndex(0);
         setScore(0);
-
         setCurrentOptionSelected(null);
         setCorrectOption(null);
+        setColorSelected(null);
+        setlifePoints(5);
         Animated.timing(progress, {
             toValue: 0,
             duration: 1000,
             useNativeDriver: false
         }).start();
+    }
+
+    const exitModal = () => {
+        setShowLifeModal(false);
     }
 
     const renderImages = (opcao) => {
@@ -153,7 +169,14 @@ export default function App() {
                 <QuestionsButton
                     onPress={() => selected(option.id)}
                     key={option.option}
-                    color={"#D2D3D5"}
+                    style={{
+                        borderColor: colorSelected != option.id
+                            ? "#D2D3D5"
+                            : "#FDC500",
+                        backgroundColor: colorSelected == option.id
+                            ? "#FFFAE5"
+                            : "#fff"
+                    }}
                 >
                     {renderImages(option.image)}
                 </QuestionsButton>
@@ -162,8 +185,10 @@ export default function App() {
     }
 
 
+
     const selected = (selecao) => {
-        setCurrentOptionSelected(selecao);
+        setCurrentOptionSelected(selecao)
+        setColorSelected(selecao)
     }
 
     const validateAnswer = (selectedOption) => {
@@ -173,33 +198,62 @@ export default function App() {
         if (selectedOption == correct_option) {
             //Set Score
             setScore(score + 1)
+        } else {
+            // Life Points
+            setlifePoints(lifePoints - 1);
+            // Show Life Modal
+            //setShowLifeModal(true);
         }
         if (selectedOption != null) {
             handleNext()
         }
-        else {
-            Alert.alert('Escolha uma opção!')
+
+    }
+
+    const renderButtonJump = () => {
+        return (
+
+            <JumpButton onPress={handleNext}>
+                <JumpText> PULAR </JumpText>
+            </JumpButton>
+        )
+
+    }
+
+    const renderButtonConfirm = () => {
+
+        if (currentOptionSelected == null) {
+
+            return (
+                <ConfirmButton
+                    bg={"#D2D3D5"}
+                    disabled={true}
+                >
+                    <ConfirmText colorText={"#606062"}> CONFIRMAR </ConfirmText>
+                </ConfirmButton>
+            )
+        } else {
+            return (
+                <ConfirmButton
+                    bg={"#FDC500"}
+                    disabled={false}
+                    onPress={() => validateAnswer(currentOptionSelected)}>
+                    <ConfirmText colorText={"#fff"}> CONFIRMAR </ConfirmText>
+                </ConfirmButton>
+            )
         }
 
     }
 
-    const renderButtons = () => {
-        return (
-            <ButtonContainer>
-                <JumpButton onPress={handleNext}>
-                    <JumpText> PULAR </JumpText>
-                </JumpButton>
-                <ConfirmButton onPress={() => validateAnswer(currentOptionSelected)}>
-                    <ConfirmText> CONFIRMAR </ConfirmText>
-                </ConfirmButton>
-            </ButtonContainer>
-        )
-    }
 
     const [progress, setProgress] = useState(new Animated.Value(0));
+    let percent = ((100) / allQuestions.length);
+    percent = Math.round(percent)
+    percent.toString()
+    percent = percent + "%"
     const progressAnim = progress.interpolate({
-        inputRange: [0, allQuestions.length],
-        outputRange: ['0%', '100%']
+        inputRange: [0, allQuestions.length - 1],
+        outputRange: [percent, '100%']
     })
 
     const renderHeader = () => {
@@ -234,6 +288,7 @@ export default function App() {
                 <Image style={{ width: 25, height: 47 }}
                     source={iconeLife}>
                 </Image>
+                <LifeText>{lifePoints}</LifeText>
             </HeaderContainer>
         )
     }
@@ -279,7 +334,11 @@ export default function App() {
 
             </QuestionsContainer>
             {/* Buttons */}
-            {renderButtons()}
+            <ButtonContainer>
+                {renderButtonJump()}
+                {renderButtonConfirm()}
+            </ButtonContainer>
+
             {/* Score Modal */}
             <Modal
                 animationType="slide"
@@ -324,6 +383,54 @@ export default function App() {
                             <Text style={{
                                 fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 35,
                             }}>RECOMEÇAR</Text>
+                        </TouchableOpacity>
+
+                    </SafeAreaView>
+
+                </SafeAreaView>
+            </Modal>
+            {/* Life Modal */}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={showLifeModal}
+            >
+                <SafeAreaView style={{
+                    flex: 1,
+                    backgroundColor: "#FDC500",
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <SafeAreaView style={{
+                        backgroundColor: "#fff",
+                        width: '90%',
+                        borderRadius: 20,
+                        padding: 20,
+                        alignItems: 'center'
+                    }}>
+                        <QuestionText>Você errou e perdeu Pontos de Vida!</QuestionText>
+
+                        <SafeAreaView style={{
+                            flexDirection: 'row',
+                            justifyContent: 'flex-start',
+                            alignItems: 'center',
+                            marginVertical: 20
+                        }}>
+                            <QuestionText> Pontos de Vida:</QuestionText>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginTop: 2
+                            }}> {lifePoints}</Text>
+                        </SafeAreaView>
+                        {/* Retry Quiz button */}
+                        <TouchableOpacity
+                            onPress={exitModal}
+                            style={{
+                                backgroundColor: "#FDC500",
+                                padding: 20, width: '100%', borderRadius: 20
+                            }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 35,
+                            }}>FECHAR</Text>
                         </TouchableOpacity>
 
                     </SafeAreaView>
