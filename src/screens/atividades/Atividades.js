@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     Bgcontainer,
     QuestionsContainer,
     QuestionText,
     QuestionsButton,
+    QuestionsButton2,
+    QuestionsButton3,
+    ImageLife,
+    LifeContainer,
     ImageQuestions,
     ButtonContainer,
     JumpButton,
@@ -33,17 +37,22 @@ import {
     SafeAreaView,
     Modal,
     TouchableOpacity,
+    TouchableWithoutFeedback,
     Text,
     Animated,
     Image,
-    Alert,
+    View,
+    StyleSheet
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import DivFacil from '../../components/DivFacil';
 import DivMedio from '../../components/DivMedio';
 import DivDificil from '../../components/DivDificil';
 
 
 export default function App() {
+
+    const ButtonRef = useRef()
     const allQuestions = data;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
@@ -51,6 +60,7 @@ export default function App() {
     const [correctOption, setCorrectOption] = useState(null);
     const [score, setScore] = useState(0);
     const [lifePoints, setlifePoints] = useState(5);
+    const [animLife, setAnimLife] = useState(false);
     const [showScoreModal, setShowScoreModal] = useState(false);
     const [showLifeModal, setShowLifeModal] = useState(false);
 
@@ -92,6 +102,7 @@ export default function App() {
         setCurrentOptionSelected(null);
         setCorrectOption(null);
         setColorSelected(null);
+        setAnimLife(false);
         setlifePoints(5);
         Animated.timing(progress, {
             toValue: 0,
@@ -184,13 +195,74 @@ export default function App() {
         )
     }
 
+    const renderOptions2 = () => {
+        return (
+            allQuestions[currentQuestionIndex].options.map((option) =>
+                <TouchableWithoutFeedback
+                    onPress={() => selected(option.id)}
+                    key={option.option}
+                >
+                    <QuestionsButton2
+                        style={{
+                            borderColor: colorSelected != option.id
+                                ? "#D2D3D5"
+                                : "#FDC500",
+                            backgroundColor: colorSelected == option.id
+                                ? "#FFFAE5"
+                                : "#fff"
+                        }}>
+                        {renderImages(option.image)}
+                    </QuestionsButton2>
+                </TouchableWithoutFeedback>
+            )
+        )
+    }
 
+    const renderOptions3 = () => {
+        return (
+            allQuestions[currentQuestionIndex].options.map((option) =>
+                <TouchableWithoutFeedback
+                    onPress={() => selected(option.id)}
+                    onPress={() => ButtonRef.current.bounce()}
+                    key={option.option}
+                >
+                    <Animatable.View
+                        style={{
+                            marginTop: '2%',
+                            width: '40%',
+                            height: '45%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 7,
+                            backgroundColor: '#fff',
+                            margin: '4%',
+                            borderWidth: 4,
+                            borderStyle: 'solid',
+                            borderColor: colorSelected != option.id
+                                ? "#D2D3D5"
+                                : "#FDC500",
+                            backgroundColor: colorSelected == option.id
+                                ? "#FFFAE5"
+                                : "#fff"
+                        }}
+                        animation="bounceInUp"
+                        useNativeDriver
+                        duration={2000}
+                        ref={ButtonRef}
+                    >
+                        {renderImages(option.image)}
+                    </Animatable.View>
+                </TouchableWithoutFeedback>
+            )
+        )
+    }
 
     const selected = (selecao) => {
         setCurrentOptionSelected(selecao)
         setColorSelected(selecao)
     }
 
+    
     const validateAnswer = (selectedOption) => {
 
         let correct_option = allQuestions[currentQuestionIndex].correct_option;
@@ -198,18 +270,28 @@ export default function App() {
         if (selectedOption == correct_option) {
             //Set Score
             setScore(score + 1)
+            setAnimLife(false)
         } else {
             // Life Points
             setlifePoints(lifePoints - 1);
+            setAnimLife(true)
             // Show Life Modal
             //setShowLifeModal(true);
         }
         if (selectedOption != null) {
+
             handleNext()
         }
 
     }
 
+    const lifeSelected = (anim) => {
+        if (anim == false) {
+            setAnimLife(true)
+        } else {
+            setAnimLife(false)
+        }
+    }
     const renderButtonJump = () => {
         return (
 
@@ -256,42 +338,88 @@ export default function App() {
         outputRange: [percent, '100%']
     })
 
-    const renderHeader = () => {
+    const renderCloseButton = () => {
         return (
-            <HeaderContainer>
-                <CloseButtonContainer>
-                    <Image style={{ width: 25, height: 26 }}
-                        source={iconeX}>
-                    </Image>
-                </CloseButtonContainer>
 
-                {/* Progress Bar */}
-                <SafeAreaView style={{
-                    width: '70%',
-                    height: 20,
-                    borderRadius: 20,
-                    backgroundColor: '#d1d3d5',
-
-                }}>
-                    <Animated.View style={[{
-                        height: 20,
-                        borderRadius: 20,
-                        backgroundColor: '#61BE4B',
-                    }, {
-                        width: progressAnim
-                    }]}>
-
-                    </Animated.View>
-
-                </SafeAreaView>
-
-                <Image style={{ width: 25, height: 47 }}
-                    source={iconeLife}>
+            <CloseButtonContainer>
+                <Image style={{ width: 25, height: 26 }}
+                    source={iconeX}>
                 </Image>
-                <LifeText>{lifePoints}</LifeText>
-            </HeaderContainer>
+            </CloseButtonContainer>
+
         )
     }
+
+    const renderProgressBar = () => {
+        return (
+
+            <SafeAreaView style={{
+                width: '70%',
+                height: 20,
+                borderRadius: 20,
+                backgroundColor: '#d1d3d5',
+
+            }}>
+                <Animated.View style={[{
+                    height: 20,
+                    borderRadius: 20,
+                    backgroundColor: '#61BE4B',
+                }, {
+                    width: progressAnim
+                }]}>
+
+                </Animated.View>
+
+            </SafeAreaView>
+        )
+    }
+
+    const renderLife = () => {
+        if (animLife == true) {
+            return (
+                <Animatable.View style={styles.LifeContainer}
+                    animation="tada"
+                    useNativeDriver
+                    iterationCount={2}
+                >
+                    <ImageLife
+                        source={iconeLife}>
+                    </ImageLife>
+                </Animatable.View>
+            )
+
+        } else {
+            return (
+                <Animatable.View style={styles.LifeContainer}
+                >
+                    <ImageLife
+                        source={iconeLife}>
+                    </ImageLife>
+                </Animatable.View>
+            )
+        }
+    }
+
+    const renderTextLife = () => {
+        if (animLife == true) {
+            return (
+                <Animatable.Text style={styles.LifeText}
+                    animation="bounceIn"
+                    useNativeDriver
+                    duration={3000}
+                    iterationCount={1}>
+                    {lifePoints}
+                </Animatable.Text>
+            )
+
+        } else {
+            return (
+                <Animatable.Text style={styles.LifeText}>{lifePoints}</Animatable.Text>
+            )
+        }
+    }
+
+
 
     const renderLevel = () => {
 
@@ -317,12 +445,23 @@ export default function App() {
         }
     }
 
+    const renderHeader = () => {
+            return (
+                <HeaderContainer>
+                    {renderCloseButton()}
+                    {renderProgressBar()}
+                    {renderLife()}
+                    {renderTextLife()}
+                </HeaderContainer>
+            )
+    }
+
+    {/* Main */ }
     return (
 
         <Bgcontainer>
-            {/* Header + Progress Bar*/}
+            {/* Header*/}
             {renderHeader()}
-
             {/* Level */}
             {renderLevel()}
             {/* Question */}
@@ -330,7 +469,7 @@ export default function App() {
 
             <QuestionsContainer>
                 {/* Options */}
-                {renderOptions()}
+                {renderOptions2()}
 
             </QuestionsContainer>
             {/* Buttons */}
@@ -441,3 +580,21 @@ export default function App() {
 
     );
 }
+
+const styles = StyleSheet.create({
+    LifeContainer: {
+        width: '10%',
+        height: '100%',
+        alignItems: 'center',
+        alignContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+
+    },
+    LifeText: {
+        fontFamily: 'DINRoundPro-Medi',
+        fontSize: 28,
+        marginTop: '2%',
+        color: '#FC4848'
+    }
+});

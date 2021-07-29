@@ -78,5 +78,32 @@ export default data = [
         correct_option: "4",
         levels: "dificil",
 
+    },
+    {
+        question: "No compasso 3/4 quem representa a U.C?",
+        options: [{
+            id: "1",
+            option: "Seminima Pontuada",
+            image: "seminPontuada.png"
+        },
+        {
+            id: "2",
+            option: "Semibreve",
+            image: "semibreve.png"
+        },
+        {
+            id: "3",
+            option: "seminima",
+            image: "seminima.png"
+        },
+        {
+            id: "4",
+            option: "Minima Pontuada",
+            image: "minPontuada.png"
+        }
+        ],
+        correct_option: "4",
+        levels: "dificil",
+
     }
 ]

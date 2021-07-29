@@ -29,7 +29,32 @@ export const QuestionsButton = styled.TouchableOpacity`
         border-width: 4px;
         border-style: solid;
     `;
-    
+export const QuestionsButton2 = styled.SafeAreaView`
+    margin-top: 2%;
+    width: 40%;
+    height: 45%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #fff;
+    margin: 4%;
+    border-width: 4px;
+    border-style: solid;
+`;
+
+export const QuestionsButton3 = styled.View`
+    margin-top: 2%;
+    width: 40%;
+    height: 45%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #fff;
+    margin: 4%;
+    border-width: 4px;
+    border-style: solid;
+`;
+
 export const QuestionText = styled.Text`
     font-family: GothamCondensed-Medium;
     font-size: 28px;
@@ -90,6 +115,16 @@ export const CloseButtonContainer = styled.TouchableOpacity`
     justify-content: space-between;
 `;
 
+export const LifeContainer = styled.View`
+    width: 10%;
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #ff4;
+`;
+
 export const JumpButton = styled.TouchableOpacity`
         width: 40%;
         height: 65%;
@@ -121,6 +156,10 @@ export const ConfirmText = styled.Text`
     color: ${props => props.colorText};
     font-family: GothamCondensed-Medium;
     font-size: 28px;
+`;
+export const ImageLife = styled.Image`
+    width: 25px;
+    height: 47px; 
 `;
 
 
