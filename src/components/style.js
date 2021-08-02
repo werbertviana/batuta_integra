@@ -7,8 +7,7 @@ export const Bgcontainer = styled.SafeAreaView`
     justify-content: center;
     backgroundColor: #fff;
 `;
-
-export const QuestionsContainer = styled.SafeAreaView`
+export const ImagesContainer = styled.SafeAreaView`
     margin-top: 2%;
     height: 65%;
     width: 90%;
@@ -16,33 +15,21 @@ export const QuestionsContainer = styled.SafeAreaView`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around; 
-`;
-export const QuestionsButton = styled.TouchableOpacity`
-        margin-top: 2%;
-        width: 40%;
-        height: 45%;
-        justify-content: center;
-        align-items: center;
-        border-radius: 7px;
-        background-color: #fff;
-        margin: 4%;
-        border-width: 4px;
-        border-style: solid;
-    `;
-export const QuestionsButton2 = styled.SafeAreaView`
-    margin-top: 2%;
-    width: 40%;
-    height: 45%;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    background-color: #fff;
-    margin: 4%;
-    border-width: 4px;
-    border-style: solid;
+    background-color: #ff4;
 `;
 
-export const QuestionsButton3 = styled.View`
+export const ImagesContainer2 = styled.SafeAreaView`
+    margin-top: 2%;
+    height: 90%;
+    width: 90%;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between; 
+`;
+
+export const QuestionsButton = styled.SafeAreaView`
     margin-top: 2%;
     width: 40%;
     height: 45%;
@@ -76,7 +63,7 @@ export const ImageQuestions = styled.Image`
 `;
 
 export const HeaderContainer = styled.SafeAreaView`
-    margin-top: 4%;
+    margin-top: 2%;
     width: 90%;
     align-items: center;
     flex-direction: row;
@@ -99,7 +86,7 @@ export const DivisorLine = styled.SafeAreaView`
     `;
 
 export const ButtonContainer = styled.SafeAreaView`
-    margin-top: 6%;
+    margin-top: 1%;
     height: 10%;
     width: 90%;
     align-items: center;
@@ -115,54 +102,50 @@ export const CloseButtonContainer = styled.TouchableOpacity`
     justify-content: space-between;
 `;
 
-export const LifeContainer = styled.View`
-    width: 10%;
-    height: 100%;
-    align-items: center;
-    align-content: center;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #ff4;
-`;
-
-export const JumpButton = styled.TouchableOpacity`
-        width: 40%;
-        height: 65%;
-        justify-content: center;
-        align-items: center;
-        border-radius: 7px;
-        background-color: #fff;
-        border-width: 4px;
-        border-style: solid;
-        border-color: #D2D3D5 ;
-    `;
-
 export const JumpText = styled.Text`
         color: black;
         fontSize: 28px;
         fontFamily: 'GothamCondensed-Medium';
     `;
 
-export const ConfirmButton = styled.TouchableOpacity`
-    width: 40%;
-    height: 65%;
+export const ConfirmButton = styled.TouchableOpacity`    
+    width: 100%;
+    height: 94%;
     justify-content: center;
     align-items: center;
-    border-radius: 7px;
+    border-radius: 14px;
     background-color: ${props => props.bg};
+`;
 
+export const StyleButtons = styled.SafeAreaView`  
+    width: 100%;
+    height: 94%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    background-color: ${props => props.bg};
+    border-color: ${props => props.bordercolor};
+    border-width: ${props => props.borderwidth};
 `;
-export const ConfirmText = styled.Text`
-    color: ${props => props.colorText};
-    font-family: GothamCondensed-Medium;
-    font-size: 28px;
+
+export const ShadowJumpButton = styled.TouchableOpacity`  
+    margin-top: 3%;
+    width: 40%;
+    height: 70%;
+    align-items: center;
+    border-radius: 14px;
+    background-color: #D2D3D5;
 `;
+export const ShadowButton = styled.SafeAreaView`
+    margin-top: 3%;
+    width: 40%;
+    height: 70%;
+    align-items: center;
+    border-radius: 14px;
+    background-color: ${props => props.color};
+`;
+
 export const ImageLife = styled.Image`
     width: 25px;
     height: 47px; 
 `;
-
-
-
-
-

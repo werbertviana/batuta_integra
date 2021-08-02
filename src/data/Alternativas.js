@@ -22,87 +22,86 @@ export default data = [
             image: "signal.png"
         }
         ],
-        correct_option: "2",
+        correct_option: "Clave de Sol",
         levels: "facil",
     },
     {
         question: "Qual figura de nota equivale a 4 semínimas?",
         options: [{
-            id: "1",
+            id: "5",
             option: "Semibreve",
             image: "semibreve.png"
         },
         {
-            id: "2",
+            id: "6",
             option: "Minima",
             image: "minima.png"
         },
         {
-            id: "3",
+            id: "7",
             option: "Colcheia",
             image: "colcheia.png"
         },
         {
-            id: "4",
+            id: "8",
             option: "Semicolcheia",
             image: "semicolcheia.png"
         }
         ],
-        correct_option: "1",
+        correct_option: "Semibreve",
         levels: "medio",
 
     },
     {
         question: "No compasso 3/4 quem representa a U.C?",
         options: [{
-            id: "1",
+            id: "9",
             option: "Seminima Pontuada",
             image: "seminPontuada.png"
         },
         {
-            id: "2",
+            id: "10",
             option: "Semibreve",
             image: "semibreve.png"
         },
         {
-            id: "3",
+            id: "11",
             option: "seminima",
             image: "seminima.png"
         },
         {
-            id: "4",
+            id: "12",
             option: "Minima Pontuada",
             image: "minPontuada.png"
         }
         ],
-        correct_option: "4",
+        correct_option: "Minima Pontuada",
         levels: "dificil",
 
     },
-    {
-        question: "No compasso 3/4 quem representa a U.C?",
+    {question: "No compasso 3/4 quem representa a U.C?",
         options: [{
-            id: "1",
+            id: "13",
             option: "Seminima Pontuada",
             image: "seminPontuada.png"
         },
         {
-            id: "2",
+            id: "14",
             option: "Semibreve",
             image: "semibreve.png"
         },
         {
-            id: "3",
+            id: "15",
             option: "seminima",
             image: "seminima.png"
         },
         {
-            id: "4",
+            id: "16",
             option: "Minima Pontuada",
             image: "minPontuada.png"
         }
         ],
-        correct_option: "4",
+        correct_option: "Minima Pontuada",
         levels: "dificil",
 
     }
