@@ -10,7 +10,8 @@ import {
     CloseButtonContainer,
     ShadowJumpButton,
     StyleButtons,
-    ImagesContainer2
+    ImagesContainer2,
+    ContainerCircle
 } from '../../components/style'
 import iconeX from '../../assets/imgs/iconeX.png';
 import iconeLife from '../../assets/imgs/iconeLife.png';
@@ -26,8 +27,7 @@ import seminPontuada from '../../assets/imgs/seminPontuada.png'
 import minPontuada from '../../assets/imgs/minPontuada.png'
 import seminima from '../../assets/imgs/seminima.png'
 import batuta from '../../assets/imgs/batuta.png'
-import data from '../../data/Alternativas'
-//import data from '../../data/Alternativas.json'
+import staticData from '../../data/Alternativas.json'
 import {
     SafeAreaView,
     Modal,
@@ -49,7 +49,7 @@ export default function App() {
 
     const ButtonRef = useRef()
     const Button2Ref = useRef()
-    const allQuestions = data;
+    const allQuestions = staticData.data;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [correctOption, setCorrectOption] = useState(null);
@@ -134,7 +134,9 @@ export default function App() {
         setShowLifeModal(false);
     }
 
+    let cont = 0;
     const renderImages = (opcao) => {
+        cont = cont +1
         switch (opcao) {
             case ("claveDo.png"):
                 return (
@@ -193,8 +195,108 @@ export default function App() {
         }
     }
 
-    const renderOptions = () => {
+    const renderAlternatives = (contador, alternatives) => {
 
+        switch (contador) {
+            case (1):
+                return (
+                    <View style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: 15,
+                        borderWidth: 3,
+                        alignItems: 'center',
+                        borderColor: '#D2D3D5',
+                        justifyContent: 'center',
+                        borderColor: currentOptionSelected != alternatives.option
+                            ? "#D2D3D5"
+                            : "#FDC500",
+                        backgroundColor: currentOptionSelected == alternatives.option
+                            ? "#FFFAE5"
+                            : "#fff"
+                     
+                    }}>
+                        <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
+                            A
+                        </Text>
+                    </View>
+                )
+                break;
+            case (2):
+                return (
+                    <View style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: 15,
+                        borderWidth: 3,
+                        alignItems: 'center',
+                        borderColor: '#D2D3D5',
+                        justifyContent: 'center',
+                        borderColor: currentOptionSelected != alternatives.option
+                            ? "#D2D3D5"
+                            : "#FDC500",
+                        backgroundColor: currentOptionSelected == alternatives.option
+                            ? "#FFFAE5"
+                            : "#fff"
+                     
+                    }}>
+                        <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
+                            B
+                        </Text>
+                    </View>
+                )
+                break;
+            case (3):
+                return (
+                    <View style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: 15,
+                        borderWidth: 3,
+                        alignItems: 'center',
+                        borderColor: '#D2D3D5',
+                        justifyContent: 'center',
+                        borderColor: currentOptionSelected != alternatives.option
+                            ? "#D2D3D5"
+                            : "#FDC500",
+                        backgroundColor: currentOptionSelected == alternatives.option
+                            ? "#FFFAE5"
+                            : "#fff"
+                     
+                    }}>
+                        <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
+                            C
+                        </Text>
+                    </View>
+                )
+                break;
+            case (4):
+                return (
+                    <View style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: 15,
+                        borderWidth: 3,
+                        alignItems: 'center',
+                        borderColor: '#D2D3D5',
+                        justifyContent: 'center',
+                        borderColor: currentOptionSelected != alternatives.option
+                            ? "#D2D3D5"
+                            : "#FDC500",
+                        backgroundColor: currentOptionSelected == alternatives.option
+                            ? "#FFFAE5"
+                            : "#fff"
+                    
+                    }}>
+                        <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
+                            D
+                        </Text>
+                    </View>
+                )
+                break;
+        }
+    }
+    const renderOptions = () => {
         return (
 
             allQuestions[currentQuestionIndex].options.map((option) =>
@@ -207,12 +309,14 @@ export default function App() {
                         style={{
                             marginTop: '2%',
                             width: '42%',
-                            height: '47%',
+                            height: '48%',
+                            alignContent: 'center',
                             justifyContent: 'center',
                             alignItems: 'center',
                             borderRadius: 7,
                             margin: '4%',
                             borderWidth: 4,
+                            padding: '2.2%',
                             borderStyle: 'solid',
                             borderColor: currentOptionSelected != option.option
                                 ? "#D2D3D5"
@@ -226,12 +330,13 @@ export default function App() {
                             : "bounceInRight"}
                         useNativeDriver>
                         {renderImages(option.image)}
+                        <ContainerCircle>
+                            {renderAlternatives(cont, option)}
+                        </ContainerCircle>
                     </Animatable.View>
                 </TouchableWithoutFeedback>
-
             )
         )
-
     }
 
     const selected = (selecao) => {
@@ -278,19 +383,6 @@ export default function App() {
                     </StyleButtons>
                 </Animatable.View>
             </TouchableWithoutFeedback>
-        )
-    }
-
-    const renderJumpButton2 = () => {
-        return (
-            <ShadowJumpButton onPress={handleNext}>
-                <StyleButtons
-                    bg={"#fff"}
-                    bordercolor={'#D2D3D5'}
-                    borderwidth={'2px'}>
-                    <JumpText colorText={"#606062"}> PULAR </JumpText>
-                </StyleButtons>
-            </ShadowJumpButton>
         )
     }
 
@@ -358,28 +450,6 @@ export default function App() {
         inputRange: [0, allQuestions.length - 1],
         outputRange: [percent, '100%']
     })
-
-    const renderProgressBarOld = () => {
-        return (
-
-            <SafeAreaView style={{
-                width: '70%',
-                height: 20,
-                borderRadius: 20,
-                backgroundColor: '#d1d3d5',
-
-            }}>
-                <Animated.View style={[{
-                    height: 20,
-                    borderRadius: 20,
-                    backgroundColor: '#61BE4B',
-                }, {
-                    width: progressAnim
-                }]}>
-                </Animated.View>
-            </SafeAreaView>
-        )
-    }
 
     const renderProgressBar = () => {
         return (
@@ -506,12 +576,13 @@ export default function App() {
                 <ImagesContainer2>
                     {/* Options */}
                     {renderOptions()}
+
                 </ImagesContainer2>
             </Animatable.View>
             {/* Buttons */}
             <ButtonContainer>
                 {renderJumpButton()}
-                {renderLogo()}
+                {/*{renderLogo()}*/}
                 {renderButtonConfirm()}
             </ButtonContainer>
 
@@ -679,5 +750,10 @@ const styles = StyleSheet.create({
         fontFamily: "GothamCondensed-Medium",
         fontSize: 28,
         color: '#fff'
+    },
+    circle: {
+        width: 44,
+        height: 44,
+        borderRadius: 44 / 2
     }
 });

@@ -19,14 +19,14 @@ export const ImagesContainer = styled.SafeAreaView`
 `;
 
 export const ImagesContainer2 = styled.SafeAreaView`
-    margin-top: 2%;
+    margin-top: 3%;
     height: 90%;
     width: 90%;
     align-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-around; 
 `;
 
 export const QuestionsButton = styled.SafeAreaView`
@@ -147,5 +147,20 @@ export const ShadowButton = styled.SafeAreaView`
 
 export const ImageLife = styled.Image`
     width: 25px;
-    height: 47px; 
+    height: 45px; 
+`;
+export const ContainerCircle = styled.SafeAreaView`
+    height: 14%;
+    width: 100%;
+    align-items: flex-end; 
+`;
+
+export const Circle = styled.SafeAreaView`
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        border-width: 3px;
+        align-items: center;
+        border-color: #D2D3D5;
+        justify-content: center;
 `;
