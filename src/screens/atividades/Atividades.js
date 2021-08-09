@@ -62,6 +62,7 @@ export default function App() {
     const [showLifeModal, setShowLifeModal] = useState(false);
     const [showRightModal, setShowRightModal] = useState(false);
     const [showWrongModal, setShowWrongModal] = useState(false);
+    let correct;
 
 
 
@@ -651,28 +652,32 @@ export default function App() {
                 <SafeAreaView style={{
                     marginTop: '150%',
                     width: '100%',
-                    height: '20%',
+                    height: '25%',
                     backgroundColor: "#fEE0E2",
                     alignItems: 'center',
                     justifyContent: 'center',
+                    alignContent: 'center',
                 }}>
                     <SafeAreaView style={{
-                        marginTop: '2%',
+                        marginTop: '5%',
                         width: '100%',
-                        alignItems: 'center',
-                        alignContent: 'center',
-                        flexDirection: 'row',
                         justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'row'
                     }}>
                         <Text style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 35,
-                        }}>Você errou!   </Text>
-                        <Image source={errorIcon} style={{ height: 35, width: 35 }}></Image>
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
+                        }}>Resposta correta: {allQuestions[currentQuestionIndex].correct_option} </Text>
+                          <Image source={errorIcon} style={{ height: 35, width: 35 }}></Image>  
                     </SafeAreaView>
 
                     <SafeAreaView style={{
+
                         width: '100%',
-                        height: '50%', marginTop: '1%', alignItems: 'center', alignContent: 'center', justifyContent: 'center'
+                        height: '70%',
+                        marginTop: '4%',
+                        alignItems: 'center',
+                        alignContent: 'center'
                     }}>
                         <TouchableWithoutFeedback
                             onPress={exitModal}
@@ -683,7 +688,7 @@ export default function App() {
                                     bordercolor={'#FF4B4C'}
                                     borderwidth={'2px'}>
                                     <Text style={{
-                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 35,
+                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
                                     }}>CONTINUAR</Text>
                                 </StyleButtons>
                             </View>
@@ -701,17 +706,18 @@ export default function App() {
                 <SafeAreaView style={{
                     marginTop: '150%',
                     width: '100%',
-                    height: '20%',
+                    height: '25%',
                     backgroundColor: "#D9FEB8",
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    alignContent: 'center',
                 }}>
                     <SafeAreaView style={{
-                        marginTop: '2%',
+                        marginTop: '3%',
+
                         width: '100%',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        alignContent: 'center',
                         flexDirection: 'row'
                     }}>
                         <Text style={{
@@ -721,8 +727,12 @@ export default function App() {
                     </SafeAreaView>
 
                     <SafeAreaView style={{
+
                         width: '100%',
-                        height: '50%', marginTop: '1%', alignItems: 'center', alignContent: 'center', justifyContent: 'center'
+                        height: '70%',
+                        marginTop: '1%',
+                        alignItems: 'center',
+                        alignContent: 'center'
                     }}>
                         <TouchableWithoutFeedback
                             onPress={exitModal}
@@ -774,16 +784,17 @@ const styles = StyleSheet.create({
         backgroundColor: "#D2D3D5"
     },
     ShadowRightButton: {
-        width: '80%',
-        height: '90%',
+        marginTop: '4%',
+        width: '55%',
+        height: '45%',
         alignItems: 'center',
         borderRadius: 14,
         backgroundColor: "#38752B",
     },
     ShadowWrongButton: {
-
-        width: '80%',
-        height: '90%',
+        marginTop: '1%',
+        width: '55%',
+        height: '45%',
         alignItems: 'center',
         borderRadius: 14,
         backgroundColor: "#E92C2A",
