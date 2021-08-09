@@ -8,7 +8,6 @@ import {
     JumpText,
     HeaderContainer,
     CloseButtonContainer,
-    ShadowJumpButton,
     StyleButtons,
     ImagesContainer2,
     ContainerCircle
@@ -28,6 +27,8 @@ import minPontuada from '../../assets/imgs/minPontuada.png'
 import seminima from '../../assets/imgs/seminima.png'
 import batuta from '../../assets/imgs/batuta.png'
 import staticData from '../../data/Alternativas.json'
+import checkIcon from '../../assets/imgs/checkIcon.png'
+import errorIcon from '../../assets/imgs/errorIcon.png'
 import {
     SafeAreaView,
     Modal,
@@ -59,6 +60,9 @@ export default function App() {
     const [animQuestions, setAnimQuestions] = useState(false);
     const [showScoreModal, setShowScoreModal] = useState(false);
     const [showLifeModal, setShowLifeModal] = useState(false);
+    const [showRightModal, setShowRightModal] = useState(false);
+    const [showWrongModal, setShowWrongModal] = useState(false);
+
 
 
     const renderQuestion = () => {
@@ -132,11 +136,14 @@ export default function App() {
 
     const exitModal = () => {
         setShowLifeModal(false);
+        setShowRightModal(false);
+        setShowWrongModal(false);
+        handleNext();
     }
 
     let cont = 0;
     const renderImages = (opcao) => {
-        cont = cont +1
+        cont = cont + 1
         switch (opcao) {
             case ("claveDo.png"):
                 return (
@@ -214,7 +221,7 @@ export default function App() {
                         backgroundColor: currentOptionSelected == alternatives.option
                             ? "#FFFAE5"
                             : "#fff"
-                     
+
                     }}>
                         <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
                             A
@@ -238,7 +245,7 @@ export default function App() {
                         backgroundColor: currentOptionSelected == alternatives.option
                             ? "#FFFAE5"
                             : "#fff"
-                     
+
                     }}>
                         <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
                             B
@@ -262,7 +269,7 @@ export default function App() {
                         backgroundColor: currentOptionSelected == alternatives.option
                             ? "#FFFAE5"
                             : "#fff"
-                     
+
                     }}>
                         <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
                             C
@@ -286,7 +293,7 @@ export default function App() {
                         backgroundColor: currentOptionSelected == alternatives.option
                             ? "#FFFAE5"
                             : "#fff"
-                    
+
                     }}>
                         <Text style={{ fontFamily: 'GothamCondensed-Medium', fontSize: 20 }}>
                             D
@@ -352,18 +359,16 @@ export default function App() {
         if (selectedOption == correct_option) {
             //Set Score
             setScore(score + 1)
+            // Show Right Modal
+            setShowRightModal(true);
         } else {
             // Life Points
             setlifePoints(lifePoints - 1);
             setAnimLife(true)
-            // Show Life Modal
-            //setShowLifeModal(true);
+            // Show Wrong Modal
+            setShowWrongModal(true);
         }
-        if (selectedOption != null) {
-
-            handleNext()
-        }
-
+        //handleNext()
     }
 
     const renderJumpButton = () => {
@@ -446,6 +451,7 @@ export default function App() {
         inputRange: [0, allQuestions.length - 1],
         outputRange: ['90%', '90%']
     })
+
     const progressAnim = progress.interpolate({
         inputRange: [0, allQuestions.length - 1],
         outputRange: [percent, '100%']
@@ -636,55 +642,105 @@ export default function App() {
 
                 </SafeAreaView>
             </Modal>
-            {/* Life Modal */}
+            {/* Wrong Modal */}
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={showLifeModal}
+                visible={showWrongModal}
             >
                 <SafeAreaView style={{
-                    flex: 1,
-                    backgroundColor: "#FDC500",
+                    marginTop: '150%',
+                    width: '100%',
+                    height: '20%',
+                    backgroundColor: "#fEE0E2",
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <SafeAreaView style={{
+                        marginTop: '2%',
+                        width: '100%',
+                        alignItems: 'center',
+                        alignContent: 'center',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                    }}>
+                        <Text style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 35,
+                        }}>Você errou!   </Text>
+                        <Image source={errorIcon} style={{ height: 35, width: 35 }}></Image>
+                    </SafeAreaView>
+
+                    <SafeAreaView style={{
+                        width: '100%',
+                        height: '50%', marginTop: '1%', alignItems: 'center', alignContent: 'center', justifyContent: 'center'
+                    }}>
+                        <TouchableWithoutFeedback
+                            onPress={exitModal}
+                        >
+                            <View style={styles.ShadowWrongButton}>
+                                <StyleButtons
+                                    bg={"#FF4B4C"}
+                                    bordercolor={'#FF4B4C'}
+                                    borderwidth={'2px'}>
+                                    <Text style={{
+                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 35,
+                                    }}>CONTINUAR</Text>
+                                </StyleButtons>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </SafeAreaView>
+                </SafeAreaView>
+            </Modal>
+
+            {/* Modal Right */}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={showRightModal}
+            >
+                <SafeAreaView style={{
+                    marginTop: '150%',
+                    width: '100%',
+                    height: '20%',
+                    backgroundColor: "#D9FEB8",
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
                     <SafeAreaView style={{
-                        backgroundColor: "#fff",
-                        width: '90%',
-                        borderRadius: 20,
-                        padding: 20,
-                        alignItems: 'center'
+                        marginTop: '2%',
+                        width: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        alignContent: 'center',
+                        flexDirection: 'row'
                     }}>
-                        <QuestionText>Você errou e perdeu Pontos de Vida!</QuestionText>
-
-                        <SafeAreaView style={{
-                            flexDirection: 'row',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center',
-                            marginVertical: 20
-                        }}>
-                            <QuestionText> Pontos de Vida:</QuestionText>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginTop: 2
-                            }}> {lifePoints}</Text>
-                        </SafeAreaView>
-                        {/* Retry Quiz button */}
-                        <TouchableOpacity
-                            onPress={exitModal}
-                            style={{
-                                backgroundColor: "#FDC500",
-                                padding: 20, width: '100%', borderRadius: 20
-                            }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 35,
-                            }}>FECHAR</Text>
-                        </TouchableOpacity>
-
+                        <Text style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#38752B", fontSize: 35,
+                        }}>Você acertou!   </Text>
+                        <Image source={checkIcon} style={{ height: 35, width: 35 }}></Image>
                     </SafeAreaView>
 
+                    <SafeAreaView style={{
+                        width: '100%',
+                        height: '50%', marginTop: '1%', alignItems: 'center', alignContent: 'center', justifyContent: 'center'
+                    }}>
+                        <TouchableWithoutFeedback
+                            onPress={exitModal}
+                        >
+                            <View style={styles.ShadowRightButton}>
+                                <StyleButtons
+                                    bg={"#61BE4B"}
+                                    bordercolor={'#61BE4B'}
+                                    borderwidth={'2px'}>
+                                    <Text style={{
+                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
+                                    }}>CONTINUAR</Text>
+                                </StyleButtons>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </SafeAreaView>
                 </SafeAreaView>
             </Modal>
-
         </Bgcontainer >
 
     );
@@ -716,6 +772,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 14,
         backgroundColor: "#D2D3D5"
+    },
+    ShadowRightButton: {
+        width: '80%',
+        height: '90%',
+        alignItems: 'center',
+        borderRadius: 14,
+        backgroundColor: "#38752B",
+    },
+    ShadowWrongButton: {
+
+        width: '80%',
+        height: '90%',
+        alignItems: 'center',
+        borderRadius: 14,
+        backgroundColor: "#E92C2A",
     },
     ShadowConfirmButtonDisabled: {
         marginTop: '3%',
