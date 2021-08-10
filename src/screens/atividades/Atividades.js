@@ -53,7 +53,6 @@ export default function App() {
     const allQuestions = staticData.data;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
-    const [correctOption, setCorrectOption] = useState(null);
     const [score, setScore] = useState(0);
     const [lifePoints, setlifePoints] = useState(5);
     const [animLife, setAnimLife] = useState(false);
@@ -62,9 +61,6 @@ export default function App() {
     const [showLifeModal, setShowLifeModal] = useState(false);
     const [showRightModal, setShowRightModal] = useState(false);
     const [showWrongModal, setShowWrongModal] = useState(false);
-    let correct;
-
-
 
     const renderQuestion = () => {
         return (
@@ -109,7 +105,6 @@ export default function App() {
         } else {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setCurrentOptionSelected(null);
-            setCorrectOption(null);
             setAnimQuestions(true);
             Animated.timing(progress, {
                 toValue: currentQuestionIndex + 1,
@@ -125,7 +120,6 @@ export default function App() {
         setCurrentQuestionIndex(0);
         setScore(0);
         setCurrentOptionSelected(null);
-        setCorrectOption(null);
         setAnimLife(false);
         setlifePoints(5);
         Animated.timing(progress, {
@@ -135,16 +129,21 @@ export default function App() {
         }).start();
     }
 
-    const exitModal = () => {
+    const exitModal = () => { 
+        correct_option = allQuestions[currentQuestionIndex].correct_option;
         setShowLifeModal(false);
         setShowRightModal(false);
         setShowWrongModal(false);
+        if (currentOptionSelected != correct_option) {
+            setlifePoints(lifePoints - 1);
+            setAnimLife(true);
+        }
         handleNext();
     }
 
     let cont = 0;
     const renderImages = (opcao) => {
-        cont = cont + 1
+        cont++
         switch (opcao) {
             case ("claveDo.png"):
                 return (
@@ -304,6 +303,8 @@ export default function App() {
                 break;
         }
     }
+
+
     const renderOptions = () => {
         return (
 
@@ -352,24 +353,18 @@ export default function App() {
         setAnimLife(false)
     }
 
-
-    const validateAnswer = (selectedOption) => {
-
-        let correct_option = allQuestions[currentQuestionIndex].correct_option;
-        setCorrectOption(correct_option);
-        if (selectedOption == correct_option) {
+    let correct_option
+    const validateAnswer = () => {
+       correct_option = allQuestions[currentQuestionIndex].correct_option;
+        if (currentOptionSelected == correct_option) {
             //Set Score
             setScore(score + 1)
             // Show Right Modal
             setShowRightModal(true);
         } else {
-            // Life Points
-            setlifePoints(lifePoints - 1);
-            setAnimLife(true)
-            // Show Wrong Modal
+            // Show Wrong Modal        
             setShowWrongModal(true);
-        }
-        //handleNext()
+        }     
     }
 
     const renderJumpButton = () => {
@@ -400,7 +395,7 @@ export default function App() {
                 disabled={currentOptionSelected == null
                     ? true
                     : false}
-                onPress={() => ButtonRef.current.pulse(validateAnswer(currentOptionSelected))}
+                onPress={() => ButtonRef.current.pulse(validateAnswer())}
             >
                 <Animatable.View style={currentOptionSelected == null
                     ? styles.ShadowConfirmButtonDisabled
@@ -556,13 +551,6 @@ export default function App() {
             </HeaderContainer>
         )
     }
-    const renderLogo = () => {
-        return (
-            <Image source={batuta}
-                style={{ height: 35, width: 35, marginTop: 6 }}>
-            </Image>
-        )
-    }
 
     {/* Main */ }
     return (
@@ -665,10 +653,14 @@ export default function App() {
                         alignItems: 'center',
                         flexDirection: 'row'
                     }}>
+                        <Image source={errorIcon} style={{ height: 35, width: 35 }}></Image>
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
-                        }}>Resposta correta: {allQuestions[currentQuestionIndex].correct_option} </Text>
-                          <Image source={errorIcon} style={{ height: 35, width: 35 }}></Image>  
+                        }}>  Resposta correta: </Text> 
+                        <Text style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32
+                        }}>{allQuestions[currentQuestionIndex].correct_alternative} </Text>
+
                     </SafeAreaView>
 
                     <SafeAreaView style={{
@@ -722,7 +714,7 @@ export default function App() {
                     }}>
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#38752B", fontSize: 35,
-                        }}>Você acertou!   </Text>
+                        }}>Você acertou!  </Text>
                         <Image source={checkIcon} style={{ height: 35, width: 35 }}></Image>
                     </SafeAreaView>
 
