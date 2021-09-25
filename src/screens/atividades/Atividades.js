@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+// import estilos
 import {
     Bgcontainer,
     QuestionText,
@@ -12,23 +13,44 @@ import {
     ImagesContainer2,
     ContainerCircle
 } from '../../components/style'
+// import ícones
 import iconeX from '../../assets/imgs/iconeX.png';
 import iconeLife from '../../assets/imgs/iconeLife.png';
-import claveDo from '../../assets/imgs/claveDo.png'
-import claveSol from '../../assets/imgs/claveSol.png'
-import claveFa from '../../assets/imgs/claveFa.png'
-import signal from '../../assets/imgs/signal.png'
-import semibreve from '../../assets/imgs/semibreve.png'
-import minima from '../../assets/imgs/minima.png'
-import colcheia from '../../assets/imgs/colcheia.png'
-import semicolcheia from '../../assets/imgs/semicolcheia.png'
-import seminPontuada from '../../assets/imgs/seminPontuada.png'
-import minPontuada from '../../assets/imgs/minPontuada.png'
-import seminima from '../../assets/imgs/seminima.png'
-import batuta from '../../assets/imgs/batuta.png'
-import staticData from '../../data/Alternativas.json'
 import checkIcon from '../../assets/imgs/checkIcon.png'
 import errorIcon from '../../assets/imgs/errorIcon.png'
+// import dados estáticos
+import staticData from '../../data/Alternativas.json'
+//import questões
+import QF01 from '../../assets/imgs/QF01.png'
+import QF02 from '../../assets/imgs/QF02.png'
+import QF03 from '../../assets/imgs/QF03.png'
+import QF04 from '../../assets/imgs/QF04.png'
+import QF05 from '../../assets/imgs/QF05.png'
+import QF06 from '../../assets/imgs/QF06.png'
+import QF07 from '../../assets/imgs/QF07.png'
+import QF08 from '../../assets/imgs/QF08.png'
+import QF09 from '../../assets/imgs/QF09.png'
+import QF10 from '../../assets/imgs/QF10.png'
+import QF11 from '../../assets/imgs/QF11.png'
+import QF12 from '../../assets/imgs/QF12.png'
+import QB01 from '../../assets/imgs/QB01.png'
+import QB02 from '../../assets/imgs/QB02.png'
+import QB03 from '../../assets/imgs/QB03.png'
+import QB04 from '../../assets/imgs/QB04.png'
+import QB05 from '../../assets/imgs/QB05.png'
+import QB06 from '../../assets/imgs/QB06.png'
+import QB07 from '../../assets/imgs/QB07.png'
+import QB08 from '../../assets/imgs/QB08.png'
+import QB09 from '../../assets/imgs/QB09.png'
+import QB10 from '../../assets/imgs/QB10.png'
+import QB11 from '../../assets/imgs/QB11.png'
+import QB12 from '../../assets/imgs/QB12.png'
+// import elos
+import ferro from '../../assets/imgs/ferro.png'
+import bronze from '../../assets/imgs/bronze.png'
+import ferro2 from '../../assets/imgs/ferro2.png'
+import bronze2 from '../../assets/imgs/bronze2.png'
+// import bibliotecas
 import {
     SafeAreaView,
     Modal,
@@ -41,6 +63,7 @@ import {
     View
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+// import niveis de dificuldade
 import DivFacil from '../../components/DivFacil';
 import DivMedio from '../../components/DivMedio';
 import DivDificil from '../../components/DivDificil';
@@ -129,11 +152,11 @@ export default function App() {
         }).start();
     }
 
-    const exitModal = () => { 
-        correct_option = allQuestions[currentQuestionIndex].correct_option;
+    const exitModal = () => {
         setShowLifeModal(false);
         setShowRightModal(false);
         setShowWrongModal(false);
+        correct_option = allQuestions[currentQuestionIndex].correct_option;
         if (currentOptionSelected != correct_option) {
             setlifePoints(lifePoints - 1);
             setAnimLife(true);
@@ -145,60 +168,126 @@ export default function App() {
     const renderImages = (opcao) => {
         cont++
         switch (opcao) {
-            case ("claveDo.png"):
+            case ("QF01.png"):
                 return (
-                    <ImageQuestions source={claveDo}></ImageQuestions>
+                    <ImageQuestions source={QF01}></ImageQuestions>
                 )
                 break;
-            case ("claveSol.png"):
+            case ("QF02.png"):
                 return (
-                    <ImageQuestions source={claveSol}></ImageQuestions>
+                     <ImageQuestions source={QF02}></ImageQuestions>
                 )
                 break;
-            case ("claveFa.png"):
+            case ("QF03.png"):
                 return (
-                    <ImageQuestions source={claveFa}></ImageQuestions>
+                    <ImageQuestions source={QF03}></ImageQuestions>
                 )
                 break;
-            case ("signal.png"):
+            case ("QF04.png"):
                 return (
-                    <ImageQuestions source={signal}></ImageQuestions>
+                    <ImageQuestions source={QF04}></ImageQuestions>
+                )
+                break; 
+            case ("QF05.png"):
+                return (
+                    <ImageQuestions source={QF05}></ImageQuestions>
+                )
+                    break;
+            case ("QF06.png"):
+                return (
+                    <ImageQuestions source={QF06}></ImageQuestions>
                 )
                 break;
-            case ("semibreve.png"):
+            case ("QF07.png"):
                 return (
-                    <ImageQuestions source={semibreve}></ImageQuestions>
+                    <ImageQuestions source={QF07}></ImageQuestions>
                 )
                 break;
-            case ("minima.png"):
+            case ("QF08.png"):
                 return (
-                    <ImageQuestions source={minima}></ImageQuestions>
+                    <ImageQuestions source={QF08}></ImageQuestions>
                 )
-            case ("seminima.png"):
+                break; 
+            case ("QF09.png"):
                 return (
-                    <ImageQuestions source={seminima}></ImageQuestions>
+                    <ImageQuestions source={QF09}></ImageQuestions>
                 )
-                break;
-            case ("colcheia.png"):
+                break;                
+            case ("QF10.png"):
                 return (
-                    <ImageQuestions source={colcheia}></ImageQuestions>
-                )
-                break;
-            case ("semicolcheia.png"):
-                return (
-                    <ImageQuestions source={semicolcheia}></ImageQuestions>
+                    <ImageQuestions source={QF10}></ImageQuestions>
                 )
                 break;
-            case ("seminPontuada.png"):
+            case ("QF11.png"):
                 return (
-                    <ImageQuestions source={seminPontuada}></ImageQuestions>
+                    <ImageQuestions source={QF11}></ImageQuestions>
                 )
                 break;
-            case ("minPontuada.png"):
+            case ("QF12.png"):
                 return (
-                    <ImageQuestions source={minPontuada}></ImageQuestions>
+                    <ImageQuestions source={QF12}></ImageQuestions>
+                )
+                break; 
+            case ("QB01.png"):
+                return (
+                    <ImageQuestions source={QB01}></ImageQuestions>
                 )
                 break;
+            case ("QB02.png"):
+                return (
+                    <ImageQuestions source={QB02}></ImageQuestions>
+                )
+                break;
+            case ("QB03.png"):
+                return (
+                    <ImageQuestions source={QB03}></ImageQuestions>
+                )
+                break;
+            case ("QB04.png"):
+                return (
+                    <ImageQuestions source={QB04}></ImageQuestions>
+                )
+                break;  
+            case ("QB05.png"):
+                return (
+                    <ImageQuestions source={QB05}></ImageQuestions>
+                )
+                break;
+            case ("QB06.png"):
+                return (
+                    <ImageQuestions source={QB06}></ImageQuestions>
+                ) 
+                break;
+            case ("QB07.png"):
+                return (
+                    <ImageQuestions source={QB07}></ImageQuestions>
+                )
+                break;
+            case ("QB08.png"):
+                return (
+                    <ImageQuestions source={QB08}></ImageQuestions>
+                )
+                break;   
+            case ("QB09.png"):
+                return (
+                    <ImageQuestions source={QB09}></ImageQuestions>
+                )
+                break;
+            case ("QB10.png"):
+                return (
+                    <ImageQuestions source={QB10}></ImageQuestions>
+                ) 
+                break;
+            case ("QB11.png"):
+                return (
+                    <ImageQuestions source={QB11}></ImageQuestions>
+                )
+                break;
+            case ("QB12.png"):
+                return (
+                    <ImageQuestions source={QB12}></ImageQuestions>
+                )
+                break;             
         }
     }
 
@@ -355,7 +444,7 @@ export default function App() {
 
     let correct_option
     const validateAnswer = () => {
-       correct_option = allQuestions[currentQuestionIndex].correct_option;
+        correct_option = allQuestions[currentQuestionIndex].correct_option;
         if (currentOptionSelected == correct_option) {
             //Set Score
             setScore(score + 1)
@@ -364,7 +453,7 @@ export default function App() {
         } else {
             // Show Wrong Modal        
             setShowWrongModal(true);
-        }     
+        }
     }
 
     const renderJumpButton = () => {
@@ -423,6 +512,38 @@ export default function App() {
                 </Animatable.View>
             </TouchableWithoutFeedback>
         )
+    }
+    
+    const renderElos = () => {
+        let elo = allQuestions[currentQuestionIndex].elo
+        switch (elo) {
+            case ("ferro"):
+                return (
+                    <Image style={{ width: 35, height: 35 }} source={ferro}></Image>
+                )
+            break;
+            case ("bronze"):
+                return (
+                    <Image style={{ width: 35, height: 35 }} source={bronze}></Image>
+                )
+            break;
+        }
+    }
+
+    const renderElos2 = () => {
+        let elo = allQuestions[currentQuestionIndex].elo
+        switch (elo) {
+            case ("ferro"):
+                return (
+                    <Image style={{ width: 35, height: 50 }} source={ferro2}></Image>
+                )
+                break;
+            case ("bronze"):
+                return (
+                    <Image style={{ width: 35, height: 50 }} source={bronze2}></Image>
+                )
+                break;
+        }
     }
 
     const renderCloseButton = () => {
@@ -577,7 +698,7 @@ export default function App() {
             {/* Buttons */}
             <ButtonContainer>
                 {renderJumpButton()}
-                {/*{renderLogo()}*/}
+                {renderElos()}
                 {renderButtonConfirm()}
             </ButtonContainer>
 
@@ -641,6 +762,7 @@ export default function App() {
                     marginTop: '150%',
                     width: '100%',
                     height: '25%',
+                    //opacity: 0.9,
                     backgroundColor: "#fEE0E2",
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -653,10 +775,10 @@ export default function App() {
                         alignItems: 'center',
                         flexDirection: 'row'
                     }}>
-                        <Image source={errorIcon} style={{ height: 35, width: 35 }}></Image>
+                        <Image source={errorIcon} style={{ height: 36, width: 36 }}></Image>
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
-                        }}>  Resposta correta: </Text> 
+                        }}>  Resposta correta: </Text>
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32
                         }}>{allQuestions[currentQuestionIndex].correct_alternative} </Text>
@@ -688,7 +810,6 @@ export default function App() {
                     </SafeAreaView>
                 </SafeAreaView>
             </Modal>
-
             {/* Modal Right */}
             <Modal
                 animationType="slide"
@@ -744,7 +865,6 @@ export default function App() {
                 </SafeAreaView>
             </Modal>
         </Bgcontainer >
-
     );
 }
 

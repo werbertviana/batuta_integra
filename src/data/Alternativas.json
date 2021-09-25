@@ -1,100 +1,202 @@
 {
     "data": [
         {
-            "question": "Qual figura representa a Clave de Sol?",
+            "question": "Qual nome não representa um som musical?",
             "options": [
                 {
                     "id": "1",
-                    "option": "Clave de Do",
-                    "image": "claveDo.png", 
+                    "option": "do",
+                    "image": "QF01.png",
                     "alternative": "A"
                 },
                 {
                     "id": "2",
-                    "option": "Clave de Sol",
-                    "image": "claveSol.png",
+                    "option": "sol",
+                    "image": "QF02.png",
                     "alternative": "B"
                 },
                 {
                     "id": "3",
-                    "option": "Clave de Fa",
-                    "image": "claveFa.png",
+                    "option": "mi",
+                    "image": "QF03.png",
                     "alternative": "C"
                 },
                 {
                     "id": "4",
-                    "option": "Signal",
-                    "image": "signal.png",
+                    "option": "fi",
+                    "image": "QF04.png",
                     "alternative": "D"
                 }
             ],
-            "correct_option": "Clave de Sol",
+            "correct_alternative": "D",
+            "correct_option": "fi",
+            "levels": "facil",
+            "elo": "ferro"
+        },
+        {
+            "question": "Qual a assinatura correta da Clave de Sol?",
+            "options": [
+                {
+                    "id": "5",
+                    "option": "primeira linha",
+                    "image": "QF05.png",
+                    "alternative": "A"
+                },
+                {
+                    "id": "6",
+                    "option": "segunda linha",
+                    "image": "QF06.png",
+                    "alternative": "B"
+                },
+                {
+                    "id": "7",
+                    "option": "terceira linha",
+                    "image": "QF07.png",
+                    "alternative": "C"
+                },
+                {
+                    "id": "8",
+                    "option": "quarta linha",
+                    "image": "QF08.png",
+                    "alternative": "D"
+                }
+            ],
             "correct_alternative": "B",
-            "levels": "facil"
+            "correct_option": "segunda linha",
+            "levels": "medio",
+            "elo": "ferro"
+        },
+        {
+            "question": "Qual alternativa representa a nota lá?",
+            "options": [
+                {
+                    "id": "9",
+                    "option": "la",
+                    "image": "QF09.png",
+                    "alternative": "A"
+                },
+                {
+                    "id": "QF10",
+                    "option": "mi",
+                    "image": "QF10.png",
+                    "alternative": "B"
+                },
+                {
+                    "id": "11",
+                    "option": "fa",
+                    "image": "QF11.png",
+                    "alternative": "C"
+                },
+                {
+                    "id": "12",
+                    "option": "do",
+                    "image": "QF12.png",
+                    "alternative": "D"
+                }
+            ],
+            "correct_alternative": "A",
+            "correct_option": "la",
+            "levels": "dificil",
+            "elo": "ferro"
+        },
+        {
+            "question": "Qual figura representa a Clave de Fá?",
+            "options": [
+                {
+                    "id": "13",
+                    "option": "Clave de Do",
+                    "image": "QB01.png", 
+                    "alternative": "A"
+                },
+                {
+                    "id": "14",
+                    "option": "Clave de Sol",
+                    "image": "QB02.png",
+                    "alternative": "B"
+                },
+                {
+                    "id": "15",
+                    "option": "Clave de Fa",
+                    "image": "QB03.png",
+                    "alternative": "C"
+                },
+                {
+                    "id": "16",
+                    "option": "Signal",
+                    "image": "QB04.png",
+                    "alternative": "D"
+                }
+            ],
+            "correct_option": "Clave de Fa",
+            "correct_alternative": "C",
+            "levels": "facil",
+            "elo": "bronze"
         },
         {
             "question": "Qual figura de nota equivale a 4 semínimas?",
             "options": [
                 {
-                    "id": "5",
+                    "id": "17",
                     "option": "Semibreve",
-                    "image": "semibreve.png",
+                    "image": "QB05.png",
                     "alternative": "A"
                 },
                 {
-                    "id": "6",
+                    "id": "18",
                     "option": "Minima",
-                    "image": "minima.png",
+                    "image": "QB06.png",
                     "alternative": "B"
                 },
                 {
-                    "id": "7",
+                    "id": "19",
                     "option": "Colcheia",
-                    "image": "colcheia.png",
+                    "image": "QB07.png",
                     "alternative": "C"
                 },
                 {
-                    "id": "8",
+                    "id": "20",
                     "option": "Semicolcheia",
-                    "image": "semicolcheia.png",
+                    "image": "QB08.png",
                     "alternative": "D"
                 }
             ],
             "correct_alternative": "A",
             "correct_option": "Semibreve",
             "levels": "medio",
+            "elo": "bronze"
         },
         {
-            "question": "No compasso 3/4 quem representa a U.C?",
+            "question": "Qual figura equivale a uma Mínima pontuada?",
             "options": [
                 {
-                    "id": "9",
-                    "option": "Seminima Pontuada",
-                    "image": "seminPontuada.png",
+                    "id": "21",
+                    "option": "Semicolcheia",
+                    "image": "QB09.png",
                     "alternative": "A"
                 },
                 {
-                    "id": "10",
-                    "option": "Semibreve",
-                    "image": "semibreve.png",
+                    "id": "22",
+                    "option": "Colcheia",
+                    "image": "QB10.png",
                     "alternative": "B"
                 },
                 {
-                    "id": "11",
-                    "option": "seminima",
-                    "image": "seminima.png",
+                    "id": "23",
+                    "option": "Fusa",
+                    "image": "QB11.png",
                     "alternative": "C"
                 },
                 {
-                    "id": "12",
-                    "option": "Minima Pontuada",
-                    "image": "minPontuada.png",
+                    "id": "24",
+                    "option": "Seminima",
+                    "image": "QB12.png",
                     "alternative": "D"
                 }
             ],
             "correct_alternative": "D",
-            "correct_option": "Minima Pontuada",
-            "levels": "dificil"
-        }
+            "correct_option": "Seminima",
+            "levels": "dificil",
+            "elo": "bronze"
+        }   
     ]
 }
