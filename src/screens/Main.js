@@ -43,7 +43,7 @@ import staticFeeds from '../data/Feeds.json'
 
 export default function App() {
     
-    const allFeeds = staticFeeds.data;
+    const allFeeds = staticFeeds.feeds;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const ButtonRef = useRef()
@@ -346,10 +346,10 @@ export default function App() {
             <Animatable.View style={styles.BgContainer}> 
              <ImageBackground style={styles.ViolaoBackground}
                     source={bgViolao}>  
-                {allFeeds[currentQuestionIndex].feeds.map((feed) =>
+                {allFeeds[currentQuestionIndex].items.map((item) =>
                     <TouchableWithoutFeedback
                         onPress={() => testeLife()}
-                        key={feed.id}     
+                        key={item.id}     
                     >
                         <Animatable.View
                         animation="pulse"
@@ -357,8 +357,8 @@ export default function App() {
                         ref={ButtonRef}
                         style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
                         >
-                            {renderIconsFeeds(feed.icon)}
-                            {renderBoardFeeds(feed.title)}
+                            {renderIconsFeeds(item.icon)}
+                            {renderBoardFeeds(item.title)}
                         </Animatable.View>
                     </TouchableWithoutFeedback>
                 )
@@ -384,8 +384,10 @@ export default function App() {
     }
 
     const renderFeeds02 = () =>{
-        <FlatList>
-            
+        <FlatList
+            data={allFeeds}
+           
+            >
         </FlatList>
     }
 
