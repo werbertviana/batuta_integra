@@ -384,13 +384,41 @@ export default function App() {
     }
 
     const renderFeeds02 = () =>{
-        <FlatList
-            data={allFeeds}
-           
-            >
-        </FlatList>
+        return(
+        <Animatable.View style={styles.BgContainer}> 
+            <ImageBackground 
+            style={styles.ViolaoBackground}
+            source={bgViolao}>  
+                <FlatList
+                data={allFeeds}
+                keyExtractor={ item => String(item.id)}
+                renderItem={({item}) => <ListItem></ListItem>}
+                >
+                </FlatList>
+            </ImageBackground>
+        </Animatable.View>
+        )
     }
+    
 
+function ListItem(){
+    return(
+        allFeeds[currentQuestionIndex].items.map((item) =>
+            <TouchableWithoutFeedback 
+            onPress={() => testeLife()}>
+                <Animatable.View
+                animation="pulse"
+                useNativeDriver
+                ref={ButtonRef}
+                style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
+                >
+                    {renderIconsFeeds(item.icon)}
+                    {renderBoardFeeds(item.title)}               
+                </Animatable.View>                
+            </TouchableWithoutFeedback>
+        )
+    )
+}
 
 {/* Main */ }
     return (
