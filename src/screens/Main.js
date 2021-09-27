@@ -279,17 +279,6 @@ export default function App() {
         )
     }
 
-    const renderBgFeeds = () => {
-        return (
-            <Animatable.View style={styles.BgContainer}>               
-                <ImageBackground style={styles.ViolaoBackground}
-                    source={bgViolao}>
-                        {renderFeeds()}
-                </ImageBackground>
-            </Animatable.View>
-        )
-    }
-
     const renderIconsFeeds = (icons) =>{
             switch (icons) {
                 case ("feed01.png"):
@@ -317,28 +306,7 @@ export default function App() {
     }
 
     const testeLife = () =>{
-        setlifePoints(5);
-    }
-
-    const renderFeedsOld = () => {
-        return (
-            allFeeds[currentQuestionIndex].feeds.map((feed) =>
-                <TouchableWithoutFeedback
-                    onPress={() => testeLife()}
-                    key={feed.id}     
-                >
-                    <Animatable.View
-                    animation="pulse"
-                    useNativeDriver
-                    ref={ButtonRef}
-                    style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
-                    >
-                        {renderIconsFeeds(feed.icon)}
-                        {renderBoardFeeds(feed.title)}
-                    </Animatable.View>
-                </TouchableWithoutFeedback>
-            )
-        )
+        setlifePoints(3);
     }
 
     const renderFeeds = () => {
@@ -389,12 +357,12 @@ export default function App() {
             <ImageBackground 
             style={styles.ViolaoBackground}
             source={bgViolao}>  
-                <FlatList
+               <FlatList
                 data={allFeeds}
-                keyExtractor={ item => String(item.id)}
+                keyExtractor={ item => String(item._id)}
                 renderItem={({item}) => <ListItem></ListItem>}
-                >
-                </FlatList>
+                horizontal={false}
+                ></FlatList>
             </ImageBackground>
         </Animatable.View>
         )
@@ -432,7 +400,7 @@ function ListItem(){
         {/* Progress Bar */}
         {renderProgressBar()}
         {/* Background Feeds */}
-        {renderFeeds()}
+        {renderFeeds02()}
         {/* Divisor */}
         {renderDivisor2()}
         {/* Footer */}
