@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import {
     Bgcontainer,
     QuestionText,
-    ImageLife,
+    IconImages,
     ImageQuestions,
     ButtonContainer,
     JumpText,
@@ -550,9 +550,9 @@ export default function App() {
         return (
 
             <CloseButtonContainer>
-                <Image style={{ width: 25, height: 26 }}
+                <IconImages
                     source={iconeX}>
-                </Image>
+                </IconImages>
             </CloseButtonContainer>
 
         )
@@ -616,9 +616,9 @@ export default function App() {
                 useNativeDriver
                 iterationCount={1}
             >
-                <ImageLife
+                <IconImages
                     source={iconeLife}>
-                </ImageLife>
+                </IconImages>
                 {renderTextLife()}
             </Animatable.View>
         )

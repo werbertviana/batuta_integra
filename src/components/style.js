@@ -77,6 +77,14 @@ export const Div = styled.SafeAreaView`
     justify-content: center;
   `;
 
+export const Div2 = styled.SafeAreaView`
+  margin-top: 4%;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const DivisorLine = styled.SafeAreaView`
     width: 40%;
     height: 3px;
@@ -84,6 +92,14 @@ export const DivisorLine = styled.SafeAreaView`
     border-radius: 5px;
     align-items: center;
     `;
+
+export const DivisorLine2 = styled.SafeAreaView`
+    width: 90%;
+    height: 3px;
+    background-color: #D2D3D5;
+    border-radius: 5px;
+    align-items: center;
+    `;    
 
 export const ButtonContainer = styled.SafeAreaView`
     margin-top: 1%;
@@ -145,10 +161,16 @@ export const ShadowButton = styled.SafeAreaView`
     background-color: ${props => props.color};
 `;
 
-export const ImageLife = styled.Image`
-    width: 25px;
+export const IconImages = styled.Image`
+    width: 45px;
     height: 45px; 
 `;
+
+export const IconLesson = styled.Image`
+    width: 230px;
+    height: 90px; 
+`;
+
 export const ContainerCircle = styled.SafeAreaView`
     height: 14%;
     width: 100%;
