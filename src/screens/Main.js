@@ -7,7 +7,8 @@ import {
     StyleSheet,
     ImageBackground,
     TouchableWithoutFeedback,
-    Text
+    Text, 
+    FlatList
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -152,33 +153,46 @@ export default function App() {
 
     const renderHome = () => {
         return (
-            <Animatable.View style={styles.HomeContainer}>
-                <IconImages
-                    source={iconeHome}>
-                </IconImages>
-            </Animatable.View>
+            <TouchableWithoutFeedback
+            onPress={() => testeLife()}
+            >
+                <Animatable.View style={styles.HomeContainer}>
+                    <IconImages
+                        source={iconeHome}>
+                    </IconImages>
+                </Animatable.View>
+            </TouchableWithoutFeedback>
         )
     }
 
     const renderPerfil = () => {
         return (
-            <Animatable.View style={styles.PerfilContainer}>
-                <IconImages
-                    source={iconePerfil}>
-                </IconImages>
-            </Animatable.View>
+            <TouchableWithoutFeedback
+            onPress={() => testeLife()}
+            >
+                <Animatable.View style={styles.PerfilContainer}>
+                    <IconImages
+                        source={iconePerfil}>
+                    </IconImages>
+                </Animatable.View>
+            </TouchableWithoutFeedback>
         )
     }
 
     const renderElo = () => {
         return (
-            <Animatable.View style={styles.EloContainer}>
-                <IconImages
-                    source={iconeElo}>
-                </IconImages>
-            </Animatable.View>
+            <TouchableWithoutFeedback
+            onPress={() => testeLife()}
+            >
+                <Animatable.View style={styles.EloContainer}>
+                    <IconImages
+                        source={iconeElo}>
+                    </IconImages>
+                </Animatable.View>
+            </TouchableWithoutFeedback>
         )
     }
+
     const renderFooter = () => {
         return (
             <SafeAreaView style={styles.FooterContainer}>
@@ -303,10 +317,10 @@ export default function App() {
     }
 
     const testeLife = () =>{
-        setlifePoints(3);
+        setlifePoints(5);
     }
 
-    const renderFeeds = () => {
+    const renderFeedsOld = () => {
         return (
             allFeeds[currentQuestionIndex].feeds.map((feed) =>
                 <TouchableWithoutFeedback
@@ -327,6 +341,33 @@ export default function App() {
         )
     }
 
+    const renderFeeds = () => {
+        return (
+            <Animatable.View style={styles.BgContainer}> 
+             <ImageBackground style={styles.ViolaoBackground}
+                    source={bgViolao}>  
+                {allFeeds[currentQuestionIndex].feeds.map((feed) =>
+                    <TouchableWithoutFeedback
+                        onPress={() => testeLife()}
+                        key={feed.id}     
+                    >
+                        <Animatable.View
+                        animation="pulse"
+                        useNativeDriver
+                        ref={ButtonRef}
+                        style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
+                        >
+                            {renderIconsFeeds(feed.icon)}
+                            {renderBoardFeeds(feed.title)}
+                        </Animatable.View>
+                    </TouchableWithoutFeedback>
+                )
+                }
+                </ImageBackground>
+            </Animatable.View>
+        )
+    }
+
     const renderBoardFeeds = (title) => {
         return (
                 <SafeAreaView style={styles.ShadowBoardFeeds}>
@@ -342,6 +383,13 @@ export default function App() {
         )
     }
 
+    const renderFeeds02 = () =>{
+        <FlatList>
+            
+        </FlatList>
+    }
+
+
 {/* Main */ }
     return (
         <Bgcontainer>
@@ -354,7 +402,7 @@ export default function App() {
         {/* Progress Bar */}
         {renderProgressBar()}
         {/* Background Feeds */}
-        {renderBgFeeds()}
+        {renderFeeds()}
         {/* Divisor */}
         {renderDivisor2()}
         {/* Footer */}
