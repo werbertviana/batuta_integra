@@ -38,6 +38,11 @@ import bgViolao from '../assets/imgs/bgViolao.png';
 import feed01 from '../assets/imgs/feed01.png';
 import feed02 from '../assets/imgs/feed02.png';
 import feed03 from '../assets/imgs/feed03.png';
+import feed04 from '../assets/imgs/feed04.png';
+import feed05 from '../assets/imgs/feed05.png';
+import feed06 from '../assets/imgs/feed06.png';
+
+
 // import dados estáticos
 import staticFeeds from '../data/Feeds.json'
 
@@ -251,7 +256,7 @@ export default function App() {
             <Animatable.View style={styles.ProgressContainer}> 
                  {renderStar()}   
                 <SafeAreaView style={{
-                    width: '68%',
+                    width: '78%',
                     height: 20,
                     borderRadius: 5,
                     backgroundColor: '#d1d3d5',
@@ -300,6 +305,27 @@ export default function App() {
                     return (
                         <Image style={{height: 130, width: 130}}
                         source={feed03}>
+                        </Image>
+                    )
+                break;
+                case ("feed04.png"):
+                    return (
+                        <Image style={{height: 130, width: 130}}
+                        source={feed04}>
+                        </Image>
+                    )
+                break;
+                case ("feed05.png"):
+                    return (
+                        <Image style={{height: 130, width: 130}}
+                        source={feed05}>
+                        </Image>
+                    )
+                break;
+                case ("feed06.png"):
+                    return (
+                        <Image style={{height: 130, width: 130}}
+                        source={feed06}>
                         </Image>
                     )
                 break;
@@ -353,7 +379,7 @@ export default function App() {
     }
 
     
-    const renderFeeds03 = () =>{
+    const renderFeeds02 = () =>{
         return(
                <FlatList
                 data={allFeeds}
@@ -371,7 +397,7 @@ export default function App() {
                 {renderLessonTitle(lesson)}
                 {renderProgressBar()}    
                 {/*{allFeeds[currentQuestionIndex].items.map((item) =>*/}
-
+                
                 <ImageBackground style={styles.ViolaoBackground}
                         source={bgViolao}>  
                         <TouchableWithoutFeedback
@@ -401,10 +427,8 @@ export default function App() {
         {renderHeader()}
         {/* Divisor */}
         {renderDivisor()}
-        {/* Lição */}
-        {/* Progress Bar */}
-        {/* Background Feeds */}
-        {renderFeeds03()}
+        {/* Feeds */}
+        {renderFeeds02()}
         {/* Divisor */}
         {renderDivisor2()}
         {/* Footer */}
@@ -427,8 +451,9 @@ const styles = StyleSheet.create({
         width: '90%',
         alignItems: 'center',
         flexDirection: 'row',
+        alignContent: 'center',
         justifyContent: 'space-between',
-        //backgroundColor: 'red'
+        //backgroundColor: 'blue'
     },
     ProgressContainer: {
         marginTop: '2%',
@@ -527,7 +552,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         backgroundColor: '#fff',
     },
     PerfilContainer: {
@@ -536,7 +561,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         backgroundColor: '#fff',
     },
     EloContainer: {
@@ -545,7 +570,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         backgroundColor: '#fff',
     },
     ShadowBoardFeeds: {

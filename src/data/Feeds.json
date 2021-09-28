@@ -26,19 +26,19 @@
             "_id":"2",
             "items": [
                 {
-                    "id": "1",
+                    "id": "4",
                     "title": "Figuras de Notas",
-                    "icon": "feed01.png"
+                    "icon": "feed04.png"
                 },
                 {
-                    "id": "2",
+                    "id": "5",
                     "title": "Figuras de Pausas",
-                    "icon": "feed02.png"
+                    "icon": "feed05.png"
                 },
                 {
-                    "id": "3",
+                    "id": "6",
                     "title": "Duração dos Valores",
-                    "icon": "feed03.png"
+                    "icon": "feed06.png"
                 }
             ]    
         }
