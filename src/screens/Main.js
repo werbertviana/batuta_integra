@@ -384,24 +384,22 @@ export default function App() {
                <FlatList
                 data={allFeeds}
                 keyExtractor={ item => String(item._id)}
-                renderItem={({item}) =><ListItem icon = {item.items[0].icon} 
-                title ={item.items[0].title} lesson = {item.lesson} feeds = {item}></ListItem>}
+                renderItem={({item}) =><ListItem lesson = {item.lesson} feeds = {item.items}></ListItem>}
                 ></FlatList>
         )
     }
 
-    function ListItem({icon, title, lesson, feeds}){
+    function ListItem ({lesson, feeds}){
         return(  
-        
             <Animatable.View style={styles.BgContainer}> 
                 {renderLessonTitle(lesson)}
                 {renderProgressBar()}    
-                {/*{allFeeds[currentQuestionIndex].items.map((item) =>*/}
-                
                 <ImageBackground style={styles.ViolaoBackground}
                         source={bgViolao}>  
+                         {feeds.map((item) => 
                         <TouchableWithoutFeedback
                             onPress={() => testeLife()}
+                            key={item.id}
                         >
                             <Animatable.View
                             animation="pulse"
@@ -409,10 +407,11 @@ export default function App() {
                             ref={ButtonRef}
                             style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
                             >
-                                {renderIconsFeeds(icon)}
-                                {renderBoardFeeds(title)}
+                                {renderIconsFeeds(item.icon)}
+                                {renderBoardFeeds(item.title)}
                             </Animatable.View>
                         </TouchableWithoutFeedback>
+                        )}
                 </ImageBackground>
             </Animatable.View>
         )
