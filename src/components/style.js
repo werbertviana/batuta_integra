@@ -78,7 +78,6 @@ export const Div = styled.SafeAreaView`
   `;
 
 export const Div2 = styled.SafeAreaView`
-  margin-top: 4%;
   flex-direction: row;
   width: 100%;
   align-items: center;
@@ -162,8 +161,8 @@ export const ShadowButton = styled.SafeAreaView`
 `;
 
 export const IconImages = styled.Image`
-    width: 45px;
-    height: 45px; 
+    width: 40px;
+    height: 40px; 
 `;
 
 export const IconLesson = styled.Image`

@@ -8,7 +8,8 @@ import {
     ImageBackground,
     TouchableWithoutFeedback,
     Text, 
-    FlatList
+    FlatList,
+    TouchableOpacity
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -204,8 +205,8 @@ export default function App() {
     }
 
 // Numero da licao
-    const renderLessonTitle = () => {
-        switch (allFeeds[currentQuestionIndex].lesson) {
+    const renderLessonTitle = (lesson) => {
+        switch (lesson) {
             case ("1"):
                 return (
                     <Animatable.View style={styles.LessonContainer}>
@@ -351,42 +352,47 @@ export default function App() {
         )
     }
 
-    const renderFeeds02 = () =>{
+    
+    const renderFeeds03 = () =>{
         return(
-        <Animatable.View style={styles.BgContainer}> 
-            <ImageBackground 
-            style={styles.ViolaoBackground}
-            source={bgViolao}>  
                <FlatList
                 data={allFeeds}
                 keyExtractor={ item => String(item._id)}
-                renderItem={({item}) => <ListItem></ListItem>}
-                horizontal={false}
+                renderItem={({item}) =><ListItem icon = {item.items[0].icon} 
+                title ={item.items[0].title} lesson = {item.lesson} feeds = {item}></ListItem>}
                 ></FlatList>
-            </ImageBackground>
-        </Animatable.View>
         )
     }
-    
 
-function ListItem(){
-    return(
-        allFeeds[currentQuestionIndex].items.map((item) =>
-            <TouchableWithoutFeedback 
-            onPress={() => testeLife()}>
-                <Animatable.View
-                animation="pulse"
-                useNativeDriver
-                ref={ButtonRef}
-                style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
-                >
-                    {renderIconsFeeds(item.icon)}
-                    {renderBoardFeeds(item.title)}               
-                </Animatable.View>                
-            </TouchableWithoutFeedback>
+    function ListItem({icon, title, lesson, feeds}){
+        return(  
+        
+            <Animatable.View style={styles.BgContainer}> 
+                {renderLessonTitle(lesson)}
+                {renderProgressBar()}    
+                {/*{allFeeds[currentQuestionIndex].items.map((item) =>*/}
+
+                <ImageBackground style={styles.ViolaoBackground}
+                        source={bgViolao}>  
+                        <TouchableWithoutFeedback
+                            onPress={() => testeLife()}
+                        >
+                            <Animatable.View
+                            animation="pulse"
+                            useNativeDriver
+                            ref={ButtonRef}
+                            style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
+                            >
+                                {renderIconsFeeds(icon)}
+                                {renderBoardFeeds(title)}
+                            </Animatable.View>
+                        </TouchableWithoutFeedback>
+                </ImageBackground>
+            </Animatable.View>
         )
-    )
-}
+    }
+
+   
 
 {/* Main */ }
     return (
@@ -396,11 +402,9 @@ function ListItem(){
         {/* Divisor */}
         {renderDivisor()}
         {/* Lição */}
-        {renderLessonTitle()}
         {/* Progress Bar */}
-        {renderProgressBar()}
         {/* Background Feeds */}
-        {renderFeeds02()}
+        {renderFeeds03()}
         {/* Divisor */}
         {renderDivisor2()}
         {/* Footer */}
@@ -411,6 +415,7 @@ function ListItem(){
 
 const styles = StyleSheet.create({
     HeaderContainer: {
+        marginTop: '2%',
         width: '90%',
         alignItems: 'center',
         flexDirection: 'row',
@@ -418,7 +423,7 @@ const styles = StyleSheet.create({
         //backgroundColor: 'red'
     },
     FooterContainer: {
-        marginTop: '4%',
+        marginTop: '2%',
         width: '90%',
         alignItems: 'center',
         flexDirection: 'row',
@@ -432,17 +437,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
-        //backgroundColor: 'yellow',
+        //backgroundColor: 'blue',
     },
     BgContainer: {
-        width: '95%',
+        margin: '3%',
+        width: '92%',
         alignItems: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
         //backgroundColor: 'red',
         padding: 8
     },
     ViolaoBackground: {
+        marginTop: '2%',
         resizeMode: 'contain',
         height:411, 
         width:355, 
@@ -450,8 +457,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         flexWrap: 'wrap',
-        alignContent: 'center'
-        //backgroundColor: 'red'
+        alignContent: 'center',
+        //backgroundColor: 'yellow'
     },
     LessonContainer: {
         marginTop: '2%',
@@ -459,6 +466,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
+        //backgroundColor: 'green'
     },
     LifeContainer: {
         width: '14%',

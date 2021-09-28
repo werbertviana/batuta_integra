@@ -16,7 +16,7 @@
                 },
                 {
                     "id": "3",
-                    "title": "Pauta",
+                    "title": "Pauta & Clave",
                     "icon": "feed03.png"
                 }
             ]    
@@ -27,17 +27,17 @@
             "items": [
                 {
                     "id": "1",
-                    "title": "Introdução",
+                    "title": "Figuras de Notas",
                     "icon": "feed01.png"
                 },
                 {
                     "id": "2",
-                    "title": "Sons Musicais",
+                    "title": "Figuras de Pausas",
                     "icon": "feed02.png"
                 },
                 {
                     "id": "3",
-                    "title": "Pauta",
+                    "title": "Duração dos Valores",
                     "icon": "feed03.png"
                 }
             ]    
