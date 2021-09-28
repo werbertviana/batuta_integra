@@ -29,6 +29,8 @@ export const ImagesContainer2 = styled.SafeAreaView`
     justify-content: space-around; 
 `;
 
+
+
 export const QuestionsButton = styled.SafeAreaView`
     margin-top: 2%;
     width: 40%;
@@ -97,7 +99,6 @@ export const DivisorLine2 = styled.SafeAreaView`
     height: 3px;
     background-color: #D2D3D5;
     border-radius: 5px;
-    align-items: center;
     `;    
 
 export const ButtonContainer = styled.SafeAreaView`
@@ -165,9 +166,14 @@ export const IconImages = styled.Image`
     height: 40px; 
 `;
 
+export const ImagesFeeds = styled.Image`
+    width: 125px;
+    height: 125px; 
+`;
+
 export const IconLesson = styled.Image`
-    width: 230px;
-    height: 90px; 
+    width: 260px;
+    height: 100px; 
 `;
 
 export const ContainerCircle = styled.SafeAreaView`

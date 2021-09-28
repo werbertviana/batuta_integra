@@ -9,7 +9,6 @@ import {
     TouchableWithoutFeedback,
     Text, 
     FlatList,
-    TouchableOpacity
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -20,7 +19,8 @@ import {
     Div,
     DivisorLine2,
     IconLesson,
-    Div2
+    Div2,
+    ImagesFeeds
 } from '../components/style'
 
 // import ícones
@@ -42,10 +42,8 @@ import feed04 from '../assets/imgs/feed04.png';
 import feed05 from '../assets/imgs/feed05.png';
 import feed06 from '../assets/imgs/feed06.png';
 
-
 // import dados estáticos
 import staticFeeds from '../data/Feeds.json'
-
 
 export default function App() {
     
@@ -56,8 +54,8 @@ export default function App() {
     const Button2Ref = useRef()
     const Button3Ref = useRef()
     const [lifePoints, setlifePoints] = useState(5);
-    const [xpPoints, setxpPoints] = useState(40);
-    const [batutaPoints, setbatutaPoints] = useState(10);
+    const [xpPoints, setxpPoints] = useState(0);
+    const [batutaPoints, setbatutaPoints] = useState(0);
 
     const renderLife = () => {
         return (
@@ -143,14 +141,6 @@ export default function App() {
 
     const renderDivisor = () => {
         return (
-            <Div>
-                <DivisorLine2></DivisorLine2>
-            </Div>
-        )
-    }
-
-    const renderDivisor2 = () => {
-        return (
             <Div2>
                 <DivisorLine2></DivisorLine2>
             </Div2>
@@ -160,7 +150,6 @@ export default function App() {
     const renderHome = () => {
         return (
             <TouchableWithoutFeedback
-            onPress={() => testeLife()}
             >
                 <Animatable.View style={styles.HomeContainer}>
                     <IconImages
@@ -174,7 +163,6 @@ export default function App() {
     const renderPerfil = () => {
         return (
             <TouchableWithoutFeedback
-            onPress={() => testeLife()}
             >
                 <Animatable.View style={styles.PerfilContainer}>
                     <IconImages
@@ -188,7 +176,6 @@ export default function App() {
     const renderElo = () => {
         return (
             <TouchableWithoutFeedback
-            onPress={() => testeLife()}
             >
                 <Animatable.View style={styles.EloContainer}>
                     <IconImages
@@ -229,11 +216,9 @@ export default function App() {
 
     const renderStar = () => {
         return (
-            <SafeAreaView style={{padding:5}}>
-            <Image style={{height:35, width:35}}
+            <Image style={{height:35, width:35, marginRight: '5%'}}
                 source={iconeStar}>
             </Image>
-            </SafeAreaView>
         )
     }
 
@@ -289,78 +274,47 @@ export default function App() {
             switch (icons) {
                 case ("feed01.png"):
                     return (
-                        <Image style={{height: 132, width: 132, marginTop: '8%'}}
+                        <ImagesFeeds
                         source={feed01}>
-                        </Image>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed02.png"):
                     return (
-                        <Image style={{height: 130, width: 130}}
+                        <ImagesFeeds
                         source={feed02}>
-                        </Image>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed03.png"):
                     return (
-                        <Image style={{height: 130, width: 130}}
+                        <ImagesFeeds
                         source={feed03}>
-                        </Image>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed04.png"):
                     return (
-                        <Image style={{height: 130, width: 130}}
+                        <ImagesFeeds
                         source={feed04}>
-                        </Image>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed05.png"):
                     return (
-                        <Image style={{height: 130, width: 130}}
+                        <ImagesFeeds
                         source={feed05}>
-                        </Image>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed06.png"):
                     return (
-                        <Image style={{height: 130, width: 130}}
+                        <ImagesFeeds
                         source={feed06}>
-                        </Image>
+                        </ImagesFeeds>
                     )
                 break;
             }        
-    }
-
-    const testeLife = () =>{
-        setlifePoints(3);
-    }
-
-    const renderFeeds = () => {
-        return (
-            <Animatable.View style={styles.BgContainer}> 
-             <ImageBackground style={styles.ViolaoBackground}
-                    source={bgViolao}>  
-                {allFeeds[currentQuestionIndex].items.map((item) =>
-                    <TouchableWithoutFeedback
-                        onPress={() => testeLife()}
-                        key={item.id}     
-                    >
-                        <Animatable.View
-                        animation="pulse"
-                        useNativeDriver
-                        ref={ButtonRef}
-                        style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
-                        >
-                            {renderIconsFeeds(item.icon)}
-                            {renderBoardFeeds(item.title)}
-                        </Animatable.View>
-                    </TouchableWithoutFeedback>
-                )
-                }
-                </ImageBackground>
-            </Animatable.View>
-        )
     }
 
     const renderBoardFeeds = (title) => {
@@ -378,8 +332,7 @@ export default function App() {
         )
     }
 
-    
-    const renderFeeds02 = () =>{
+    const renderFeeds = () =>{
         return(
                <FlatList
                 data={allFeeds}
@@ -391,32 +344,32 @@ export default function App() {
 
     function ListItem ({lesson, feeds}){
         return(  
-            <Animatable.View style={styles.BgContainer}> 
-                {renderLessonTitle(lesson)}
-                {renderProgressBar()}    
-                <ImageBackground style={styles.ViolaoBackground}
-                        source={bgViolao}>  
+            <Animatable.View style={styles.BgContainer}>
+                {renderLessonTitle(lesson)} 
+                {renderProgressBar()}
+                <ImageBackground 
+                style={styles.ViolaoBackground}
+                source={bgViolao}>   
                          {feeds.map((item) => 
                         <TouchableWithoutFeedback
-                            onPress={() => testeLife()}
                             key={item.id}
                         >
                             <Animatable.View
                             animation="pulse"
                             useNativeDriver
                             ref={ButtonRef}
-                            style={{margin: '1%', marginHorizontal: '6.6%', alignItems: 'center'}}
+                            style={{alignItems: 'center',
+                            margin:'1%', marginTop:'4%'}}
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
                             </Animatable.View>
                         </TouchableWithoutFeedback>
-                        )}
-                </ImageBackground>
+                        )}   
+                </ImageBackground>         
             </Animatable.View>
         )
     }
-
    
 
 {/* Main */ }
@@ -427,9 +380,9 @@ export default function App() {
         {/* Divisor */}
         {renderDivisor()}
         {/* Feeds */}
-        {renderFeeds02()}
+        {renderFeeds()}
         {/* Divisor */}
-        {renderDivisor2()}
+        {renderDivisor()}
         {/* Footer */}
         {renderFooter()}
         </Bgcontainer>
@@ -443,20 +396,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        padding: 8
         //backgroundColor: 'red'
     },
     FooterContainer: {
-        marginTop: '2%',
+        marginTop: '1%',
         width: '90%',
         alignItems: 'center',
         flexDirection: 'row',
         alignContent: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
+        padding: 8,
         //backgroundColor: 'blue'
     },
     ProgressContainer: {
         marginTop: '2%',
-        height: '4%',
         width: '90%',
         alignItems: 'center',
         flexDirection: 'row',
@@ -464,16 +418,12 @@ const styles = StyleSheet.create({
         //backgroundColor: 'blue',
     },
     BgContainer: {
-        margin: '3%',
+        margin: '2%',
         width: '92%',
         alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
         //backgroundColor: 'red',
-        padding: 8
     },
-    ViolaoBackground: {
-        marginTop: '2%',
+    ViolaoBackground: { 
         resizeMode: 'contain',
         height:411, 
         width:355, 
@@ -485,16 +435,12 @@ const styles = StyleSheet.create({
         //backgroundColor: 'yellow'
     },
     LessonContainer: {
-        marginTop: '2%',
         width: '90%',
         alignItems: 'center',
-        flexDirection: 'row',
         justifyContent: 'center',
         //backgroundColor: 'green'
     },
-    LifeContainer: {
-        width: '14%',
-        height: '100%',
+    LifeContainer: {   
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
@@ -507,8 +453,6 @@ const styles = StyleSheet.create({
         color: '#FC4848',
     },
     XpContainer: {
-        width: '14%',
-        height: '100%',
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
@@ -522,8 +466,6 @@ const styles = StyleSheet.create({
         textAlign: 'justify'
     },
     BatutasContainer: {
-        width: '14%',
-        height: '100%',
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
@@ -546,36 +488,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     HomeContainer: {
-        width: '14%',
-        height: '100%',
         alignItems: 'center',
-        alignContent: 'center',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
     },
     PerfilContainer: {
-        width: '14%',
-        height: '100%',
         alignItems: 'center',
-        alignContent: 'center',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
     },
     EloContainer: {
-        width: '14%',
-        height: '100%',
         alignItems: 'center',
-        alignContent: 'center',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
     },
     ShadowBoardFeeds: {
-        marginTop: '6%',
-        width: '110%',
-        height: '10%',
+        marginTop: '5%',
+        width:162,
+        height:45,
         alignItems: 'center',
         alignContent: 'center',
         borderRadius: 8,
@@ -592,7 +516,7 @@ const styles = StyleSheet.create({
         borderWidth: 2
     },
     TextFeeds:{
-        fontSize: 28,
+        fontSize: 25,
         fontFamily: 'GothamCondensed-Medium',
         textAlign: 'center'
     }
