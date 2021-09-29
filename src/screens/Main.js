@@ -236,38 +236,40 @@ export default function App() {
         inputRange: [0, 3 - 1],
         outputRange: [percent, '100%']
     })
-    const renderProgressBar = () => {
-        return (
-            <Animatable.View style={styles.ProgressContainer}> 
-                 {renderStar()}   
-                <SafeAreaView style={{
-                    width: '78%',
-                    height: 20,
-                    borderRadius: 5,
-                    backgroundColor: '#d1d3d5',
-
-                }}>
-                    <Animated.View style={[{
+    const renderProgressBar = (progress) => {
+        if(progress==1){
+            return (
+                <Animatable.View style={styles.ProgressContainer}> 
+                    {renderStar()}   
+                    <SafeAreaView style={{
+                        width: '78%',
                         height: 20,
                         borderRadius: 5,
-                        backgroundColor: '#61BE4B',
-                    }, {
-                        width: progressAnim
-                    }]}>
+                        backgroundColor: '#d1d3d5',
+
+                    }}>
                         <Animated.View style={[{
-                            height: 6,
-                            borderRadius: 1,
-                            marginTop: 4,
-                            alignSelf: 'center',
-                            backgroundColor: '#A1D995',
+                            height: 20,
+                            borderRadius: 5,
+                            backgroundColor: '#61BE4B',
                         }, {
-                            width: progressAnim2
+                            width: progressAnim
                         }]}>
+                            <Animated.View style={[{
+                                height: 6,
+                                borderRadius: 1,
+                                marginTop: 4,
+                                alignSelf: 'center',
+                                backgroundColor: '#A1D995',
+                            }, {
+                                width: progressAnim2
+                            }]}>
+                            </Animated.View>
                         </Animated.View>
-                    </Animated.View>
-                </SafeAreaView>
-            </Animatable.View>
-        )
+                    </SafeAreaView>
+                </Animatable.View>
+            )
+        }
     }
 
     const renderIconsFeeds = (icons) =>{
@@ -337,16 +339,16 @@ export default function App() {
                <FlatList
                 data={allFeeds}
                 keyExtractor={ item => String(item._id)}
-                renderItem={({item}) =><ListItem lesson = {item.lesson} feeds = {item.items}></ListItem>}
+                renderItem={({item}) =><ListItem lesson = {item.lesson} feeds = {item.items} progress = {item.progress}></ListItem>}
                 ></FlatList>
         )
     }
 
-    function ListItem ({lesson, feeds}){
+    function ListItem ({lesson, feeds, progress}){
         return(  
             <Animatable.View style={styles.BgContainer}>
                 {renderLessonTitle(lesson)} 
-                {renderProgressBar()}
+                {renderProgressBar(progress)}
                 <ImageBackground 
                 style={styles.ViolaoBackground}
                 source={bgViolao}>   
