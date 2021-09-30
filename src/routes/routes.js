@@ -11,7 +11,7 @@ import Elos from '../screens/Elos/Elos';
 
 //import icones
 import iconeHome from '../assets/imgs/iconeHome.png';
-import iconePerfil from '../assets/imgs/iconePerfil.png';
+import iconeProfile from '../assets/imgs/iconePerfil.png';
 import iconeElo from '../assets/imgs/iconeElo.png';
 
 //import estilos
@@ -29,8 +29,8 @@ export default function Routes(){
                     borderTopColor: 'transparent'
                 },
                 tabStyle:{
-                    paddingBottom: 5,
-                    paddingTop: 5
+                    paddingBottom: 1,
+                    paddingTop: 8
                 }
             }}
         >
@@ -39,12 +39,34 @@ export default function Routes(){
             component={Home} 
             options={{
               tabBarIcon: ()=>(
-                  <Image></Image>
+                  <IconImages
+                    source={iconeHome}
+                  ></IconImages>
               )
             }}
             />
-            <Tab.Screen name="Profile" component={Profile} />
-            <Tab.Screen name="Elos" component={Elos} />
+            <Tab.Screen 
+            name="Profile" 
+            component={Profile} 
+            options={{
+                tabBarIcon: ()=>(
+                    <IconImages
+                      source={iconeProfile}
+                    ></IconImages>
+                )
+              }}
+            />
+            <Tab.Screen 
+            name="Elos" 
+            component={Elos}
+            options={{
+                tabBarIcon: ()=>(
+                    <IconImages
+                      source={iconeElo}
+                    ></IconImages>
+                )
+              }} 
+            />
         </Tab.Navigator>
     )
 }
