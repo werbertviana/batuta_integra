@@ -21,29 +21,29 @@ import {
     IconLesson,
     Div2,
     ImagesFeeds
-} from '../components/style'
+} from '../../components/style'
 
 // import ícones
-import iconeLife from '../assets/imgs/iconeLife.png';
-import iconeXp from '../assets/imgs/iconeXp.png';
-import iconeBatutas from '../assets/imgs/iconeBatutas.png';
-import iconeBatuta from '../assets/imgs/iconeBatuta.png';
-import licao01 from '../assets/imgs/licao01.png';
-import licao02 from '../assets/imgs/licao02.png';
-import iconeHome from '../assets/imgs/iconeHome.png';
-import iconePerfil from '../assets/imgs/iconePerfil.png';
-import iconeElo from '../assets/imgs/iconeElo.png';
-import iconeStar from '../assets/imgs/iconeStar.png';
-import bgViolao from '../assets/imgs/bgViolao.png';
-import feed01 from '../assets/imgs/feed01.png';
-import feed02 from '../assets/imgs/feed02.png';
-import feed03 from '../assets/imgs/feed03.png';
-import feed04 from '../assets/imgs/feed04.png';
-import feed05 from '../assets/imgs/feed05.png';
-import feed06 from '../assets/imgs/feed06.png';
+import iconeLife from '../../assets/imgs/iconeLife.png';
+import iconeXp from '../../assets/imgs/iconeXp.png';
+import iconeBatutas from '../../assets/imgs/iconeBatutas.png';
+import iconeBatuta from '../../assets/imgs/iconeBatuta.png';
+import licao01 from '../../assets/imgs/licao01.png';
+import licao02 from '../../assets/imgs/licao02.png';
+import iconeHome from '../../assets/imgs/iconeHome.png';
+import iconePerfil from '../../assets/imgs/iconePerfil.png';
+import iconeElo from '../../assets/imgs/iconeElo.png';
+import iconeStar from '../../assets/imgs/iconeStar.png';
+import bgViolao from '../../assets/imgs/bgViolao.png';
+import feed01 from '../../assets/imgs/feed01.png';
+import feed02 from '../../assets/imgs/feed02.png';
+import feed03 from '../../assets/imgs/feed03.png';
+import feed04 from '../../assets/imgs/feed04.png';
+import feed05 from '../../assets/imgs/feed05.png';
+import feed06 from '../../assets/imgs/feed06.png';
 
 // import dados estáticos
-import staticFeeds from '../data/Feeds.json'
+import staticFeeds from '../../data/Feeds.json'
 
 export default function App() {
     
