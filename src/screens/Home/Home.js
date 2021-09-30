@@ -384,6 +384,7 @@ export default function App() {
         {/* Feeds */}
         {renderFeeds()}
         {/* Divisor */}
+        {renderDivisor()}
         {/* Footer */}
         </Bgcontainer>
     );
