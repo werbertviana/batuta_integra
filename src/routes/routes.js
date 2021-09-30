@@ -1,5 +1,9 @@
+// import bibliotecas
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+    SafeAreaView
+} from 'react-native';
 
 //import paginas
 import Home from '../screens/Home/Home';
@@ -10,7 +14,10 @@ import Elos from '../screens/Elos/Elos';
 import iconeHome from '../assets/imgs/iconeHome.png';
 import iconeHome02 from '../assets/imgs/iconeHome02.png';
 import iconeProfile from '../assets/imgs/iconePerfil.png';
+import iconeProfile02 from '../assets/imgs/iconePerfil02.png';
 import iconeElo from '../assets/imgs/iconeElo.png';
+import iconeElo02 from '../assets/imgs/iconeElo02.png';
+
 
 
 //import estilos
@@ -37,14 +44,26 @@ export default function Routes(){
                 }
             break;
             case ("profile"):
-                return (
-                    <IconImages source={iconeProfile}></IconImages>
-                )
+                if (focused == false){
+                    return (
+                        <IconImages source={iconeProfile}></IconImages>
+                    )
+                }else{
+                    return(
+                    <IconImages source={iconeProfile02}></IconImages>
+                    )
+                }
             break;
             case ("elos"):
-                return (
-                    <IconImages source={iconeElo}></IconImages>
-                )
+                if (focused == false){
+                    return (
+                        <IconImages source={iconeElo}></IconImages>
+                    )
+                }else{
+                    return(
+                    <IconImages source={iconeElo02}></IconImages>
+                    )
+                }
             break;
         }
     }
@@ -57,7 +76,7 @@ export default function Routes(){
     }
 
     return(
-        
+
         <Tab.Navigator
             tabBarOptions={{
                 style:{
@@ -77,7 +96,7 @@ export default function Routes(){
                 tabBarLabel:"",
                 tabBarIcon: ({focused})=>(
                     renderIcons('home', focused)
-              )
+                )
             }}
             />
             <Tab.Screen 
@@ -86,9 +105,7 @@ export default function Routes(){
             options={{
                 tabBarLabel:"",
                 tabBarIcon: ({focused})=>(
-                    <IconImages
-                      source={iconeProfile}>
-                    </IconImages>
+                    renderIcons('profile', focused)
                 )
               }}
             />
@@ -97,10 +114,8 @@ export default function Routes(){
             component={Elos}
             options={{
                 tabBarLabel:"",
-                tabBarIcon: ()=>(
-                    <IconImages
-                      source={iconeElo}>
-                    </IconImages>
+                tabBarIcon: ({focused})=>(
+                    renderIcons('elos', focused)
                 )
               }} 
             />
