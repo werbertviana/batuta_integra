@@ -1,8 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {
-    Image
-} from 'react-native';
 
 //import paginas
 import Home from '../screens/Home/Home';
@@ -11,24 +8,65 @@ import Elos from '../screens/Elos/Elos';
 
 //import icones
 import iconeHome from '../assets/imgs/iconeHome.png';
+import iconeHome02 from '../assets/imgs/iconeHome02.png';
 import iconeProfile from '../assets/imgs/iconePerfil.png';
 import iconeElo from '../assets/imgs/iconeElo.png';
 
+
 //import estilos
 import {
-    IconImages
+    IconImages,
+    Div2,
+    DivisorLine2
 } from '../components/style'
 
 const Tab = createBottomTabNavigator();
 
 export default function Routes(){
+    const renderIcons = (icon, focused) =>{
+        switch (icon) {
+            case ("home"):
+                if (focused == false){
+                    return (
+                        <IconImages source={iconeHome}></IconImages>
+                    )
+                }else{
+                    return(
+                    <IconImages source={iconeHome02}></IconImages>
+                    )
+                }
+            break;
+            case ("profile"):
+                return (
+                    <IconImages source={iconeProfile}></IconImages>
+                )
+            break;
+            case ("elos"):
+                return (
+                    <IconImages source={iconeElo}></IconImages>
+                )
+            break;
+        }
+    }
+    const renderDivisor = () => {
+        return (
+            <Div2>
+                <DivisorLine2></DivisorLine2>
+            </Div2>
+        )
+    }
+
     return(
+        
         <Tab.Navigator
             tabBarOptions={{
                 style:{
                     borderTopColor: 'transparent',
                     padding: 15,
-                    //backgroundColor: 'red'
+                    //borderTopWidth: 2,
+                    //width: '90%',
+                    //backgroundColor: '#fff',
+                    //alignSelf: 'center'
                 }
             }}
         >
@@ -37,10 +75,8 @@ export default function Routes(){
             component={Home} 
             options={{
                 tabBarLabel:"",
-                tabBarIcon: ()=>(
-                    <IconImages
-                        source={iconeHome}>
-                    </IconImages>
+                tabBarIcon: ({focused})=>(
+                    renderIcons('home', focused)
               )
             }}
             />
@@ -49,7 +85,7 @@ export default function Routes(){
             component={Profile} 
             options={{
                 tabBarLabel:"",
-                tabBarIcon: ()=>(
+                tabBarIcon: ({focused})=>(
                     <IconImages
                       source={iconeProfile}>
                     </IconImages>
