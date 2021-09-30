@@ -26,11 +26,9 @@ export default function Routes(){
         <Tab.Navigator
             tabBarOptions={{
                 style:{
-                    borderTopColor: 'transparent'
-                },
-                tabStyle:{
-                    paddingBottom: 1,
-                    paddingTop: 8
+                    borderTopColor: 'transparent',
+                    padding: 15,
+                    //backgroundColor: 'red'
                 }
             }}
         >
@@ -38,10 +36,11 @@ export default function Routes(){
             name="Home" 
             component={Home} 
             options={{
-              tabBarIcon: ()=>(
-                  <IconImages
-                    source={iconeHome}
-                  ></IconImages>
+                tabBarLabel:"",
+                tabBarIcon: ()=>(
+                    <IconImages
+                        source={iconeHome}>
+                    </IconImages>
               )
             }}
             />
@@ -49,10 +48,11 @@ export default function Routes(){
             name="Profile" 
             component={Profile} 
             options={{
+                tabBarLabel:"",
                 tabBarIcon: ()=>(
                     <IconImages
-                      source={iconeProfile}
-                    ></IconImages>
+                      source={iconeProfile}>
+                    </IconImages>
                 )
               }}
             />
@@ -60,10 +60,11 @@ export default function Routes(){
             name="Elos" 
             component={Elos}
             options={{
+                tabBarLabel:"",
                 tabBarIcon: ()=>(
                     <IconImages
-                      source={iconeElo}
-                    ></IconImages>
+                      source={iconeElo}>
+                    </IconImages>
                 )
               }} 
             />
