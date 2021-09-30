@@ -43,33 +43,6 @@
                     "icon": "feed06.png"
                 }
             ]    
-        },
-        {
-            "lesson": "",
-            "_id":"3",
-            "progress": "0",
-            "items": [
-                {
-                    "id": "4",
-                    "title": "Figuras de Notas",
-                    "icon": "feed04.png"
-                },
-                {
-                    "id": "5",
-                    "title": "Figuras de Pausas",
-                    "icon": "feed05.png"
-                },
-                {
-                    "id": "6",
-                    "title": "Duração dos Valores",
-                    "icon": "feed06.png"
-                },
-                {
-                    "id": "7",
-                    "title": "Duração dos Valores",
-                    "icon": "feed06.png"
-                }
-            ]    
         }
     ]
 }
