@@ -241,7 +241,7 @@ export default function App() {
                 <Animatable.View style={styles.ProgressContainer}> 
                     {renderStar()}   
                     <SafeAreaView style={{
-                        width: '78%',
+                        width: '75%',
                         height: 20,
                         borderRadius: 5,
                         backgroundColor: '#d1d3d5',
@@ -450,7 +450,7 @@ const styles = StyleSheet.create({
         //backgroundColor: 'blue',
     },
     BgContainer: {
-        margin: '2%',
+        margin: '4%',
         width: '92%',
         alignItems: 'center',
         //backgroundColor: 'red',
