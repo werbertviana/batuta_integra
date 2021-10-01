@@ -146,55 +146,6 @@ export default function App() {
         )
     }
 
-    const renderHome = () => {
-        return (
-            <TouchableWithoutFeedback
-            >
-                <Animatable.View style={styles.HomeContainer}>
-                    <IconImages
-                        source={iconeHome}>
-                    </IconImages>
-                </Animatable.View>
-            </TouchableWithoutFeedback>
-        )
-    }
-
-    const renderPerfil = () => {
-        return (
-            <TouchableWithoutFeedback
-            >
-                <Animatable.View style={styles.PerfilContainer}>
-                    <IconImages
-                        source={iconePerfil}>
-                    </IconImages>
-                </Animatable.View>
-            </TouchableWithoutFeedback>
-        )
-    }
-
-    const renderElo = () => {
-        return (
-            <TouchableWithoutFeedback
-            >
-                <Animatable.View style={styles.EloContainer}>
-                    <IconImages
-                        source={iconeElo}>
-                    </IconImages>
-                </Animatable.View>
-            </TouchableWithoutFeedback>
-        )
-    }
-
-    const renderFooter = () => {
-        return (
-            <SafeAreaView style={styles.FooterContainer}>
-                {renderHome()}
-                {renderPerfil()}
-                {renderElo()}
-            </SafeAreaView>
-        )
-    }
-
 // Numero da licao
     const renderLessonTitle = (lesson) => {
         switch (lesson) {
@@ -388,35 +339,7 @@ export default function App() {
         {renderDivisor()}
         {/* Feeds */}
         {renderFeeds()}
-        <Modal
-                animationType="slide"
-                transparent={true}
-                visible={showOptionsModal}
-            >
-                <SafeAreaView style={{
-                    marginTop: '10%',
-                    width: '100%',
-                    height: '25%',
-                    backgroundColor: "#D9FEB8",
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                }}>
-                    <SafeAreaView style={{
-                        marginTop: '3%',
-
-                        width: '100%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'row'
-                    }}>
-                        <Text style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#38752B", fontSize: 35,
-                        }}>Você acertou!  </Text>
-                        
-                    </SafeAreaView>
-                </SafeAreaView>
-        </Modal>
+        
         </Bgcontainer>
     );
 }
