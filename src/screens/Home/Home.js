@@ -301,8 +301,9 @@ export default function App() {
                 {renderProgressBar(progress)}
                 <ImageBackground 
                 style={styles.ViolaoBackground}
-                source={bgViolao}>   
-                         {feeds.map((item) => 
+                source={bgViolao}>
+                        {renderModal()}       
+                        {feeds.map((item) => 
                         <TouchableWithoutFeedback
                             onPress={() => setShowOptionsModal(true)}
                             key={item.id}
@@ -326,6 +327,61 @@ export default function App() {
 
     const exitModal = () => {
         setShowOptionsModal(false)
+    }
+
+    const renderModal = () => {
+        return (
+            
+            <Modal
+                    animationType="fade"
+                    transparent={true}
+                    visible={showOptionsModal}
+                    
+                >
+                    <SafeAreaView style={{
+                        marginTop: '10%',
+                        width: '55%',
+                        height: '15%',
+                        backgroundColor: "#236A79",
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        flexDirection: 'column',
+                        borderRadius: 10
+                    }}>
+                        <SafeAreaView style={{
+                            marginTop: '3%',
+
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+
+                        <SafeAreaView style={{
+                            marginTop: '3%',
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+                    </SafeAreaView>
+            </Modal>
+        )
     }
    
     
@@ -381,13 +437,13 @@ const styles = StyleSheet.create({
     ViolaoBackground: { 
         resizeMode: 'contain',
         height:411, 
-        width:355, 
+        width:360, 
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-around',
         flexWrap: 'wrap',
         alignContent: 'center',
-        //backgroundColor: 'yellow'
+        backgroundColor: 'yellow'
     },
     LessonContainer: {
         width: '90%',
