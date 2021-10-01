@@ -330,6 +330,7 @@ export default function App() {
     }
 
     const renderModal = () => {
+        
         return (
             
             <Modal
@@ -339,19 +340,19 @@ export default function App() {
                     
                 >
                     <SafeAreaView style={{
-                        marginTop: '10%',
-                        width: '55%',
-                        height: '15%',
+                        marginTop: '110%',
+                        width: '50%',
+                        height: '14%',
                         backgroundColor: "#236A79",
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        justifyContent: 'space-around',
                         alignContent: 'center',
                         flexDirection: 'column',
+                        marginLeft: 8,
                         borderRadius: 10
                     }}>
                         <SafeAreaView style={{
-                            marginTop: '3%',
-
+                            height: '35%',
                             width: '90%',
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -366,17 +367,18 @@ export default function App() {
                         </SafeAreaView>
 
                         <SafeAreaView style={{
-                            marginTop: '3%',
+                            height: '35%',
                             width: '90%',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
+                            backgroundColor: '#fff',
                             borderRadius: 5
                         }}>
                             <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
                                 padding: 5
-                            }}>CONTEÚDO</Text>
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>
+                            
                             
                         </SafeAreaView>
                     </SafeAreaView>
@@ -443,7 +445,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         flexWrap: 'wrap',
         alignContent: 'center',
-        backgroundColor: 'yellow'
+        //backgroundColor: 'yellow'
     },
     LessonContainer: {
         width: '90%',
