@@ -9,6 +9,7 @@ import {
     TouchableWithoutFeedback,
     Text, 
     FlatList,
+    Modal
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -16,11 +17,11 @@ import * as Animatable from 'react-native-animatable';
 import {
     Bgcontainer,
     IconImages,
-    Div,
     DivisorLine2,
     IconLesson,
     Div2,
-    ImagesFeeds
+    ImagesFeeds,
+    StyleButtons
 } from '../../components/style'
 
 // import ícones
@@ -53,6 +54,7 @@ export default function App() {
     const [lifePoints, setlifePoints] = useState(5);
     const [xpPoints, setxpPoints] = useState(0);
     const [batutaPoints, setbatutaPoints] = useState(0);
+    const [showOptionsModal, setShowOptionsModal] = useState(false);
 
     const renderLife = () => {
         return (
@@ -351,10 +353,11 @@ export default function App() {
                 source={bgViolao}>   
                          {feeds.map((item) => 
                         <TouchableWithoutFeedback
+                            onPress={() => setShowOptionsModal(true)}
                             key={item.id}
                         >
                             <Animatable.View
-                            animation="pulse"
+                            animation=""
                             useNativeDriver
                             ref={ButtonRef}
                             style={{alignItems: 'center',
@@ -369,7 +372,12 @@ export default function App() {
             </Animatable.View>
         )
     }
+
+    const exitModal = () => {
+        setShowOptionsModal(false)
+    }
    
+    
 
 {/* Main */ }
     return (
@@ -380,9 +388,35 @@ export default function App() {
         {renderDivisor()}
         {/* Feeds */}
         {renderFeeds()}
-        {/* Divisor */}
-        {renderDivisor()}
-        {/* Footer */}
+        <Modal
+                animationType="slide"
+                transparent={true}
+                visible={showOptionsModal}
+            >
+                <SafeAreaView style={{
+                    marginTop: '10%',
+                    width: '100%',
+                    height: '25%',
+                    backgroundColor: "#D9FEB8",
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                }}>
+                    <SafeAreaView style={{
+                        marginTop: '3%',
+
+                        width: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'row'
+                    }}>
+                        <Text style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#38752B", fontSize: 35,
+                        }}>Você acertou!  </Text>
+                        
+                    </SafeAreaView>
+                </SafeAreaView>
+        </Modal>
         </Bgcontainer>
     );
 }

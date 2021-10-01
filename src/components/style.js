@@ -95,8 +95,8 @@ export const DivisorLine = styled.SafeAreaView`
     `;
 
 export const DivisorLine2 = styled.SafeAreaView`
-    width: 90%;
-    height: 3px;
+    width: 100%;
+    height: 2px;
     background-color: #D2D3D5;
     border-radius: 5px;
     `;    

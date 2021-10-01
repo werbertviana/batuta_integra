@@ -77,14 +77,17 @@ export default function Routes(){
 
     return(
 
+    //<SafeAreaView style={{backgroundColor: 'blue', marginTop:'150%'}}>
+
         <Tab.Navigator
             tabBarOptions={{
                 style:{
-                    borderTopColor: 'transparent',
+                    borderTopColor: '#D2D3D5',
                     padding: 15,
-                    //borderTopWidth: 2,
+                    //justifyContent:'space-around'
+                    borderTopWidth: 2,
                     //width: '90%',
-                    //backgroundColor: '#fff',
+                    //backgroundColor: 'red',
                     //alignSelf: 'center'
                 }
             }}
@@ -120,5 +123,6 @@ export default function Routes(){
               }} 
             />
         </Tab.Navigator>
+    //</SafeAreaView>
     )
 }
