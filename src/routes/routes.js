@@ -25,7 +25,8 @@ import iconeElo02 from '../assets/imgs/iconeElo02.png';
 //import estilos
 import {
     Div2,
-    DivisorLine2
+    DivisorLine2,
+    IconImages
 } from '../components/style'
 
 const Tab = createBottomTabNavigator();
@@ -36,33 +37,33 @@ export default function Routes(){
             case ("home"):
                 if (focused == false){
                     return (
-                        <FastImage style={styles.IconImages}source={iconeHome}></FastImage>
+                        <IconImages source={iconeHome}></IconImages>
                     )
                 }else{
                     return(
-                        <FastImage style={styles.IconImages} source={iconeHome02}></FastImage>
+                        <IconImages source={iconeHome02}></IconImages>
                     )
                 }
             break;
             case ("profile"):
                 if (focused == false){
                     return (
-                        <FastImage style={styles.IconImages} source={iconeProfile}></FastImage>
+                        <IconImages source={iconeProfile}></IconImages>
                     )
                 }else{
                     return(
-                        <FastImage style={styles.IconImages} source={iconeProfile02}></FastImage>
+                        <IconImages source={iconeProfile02}></IconImages>
                     )
                 }
             break;
             case ("elos"):
                 if (focused == false){
                     return (
-                        <FastImage style={styles.IconImages} source={iconeElo}></FastImage>
+                        <IconImages source={iconeElo}></IconImages>
                     )
                 }else{
                     return(
-                        <FastImage style={styles.IconImages} source={iconeElo02}></FastImage>
+                        <IconImages source={iconeElo02}></IconImages>
                     )
                 }
             break;
@@ -128,9 +129,3 @@ export default function Routes(){
     )
 }
 
-const styles = StyleSheet.create({
-    IconImages:{
-        width: 40,
-        height: 40
-    }
-})

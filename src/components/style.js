@@ -1,3 +1,4 @@
+import FastImage from 'react-native-fast-image';
 import styled from 'styled-components/native';
 
 
@@ -161,17 +162,17 @@ export const ShadowButton = styled.SafeAreaView`
     background-color: ${props => props.color};
 `;
 
-export const IconImages = styled.Image`
+export const IconImages = styled(FastImage)`
     width: 40px;
     height: 40px; 
 `;
 
-export const ImagesFeeds = styled.Image`
+export const ImagesFeeds = styled(FastImage)`
     width: 125px;
     height: 125px; 
 `;
 
-export const IconLesson = styled.Image`
+export const IconLesson = styled(FastImage)`
     width: 260px;
     height: 100px; 
 `;

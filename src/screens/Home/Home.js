@@ -18,7 +18,10 @@ import FastImage from 'react-native-fast-image'
 import {
     Bgcontainer,
     DivisorLine2,
-    Div2
+    Div2,
+    ImagesFeeds,
+    IconLesson,
+    IconImages
 } from '../../components/style'
 
 // import ícones
@@ -52,14 +55,14 @@ export default function App() {
     const [xpPoints, setxpPoints] = useState(0);
     const [batutaPoints, setbatutaPoints] = useState(0);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
+    
 
     const renderLife = () => {
         return (
             <Animatable.View style={styles.LifeContainer}>
-                <FastImage
-                    style={styles.IconImages}
+                <IconImages
                     source={iconeLife}>
-                </FastImage>
+                </IconImages>
                 {renderTextLife()}
             </Animatable.View>
         )
@@ -76,10 +79,9 @@ export default function App() {
     const renderXp = () => {
         return (
             <Animatable.View style={styles.XpContainer}>
-                 <FastImage
-                    style={styles.IconImages}
+                 <IconImages
                     source={iconeXp}>
-                </FastImage>
+                </IconImages>
                 {renderTextXp()}
             </Animatable.View>
         )
@@ -98,10 +100,9 @@ export default function App() {
     const renderBatutas = () => {
         return (
             <Animatable.View style={styles.BatutasContainer}>
-                <FastImage
-                    style={styles.IconImages}
+                <IconImages
                     source={iconeBatutas}>
-                </FastImage>
+                </IconImages>
                 {renderTextBatutas()}
             </Animatable.View>
         )
@@ -120,10 +121,9 @@ export default function App() {
     const renderBatuta = () => {
         return (
             <Animatable.View style={styles.BatutaContainer}>
-                 <FastImage
-                    style={styles.IconImages}
+                 <IconImages
                     source={iconeBatuta}>
-                </FastImage>
+                </IconImages>
             </Animatable.View>
         )
     }
@@ -153,14 +153,14 @@ export default function App() {
             case ("1"):
                 return (
                     <Animatable.View style={styles.LessonContainer}>
-                    <FastImage style={styles.IconLesson} source={licao01}></FastImage>
+                    <IconLesson source={licao01}></IconLesson>
                     </Animatable.View>
                 )
                 break;
             case ("2"):
                 return (
                     <Animatable.View style={styles.LessonContainer}>
-                    <FastImage style={styles.IconLesson} source={licao02}></FastImage>
+                    <IconLesson source={licao02}></IconLesson>
                     </Animatable.View>
                 )
                 break;   
@@ -229,50 +229,44 @@ export default function App() {
             switch (icons) {
                 case ("feed01.png"):
                     return (
-                        <FastImage
-                        style={styles.ImagesFeeds}
+                        <ImagesFeeds
                         source={feed01}>
-                        </FastImage>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed02.png"):
                     return (
-                        <FastImage
-                        style={styles.ImagesFeeds}
+                        <ImagesFeeds
                         source={feed02}>
-                        </FastImage>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed03.png"):
                     return (
-                        <FastImage
-                        style={styles.ImagesFeeds}
+                        <ImagesFeeds
                         source={feed03}>
-                        </FastImage>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed04.png"):
                     return (
-                        <FastImage
-                        style={styles.ImagesFeeds}
+                        <ImagesFeeds
                         source={feed04}>
-                        </FastImage>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed05.png"):
                     return (
-                        <FastImage
-                        style={styles.ImagesFeeds}
+                        <ImagesFeeds
                         source={feed05}>
-                        </FastImage>
+                        </ImagesFeeds>
                     )
                 break;
                 case ("feed06.png"):
                     return (
-                        <FastImage
-                        style={styles.ImagesFeeds}
+                        <ImagesFeeds
                         source={feed06}>
-                        </FastImage>
+                        </ImagesFeeds>
                     )
                 break;
             }        
@@ -313,7 +307,7 @@ export default function App() {
                 source={bgViolao}>   
                         {feeds.map((item) => 
                         <TouchableWithoutFeedback
-                            onPress={() => setShowOptionsModal(true)}
+                            onPress={() => selected(item.title)}
                             key={item.id}
                         >
                             <Animatable.View
@@ -326,7 +320,7 @@ export default function App() {
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
-                                {renderModal()}
+                                {renderModal03(item.title)}                           
                             </Animatable.View>
                         </TouchableWithoutFeedback>
                         )} 
@@ -339,96 +333,88 @@ export default function App() {
         setShowOptionsModal(false)
     }
 
-    const renderModal = () => {
-        
-        return (
-       
-            
-            <Modal
-            isVisible={showOptionsModal}
-            onBackdropPress={()=>{setShowOptionsModal(false)}}
-            backdropColor={'transparent'}
-            alignItems={'center'}
-            >
-                    <SafeAreaView style={{
-                        width: '50%',
-                        height: '16%',
-                        backgroundColor: "#236A79",
-                        alignItems: 'center',
-                        justifyContent: 'space-around',
-                        alignContent: 'center',
-                        flexDirection: 'column',
-                        borderRadius: 10
-                    }}>
-                        <TouchableWithoutFeedback
-                        onPress={() => setShowOptionsModal(false)}>
-                            <SafeAreaView style={{
-                                
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#3CB1C7',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                    padding: 5
-                                }}>CONTEÚDO</Text>
-                                
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-                        
-                        <TouchableWithoutFeedback
-                        onPress={() => setShowOptionsModal(false)}>
-                            <SafeAreaView style={{
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#fff',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                    padding: 5
-                                }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-
-                    </SafeAreaView>
-            </Modal>    
-        )
-    }
-
-    const renderModal02 = () => {
-        
-        return (
-           // <SafeAreaView>
+    const renderModal = (title) => {
+        if(title == "Introdução"){
+            return (
                 <Modal
                 isVisible={showOptionsModal}
                 onBackdropPress={()=>{setShowOptionsModal(false)}}
                 backdropColor={'transparent'}
                 alignItems={'center'}
-                
                 >
-                    <Text>Teste</Text>           
-                </Modal>
-            //</SafeAreaView>     
-        )                     
+                        <SafeAreaView style={{
+                            width: '50%',
+                            height: '16%',
+                            backgroundColor: "#236A79",
+                            alignItems: 'center',
+                            justifyContent: 'space-around',
+                            alignContent: 'center',
+                            flexDirection: 'column',
+                            borderRadius: 10
+                        }}>
+                            <TouchableWithoutFeedback
+                            onPress={() => setShowOptionsModal(false)}>
+                                <SafeAreaView style={{
+                                    
+                                    width: '90%',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    backgroundColor: '#3CB1C7',
+                                    borderRadius: 5,
+                                    margin: 2
+                                }}>
+                                    <Text style={{
+                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                        padding: 5
+                                    }}>CONTEÚDO</Text>
+                                    
+                                </SafeAreaView>
+                            </TouchableWithoutFeedback>
+                            
+                            <TouchableWithoutFeedback
+                            onPress={() => setShowOptionsModal(false)}>
+                                <SafeAreaView style={{
+                                    width: '90%',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    backgroundColor: '#fff',
+                                    borderRadius: 5,
+                                    margin: 2
+                                }}>
+                                    <Text style={{
+                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                        padding: 5
+                                    }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                                </SafeAreaView>
+                            </TouchableWithoutFeedback>
+
+                        </SafeAreaView>
+                </Modal>    
+            )
+        }
     }
 
-    const renderModal03 = () => {
-        
+    const renderModal03 = (title) => {
+      if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
         return (
-           <SafeAreaView 
-           style={{backgroundColor: 'yellow'}}
-           >
-                    <Image ></Image>
-                    <Text>Teste</Text>           
-                
-            </SafeAreaView>     
-        )                     
+            <SafeAreaView>
+                <Text>Teste</Text> 
+            </SafeAreaView>       
+        )  
+      }else{
+          if(showOptionsModal == true &&  currentOptionSelected == "Sons Musicais" && title ==  "Sons Musicais"){
+            return (
+                <SafeAreaView>
+                    <Text>Teste02</Text> 
+                </SafeAreaView>   
+            )
+          }
+        }                     
+    }
+
+    const selected = (selecao) => {
+        setCurrentOptionSelected(selecao)
+        setShowOptionsModal(true)
     }
    
     
@@ -577,17 +563,5 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontFamily: 'GothamCondensed-Medium',
         textAlign: 'center'
-    },
-    ImagesFeeds:{
-        width: 125,
-        height: 125
-    },
-    IconLesson:{
-        width: 260,
-        height: 100
-    },
-    IconImages:{
-        width: 40,
-        height: 40
     }
 });
