@@ -8,11 +8,10 @@ import {
     ImageBackground,
     TouchableWithoutFeedback,
     Text, 
-    FlatList,
-    Modal
+    FlatList
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-
+import Modal from 'react-native-modal'
 // import estilos
 import {
     Bgcontainer,
@@ -304,7 +303,7 @@ export default function App() {
                 source={bgViolao}>   
                         {feeds.map((item) => 
                         <TouchableWithoutFeedback
-                            
+                            onPress={() => setShowOptionsModal(true)}
                             key={item.id}
                         >
                             <Animatable.View
@@ -316,6 +315,7 @@ export default function App() {
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
+                                {renderModal()}
                             </Animatable.View>
                         </TouchableWithoutFeedback>
                         )}   
@@ -333,13 +333,11 @@ export default function App() {
         return (
             
             <Modal
-                    animationType="fade"
-                    transparent={true}
-                    visible={showOptionsModal}
-                    
-                >
+            isVisible={showOptionsModal}
+            onBackdropPress={()=>{setShowOptionsModal(false)}}
+            backdropColor={'transparent'}
+            >
                     <SafeAreaView style={{
-                        marginTop: '110%',
                         width: '50%',
                         height: '14%',
                         backgroundColor: "#236A79",
@@ -347,7 +345,6 @@ export default function App() {
                         justifyContent: 'space-around',
                         alignContent: 'center',
                         flexDirection: 'column',
-                        marginLeft: 8,
                         borderRadius: 10
                     }}>
                         <SafeAreaView style={{
