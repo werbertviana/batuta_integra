@@ -17,12 +17,8 @@ import FastImage from 'react-native-fast-image'
 // import estilos
 import {
     Bgcontainer,
-    IconImages,
     DivisorLine2,
-    IconLesson,
-    Div2,
-    ImagesFeeds,
-    StyleButtons
+    Div2
 } from '../../components/style'
 
 // import ícones
@@ -364,38 +360,44 @@ export default function App() {
                         flexDirection: 'column',
                         borderRadius: 10
                     }}>
-                        <SafeAreaView style={{
-                            
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
-                            
-                        </SafeAreaView>
+                        <TouchableWithoutFeedback
+                        onPress={() => setShowOptionsModal(false)}>
+                            <SafeAreaView style={{
+                                
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#3CB1C7',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                    padding: 5
+                                }}>CONTEÚDO</Text>
+                                
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
+                        
+                        <TouchableWithoutFeedback
+                        onPress={() => setShowOptionsModal(false)}>
+                            <SafeAreaView style={{
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#fff',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                    padding: 5
+                                }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
 
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                        </SafeAreaView>
                     </SafeAreaView>
-            </Modal>
-       
+            </Modal>    
         )
     }
 

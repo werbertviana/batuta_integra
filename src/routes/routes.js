@@ -2,7 +2,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
-    SafeAreaView,
     StyleSheet,
 } from 'react-native';
 
@@ -25,7 +24,6 @@ import iconeElo02 from '../assets/imgs/iconeElo02.png';
 
 //import estilos
 import {
-    IconImages,
     Div2,
     DivisorLine2
 } from '../components/style'
