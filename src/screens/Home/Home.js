@@ -301,11 +301,10 @@ export default function App() {
                 {renderProgressBar(progress)}
                 <ImageBackground 
                 style={styles.ViolaoBackground}
-                source={bgViolao}>
-                        {renderModal()}       
+                source={bgViolao}>   
                         {feeds.map((item) => 
                         <TouchableWithoutFeedback
-                            onPress={() => setShowOptionsModal(true)}
+                            
                             key={item.id}
                         >
                             <Animatable.View
