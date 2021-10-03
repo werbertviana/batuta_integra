@@ -43,6 +43,7 @@ import feed06 from '../../assets/imgs/feed06.png';
 // import dados estáticos
 import staticFeeds from '../../data/Feeds.json'
 
+
 export default function App() {
     
     const allFeeds = staticFeeds.feeds;
@@ -55,6 +56,7 @@ export default function App() {
     const [xpPoints, setxpPoints] = useState(0);
     const [batutaPoints, setbatutaPoints] = useState(0);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
+    const[contador, setContador] = useState(0);
     
 
     const renderLife = () => {
@@ -307,7 +309,7 @@ export default function App() {
                 source={bgViolao}>   
                         {feeds.map((item) => 
                         <TouchableWithoutFeedback
-                            onPress={() => selected(item.title)}
+                            onPress={() => selected(item.title) }
                             key={item.id}
                         >
                             <Animatable.View
@@ -320,7 +322,7 @@ export default function App() {
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
-                                {renderModal03(item.title)}                           
+                                {renderModal03(item.title)}
                             </Animatable.View>
                         </TouchableWithoutFeedback>
                         )} 
@@ -333,8 +335,7 @@ export default function App() {
         setShowOptionsModal(false)
     }
 
-    const renderModal = (title) => {
-        if(title == "Introdução"){
+    const renderModal = () => {
             return (
                 <Modal
                 isVisible={showOptionsModal}
@@ -391,33 +392,83 @@ export default function App() {
                         </SafeAreaView>
                 </Modal>    
             )
-        }
     }
 
     const renderModal03 = (title) => {
-      if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
-        return (
-            <SafeAreaView>
-                <Text>Teste</Text> 
-            </SafeAreaView>       
-        )  
-      }else{
-          if(showOptionsModal == true &&  currentOptionSelected == "Sons Musicais" && title ==  "Sons Musicais"){
+        if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
+            return (
+                <SafeAreaView style={{
+                    width: '150%',
+                    height: '16%',
+                    backgroundColor: "#236A79",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10
+                }}>
+                    <TouchableWithoutFeedback
+                    onPress={() => setShowOptionsModal(false)}>
+                        <SafeAreaView style={{
+                            
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+                    
+                    <TouchableWithoutFeedback
+                    onPress={() => setShowOptionsModal(false)}>
+                        <SafeAreaView style={{
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                padding: 5
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                </SafeAreaView>   
+            )  
+        }
+
+        if(showOptionsModal == true &&  currentOptionSelected == "Sons Musicais" && title ==  "Sons Musicais"){
             return (
                 <SafeAreaView>
                     <Text>Teste02</Text> 
                 </SafeAreaView>   
             )
-          }
-        }                     
+        } 
     }
 
+
+   
     const selected = (selecao) => {
+        
         setCurrentOptionSelected(selecao)
-        setShowOptionsModal(true)
+        if(contador%2==0){
+            setShowOptionsModal(true)
+        }else{
+            setShowOptionsModal(false)
+        }
+       setContador(contador + 1)
     }
    
-    
 
 {/* Main */ }
     return (
