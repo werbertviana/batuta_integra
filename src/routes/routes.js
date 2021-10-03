@@ -2,8 +2,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
-    SafeAreaView
+    SafeAreaView,
+    StyleSheet,
 } from 'react-native';
+
+import FastImage from 'react-native-fast-image'
 
 //import paginas
 import Home from '../screens/Home/Home';
@@ -35,33 +38,33 @@ export default function Routes(){
             case ("home"):
                 if (focused == false){
                     return (
-                        <IconImages source={iconeHome}></IconImages>
+                        <FastImage style={styles.IconImages}source={iconeHome}></FastImage>
                     )
                 }else{
                     return(
-                    <IconImages source={iconeHome02}></IconImages>
+                        <FastImage style={styles.IconImages} source={iconeHome02}></FastImage>
                     )
                 }
             break;
             case ("profile"):
                 if (focused == false){
                     return (
-                        <IconImages source={iconeProfile}></IconImages>
+                        <FastImage style={styles.IconImages} source={iconeProfile}></FastImage>
                     )
                 }else{
                     return(
-                    <IconImages source={iconeProfile02}></IconImages>
+                        <FastImage style={styles.IconImages} source={iconeProfile02}></FastImage>
                     )
                 }
             break;
             case ("elos"):
                 if (focused == false){
                     return (
-                        <IconImages source={iconeElo}></IconImages>
+                        <FastImage style={styles.IconImages} source={iconeElo}></FastImage>
                     )
                 }else{
                     return(
-                    <IconImages source={iconeElo02}></IconImages>
+                        <FastImage style={styles.IconImages} source={iconeElo02}></FastImage>
                     )
                 }
             break;
@@ -126,3 +129,10 @@ export default function Routes(){
     //</SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+    IconImages:{
+        width: 40,
+        height: 40
+    }
+})

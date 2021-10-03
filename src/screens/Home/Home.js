@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Modal from 'react-native-modal'
+import FastImage from 'react-native-fast-image'
+
 // import estilos
 import {
     Bgcontainer,
@@ -58,9 +60,10 @@ export default function App() {
     const renderLife = () => {
         return (
             <Animatable.View style={styles.LifeContainer}>
-                <IconImages
+                <FastImage
+                    style={styles.IconImages}
                     source={iconeLife}>
-                </IconImages>
+                </FastImage>
                 {renderTextLife()}
             </Animatable.View>
         )
@@ -77,9 +80,10 @@ export default function App() {
     const renderXp = () => {
         return (
             <Animatable.View style={styles.XpContainer}>
-                <IconImages
+                 <FastImage
+                    style={styles.IconImages}
                     source={iconeXp}>
-                </IconImages>
+                </FastImage>
                 {renderTextXp()}
             </Animatable.View>
         )
@@ -98,9 +102,10 @@ export default function App() {
     const renderBatutas = () => {
         return (
             <Animatable.View style={styles.BatutasContainer}>
-                <IconImages
+                <FastImage
+                    style={styles.IconImages}
                     source={iconeBatutas}>
-                </IconImages>
+                </FastImage>
                 {renderTextBatutas()}
             </Animatable.View>
         )
@@ -119,9 +124,10 @@ export default function App() {
     const renderBatuta = () => {
         return (
             <Animatable.View style={styles.BatutaContainer}>
-                <IconImages
+                 <FastImage
+                    style={styles.IconImages}
                     source={iconeBatuta}>
-                </IconImages>
+                </FastImage>
             </Animatable.View>
         )
     }
@@ -151,13 +157,15 @@ export default function App() {
             case ("1"):
                 return (
                     <Animatable.View style={styles.LessonContainer}>
-                    <IconLesson source={licao01}></IconLesson>
+                    <FastImage style={styles.IconLesson} source={licao01}></FastImage>
                     </Animatable.View>
                 )
                 break;
             case ("2"):
                 return (
-                    <IconLesson source={licao02}></IconLesson>
+                    <Animatable.View style={styles.LessonContainer}>
+                    <FastImage style={styles.IconLesson} source={licao02}></FastImage>
+                    </Animatable.View>
                 )
                 break;   
         }
@@ -165,9 +173,9 @@ export default function App() {
 
     const renderStar = () => {
         return (
-            <Image style={{height:35, width:35, marginRight: '5%'}}
+            <FastImage style={{height:35, width:35, marginRight: '5%'}}
                 source={iconeStar}>
-            </Image>
+            </FastImage>
         )
     }
 
@@ -225,44 +233,50 @@ export default function App() {
             switch (icons) {
                 case ("feed01.png"):
                     return (
-                        <ImagesFeeds
+                        <FastImage
+                        style={styles.ImagesFeeds}
                         source={feed01}>
-                        </ImagesFeeds>
+                        </FastImage>
                     )
                 break;
                 case ("feed02.png"):
                     return (
-                        <ImagesFeeds
+                        <FastImage
+                        style={styles.ImagesFeeds}
                         source={feed02}>
-                        </ImagesFeeds>
+                        </FastImage>
                     )
                 break;
                 case ("feed03.png"):
                     return (
-                        <ImagesFeeds
+                        <FastImage
+                        style={styles.ImagesFeeds}
                         source={feed03}>
-                        </ImagesFeeds>
+                        </FastImage>
                     )
                 break;
                 case ("feed04.png"):
                     return (
-                        <ImagesFeeds
+                        <FastImage
+                        style={styles.ImagesFeeds}
                         source={feed04}>
-                        </ImagesFeeds>
+                        </FastImage>
                     )
                 break;
                 case ("feed05.png"):
                     return (
-                        <ImagesFeeds
+                        <FastImage
+                        style={styles.ImagesFeeds}
                         source={feed05}>
-                        </ImagesFeeds>
+                        </FastImage>
                     )
                 break;
                 case ("feed06.png"):
                     return (
-                        <ImagesFeeds
+                        <FastImage
+                        style={styles.ImagesFeeds}
                         source={feed06}>
-                        </ImagesFeeds>
+                        </FastImage>
                     )
                 break;
             }        
@@ -311,14 +325,15 @@ export default function App() {
                             useNativeDriver
                             ref={ButtonRef}
                             style={{alignItems: 'center',
-                            margin:'1%', marginTop:'4%'}}
+                            margin:'1%', marginTop:'4%', //backgroundColor:'yellow'
+                        }}
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
                                 {renderModal()}
                             </Animatable.View>
                         </TouchableWithoutFeedback>
-                        )}   
+                        )} 
                 </ImageBackground>         
             </Animatable.View>
         )
@@ -331,15 +346,17 @@ export default function App() {
     const renderModal = () => {
         
         return (
+       
             
             <Modal
             isVisible={showOptionsModal}
             onBackdropPress={()=>{setShowOptionsModal(false)}}
             backdropColor={'transparent'}
+            alignItems={'center'}
             >
                     <SafeAreaView style={{
                         width: '50%',
-                        height: '14%',
+                        height: '16%',
                         backgroundColor: "#236A79",
                         alignItems: 'center',
                         justifyContent: 'space-around',
@@ -348,12 +365,13 @@ export default function App() {
                         borderRadius: 10
                     }}>
                         <SafeAreaView style={{
-                            height: '35%',
+                            
                             width: '90%',
                             justifyContent: 'center',
                             alignItems: 'center',
                             backgroundColor: '#3CB1C7',
-                            borderRadius: 5
+                            borderRadius: 5,
+                            margin: 2
                         }}>
                             <Text style={{
                                 fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
@@ -363,23 +381,52 @@ export default function App() {
                         </SafeAreaView>
 
                         <SafeAreaView style={{
-                            height: '35%',
                             width: '90%',
                             justifyContent: 'center',
                             alignItems: 'center',
                             backgroundColor: '#fff',
-                            borderRadius: 5
+                            borderRadius: 5,
+                            margin: 2
                         }}>
                             <Text style={{
                                 fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
                                 padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>
-                            
-                            
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
                         </SafeAreaView>
                     </SafeAreaView>
             </Modal>
+       
         )
+    }
+
+    const renderModal02 = () => {
+        
+        return (
+           // <SafeAreaView>
+                <Modal
+                isVisible={showOptionsModal}
+                onBackdropPress={()=>{setShowOptionsModal(false)}}
+                backdropColor={'transparent'}
+                alignItems={'center'}
+                
+                >
+                    <Text>Teste</Text>           
+                </Modal>
+            //</SafeAreaView>     
+        )                     
+    }
+
+    const renderModal03 = () => {
+        
+        return (
+           <SafeAreaView 
+           style={{backgroundColor: 'yellow'}}
+           >
+                    <Image ></Image>
+                    <Text>Teste</Text>           
+                
+            </SafeAreaView>     
+        )                     
     }
    
     
@@ -528,5 +575,17 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontFamily: 'GothamCondensed-Medium',
         textAlign: 'center'
+    },
+    ImagesFeeds:{
+        width: 125,
+        height: 125
+    },
+    IconLesson:{
+        width: 260,
+        height: 100
+    },
+    IconImages:{
+        width: 40,
+        height: 40
     }
 });
