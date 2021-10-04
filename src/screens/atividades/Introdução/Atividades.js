@@ -14,44 +14,44 @@ import {
     ImagesContainer2,
     ContainerCircle,
     ImageModal
-} from '../../components/style'
+} from '../../../components/style'
 // import ícones
-import iconeX from '../../assets/imgs/iconeX.png';
-import iconeLife from '../../assets/imgs/iconeLife.png';
-import checkIcon from '../../assets/imgs/checkIcon.png'
-import errorIcon from '../../assets/imgs/errorIcon.png'
+import iconeX from '../../../assets/imgs/iconeX.png';
+import iconeLife from '../../../assets/imgs/iconeLife.png';
+import checkIcon from '../../../assets/imgs/checkIcon.png'
+import errorIcon from '../../../assets/imgs/errorIcon.png'
 // import dados estáticos
-import staticData from '../../data/Alternativas.json'
+import staticData from '../../../data/Alternativas.json'
 //import questões
-import QF01 from '../../assets/imgs/QF01.png'
-import QF02 from '../../assets/imgs/QF02.png'
-import QF03 from '../../assets/imgs/QF03.png'
-import QF04 from '../../assets/imgs/QF04.png'
-import QF05 from '../../assets/imgs/QF05.png'
-import QF06 from '../../assets/imgs/QF06.png'
-import QF07 from '../../assets/imgs/QF07.png'
-import QF08 from '../../assets/imgs/QF08.png'
-import QF09 from '../../assets/imgs/QF09.png'
-import QF10 from '../../assets/imgs/QF10.png'
-import QF11 from '../../assets/imgs/QF11.png'
-import QF12 from '../../assets/imgs/QF12.png'
-import QB01 from '../../assets/imgs/QB01.png'
-import QB02 from '../../assets/imgs/QB02.png'
-import QB03 from '../../assets/imgs/QB03.png'
-import QB04 from '../../assets/imgs/QB04.png'
-import QB05 from '../../assets/imgs/QB05.png'
-import QB06 from '../../assets/imgs/QB06.png'
-import QB07 from '../../assets/imgs/QB07.png'
-import QB08 from '../../assets/imgs/QB08.png'
-import QB09 from '../../assets/imgs/QB09.png'
-import QB10 from '../../assets/imgs/QB10.png'
-import QB11 from '../../assets/imgs/QB11.png'
-import QB12 from '../../assets/imgs/QB12.png'
+import QF01 from '../../../assets/imgs/QF01.png'
+import QF02 from '../../../assets/imgs/QF02.png'
+import QF03 from '../../../assets/imgs/QF03.png'
+import QF04 from '../../../assets/imgs/QF04.png'
+import QF05 from '../../../assets/imgs/QF05.png'
+import QF06 from '../../../assets/imgs/QF06.png'
+import QF07 from '../../../assets/imgs/QF07.png'
+import QF08 from '../../../assets/imgs/QF08.png'
+import QF09 from '../../../assets/imgs/QF09.png'
+import QF10 from '../../../assets/imgs/QF10.png'
+import QF11 from '../../../assets/imgs/QF11.png'
+import QF12 from '../../../assets/imgs/QF12.png'
+import QB01 from '../../../assets/imgs/QB01.png'
+import QB02 from '../../../assets/imgs/QB02.png'
+import QB03 from '../../../assets/imgs/QB03.png'
+import QB04 from '../../../assets/imgs/QB04.png'
+import QB05 from '../../../assets/imgs/QB05.png'
+import QB06 from '../../../assets/imgs/QB06.png'
+import QB07 from '../../../assets/imgs/QB07.png'
+import QB08 from '../../../assets/imgs/QB08.png'
+import QB09 from '../../../assets/imgs/QB09.png'
+import QB10 from '../../../assets/imgs/QB10.png'
+import QB11 from '../../../assets/imgs/QB11.png'
+import QB12 from '../../../assets/imgs/QB12.png'
 // import elos
-import ferro from '../../assets/imgs/ferro.png'
-import bronze from '../../assets/imgs/bronze.png'
-import ferro2 from '../../assets/imgs/ferro2.png'
-import bronze2 from '../../assets/imgs/bronze2.png'
+import ferro from '../../../assets/imgs/ferro.png'
+import bronze from '../../../assets/imgs/bronze.png'
+import ferro2 from '../../../assets/imgs/ferro2.png'
+import bronze2 from '../../../assets/imgs/bronze2.png'
 // import bibliotecas
 import {
     SafeAreaView,
@@ -66,9 +66,9 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 // import niveis de dificuldade
-import DivFacil from '../../components/DivFacil';
-import DivMedio from '../../components/DivMedio';
-import DivDificil from '../../components/DivDificil';
+import DivFacil from '../../../components/DivFacil';
+import DivMedio from '../../../components/DivMedio';
+import DivDificil from '../../../components/DivDificil';
 
 
 export default function App() {
