@@ -71,7 +71,7 @@ import DivMedio from '../../../components/DivMedio';
 import DivDificil from '../../../components/DivDificil';
 
 
-export default function App() {
+export default function App({navigation}) {
 
     const ButtonRef = useRef()
     const Button2Ref = useRef()
@@ -551,7 +551,8 @@ export default function App() {
     const renderCloseButton = () => {
         return (
 
-            <CloseButtonContainer>
+            <CloseButtonContainer
+            onPress={()=>navigation.navigate('Main')}>
                 <IconImages
                     source={iconeX}>
                 </IconImages>
