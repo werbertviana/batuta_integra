@@ -1,11 +1,7 @@
 // import bibliotecas
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {
-    StyleSheet,
-} from 'react-native';
 
-import FastImage from 'react-native-fast-image'
 
 //import paginas
 import Home from '../screens/Home/Home';
@@ -24,12 +20,11 @@ import iconeElo02 from '../assets/imgs/iconeElo02.png';
 
 //import estilos
 import {
-    Div2,
-    DivisorLine2,
     IconImages
 } from '../components/style'
 
 const Tab = createBottomTabNavigator();
+
 
 export default function Routes(){
     const renderIcons = (icon, focused) =>{
@@ -69,17 +64,8 @@ export default function Routes(){
             break;
         }
     }
-    const renderDivisor = () => {
-        return (
-            <Div2>
-                <DivisorLine2></DivisorLine2>
-            </Div2>
-        )
-    }
 
     return(
-
-    //<SafeAreaView style={{backgroundColor: 'blue', marginTop:'150%'}}>
 
         <Tab.Navigator
             tabBarOptions={{
@@ -125,7 +111,7 @@ export default function Routes(){
               }} 
             />
         </Tab.Navigator>
-    //</SafeAreaView>
+      
     )
 }
 

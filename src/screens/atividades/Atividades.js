@@ -4,6 +4,7 @@ import {
     Bgcontainer,
     QuestionText,
     IconImages,
+    IconImages02,
     ImageQuestions,
     ButtonContainer,
     JumpText,
@@ -11,7 +12,8 @@ import {
     CloseButtonContainer,
     StyleButtons,
     ImagesContainer2,
-    ContainerCircle
+    ContainerCircle,
+    ImageModal
 } from '../../components/style'
 // import ícones
 import iconeX from '../../assets/imgs/iconeX.png';
@@ -616,9 +618,9 @@ export default function App() {
                 useNativeDriver
                 iterationCount={1}
             >
-                <IconImages
+                <IconImages02
                     source={iconeLife}>
-                </IconImages>
+                </IconImages02>
                 {renderTextLife()}
             </Animatable.View>
         )
@@ -759,7 +761,7 @@ export default function App() {
                 visible={showWrongModal}
             >
                 <SafeAreaView style={{
-                    marginTop: '150%',
+                    marginTop: '125%',
                     width: '100%',
                     height: '25%',
                     //opacity: 0.9,
@@ -775,7 +777,7 @@ export default function App() {
                         alignItems: 'center',
                         flexDirection: 'row'
                     }}>
-                        <Image source={errorIcon} style={{ height: 36, width: 36 }}></Image>
+                        <ImageModal source={errorIcon}></ImageModal>
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
                         }}>  Resposta correta: </Text>
@@ -791,7 +793,7 @@ export default function App() {
                         height: '70%',
                         marginTop: '4%',
                         alignItems: 'center',
-                        alignContent: 'center'
+                        alignContent: 'center',
                     }}>
                         <TouchableWithoutFeedback
                             onPress={exitModal}
@@ -800,7 +802,7 @@ export default function App() {
                                 <StyleButtons
                                     bg={"#FF4B4C"}
                                     bordercolor={'#FF4B4C'}
-                                    borderwidth={'2px'}>
+                                    borderwidth={'0px'}>
                                     <Text style={{
                                         fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
                                     }}>CONTINUAR</Text>
@@ -817,7 +819,7 @@ export default function App() {
                 visible={showRightModal}
             >
                 <SafeAreaView style={{
-                    marginTop: '150%',
+                    marginTop: '125%',
                     width: '100%',
                     height: '25%',
                     backgroundColor: "#D9FEB8",
@@ -836,7 +838,7 @@ export default function App() {
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#38752B", fontSize: 35,
                         }}>Você acertou!  </Text>
-                        <Image source={checkIcon} style={{ height: 35, width: 35 }}></Image>
+                        <ImageModal source={checkIcon}></ImageModal>
                     </SafeAreaView>
 
                     <SafeAreaView style={{
@@ -854,7 +856,7 @@ export default function App() {
                                 <StyleButtons
                                     bg={"#61BE4B"}
                                     bordercolor={'#61BE4B'}
-                                    borderwidth={'2px'}>
+                                    borderwidth={'0px'}>
                                     <Text style={{
                                         fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
                                     }}>CONTINUAR</Text>
@@ -870,22 +872,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
     LifeContainer: {
-        width: '14%',
-        height: '100%',
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#fff',
+        justifyContent: 'center',
+        //backgroundColor: 'blue',
     },
     LifeText: {
         fontFamily: 'DINRoundPro-Medi',
         fontSize: 28,
-        marginTop: '2%',
         color: '#FC4848',
-        textAlign: 'justify',
-        flexDirection: 'row',
-        flexWrap: 'wrap'
+        //backgroundColor: 'yellow',
     },
     ShadowJumpButton: {
         marginTop: '3%',
@@ -898,7 +895,7 @@ const styles = StyleSheet.create({
     ShadowRightButton: {
         marginTop: '4%',
         width: '55%',
-        height: '45%',
+        height: '55%',
         alignItems: 'center',
         borderRadius: 14,
         backgroundColor: "#38752B",
@@ -906,7 +903,7 @@ const styles = StyleSheet.create({
     ShadowWrongButton: {
         marginTop: '1%',
         width: '55%',
-        height: '45%',
+        height: '55%',
         alignItems: 'center',
         borderRadius: 14,
         backgroundColor: "#E92C2A",

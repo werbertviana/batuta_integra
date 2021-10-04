@@ -1,7 +1,6 @@
 import React from 'react';
-import { Image } from 'react-native';
 import iconeFacil from '../assets/imgs/iconeFacil.png';
-import {Div, DivisorLine} from '../components/style'
+import {Div, DivisorLine, ImageNivel} from '../components/style'
 
 export default function Divisor() {
 
@@ -9,9 +8,9 @@ export default function Divisor() {
 
         <Div>
         <DivisorLine></DivisorLine>
-        <Image style={{ width: 40, height: 41 }}
+        <ImageNivel
           source={iconeFacil}>
-        </Image>
+        </ImageNivel>
         <DivisorLine></DivisorLine>
       </Div>
     )

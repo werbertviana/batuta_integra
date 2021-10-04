@@ -58,11 +58,21 @@ export const LifeText = styled.Text`
     color: #FC4848;
 `;
 
-export const ImageQuestions = styled.Image`
+export const ImageQuestions = styled(FastImage)`
     margin-top: 2%;
     width: 80%;
     height: 85%;
     margin: 4%;
+`;
+
+export const ImageNivel = styled(FastImage)`
+    width: 40px;
+    height: 41px;
+`;
+
+export const ImageModal = styled(FastImage)`
+    width: 35px;
+    height: 35px;
 `;
 
 export const HeaderContainer = styled.SafeAreaView`
@@ -111,8 +121,6 @@ export const ButtonContainer = styled.SafeAreaView`
     justify-content: space-between;
 `;
 export const CloseButtonContainer = styled.TouchableOpacity`
-    width: 10%;
-    height: 90%;
     align-items: center;
     align-content: center;
     flex-direction: row;
@@ -165,6 +173,11 @@ export const ShadowButton = styled.SafeAreaView`
 export const IconImages = styled(FastImage)`
     width: 40px;
     height: 40px; 
+`;
+
+export const IconImages02 = styled(FastImage)`
+    width: 45px;
+    height: 45px; 
 `;
 
 export const ImagesFeeds = styled(FastImage)`

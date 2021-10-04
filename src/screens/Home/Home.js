@@ -3,7 +3,6 @@ import React, { useState, useRef } from 'react';
 import {
     SafeAreaView,
     Animated,
-    Image,
     StyleSheet,
     ImageBackground,
     TouchableWithoutFeedback,
@@ -11,8 +10,11 @@ import {
     FlatList
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import Modal from 'react-native-modal'
-import FastImage from 'react-native-fast-image'
+import Modal from 'react-native-modal';
+import FastImage from 'react-native-fast-image';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
 
 // import estilos
 import {
@@ -44,7 +46,7 @@ import feed06 from '../../assets/imgs/feed06.png';
 import staticFeeds from '../../data/Feeds.json'
 
 
-export default function App() {
+export default function App({navigation}) {
     
     const allFeeds = staticFeeds.feeds;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -58,6 +60,9 @@ export default function App() {
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const[contador, setContador] = useState(0);
     const[titulo, setTitulo] = useState(null);
+    const Stack = createStackNavigator();
+
+    
     
 
     const renderLife = () => {
@@ -303,7 +308,8 @@ export default function App() {
    
 
     function ListItem ({lesson, feeds, progress}){
-        return(  
+        return(
+
             <Animatable.View style={styles.BgContainer}
             animation={currentOptionSelected == null
                 ? "bounceInUp"
@@ -406,9 +412,9 @@ export default function App() {
     const renderModal02 = (title) => {
         if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
             return (
-                <Animatable.View 
+                <Animatable.View
                     animation={"bounceIn"}
-                    useNativeDriver
+                    useNativeDriver    
                     style={{
                     width: '115%',
                     height: '25%',
@@ -439,6 +445,7 @@ export default function App() {
                     </TouchableWithoutFeedback>
                     
                     <TouchableWithoutFeedback
+                    onPress={()=>navigation.navigate('Atividades')}
                     >
                         <SafeAreaView style={{
                             width: '90%',
@@ -494,6 +501,7 @@ export default function App() {
                     </TouchableWithoutFeedback>
                     
                     <TouchableWithoutFeedback
+                    onPress={()=>navigation.navigate('Atividades')}
                     >
                         <SafeAreaView style={{
                             width: '90%',
@@ -758,7 +766,6 @@ export default function App() {
         {renderDivisor()}
         {/* Feeds */}
         {renderFeeds()}
-        
         </Bgcontainer>
     );
 }
@@ -793,8 +800,8 @@ const styles = StyleSheet.create({
     },
     BgContainer: {
         padding: 20,
-        margin: '3%',
-        width: '92%',
+        marginVertical: '3%',
+        width: '100%',
         alignItems: 'center',
         //backgroundColor: 'red',
     },
