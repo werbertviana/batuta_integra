@@ -62,9 +62,6 @@ export default function App({navigation}) {
     const[titulo, setTitulo] = useState(null);
     const Stack = createStackNavigator();
 
-    
-    
-
     const renderLife = () => {
         return (
             <Animatable.View style={styles.LifeContainer}>
@@ -305,8 +302,6 @@ export default function App({navigation}) {
         )
     }
 
-   
-
     function ListItem ({lesson, feeds, progress}){
         return(
 
@@ -334,7 +329,7 @@ export default function App({navigation}) {
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
-                                {renderModal02(item.title)}
+                                {renderModal(item.title)}
                             </Animatable.View>     
                         </TouchableWithoutFeedback>
                         )} 
@@ -343,11 +338,7 @@ export default function App({navigation}) {
         )
     }
 
-    const exitModal = () => {
-        setShowOptionsModal(false)
-    }
-
-    const renderModal = () => {
+    const renderModalOld = () => {
             return (
                 <Modal
                 isVisible={showOptionsModal}
@@ -409,7 +400,7 @@ export default function App({navigation}) {
             )
     }
 
-    const renderModal02 = (title) => {
+    const renderModal = (title) => {
         if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
             return (
                 <Animatable.View
@@ -743,8 +734,6 @@ export default function App({navigation}) {
         } 
     }
 
-
-   
     const selected = (selecao) => {
         setTitulo(selecao)
         setCurrentOptionSelected(selecao)
