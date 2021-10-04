@@ -304,7 +304,10 @@ export default function App() {
 
     function ListItem ({lesson, feeds, progress}){
         return(  
-            <Animatable.View style={styles.BgContainer}>
+            <Animatable.View style={styles.BgContainer}
+            animation={currentOptionSelected == null
+                ? "bounceInUp"
+                : ""}>
                 {renderLessonTitle(lesson)} 
                 {renderProgressBar(progress)}
                 <ImageBackground 
@@ -510,7 +513,173 @@ export default function App() {
                 </Animatable.View>   
             )  
         } 
+
         if(showOptionsModal == true &&  currentOptionSelected == "Pauta & Clave" && title ==  "Pauta & Clave"){
+            return (
+                <Animatable.View
+                    animation={"bounceIn"}
+                    useNativeDriver    
+                    style={{
+                    width: '115%',
+                    height: '25%',
+                    backgroundColor: "#236A79",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10,
+                }}>
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+                    
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                padding: 5
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                </Animatable.View>   
+            )  
+        } 
+
+        if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Notas" && title ==  "Figuras de Notas"){
+            return (
+                <Animatable.View
+                    animation={"bounceIn"}
+                    useNativeDriver    
+                    style={{
+                    width: '115%',
+                    height: '25%',
+                    backgroundColor: "#236A79",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10,
+                }}>
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+                    
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                padding: 5
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                </Animatable.View>   
+            )  
+        } 
+
+        if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Pausas" && title ==  "Figuras de Pausas"){
+            return (
+                <Animatable.View
+                    animation={"bounceIn"}
+                    useNativeDriver    
+                    style={{
+                    width: '115%',
+                    height: '25%',
+                    backgroundColor: "#236A79",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10,
+                }}>
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+                    
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                padding: 5
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                </Animatable.View>   
+            )  
+        } 
+
+        if(showOptionsModal == true &&  currentOptionSelected == "Duração dos Valores" && title ==  "Duração dos Valores"){
             return (
                 <Animatable.View
                     animation={"bounceIn"}
@@ -623,7 +792,8 @@ const styles = StyleSheet.create({
         //backgroundColor: 'blue',
     },
     BgContainer: {
-        margin: '4%',
+        padding: 20,
+        margin: '3%',
         width: '92%',
         alignItems: 'center',
         //backgroundColor: 'red',
