@@ -761,7 +761,7 @@ export default function App({navigation}) {
 
 const styles = StyleSheet.create({
     HeaderContainer: {
-        marginTop: '2%',
+        marginTop: '1%',
         width: '90%',
         alignItems: 'center',
         flexDirection: 'row',
