@@ -548,6 +548,7 @@ export default function App({navigation}) {
                     </TouchableWithoutFeedback>
                     
                     <TouchableWithoutFeedback
+                    onPress={()=>navigation.navigate('Atividades')}
                     >
                         <SafeAreaView style={{
                             width: '90%',
@@ -603,6 +604,7 @@ export default function App({navigation}) {
                     </TouchableWithoutFeedback>
                     
                     <TouchableWithoutFeedback
+                    onPress={()=>navigation.navigate('Atividades')}
                     >
                         <SafeAreaView style={{
                             width: '90%',
@@ -658,6 +660,7 @@ export default function App({navigation}) {
                     </TouchableWithoutFeedback>
                     
                     <TouchableWithoutFeedback
+                    onPress={()=>navigation.navigate('Atividades')}
                     >
                         <SafeAreaView style={{
                             width: '90%',
@@ -713,6 +716,7 @@ export default function App({navigation}) {
                     </TouchableWithoutFeedback>
                     
                     <TouchableWithoutFeedback
+                    onPress={()=>navigation.navigate('Atividades')}
                     >
                         <SafeAreaView style={{
                             width: '90%',
