@@ -57,6 +57,7 @@ export default function App() {
     const [batutaPoints, setbatutaPoints] = useState(0);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const[contador, setContador] = useState(0);
+    const[titulo, setTitulo] = useState(null);
     
 
     const renderLife = () => {
@@ -299,6 +300,8 @@ export default function App() {
         )
     }
 
+   
+
     function ListItem ({lesson, feeds, progress}){
         return(  
             <Animatable.View style={styles.BgContainer}>
@@ -317,13 +320,13 @@ export default function App() {
                             useNativeDriver
                             ref={ButtonRef}
                             style={{alignItems: 'center',
-                            margin:'1%', marginTop:'4%', //backgroundColor:'yellow'
+                            margin:'2%', //backgroundColor:'yellow'
                         }}
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
-                                {renderModal03(item.title)}
-                            </Animatable.View>
+                                {renderModal02(item.title)}
+                            </Animatable.View>     
                         </TouchableWithoutFeedback>
                         )} 
                 </ImageBackground>         
@@ -342,8 +345,11 @@ export default function App() {
                 onBackdropPress={()=>{setShowOptionsModal(false)}}
                 backdropColor={'transparent'}
                 alignItems={'center'}
+                
                 >
-                        <SafeAreaView style={{
+                        <SafeAreaView 
+
+                            style={{
                             width: '50%',
                             height: '16%',
                             backgroundColor: "#236A79",
@@ -394,21 +400,24 @@ export default function App() {
             )
     }
 
-    const renderModal03 = (title) => {
+    const renderModal02 = (title) => {
         if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
             return (
-                <SafeAreaView style={{
-                    width: '150%',
-                    height: '16%',
+                <Animatable.View 
+                    animation={"bounceIn"}
+                    useNativeDriver
+                    style={{
+                    width: '115%',
+                    height: '25%',
                     backgroundColor: "#236A79",
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     alignContent: 'center',
                     flexDirection: 'column',
-                    borderRadius: 10
+                    borderRadius: 10,
                 }}>
                     <TouchableWithoutFeedback
-                    onPress={() => setShowOptionsModal(false)}>
+                    >
                         <SafeAreaView style={{
                             
                             width: '90%',
@@ -427,7 +436,7 @@ export default function App() {
                     </TouchableWithoutFeedback>
                     
                     <TouchableWithoutFeedback
-                    onPress={() => setShowOptionsModal(false)}>
+                    >
                         <SafeAreaView style={{
                             width: '90%',
                             justifyContent: 'center',
@@ -443,23 +452,124 @@ export default function App() {
                         </SafeAreaView>
                     </TouchableWithoutFeedback>
 
-                </SafeAreaView>   
+                </Animatable.View>   
             )  
         }
 
         if(showOptionsModal == true &&  currentOptionSelected == "Sons Musicais" && title ==  "Sons Musicais"){
             return (
-                <SafeAreaView>
-                    <Text>Teste02</Text> 
-                </SafeAreaView>   
-            )
+                <Animatable.View
+                    animation={"bounceIn"}
+                    useNativeDriver    
+                    style={{
+                    width: '115%',
+                    height: '25%',
+                    backgroundColor: "#236A79",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10,
+                }}>
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+                    
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                padding: 5
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                </Animatable.View>   
+            )  
+        } 
+        if(showOptionsModal == true &&  currentOptionSelected == "Pauta & Clave" && title ==  "Pauta & Clave"){
+            return (
+                <Animatable.View
+                    animation={"bounceIn"}
+                    useNativeDriver    
+                    style={{
+                    width: '115%',
+                    height: '25%',
+                    backgroundColor: "#236A79",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10,
+                }}>
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+                            
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+                    
+                    <TouchableWithoutFeedback
+                    >
+                        <SafeAreaView style={{
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                padding: 5
+                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                </Animatable.View>   
+            )  
         } 
     }
 
 
    
     const selected = (selecao) => {
-        
+        setTitulo(selecao)
         setCurrentOptionSelected(selecao)
         if(contador%2==0){
             setShowOptionsModal(true)
