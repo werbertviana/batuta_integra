@@ -923,7 +923,7 @@ const styles = StyleSheet.create({
         height: '70%',
         alignItems: 'center',
         borderRadius: 14,
-        backgroundColor: '#846214'
+        backgroundColor: '#DAA520'
     },
     QuestionsContainer: {
         alignItems: 'center',
