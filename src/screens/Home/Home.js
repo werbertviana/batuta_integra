@@ -14,8 +14,6 @@ import Modal from 'react-native-modal';
 import FastImage from 'react-native-fast-image';
 import { createStackNavigator } from '@react-navigation/stack';
 
-
-
 // import estilos
 import {
     Bgcontainer,
@@ -338,404 +336,98 @@ export default function App({navigation}) {
         )
     }
 
-    const renderModalOld = () => {
-            return (
-                <Modal
-                isVisible={showOptionsModal}
-                onBackdropPress={()=>{setShowOptionsModal(false)}}
-                backdropColor={'transparent'}
-                alignItems={'center'}
-                
+    const Modal = (title) =>{
+        return (
+            <Animatable.View
+                animation={"bounceIn"}
+                useNativeDriver    
+                style={{
+                width: '115%',
+                height: '25%',
+                backgroundColor: "#236A79",
+                alignItems: 'center',
+                justifyContent: 'space-around',
+                alignContent: 'center',
+                flexDirection: 'column',
+                borderRadius: 10,
+            }}>
+                <TouchableWithoutFeedback
                 >
-                        <SafeAreaView 
+                    <SafeAreaView style={{
+                        
+                        width: '90%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: '#3CB1C7',
+                        borderRadius: 5,
+                        margin: 2
+                    }}>
+                        <Text style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                            padding: 5
+                        }}>CONTEÚDO</Text>
+                        
+                    </SafeAreaView>
+                </TouchableWithoutFeedback>
+                
+                <TouchableWithoutFeedback
+                onPress={()=>navigation.navigate(title)}
+                >
+                    <SafeAreaView style={{
+                        width: '90%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: '#fff',
+                        borderRadius: 5,
+                        margin: 2
+                    }}>
+                        <Text style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                            padding: 5
+                        }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                    </SafeAreaView>
+                </TouchableWithoutFeedback>
 
-                            style={{
-                            width: '50%',
-                            height: '16%',
-                            backgroundColor: "#236A79",
-                            alignItems: 'center',
-                            justifyContent: 'space-around',
-                            alignContent: 'center',
-                            flexDirection: 'column',
-                            borderRadius: 10
-                        }}>
-                            <TouchableWithoutFeedback
-                            onPress={() => setShowOptionsModal(false)}>
-                                <SafeAreaView style={{
-                                    
-                                    width: '90%',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    backgroundColor: '#3CB1C7',
-                                    borderRadius: 5,
-                                    margin: 2
-                                }}>
-                                    <Text style={{
-                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                        padding: 5
-                                    }}>CONTEÚDO</Text>
-                                    
-                                </SafeAreaView>
-                            </TouchableWithoutFeedback>
-                            
-                            <TouchableWithoutFeedback
-                            onPress={() => setShowOptionsModal(false)}>
-                                <SafeAreaView style={{
-                                    width: '90%',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    backgroundColor: '#fff',
-                                    borderRadius: 5,
-                                    margin: 2
-                                }}>
-                                    <Text style={{
-                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                        padding: 5
-                                    }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                                </SafeAreaView>
-                            </TouchableWithoutFeedback>
-
-                        </SafeAreaView>
-                </Modal>    
-            )
+            </Animatable.View>   
+        )  
     }
 
     const renderModal = (title) => {
         if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
             return (
-                <Animatable.View
-                    animation={"bounceIn"}
-                    useNativeDriver    
-                    style={{
-                    width: '115%',
-                    height: '25%',
-                    backgroundColor: "#236A79",
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    alignContent: 'center',
-                    flexDirection: 'column',
-                    borderRadius: 10,
-                }}>
-                    <TouchableWithoutFeedback
-                    >
-                        <SafeAreaView style={{
-                            
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
-                            
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-                    
-                    <TouchableWithoutFeedback
-                    onPress={()=>navigation.navigate('Atividades')}
-                    >
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-
-                </Animatable.View>   
+               Modal(title)
             )  
         }
 
         if(showOptionsModal == true &&  currentOptionSelected == "Sons Musicais" && title ==  "Sons Musicais"){
             return (
-                <Animatable.View
-                    animation={"bounceIn"}
-                    useNativeDriver    
-                    style={{
-                    width: '115%',
-                    height: '25%',
-                    backgroundColor: "#236A79",
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    alignContent: 'center',
-                    flexDirection: 'column',
-                    borderRadius: 10,
-                }}>
-                    <TouchableWithoutFeedback
-                    >
-                        <SafeAreaView style={{
-                            
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
-                            
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-                    
-                    <TouchableWithoutFeedback
-                    onPress={()=>navigation.navigate('Atividades')}
-                    >
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-
-                </Animatable.View>   
-            )  
+                Modal(title)
+             )  
         } 
 
-        if(showOptionsModal == true &&  currentOptionSelected == "Pauta & Clave" && title ==  "Pauta & Clave"){
+        if(showOptionsModal == true &&  currentOptionSelected == "Pauta e Clave" && title ==  "Pauta e Clave"){
             return (
-                <Animatable.View
-                    animation={"bounceIn"}
-                    useNativeDriver    
-                    style={{
-                    width: '115%',
-                    height: '25%',
-                    backgroundColor: "#236A79",
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    alignContent: 'center',
-                    flexDirection: 'column',
-                    borderRadius: 10,
-                }}>
-                    <TouchableWithoutFeedback
-                    >
-                        <SafeAreaView style={{
-                            
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
-                            
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-                    
-                    <TouchableWithoutFeedback
-                    onPress={()=>navigation.navigate('Atividades')}
-                    >
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-
-                </Animatable.View>   
-            )  
+                Modal(title)
+             )  
         } 
 
         if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Notas" && title ==  "Figuras de Notas"){
             return (
-                <Animatable.View
-                    animation={"bounceIn"}
-                    useNativeDriver    
-                    style={{
-                    width: '115%',
-                    height: '25%',
-                    backgroundColor: "#236A79",
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    alignContent: 'center',
-                    flexDirection: 'column',
-                    borderRadius: 10,
-                }}>
-                    <TouchableWithoutFeedback
-                    >
-                        <SafeAreaView style={{
-                            
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
-                            
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-                    
-                    <TouchableWithoutFeedback
-                    onPress={()=>navigation.navigate('Atividades')}
-                    >
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-
-                </Animatable.View>   
-            )  
+                Modal(title)
+             )  
         } 
 
         if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Pausas" && title ==  "Figuras de Pausas"){
             return (
-                <Animatable.View
-                    animation={"bounceIn"}
-                    useNativeDriver    
-                    style={{
-                    width: '115%',
-                    height: '25%',
-                    backgroundColor: "#236A79",
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    alignContent: 'center',
-                    flexDirection: 'column',
-                    borderRadius: 10,
-                }}>
-                    <TouchableWithoutFeedback
-                    >
-                        <SafeAreaView style={{
-                            
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
-                            
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-                    
-                    <TouchableWithoutFeedback
-                    onPress={()=>navigation.navigate('Atividades')}
-                    >
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-
-                </Animatable.View>   
-            )  
+                Modal(title)
+             )  
         } 
 
         if(showOptionsModal == true &&  currentOptionSelected == "Duração dos Valores" && title ==  "Duração dos Valores"){
             return (
-                <Animatable.View
-                    animation={"bounceIn"}
-                    useNativeDriver    
-                    style={{
-                    width: '115%',
-                    height: '25%',
-                    backgroundColor: "#236A79",
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    alignContent: 'center',
-                    flexDirection: 'column',
-                    borderRadius: 10,
-                }}>
-                    <TouchableWithoutFeedback
-                    >
-                        <SafeAreaView style={{
-                            
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
-                            
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-                    
-                    <TouchableWithoutFeedback
-                    onPress={()=>navigation.navigate('Atividades')}
-                    >
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
-
-                </Animatable.View>   
-            )  
-        } 
+                Modal(title)
+             )  
+        }
     }
 
     const selected = (selecao) => {
