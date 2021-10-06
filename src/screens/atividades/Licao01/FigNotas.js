@@ -759,17 +759,17 @@ export default function App({navigation}) {
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={showWrongModal}
+                visible={showWrongModal}    
             >
+               <SafeAreaView style={{flexDirection:'column', justifyContent:'flex-end', flex:1}}>
                 <SafeAreaView style={{
-                    marginTop: '125%',
                     width: '100%',
-                    height: '25%',
+                    height: '22%',
                     //opacity: 0.9,
                     backgroundColor: "#fEE0E2",
                     alignItems: 'center',
                     justifyContent: 'center',
-                    alignContent: 'center',
+                    alignContent: 'center'
                 }}>
                     <SafeAreaView style={{
                         marginTop: '5%',
@@ -781,10 +781,8 @@ export default function App({navigation}) {
                         <ImageModal source={errorIcon}></ImageModal>
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
-                        }}>  Resposta correta: </Text>
-                        <Text style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32
-                        }}>{allQuestions[currentQuestionIndex].correct_alternative} </Text>
+                        }}>  Resposta correta: {allQuestions[currentQuestionIndex].correct_alternative}  
+                        </Text>
 
                     </SafeAreaView>
 
@@ -792,7 +790,7 @@ export default function App({navigation}) {
 
                         width: '100%',
                         height: '70%',
-                        marginTop: '4%',
+                        marginTop: '1%',
                         alignItems: 'center',
                         alignContent: 'center',
                     }}>
@@ -812,6 +810,7 @@ export default function App({navigation}) {
                         </TouchableWithoutFeedback>
                     </SafeAreaView>
                 </SafeAreaView>
+              </SafeAreaView>
             </Modal>
             {/* Modal Right */}
             <Modal
@@ -819,51 +818,51 @@ export default function App({navigation}) {
                 transparent={true}
                 visible={showRightModal}
             >
-                <SafeAreaView style={{
-                    marginTop: '125%',
-                    width: '100%',
-                    height: '25%',
-                    backgroundColor: "#D9FEB8",
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                }}>
+                <SafeAreaView style={{flexDirection:'column', justifyContent:'flex-end', flex:1}}>
                     <SafeAreaView style={{
-                        marginTop: '3%',
-
                         width: '100%',
+                        height: '22%',
+                        backgroundColor: "#D9FEB8",
+                        alignItems: 'center',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'row'
+                        alignContent: 'center',
                     }}>
-                        <Text style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#38752B", fontSize: 35,
-                        }}>Você acertou!  </Text>
-                        <ImageModal source={checkIcon}></ImageModal>
-                    </SafeAreaView>
+                        <SafeAreaView style={{
+                            marginTop: '5%',
+                            width: '100%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexDirection: 'row'
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#38752B", fontSize: 35,
+                            }}>Você acertou!  </Text>
+                            <ImageModal source={checkIcon}></ImageModal>
+                        </SafeAreaView>
 
-                    <SafeAreaView style={{
+                        <SafeAreaView style={{
 
-                        width: '100%',
-                        height: '70%',
-                        marginTop: '1%',
-                        alignItems: 'center',
-                        alignContent: 'center'
-                    }}>
-                        <TouchableWithoutFeedback
-                            onPress={exitModal}
-                        >
-                            <View style={styles.ShadowRightButton}>
-                                <StyleButtons
-                                    bg={"#61BE4B"}
-                                    bordercolor={'#61BE4B'}
-                                    borderwidth={'0px'}>
-                                    <Text style={{
-                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
-                                    }}>CONTINUAR</Text>
-                                </StyleButtons>
-                            </View>
-                        </TouchableWithoutFeedback>
+                            width: '100%',
+                            height: '70%',
+                            marginTop: '1%',
+                            alignItems: 'center',
+                            alignContent: 'center'
+                        }}>
+                            <TouchableWithoutFeedback
+                                onPress={exitModal}
+                            >
+                                <View style={styles.ShadowRightButton}>
+                                    <StyleButtons
+                                        bg={"#61BE4B"}
+                                        bordercolor={'#61BE4B'}
+                                        borderwidth={'0px'}>
+                                        <Text style={{
+                                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
+                                        }}>CONTINUAR</Text>
+                                    </StyleButtons>
+                                </View>
+                            </TouchableWithoutFeedback>
+                        </SafeAreaView>
                     </SafeAreaView>
                 </SafeAreaView>
             </Modal>
@@ -902,7 +901,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#38752B",
     },
     ShadowWrongButton: {
-        marginTop: '1%',
+        marginTop: '4%',
         width: '55%',
         height: '55%',
         alignItems: 'center',
