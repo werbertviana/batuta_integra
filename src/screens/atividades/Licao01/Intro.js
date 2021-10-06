@@ -789,7 +789,7 @@ export default function App({navigation}) {
                     <SafeAreaView style={{
 
                         width: '100%',
-                        height: '70%',
+                        height: '75%',
                         marginTop: '1%',
                         alignItems: 'center',
                         alignContent: 'center',
@@ -843,7 +843,7 @@ export default function App({navigation}) {
                         <SafeAreaView style={{
 
                             width: '100%',
-                            height: '70%',
+                            height: '75%',
                             marginTop: '1%',
                             alignItems: 'center',
                             alignContent: 'center'
