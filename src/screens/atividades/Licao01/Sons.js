@@ -20,6 +20,8 @@ import iconeX from '../../../assets/imgs/iconeX.png';
 import iconeLife from '../../../assets/imgs/iconeLife.png';
 import checkIcon from '../../../assets/imgs/checkIcon.png'
 import errorIcon from '../../../assets/imgs/errorIcon.png'
+import ativConcluida from '../../../assets/imgs/concluida.png'
+import iconeXp from '../../../assets/imgs/iconeXp.png'
 // import dados estáticos
 import staticData from '../../../data/Alternativas.json'
 //import questões
@@ -53,6 +55,8 @@ import bronze from '../../../assets/imgs/bronze.png'
 import ferro2 from '../../../assets/imgs/ferro2.png'
 import bronze2 from '../../../assets/imgs/bronze2.png'
 // import bibliotecas
+
+import FastImage from 'react-native-fast-image';
 import {
     SafeAreaView,
     Modal,
@@ -71,6 +75,7 @@ import DivMedio from '../../../components/DivMedio';
 import DivDificil from '../../../components/DivDificil';
 
 
+
 export default function App({navigation}) {
 
     const ButtonRef = useRef()
@@ -86,6 +91,7 @@ export default function App({navigation}) {
     const [showLifeModal, setShowLifeModal] = useState(false);
     const [showRightModal, setShowRightModal] = useState(false);
     const [showWrongModal, setShowWrongModal] = useState(false);
+    const [xpPoints, setxpPoints] = useState(10);
 
     const renderQuestion = () => {
         return (
@@ -676,6 +682,105 @@ export default function App({navigation}) {
         )
     }
 
+    const feedbacks = () => {
+        return (
+            <SafeAreaView
+            style={{
+                marginTop: 25,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                //backgroundColor: 'red',
+            }}>
+
+                <SafeAreaView
+                style={styles.ShadowFeedbacks}>
+                    <SafeAreaView
+                    style={styles.Feedbacks}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                        }}>
+                           XP DA ATIVIDADE
+                        </Text>
+                        <FastImage
+                        style={styles.IconImages}
+                        source={iconeXp}>
+                        </FastImage>
+                        <Text
+                        style={styles.XpText}>
+                            {xpPoints}
+                        </Text>
+                    </SafeAreaView>
+                </SafeAreaView>
+
+                <SafeAreaView
+                style={styles.ShadowFeedbacks}>
+                    <SafeAreaView
+                    style={styles.Feedbacks}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                        }}>
+                            PONTUAÇÃO DA ATIVIDADE
+                        </Text>
+                        <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginLeft: 8
+                            }}>{score}</Text>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "black", fontSize: 28, 
+                            }}>/{allQuestions.length}
+                        </Text>
+                    </SafeAreaView>
+                </SafeAreaView>
+            </SafeAreaView>       
+        )
+    }
+
+    const buttons = () => {
+        return (
+            <SafeAreaView
+            style={{
+                marginTop: 25,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                //backgroundColor: 'red',
+            }}>
+
+                <TouchableOpacity
+                onPress={restartQuiz}
+                style={styles.ShadowButtons1}>
+                    <SafeAreaView
+                    style={styles.Buttons1}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
+                        }}>
+                            RECOMEÇAR
+                        </Text>
+                    </SafeAreaView>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                style={styles.ShadowButtons2}
+                onPress={()=>navigation.navigate('Main')}>
+                    <SafeAreaView
+                    style={styles.Buttons2}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
+                        }}>
+                            CONTINUAR
+                        </Text>
+                    </SafeAreaView>
+                </TouchableOpacity>
+            </SafeAreaView>
+               
+        )
+    }
+
+
     {/* Main */ }
     return (
 
@@ -704,55 +809,29 @@ export default function App({navigation}) {
                 {renderElos()}
                 {renderButtonConfirm()}
             </ButtonContainer>
-
             {/* Score Modal */}
             <Modal
                 animationType="slide"
                 transparent={true}
                 visible={showScoreModal}
-            >
+            >  
                 <SafeAreaView style={{
                     flex: 1,
-                    backgroundColor: "#FDC500",
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    backgroundColor: '#fff'
                 }}>
-                    <SafeAreaView style={{
-                        backgroundColor: "#fff",
-                        width: '90%',
-                        borderRadius: 20,
-                        padding: 20,
-                        alignItems: 'center'
-                    }}>
-                        <QuestionText>{score > (allQuestions.length / 2) ? 'Parabéns!' : 'Você perdeu!'}</QuestionText>
-
-                        <SafeAreaView style={{
-                            flexDirection: 'row',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center',
-                            marginVertical: 20
-                        }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginTop: 2
-                            }}>{score}</Text>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "black", fontSize: 28, marginTop: 2
-                            }}>/{allQuestions.length}</Text>
-                        </SafeAreaView>
-                        {/* Retry Quiz button */}
-                        <TouchableOpacity
-                            onPress={restartQuiz}
-                            style={{
-                                backgroundColor: "#FDC500",
-                                padding: 20, width: '100%', borderRadius: 20
-                            }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 35,
-                            }}>RECOMEÇAR</Text>
-                        </TouchableOpacity>
-
-                    </SafeAreaView>
-
+                    <Animatable.View
+                    animation = "pulse"
+                    useNativeDriver
+                    iterationCount= "infinite">
+                        <FastImage 
+                        style={{height: 210, width: 300, marginTop: 30}}
+                        source={ativConcluida}
+                        >
+                        </FastImage>
+                    </Animatable.View>
+                        {feedbacks()}
+                        {buttons()}
                 </SafeAreaView>
             </Modal>
             {/* Wrong Modal */}
@@ -946,5 +1025,72 @@ const styles = StyleSheet.create({
         width: 44,
         height: 44,
         borderRadius: 44 / 2
+    },
+    ShadowButtons1: {
+        width:'90%',
+        height: 75,
+        alignItems: 'center',
+        alignContent: 'center',
+        borderRadius: 20,
+        backgroundColor: "#DAA520",
+        margin: 8
+    },
+    Buttons1: {
+        width: '100%',
+        height: '92%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        backgroundColor: '#FDC500',
+    },
+    ShadowButtons2: {
+        width:'90%',
+        height: 75,
+        alignItems: 'center',
+        alignContent: 'center',
+        borderRadius: 20,
+        backgroundColor: "#236A79",
+        margin: 8
+    },
+    Buttons2: {
+        width: '100%',
+        height: '92%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        backgroundColor: '#3CB1C7',
+    },
+    ShadowFeedbacks: {
+        width:'82%',
+        height: 75,
+        alignItems: 'center',
+        alignContent: 'center',
+        borderRadius: 12,
+        backgroundColor: '#D2D3D5',
+        margin: 8
+    },
+    Feedbacks: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 12,
+        backgroundColor: '#FFF',
+        marginLeft: 15,
+        marginTop: -4,
+        borderWidth: 2,
+        borderColor:'#D2D3D5',
+        flexDirection: 'row',
+    },
+    IconImages:{
+        margin: 8,
+        width: 40,
+        height: 40
+    },
+    XpText: {
+        fontFamily: 'DINRoundPro-Medi',
+        fontSize: 28,
+        color: '#FDC500',
+        textAlign: 'justify'
     }
 });
