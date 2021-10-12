@@ -56,36 +56,89 @@ export default function App() {
     const [showRightModal, setShowRightModal] = useState(false);
     const [showWrongModal, setShowWrongModal] = useState(false);
 
-
-    const bottomRecomecar = () => {
+    const feedbacks = () => {
         return (
             <SafeAreaView
             style={{
+                marginTop: 25,
+                justifyContent: 'center',
                 alignItems: 'center',
-                marginTop: 100,
                 width: '100%',
-                backgroundColor: 'red'
+                //backgroundColor: 'red',
+            }}>
+
+                <SafeAreaView
+                style={styles.ShadowFeedbacks}>
+                    <SafeAreaView
+                    style={styles.Feedbacks}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                        }}>
+                           XP DA ATIVIDADE
+                        </Text>
+                    </SafeAreaView>
+                </SafeAreaView>
+
+                <SafeAreaView
+                style={styles.ShadowFeedbacks}>
+                    <SafeAreaView
+                    style={styles.Feedbacks}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                        }}>
+                            PONTUAÇÃO DA ATIVIDADE
+                        </Text>
+                    </SafeAreaView>
+                </SafeAreaView>
+            </SafeAreaView>       
+        )
+    }
+    
+    
+    const buttons = () => {
+        return (
+            <SafeAreaView
+            style={{
+                marginTop: 25,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                //backgroundColor: 'red',
             }}>
 
                 <TouchableOpacity
-                    style={{
-                        backgroundColor: "#FDC500",
-                        padding: 20,     
-                        width:'85%',
-                        borderRadius: 20,     
-                    }}>
-                    <Text 
-                    style={{
-                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 35,
-                    }}>
-                        RECOMEÇAR
-                    </Text>
+                style={styles.ShadowButtons1}>
+                    <SafeAreaView
+                    style={styles.Buttons1}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
+                        }}>
+                            RECOMEÇAR
+                        </Text>
+                    </SafeAreaView>
                 </TouchableOpacity>
-               
 
+                <TouchableOpacity
+                style={styles.ShadowButtons2}>
+                    <SafeAreaView
+                    style={styles.Buttons2}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
+                        }}>
+                            CONTINUAR
+                        </Text>
+                    </SafeAreaView>
+                </TouchableOpacity>
             </SafeAreaView>
+               
         )
     }
+
+   
 
     return(
 
@@ -97,17 +150,20 @@ export default function App() {
                 <SafeAreaView style={{
                     flex: 1,
                     alignItems: 'center',
-                    backgroundColor: 'blue'
+                    //backgroundColor: 'blue'
                 }}>
-                    <Animatable.View>
+                    <Animatable.View
+                     animation = "pulse"
+                     useNativeDriver
+                     iterationCount= "infinite">
                         <FastImage 
-                        style={{height: 210, width: 300, marginTop: 25}}
+                        style={{height: 210, width: 300, marginTop: 30}}
                         source={ativConcluida}
                         >
                         </FastImage>
                     </Animatable.View>
-
-                    {bottomRecomecar()}
+                    {feedbacks()}
+                    {buttons()}
 
                 </SafeAreaView>
         </Modal>
@@ -116,80 +172,61 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-    LifeContainer: {
+    ShadowButtons1: {
+        width:'90%',
+        height: 75,
         alignItems: 'center',
         alignContent: 'center',
-        flexDirection: 'row',
+        borderRadius: 20,
+        backgroundColor: "#DAA520",
+        margin: 8
+    },
+    Buttons1: {
+        width: '100%',
+        height: '92%',
         justifyContent: 'center',
-        //backgroundColor: 'blue',
-    },
-    LifeText: {
-        fontFamily: 'DINRoundPro-Medi',
-        fontSize: 28,
-        color: '#FC4848',
-        //backgroundColor: 'yellow',
-    },
-    ShadowJumpButton: {
-        marginTop: '3%',
-        width: '40%',
-        height: '70%',
         alignItems: 'center',
-        borderRadius: 14,
-        backgroundColor: "#D2D3D5"
+        borderRadius: 20,
+        backgroundColor: '#FDC500',
     },
-    ShadowRightButton: {
-        marginTop: '4%',
-        width: '55%',
-        height: '55%',
+    ShadowButtons2: {
+        width:'90%',
+        height: 75,
         alignItems: 'center',
-        borderRadius: 14,
-        backgroundColor: "#38752B",
-    },
-    ShadowWrongButton: {
-        marginTop: '1%',
-        width: '55%',
-        height: '55%',
-        alignItems: 'center',
-        borderRadius: 14,
-        backgroundColor: "#E92C2A",
-    },
-    ShadowConfirmButtonDisabled: {
-        marginTop: '3%',
-        width: '40%',
-        height: '70%',
-        alignItems: 'center',
-        borderRadius: 14,
-        backgroundColor: "#606062"
-    },
-    ShadowConfirmButtonEnabled: {
-        marginTop: '3%',
-        width: '40%',
-        height: '70%',
-        alignItems: 'center',
-        borderRadius: 14,
-        backgroundColor: '#DAA520'
-    },
-    QuestionsContainer: {
-        alignItems: 'center',
-        alignContent: 'space-between',
-        width: '90%',
         alignContent: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: '#ff2'
+        borderRadius: 20,
+        backgroundColor: "#236A79",
+        margin: 8
     },
-    QuestionsText: {
-        fontFamily: 'GothamCondensed-Medium',
-        fontSize: 28,
-        marginTop: '2%'
+    Buttons2: {
+        width: '100%',
+        height: '92%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        backgroundColor: '#3CB1C7',
     },
-    ConfirmText: {
-        fontFamily: "GothamCondensed-Medium",
-        fontSize: 28,
-        color: '#fff'
+    ShadowFeedbacks: {
+        width:'82%',
+        height: 75,
+        alignItems: 'center',
+        alignContent: 'center',
+        borderRadius: 12,
+        backgroundColor: '#D2D3D5',
+        marginRight: 20,
+        margin: 8
     },
-    circle: {
-        width: 44,
-        height: 44,
-        borderRadius: 44 / 2
+    Feedbacks: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 12,
+        backgroundColor: '#FFF',
+        marginLeft: 15,
+        marginTop: -4,
+        borderWidth: 2,
+        borderColor:'#D2D3D5'
     }
+   
 });

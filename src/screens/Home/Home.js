@@ -323,14 +323,14 @@ export default function App({navigation}) {
                             ref={ButtonRef}
                             style={{alignItems: 'center',
                             margin:'2%', //backgroundColor:'yellow'
-                        }}
+                            }}
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
                                 {renderModal(item.title)}
-                            </Animatable.View>     
-                        </TouchableWithoutFeedback>
-                        )} 
+                            </Animatable.View>    
+                        </TouchableWithoutFeedback>     
+                        )}          
                 </ImageBackground>         
             </Animatable.View>
         )
@@ -338,7 +338,8 @@ export default function App({navigation}) {
 
     const Modal = (title) =>{
         return (
-            <Animatable.View
+         
+               <Animatable.View
                 animation={"bounceIn"}
                 useNativeDriver    
                 style={{
@@ -350,6 +351,7 @@ export default function App({navigation}) {
                 alignContent: 'center',
                 flexDirection: 'column',
                 borderRadius: 10,
+               
             }}>
                 <TouchableWithoutFeedback
                 >
@@ -388,8 +390,11 @@ export default function App({navigation}) {
                     </SafeAreaView>
                 </TouchableWithoutFeedback>
 
-            </Animatable.View>   
-        )  
+            </Animatable.View>  
+    
+           
+        )
+          
     }
 
     const renderModal = (title) => {
