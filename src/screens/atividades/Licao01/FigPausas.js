@@ -22,6 +22,7 @@ import checkIcon from '../../../assets/imgs/checkIcon.png'
 import errorIcon from '../../../assets/imgs/errorIcon.png'
 import ativConcluida from '../../../assets/imgs/concluida.png'
 import iconeXp from '../../../assets/imgs/iconeXp.png'
+import tente from '../../../assets/imgs/tente.png'
 // import dados estáticos
 import staticData from '../../../data/Alternativas.json'
 //import questões
@@ -87,11 +88,12 @@ export default function App({navigation}) {
     const [lifePoints, setlifePoints] = useState(5);
     const [animLife, setAnimLife] = useState(false);
     const [animQuestions, setAnimQuestions] = useState(false);
-    const [showScoreModal, setShowScoreModal] = useState(false);
+    const [scoreRigthModal, setScoreRigthModal] = useState(false);
+    const [scoreWrongModal, setScoreWrongModal] = useState(false);
     const [showLifeModal, setShowLifeModal] = useState(false);
     const [showRightModal, setShowRightModal] = useState(false);
     const [showWrongModal, setShowWrongModal] = useState(false);
-    const [xpPoints, setxpPoints] = useState(10);
+    const [xpPoints, setxpPoints] = useState(0);
 
     const renderQuestion = () => {
         return (
@@ -127,7 +129,7 @@ export default function App({navigation}) {
         if (currentQuestionIndex == allQuestions.length - 1) {
             // Last Question
             // Show Score Modal
-            setShowScoreModal(true)
+            renderModal()
             Animated.timing(progress, {
                 toValue: currentQuestionIndex,
                 duration: 1000,
@@ -146,7 +148,8 @@ export default function App({navigation}) {
     }
 
     const restartQuiz = () => {
-        setShowScoreModal(false);
+        setScoreRigthModal(false);
+        setScoreWrongModal(false);
         setShowLifeModal(false);
         setCurrentQuestionIndex(0);
         setScore(0);
@@ -400,7 +403,6 @@ export default function App({navigation}) {
                 break;
         }
     }
-
 
     const renderOptions = () => {
         return (
@@ -682,11 +684,12 @@ export default function App({navigation}) {
         )
     }
 
-    const feedbacks = () => {
+    const rightFeedbacks = () => {
         return (
             <SafeAreaView
             style={{
                 marginTop: 25,
+                padding: 5,
                 justifyContent: 'center',
                 alignItems: 'center',
                 width: '100%',
@@ -725,23 +728,78 @@ export default function App({navigation}) {
                             PONTUAÇÃO DA ATIVIDADE
                         </Text>
                         <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginLeft: 8
-                            }}>{score}</Text>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "black", fontSize: 28, 
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#61BE4B", fontSize: 28, marginLeft: 8
+                            }}>{score}
+                        </Text>
+                        <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 28, 
                             }}>/{allQuestions.length}
                         </Text>
+                        <FastImage
+                        style={{margin: 8,
+                            width: 35,
+                            height: 35}}
+                        source={checkIcon}>
+                        </FastImage>
                     </SafeAreaView>
                 </SafeAreaView>
             </SafeAreaView>       
         )
     }
 
-    const buttons = () => {
+    const wrongFeedbacks = () => {
         return (
             <SafeAreaView
             style={{
                 marginTop: 25,
+                padding: 5,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                //backgroundColor: 'red',
+            }}>
+
+                <SafeAreaView>
+                    <Text style={{fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30, padding: 4}}>
+                        Não fique triste, errar faz parte do aprendizado. Vamos praticar novamente?
+                    </Text>
+                </SafeAreaView>
+
+                <SafeAreaView
+                style={styles.ShadowFeedbacks2}>
+                    <SafeAreaView
+                    style={styles.Feedbacks2}>
+                        <Text 
+                        style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                        }}>
+                            PONTUAÇÃO DA ATIVIDADE
+                        </Text>
+                        <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginLeft: 8
+                            }}>{score}
+                        </Text>
+                        <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 28, 
+                            }}>/{allQuestions.length}
+                        </Text>
+                        <FastImage
+                        style={{margin: 8,
+                            width: 35,
+                            height: 35}}
+                        source={errorIcon}>
+                        </FastImage>
+                    </SafeAreaView>
+                </SafeAreaView>
+            </SafeAreaView>       
+        )
+    }
+
+    const buttonsModal = () => {
+        return (
+            <SafeAreaView
+            style={{
+                marginTop: 16,
                 justifyContent: 'center',
                 alignItems: 'center',
                 width: '100%',
@@ -780,7 +838,14 @@ export default function App({navigation}) {
         )
     }
 
-
+    const renderModal = () => {
+        if(score > (allQuestions.length / 2)){
+            setScoreRigthModal(true)
+        }else{
+            setScoreWrongModal(true)
+        }
+    }
+    
     {/* Main */ }
     return (
 
@@ -809,11 +874,36 @@ export default function App({navigation}) {
                 {renderElos()}
                 {renderButtonConfirm()}
             </ButtonContainer>
-            {/* Score Modal */}
+            {/* Show Right Score Modal */}
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={showScoreModal}
+                visible={scoreRigthModal}
+                >  
+                    <SafeAreaView style={{
+                        flex: 1,
+                        alignItems: 'center',
+                        backgroundColor: '#fff'
+                    }}>
+                        <Animatable.View
+                        animation = "pulse"
+                        useNativeDriver
+                        iterationCount= "infinite">
+                            <FastImage 
+                            style={{height: 210, width: 328, marginTop: 30}}
+                            source={ativConcluida}
+                            >
+                            </FastImage>
+                        </Animatable.View>
+                            {rightFeedbacks()}
+                            {buttonsModal()}
+                    </SafeAreaView>
+            </Modal> 
+            {/* Show Wrong Score Modal */} 
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={scoreWrongModal}
             >  
                 <SafeAreaView style={{
                     flex: 1,
@@ -825,15 +915,15 @@ export default function App({navigation}) {
                     useNativeDriver
                     iterationCount= "infinite">
                         <FastImage 
-                        style={{height: 210, width: 300, marginTop: 30}}
-                        source={ativConcluida}
+                        style={{height: 210, width: 328, marginTop: 30}}
+                        source={tente}
                         >
                         </FastImage>
                     </Animatable.View>
-                        {feedbacks()}
-                        {buttons()}
+                        {wrongFeedbacks()}
+                        {buttonsModal()}
                 </SafeAreaView>
-            </Modal>
+            </Modal>                    
             {/* Wrong Modal */}
             <Modal
                 animationType="slide"
@@ -1028,7 +1118,7 @@ const styles = StyleSheet.create({
     },
     ShadowButtons1: {
         width:'90%',
-        height: 75,
+        height: 65,
         alignItems: 'center',
         alignContent: 'center',
         borderRadius: 20,
@@ -1045,7 +1135,7 @@ const styles = StyleSheet.create({
     },
     ShadowButtons2: {
         width:'90%',
-        height: 75,
+        height: 65,
         alignItems: 'center',
         alignContent: 'center',
         borderRadius: 20,
@@ -1061,22 +1151,45 @@ const styles = StyleSheet.create({
         backgroundColor: '#3CB1C7',
     },
     ShadowFeedbacks: {
-        width:'82%',
-        height: 75,
+        width:'85%',
+        height: 70,
         alignItems: 'center',
         alignContent: 'center',
-        borderRadius: 12,
+        borderRadius: 10,
         backgroundColor: '#D2D3D5',
-        margin: 8
+        margin: 12
     },
     Feedbacks: {
         width: '100%',
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 12,
+        borderRadius: 10,
         backgroundColor: '#FFF',
-        marginLeft: 15,
+        marginLeft: 10,
+        marginTop: -4,
+        borderWidth: 2,
+        borderColor:'#D2D3D5',
+        flexDirection: 'row',
+    },
+    ShadowFeedbacks2: {
+        marginTop: 30,
+        width:'85%',
+        height: 70,
+        alignItems: 'center',
+        alignContent: 'center',
+        borderRadius: 10,
+        backgroundColor: '#D2D3D5',
+        margin: 12
+    },
+    Feedbacks2: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        backgroundColor: '#FFF',
+        marginLeft: 10,
         marginTop: -4,
         borderWidth: 2,
         borderColor:'#D2D3D5',
