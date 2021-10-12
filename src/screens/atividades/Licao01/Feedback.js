@@ -21,6 +21,7 @@ import iconeLife from '../../../assets/imgs/iconeLife.png';
 import checkIcon from '../../../assets/imgs/checkIcon.png'
 import errorIcon from '../../../assets/imgs/errorIcon.png'
 import ativConcluida from '../../../assets/imgs/concluida.png'
+import iconeXp from '../../../assets/imgs/iconeXp.png'
 
 // import dados estáticos
 import staticData from '../../../data/Alternativas.json'
@@ -42,19 +43,9 @@ import FastImage from 'react-native-fast-image';
 
 
 export default function App() {
-    const ButtonRef = useRef()
-    const Button2Ref = useRef()
-    const allQuestions = staticData.data;
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-    const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
-    const [score, setScore] = useState(0);
-    const [lifePoints, setlifePoints] = useState(5);
-    const [animLife, setAnimLife] = useState(false);
-    const [animQuestions, setAnimQuestions] = useState(false);
+
     const [showScoreModal, setShowScoreModal] = useState(true);
-    const [showLifeModal, setShowLifeModal] = useState(false);
-    const [showRightModal, setShowRightModal] = useState(false);
-    const [showWrongModal, setShowWrongModal] = useState(false);
+    const [xpPoints, setxpPoints] = useState(10);
 
     const feedbacks = () => {
         return (
@@ -76,6 +67,14 @@ export default function App() {
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
                         }}>
                            XP DA ATIVIDADE
+                        </Text>
+                        <FastImage
+                        style={styles.IconImages}
+                        source={iconeXp}>
+                        </FastImage>
+                        <Text
+                        style={styles.XpText}>
+                            {xpPoints}
                         </Text>
                     </SafeAreaView>
                 </SafeAreaView>
@@ -213,7 +212,6 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         borderRadius: 12,
         backgroundColor: '#D2D3D5',
-        marginRight: 20,
         margin: 8
     },
     Feedbacks: {
@@ -226,7 +224,19 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         marginTop: -4,
         borderWidth: 2,
-        borderColor:'#D2D3D5'
+        borderColor:'#D2D3D5',
+        flexDirection: 'row',
+    },
+    IconImages:{
+        margin: 8,
+        width: 40,
+        height: 40
+    },
+    XpText: {
+        fontFamily: 'DINRoundPro-Medi',
+        fontSize: 28,
+        color: '#FDC500',
+        textAlign: 'justify'
     }
    
 });
