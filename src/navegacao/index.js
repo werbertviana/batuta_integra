@@ -3,12 +3,12 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 //Import rotas
-import Intro from '../screens/atividades/Licao01/Intro';
-import Sons from '../screens/atividades/Licao01/Sons';
-import Pauta from '../screens/atividades/Licao01/Pauta';
-import FigNotas from '../screens/atividades/Licao01/FigNotas';
-import FigPausas from '../screens/atividades/Licao01/FigPausas';
-import Valores from '../screens/atividades/Licao01/Valores';
+import Intro from '../screens/Atividades/Licao01/Intro';
+import Sons from '../screens/Atividades/Licao01/Sons';
+import Pauta from '../screens/Atividades/Licao01/Pauta';
+import FigNotas from '../screens/Atividades/Licao01/FigNotas';
+import FigPausas from '../screens/Atividades/Licao01/FigPausas';
+import Valores from '../screens/Atividades/Licao01/Valores';
 import Main from '../routes/routes'
 
 

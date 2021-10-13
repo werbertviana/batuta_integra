@@ -799,10 +799,10 @@ export default function App({navigation}) {
         return (
             <SafeAreaView
             style={{
-                marginTop: 16,
                 justifyContent: 'center',
                 alignItems: 'center',
                 width: '100%',
+                padding: 5,
                 //backgroundColor: 'red',
             }}>
 
@@ -896,7 +896,16 @@ export default function App({navigation}) {
                             </FastImage>
                         </Animatable.View>
                             {rightFeedbacks()}
+                        <SafeAreaView style={{
+                        flex: 1,
+                        width: '100%',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        //backgroundColor: 'blue'
+                        }}>
                             {buttonsModal()}
+                        </SafeAreaView>
                     </SafeAreaView>
             </Modal> 
             {/* Show Wrong Score Modal */} 
@@ -915,13 +924,22 @@ export default function App({navigation}) {
                     useNativeDriver
                     iterationCount= "infinite">
                         <FastImage 
-                        style={{height: 210, width: 328, marginTop: 30}}
+                        style={{height: 212, width: 328, marginTop: 30}}
                         source={tente}
                         >
                         </FastImage>
                     </Animatable.View>
                         {wrongFeedbacks()}
+                        <SafeAreaView style={{
+                        flex: 1,
+                        width: '100%',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        //backgroundColor: 'blue'
+                        }}>
                         {buttonsModal()}
+                        </SafeAreaView>
                 </SafeAreaView>
             </Modal>                    
             {/* Wrong Modal */}
