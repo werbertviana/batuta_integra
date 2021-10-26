@@ -327,7 +327,7 @@ export default function App({navigation}) {
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
-                                {renderModal(item.title)}
+                                {renderModal(item.title, item.content)}
                             </Animatable.View>    
                         </TouchableWithoutFeedback>     
                         )}          
@@ -336,7 +336,7 @@ export default function App({navigation}) {
         )
     }
 
-    const Modal = (title) =>{
+    const Modal = (title, content) =>{
         return (
          
                <Animatable.View
@@ -354,6 +354,7 @@ export default function App({navigation}) {
                
             }}>
                 <TouchableWithoutFeedback
+                 onPress={()=>navigation.navigate(content)}
                 >
                     <SafeAreaView style={{
                         
@@ -397,40 +398,40 @@ export default function App({navigation}) {
           
     }
 
-    const renderModal = (title) => {
+    const renderModal = (title, content) => {
         if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
             return (
-               Modal(title)
+               Modal(title, content)
             )  
         }
 
         if(showOptionsModal == true &&  currentOptionSelected == "Sons Musicais" && title ==  "Sons Musicais"){
             return (
-                Modal(title)
+                Modal(title, content)
              )  
         } 
 
         if(showOptionsModal == true &&  currentOptionSelected == "Pauta e Clave" && title ==  "Pauta e Clave"){
             return (
-                Modal(title)
+                Modal(title, content)
              )  
         } 
 
         if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Notas" && title ==  "Figuras de Notas"){
             return (
-                Modal(title)
+                Modal(title, content)
              )  
         } 
 
         if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Pausas" && title ==  "Figuras de Pausas"){
             return (
-                Modal(title)
+                Modal(title, content)
              )  
         } 
 
         if(showOptionsModal == true &&  currentOptionSelected == "Duração dos Valores" && title ==  "Duração dos Valores"){
             return (
-                Modal(title)
+                Modal(title, content)
              )  
         }
     }
