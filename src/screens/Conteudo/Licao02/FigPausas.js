@@ -5,7 +5,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
 
 //import images
-import Introducao from '../../../assets/imgs/introducao.png';
+import figPausas from '../../../assets/imgs/figPausas.png';
 import slides01 from '../../../assets/imgs/Conteudo/Licao01/slides01.png';
 import slides02 from '../../../assets/imgs/Conteudo/Licao01/slides02.png';
 import slides03 from '../../../assets/imgs/Conteudo/Licao01/slides03.png';
@@ -35,7 +35,7 @@ export default function App({ navigation }) {
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
-                            <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                            <FastImage source={figPausas} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides01} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
@@ -50,7 +50,7 @@ export default function App({ navigation }) {
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
-                            <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                            <FastImage source={figPausas} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides02} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
@@ -65,7 +65,7 @@ export default function App({ navigation }) {
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
-                            <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                            <FastImage source={figPausas} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides03} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
@@ -80,7 +80,7 @@ export default function App({ navigation }) {
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
-                            <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                            <FastImage source={figPausas} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides04} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
@@ -95,7 +95,7 @@ export default function App({ navigation }) {
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
-                            <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                            <FastImage source={figPausas} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides05} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
