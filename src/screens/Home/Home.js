@@ -384,6 +384,7 @@ export default function App({ navigation }) {
                     style={styles.ViolaoBackground}
                     source={bgViolao}>
                     {feeds.map((item) =>
+                    
                         <TouchableWithoutFeedback
                             onPress={() => selected(item.title)}
                             key={item.id}
@@ -407,6 +408,7 @@ export default function App({ navigation }) {
             </Animatable.View>
         )
     }
+
 
     const Modal = (title, content) => {
         return (
@@ -479,7 +481,7 @@ export default function App({ navigation }) {
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Sons Musicais"
-            && showFeed02 == true) {
+            && title == "Sons Musicais" && showFeed02 == true) {
             return (
                 Modal(title, content)
             )
