@@ -346,8 +346,6 @@ export default function App({ navigation }) {
         }
     }
 
-
-
     const renderBoardFeeds = (title) => {
         return (
             <SafeAreaView style={styles.ShadowBoardFeeds}>
@@ -473,13 +471,15 @@ export default function App({ navigation }) {
     }
 
     const renderModal = (title, content) => {
-        if (showOptionsModal == true && currentOptionSelected == "Introdução" && title == "Introdução") {
+        if (showOptionsModal == true && currentOptionSelected == "Introdução"
+            && title == "Introdução" && showFeed01 == true) {
             return (
                 Modal(title, content)
             )
         }
 
-        if (showOptionsModal == true && currentOptionSelected == "Sons Musicais" && title == "Sons Musicais") {
+        if (showOptionsModal == true && currentOptionSelected == "Sons Musicais"
+            && showFeed02 == true) {
             return (
                 Modal(title, content)
             )
