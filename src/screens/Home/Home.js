@@ -64,6 +64,14 @@ export default function App({ navigation }) {
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [contador, setContador] = useState(0);
     const [titulo, setTitulo] = useState(null);
+    const [showFeed01, setShowFeed01] = useState(true);
+    const [showFeed02, setShowFeed02] = useState(false);
+    const [showFeed03, setShowFeed03] = useState(false);
+    const [showFeed04, setShowFeed04] = useState(false);
+    const [showFeed05, setShowFeed05] = useState(false);
+    const [showFeed06, setShowFeed06] = useState(false);
+
+
     const Stack = createStackNavigator();
 
     const renderLife = () => {
@@ -236,52 +244,109 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderIconsFeeds = (iconOn, iconOff) => {
-        switch (iconOn) {
-            case ("feed01On.png"):
-                return (
-                    <ImagesFeeds
-                        source={feed01On}>
-                    </ImagesFeeds>
-                )
-                break;
-            case ("feed02On.png"):
-                return (
-                    <ImagesFeeds
-                        source={feed02On}>
-                    </ImagesFeeds>
-                )
-                break;
-            case ("feed03On.png"):
-                return (
-                    <ImagesFeeds
-                        source={feed03On}>
-                    </ImagesFeeds>
-                )
-                break;
-            case ("feed04On.png"):
-                return (
-                    <ImagesFeeds
-                        source={feed04On}>
-                    </ImagesFeeds>
-                )
-                break;
-            case ("feed05On.png"):
-                return (
-                    <ImagesFeeds
-                        source={feed05On}>
-                    </ImagesFeeds>
-                )
-                break;
-            case ("feed06On.png"):
-                return (
-                    <ImagesFeeds
-                        source={feed06On}>
-                    </ImagesFeeds>
-                )
-                break;
+    const renderIconsFeeds = (icon) => {
+        switch (icon) {
+            case ("feed01.png"):
+                if (showFeed01 == true) {
+                    return (
+                        <ImagesFeeds
+                            source={feed01On}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                } else {
+                    return (
+                        <ImagesFeeds
+                            source={feed01Off}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                }
+
+            case ("feed02.png"):
+                if (showFeed02 == true) {
+                    return (
+                        <ImagesFeeds
+                            source={feed02On}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                } else {
+                    return (
+                        <ImagesFeeds
+                            source={feed02Off}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                }
+            case ("feed03.png"):
+                if (showFeed03 == true) {
+                    return (
+                        <ImagesFeeds
+                            source={feed03On}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                } else {
+                    return (
+                        <ImagesFeeds
+                            source={feed03Off}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                }
+            case ("feed04.png"):
+                if (showFeed04 == true) {
+                    return (
+                        <ImagesFeeds
+                            source={feed04On}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                } else {
+                    return (
+                        <ImagesFeeds
+                            source={feed04Off}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                }
+            case ("feed05.png"):
+                if (showFeed05 == true) {
+                    return (
+                        <ImagesFeeds
+                            source={feed05On}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                } else {
+                    return (
+                        <ImagesFeeds
+                            source={feed05Off}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                }
+            case ("feed06.png"):
+                if (showFeed06 == true) {
+                    return (
+                        <ImagesFeeds
+                            source={feed06On}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                } else {
+                    return (
+                        <ImagesFeeds
+                            source={feed06Off}>
+                        </ImagesFeeds>
+                    )
+                    break;
+                }
         }
     }
+
+
 
     const renderBoardFeeds = (title) => {
         return (
@@ -334,7 +399,7 @@ export default function App({ navigation }) {
                                     margin: '2%', //backgroundColor:'yellow'
                                 }}
                             >
-                                {renderIconsFeeds(item.iconOn, item.iconOff)}
+                                {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
                                 {renderModal(item.title, item.content)}
                             </Animatable.View>
