@@ -230,8 +230,8 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderIconsFeeds = (icons) => {
-        switch (icons) {
+    const renderIconsFeeds = (iconOn, iconOff) => {
+        switch (iconOn) {
             case ("feed01.png"):
                 return (
                     <ImagesFeeds
@@ -328,7 +328,7 @@ export default function App({ navigation }) {
                                     margin: '2%', //backgroundColor:'yellow'
                                 }}
                             >
-                                {renderIconsFeeds(item.icon)}
+                                {renderIconsFeeds(item.iconOn, item.iconOff)}
                                 {renderBoardFeeds(item.title)}
                                 {renderModal(item.title, item.content)}
                             </Animatable.View>
