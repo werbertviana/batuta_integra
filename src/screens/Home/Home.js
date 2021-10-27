@@ -6,7 +6,7 @@ import {
     StyleSheet,
     ImageBackground,
     TouchableWithoutFeedback,
-    Text, 
+    Text,
     FlatList
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
@@ -44,8 +44,8 @@ import feed06 from '../../assets/imgs/feed06.png';
 import staticFeeds from '../../data/Feeds.json'
 
 
-export default function App({navigation}) {
-    
+export default function App({ navigation }) {
+
     const allFeeds = staticFeeds.feeds;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
@@ -56,8 +56,8 @@ export default function App({navigation}) {
     const [xpPoints, setxpPoints] = useState(0);
     const [batutaPoints, setbatutaPoints] = useState(0);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
-    const[contador, setContador] = useState(0);
-    const[titulo, setTitulo] = useState(null);
+    const [contador, setContador] = useState(0);
+    const [titulo, setTitulo] = useState(null);
     const Stack = createStackNavigator();
 
     const renderLife = () => {
@@ -82,7 +82,7 @@ export default function App({navigation}) {
     const renderXp = () => {
         return (
             <Animatable.View style={styles.XpContainer}>
-                 <IconImages
+                <IconImages
                     source={iconeXp}>
                 </IconImages>
                 {renderTextXp()}
@@ -92,10 +92,10 @@ export default function App({navigation}) {
 
     const renderTextXp = () => {
         return (
-            <SafeAreaView style={{padding:2}}>
-            <Animatable.Text style={styles.XpText}>
-                {xpPoints}
-            </Animatable.Text>
+            <SafeAreaView style={{ padding: 2 }}>
+                <Animatable.Text style={styles.XpText}>
+                    {xpPoints}
+                </Animatable.Text>
             </SafeAreaView>
         )
     }
@@ -113,10 +113,10 @@ export default function App({navigation}) {
 
     const renderTextBatutas = () => {
         return (
-            <SafeAreaView style={{padding:2}}>
-            <Animatable.Text style={styles.BatutasText}>
-                {batutaPoints}
-            </Animatable.Text>
+            <SafeAreaView style={{ padding: 2 }}>
+                <Animatable.Text style={styles.BatutasText}>
+                    {batutaPoints}
+                </Animatable.Text>
             </SafeAreaView>
         )
     }
@@ -124,7 +124,7 @@ export default function App({navigation}) {
     const renderBatuta = () => {
         return (
             <Animatable.View style={styles.BatutaContainer}>
-                 <IconImages
+                <IconImages
                     source={iconeBatuta}>
                 </IconImages>
             </Animatable.View>
@@ -144,35 +144,37 @@ export default function App({navigation}) {
 
     const renderDivisor = () => {
         return (
-            <Div2>
-                <DivisorLine2></DivisorLine2>
-            </Div2>
+            <DivisorLine2></DivisorLine2>
         )
     }
 
-// Numero da licao
-    const renderLessonTitle = (lesson) => {
+    // Numero da licao
+    const renderLessonTitle = (lesson, show) => {
         switch (lesson) {
             case ("1"):
-                return (
-                    <Animatable.View style={styles.LessonContainer}>
-                    <IconLesson source={licao01}></IconLesson>
-                    </Animatable.View>
-                )
-                break;
+                if (show == "true") {
+                    return (
+                        <Animatable.View style={styles.LessonContainer}>
+                            <IconLesson source={licao01}></IconLesson>
+                        </Animatable.View>
+                    )
+                    break;
+                }
             case ("2"):
-                return (
-                    <Animatable.View style={styles.LessonContainer}>
-                    <IconLesson source={licao02}></IconLesson>
-                    </Animatable.View>
-                )
-                break;   
+                if (show == "true") {
+                    return (
+                        <Animatable.View style={styles.LessonContainer}>
+                            <IconLesson source={licao02}></IconLesson>
+                        </Animatable.View>
+                    )
+                    break;
+                }
         }
     }
 
     const renderStar = () => {
         return (
-            <FastImage style={{height:35, width:35, marginRight: '5%'}}
+            <FastImage style={{ height: 35, width: 35, marginRight: '5%' }}
                 source={iconeStar}>
             </FastImage>
         )
@@ -193,10 +195,10 @@ export default function App({navigation}) {
         outputRange: [percent, '100%']
     })
     const renderProgressBar = (progress) => {
-        if(progress==1){
+        if (progress == "true") {
             return (
-                <Animatable.View style={styles.ProgressContainer}> 
-                    {renderStar()}   
+                <Animatable.View style={styles.ProgressContainer}>
+                    {renderStar()}
                     <SafeAreaView style={{
                         width: '75%',
                         height: 20,
@@ -228,136 +230,137 @@ export default function App({navigation}) {
         }
     }
 
-    const renderIconsFeeds = (icons) =>{
-            switch (icons) {
-                case ("feed01.png"):
-                    return (
-                        <ImagesFeeds
+    const renderIconsFeeds = (icons) => {
+        switch (icons) {
+            case ("feed01.png"):
+                return (
+                    <ImagesFeeds
                         source={feed01}>
-                        </ImagesFeeds>
-                    )
+                    </ImagesFeeds>
+                )
                 break;
-                case ("feed02.png"):
-                    return (
-                        <ImagesFeeds
+            case ("feed02.png"):
+                return (
+                    <ImagesFeeds
                         source={feed02}>
-                        </ImagesFeeds>
-                    )
+                    </ImagesFeeds>
+                )
                 break;
-                case ("feed03.png"):
-                    return (
-                        <ImagesFeeds
+            case ("feed03.png"):
+                return (
+                    <ImagesFeeds
                         source={feed03}>
-                        </ImagesFeeds>
-                    )
+                    </ImagesFeeds>
+                )
                 break;
-                case ("feed04.png"):
-                    return (
-                        <ImagesFeeds
+            case ("feed04.png"):
+                return (
+                    <ImagesFeeds
                         source={feed04}>
-                        </ImagesFeeds>
-                    )
+                    </ImagesFeeds>
+                )
                 break;
-                case ("feed05.png"):
-                    return (
-                        <ImagesFeeds
+            case ("feed05.png"):
+                return (
+                    <ImagesFeeds
                         source={feed05}>
-                        </ImagesFeeds>
-                    )
+                    </ImagesFeeds>
+                )
                 break;
-                case ("feed06.png"):
-                    return (
-                        <ImagesFeeds
+            case ("feed06.png"):
+                return (
+                    <ImagesFeeds
                         source={feed06}>
-                        </ImagesFeeds>
-                    )
+                    </ImagesFeeds>
+                )
                 break;
-            }        
+        }
     }
 
     const renderBoardFeeds = (title) => {
         return (
-                <SafeAreaView style={styles.ShadowBoardFeeds}>
-                    <SafeAreaView style={styles.BoardFeeds}
-                        bg={"#fff"}
-                        bordercolor={'#D2D3D5'}
-                        borderwidth={'2px'}>
-                        <Text style={styles.TextFeeds}>
-                            {title}
-                        </Text>
-                    </SafeAreaView>
+            <SafeAreaView style={styles.ShadowBoardFeeds}>
+                <SafeAreaView style={styles.BoardFeeds}
+                    bg={"#fff"}
+                    bordercolor={'#D2D3D5'}
+                    borderwidth={'2px'}>
+                    <Text style={styles.TextFeeds}>
+                        {title}
+                    </Text>
                 </SafeAreaView>
+            </SafeAreaView>
         )
     }
 
-    const renderFeeds = () =>{
-        return(
-               <FlatList
+    const renderFeeds = () => {
+        return (
+            <FlatList
                 data={allFeeds}
-                keyExtractor={ item => String(item._id)}
-                renderItem={({item}) =><ListItem lesson = {item.lesson} feeds = {item.items} progress = {item.progress}></ListItem>}
-                ></FlatList>
+                keyExtractor={item => String(item._id)}
+                renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items} progress={item.progress} show={item.show_lesson}></ListItem>}
+            ></FlatList>
         )
     }
 
-    function ListItem ({lesson, feeds, progress}){
-        return(
+    function ListItem({ lesson, feeds, progress, show }) {
+        return (
 
             <Animatable.View style={styles.BgContainer}
-            animation={currentOptionSelected == null
-                ? "bounceInUp"
-                : ""}>
-                {renderLessonTitle(lesson)} 
+                animation={currentOptionSelected == null
+                    ? "bounceInUp"
+                    : ""}>
+                {renderLessonTitle(lesson, show)}
                 {renderProgressBar(progress)}
-                <ImageBackground 
-                style={styles.ViolaoBackground}
-                source={bgViolao}>   
-                        {feeds.map((item) => 
+                <ImageBackground
+                    style={styles.ViolaoBackground}
+                    source={bgViolao}>
+                    {feeds.map((item) =>
                         <TouchableWithoutFeedback
-                            onPress={() => selected(item.title) }
+                            onPress={() => selected(item.title)}
                             key={item.id}
                         >
                             <Animatable.View
-                            animation=""
-                            useNativeDriver
-                            ref={ButtonRef}
-                            style={{alignItems: 'center',
-                            margin:'2%', //backgroundColor:'yellow'
-                            }}
+                                animation=""
+                                useNativeDriver
+                                ref={ButtonRef}
+                                style={{
+                                    alignItems: 'center',
+                                    margin: '2%', //backgroundColor:'yellow'
+                                }}
                             >
                                 {renderIconsFeeds(item.icon)}
                                 {renderBoardFeeds(item.title)}
                                 {renderModal(item.title, item.content)}
-                            </Animatable.View>    
-                        </TouchableWithoutFeedback>     
-                        )}          
-                </ImageBackground>         
+                            </Animatable.View>
+                        </TouchableWithoutFeedback>
+                    )}
+                </ImageBackground>
             </Animatable.View>
         )
     }
 
-    const Modal = (title, content) =>{
+    const Modal = (title, content) => {
         return (
-         
-               <Animatable.View
+
+            <Animatable.View
                 animation={"bounceIn"}
-                useNativeDriver    
+                useNativeDriver
                 style={{
-                width: '115%',
-                height: '25%',
-                backgroundColor: "#236A79",
-                alignItems: 'center',
-                justifyContent: 'space-around',
-                alignContent: 'center',
-                flexDirection: 'column',
-                borderRadius: 10,
-               
-            }}>
+                    width: '115%',
+                    height: '25%',
+                    backgroundColor: "#236A79",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10,
+
+                }}>
                 <TouchableWithoutFeedback
-                 onPress={()=>navigation.navigate(content)}
+                    onPress={() => navigation.navigate(content)}
                 >
                     <SafeAreaView style={{
-                        
+
                         width: '90%',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -369,12 +372,12 @@ export default function App({navigation}) {
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
                             padding: 5
                         }}>CONTEÚDO</Text>
-                        
+
                     </SafeAreaView>
                 </TouchableWithoutFeedback>
-                
+
                 <TouchableWithoutFeedback
-                onPress={()=>navigation.navigate(title)}
+                    onPress={() => navigation.navigate(title)}
                 >
                     <SafeAreaView style={{
                         width: '90%',
@@ -387,76 +390,76 @@ export default function App({navigation}) {
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
                             padding: 5
-                        }}>PRATICAR + <Text style={{color: "#FDC500"}}>10XP</Text></Text>   
+                        }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
                     </SafeAreaView>
                 </TouchableWithoutFeedback>
 
-            </Animatable.View>  
-    
-           
+            </Animatable.View>
+
+
         )
-          
+
     }
 
     const renderModal = (title, content) => {
-        if( showOptionsModal == true &&  currentOptionSelected == "Introdução" && title ==  "Introdução")  {
+        if (showOptionsModal == true && currentOptionSelected == "Introdução" && title == "Introdução") {
             return (
-               Modal(title, content)
-            )  
+                Modal(title, content)
+            )
         }
 
-        if(showOptionsModal == true &&  currentOptionSelected == "Sons Musicais" && title ==  "Sons Musicais"){
+        if (showOptionsModal == true && currentOptionSelected == "Sons Musicais" && title == "Sons Musicais") {
             return (
                 Modal(title, content)
-             )  
-        } 
+            )
+        }
 
-        if(showOptionsModal == true &&  currentOptionSelected == "Pauta e Clave" && title ==  "Pauta e Clave"){
+        if (showOptionsModal == true && currentOptionSelected == "Pauta e Clave" && title == "Pauta e Clave") {
             return (
                 Modal(title, content)
-             )  
-        } 
+            )
+        }
 
-        if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Notas" && title ==  "Figuras de Notas"){
+        if (showOptionsModal == true && currentOptionSelected == "Figuras de Notas" && title == "Figuras de Notas") {
             return (
                 Modal(title, content)
-             )  
-        } 
+            )
+        }
 
-        if(showOptionsModal == true &&  currentOptionSelected == "Figuras de Pausas" && title ==  "Figuras de Pausas"){
+        if (showOptionsModal == true && currentOptionSelected == "Figuras de Pausas" && title == "Figuras de Pausas") {
             return (
                 Modal(title, content)
-             )  
-        } 
+            )
+        }
 
-        if(showOptionsModal == true &&  currentOptionSelected == "Duração dos Valores" && title ==  "Duração dos Valores"){
+        if (showOptionsModal == true && currentOptionSelected == "Duração dos Valores" && title == "Duração dos Valores") {
             return (
                 Modal(title, content)
-             )  
+            )
         }
     }
 
     const selected = (selecao) => {
         setTitulo(selecao)
         setCurrentOptionSelected(selecao)
-        if(contador%2==0){
+        if (contador % 2 == 0) {
             setShowOptionsModal(true)
-        }else{
+        } else {
             setShowOptionsModal(false)
         }
-       setContador(contador + 1)
+        setContador(contador + 1)
     }
-   
 
-{/* Main */ }
+
+    {/* Main */ }
     return (
         <Bgcontainer>
-        {/* Header*/}
-        {renderHeader()}
-        {/* Divisor */}
-        {renderDivisor()}
-        {/* Feeds */}
-        {renderFeeds()}
+            {/* Header*/}
+            {renderHeader()}
+            {/* Divisor */}
+            {renderDivisor()}
+            {/* Feeds */}
+            {renderFeeds()}
         </Bgcontainer>
     );
 }
@@ -496,10 +499,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         //backgroundColor: 'red',
     },
-    ViolaoBackground: { 
+    ViolaoBackground: {
         resizeMode: 'contain',
-        height:411, 
-        width:360, 
+        height: 411,
+        width: 360,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -513,7 +516,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         //backgroundColor: 'green'
     },
-    LifeContainer: {   
+    LifeContainer: {
         alignItems: 'center',
         alignContent: 'center',
         flexDirection: 'row',
@@ -571,8 +574,8 @@ const styles = StyleSheet.create({
     },
     ShadowBoardFeeds: {
         marginTop: '5%',
-        width:162,
-        height:45,
+        width: 162,
+        height: 45,
         alignItems: 'center',
         alignContent: 'center',
         borderRadius: 8,
@@ -588,7 +591,7 @@ const styles = StyleSheet.create({
         borderColor: '#D2D3D5',
         borderWidth: 2
     },
-    TextFeeds:{
+    TextFeeds: {
         fontSize: 25,
         fontFamily: 'GothamCondensed-Medium',
         textAlign: 'center'

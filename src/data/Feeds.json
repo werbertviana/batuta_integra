@@ -2,8 +2,9 @@
     "feeds": [
         {
             "lesson": "1",
+            "show_lesson": "true",
             "_id": "1",
-            "progress": "1",
+            "progress": "true",
             "items": [
                 {
                     "id": "1",
@@ -27,8 +28,9 @@
         },
         {
             "lesson": "2",
+            "show_lesson": "true",
             "_id":"2",
-            "progress": "1",
+            "progress": "true",
             "items": [
                 {
                     "id": "4",
