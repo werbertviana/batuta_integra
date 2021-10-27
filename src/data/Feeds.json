@@ -9,21 +9,21 @@
                 {
                     "id": "1",
                     "title": "Introdução",
-                    "iconOn": "feed01.png",
+                    "iconOn": "feed01On.png",
                     "iconOff": "feed01Off.png",
                     "content": "1"
                 },
                 {
                     "id": "2",
                     "title": "Sons Musicais",
-                    "iconOn": "feed02.png",
+                    "iconOn": "feed02On.png",
                     "iconOff": "feed02Off.png",
                     "content": "2"
                 },
                 {
                     "id": "3",
                     "title": "Pauta e Clave",
-                    "iconOn": "feed03.png",
+                    "iconOn": "feed03On.png",
                     "iconOff": "feed03Off.png",
                     "content": "3"
                 }
@@ -38,21 +38,21 @@
                 {
                     "id": "4",
                     "title": "Figuras de Notas",
-                    "iconOn": "feed04.png",
+                    "iconOn": "feed04On.png",
                     "iconOff": "feed04Off.png",
                     "content": "4"
                 },
                 {
                     "id": "5",
                     "title": "Figuras de Pausas",
-                    "iconOn": "feed05.png",
+                    "iconOn": "feed05On.png",
                     "iconOff": "feed05Off.png",
                     "content": "5"
                 },
                 {
                     "id": "6",
                     "title": "Duração dos Valores",
-                    "iconOn": "feed06.png",
+                    "iconOn": "feed06On.png",
                     "iconOff": "feed06Off.png",
                     "content": "6"
                 }

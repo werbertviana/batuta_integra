@@ -33,12 +33,18 @@ import licao01 from '../../assets/imgs/licao01.png';
 import licao02 from '../../assets/imgs/licao02.png';
 import iconeStar from '../../assets/imgs/iconeStar.png';
 import bgViolao from '../../assets/imgs/bgViolao.png';
-import feed01 from '../../assets/imgs/feed01.png';
-import feed02 from '../../assets/imgs/feed02.png';
-import feed03 from '../../assets/imgs/feed03.png';
-import feed04 from '../../assets/imgs/feed04.png';
-import feed05 from '../../assets/imgs/feed05.png';
-import feed06 from '../../assets/imgs/feed06.png';
+import feed01On from '../../assets/imgs/feed01On.png';
+import feed02On from '../../assets/imgs/feed02On.png';
+import feed03On from '../../assets/imgs/feed03On.png';
+import feed04On from '../../assets/imgs/feed04On.png';
+import feed05On from '../../assets/imgs/feed05On.png';
+import feed06On from '../../assets/imgs/feed06On.png';
+import feed01Off from '../../assets/imgs/feed01Off.png';
+import feed02Off from '../../assets/imgs/feed02Off.png';
+import feed03Off from '../../assets/imgs/feed03Off.png';
+import feed04Off from '../../assets/imgs/feed04Off.png';
+import feed05Off from '../../assets/imgs/feed05Off.png';
+import feed06Off from '../../assets/imgs/feed06Off.png';
 
 // import dados estáticos
 import staticFeeds from '../../data/Feeds.json'
@@ -232,45 +238,45 @@ export default function App({ navigation }) {
 
     const renderIconsFeeds = (iconOn, iconOff) => {
         switch (iconOn) {
-            case ("feed01.png"):
+            case ("feed01On.png"):
                 return (
                     <ImagesFeeds
-                        source={feed01}>
+                        source={feed01On}>
                     </ImagesFeeds>
                 )
                 break;
-            case ("feed02.png"):
+            case ("feed02On.png"):
                 return (
                     <ImagesFeeds
-                        source={feed02}>
+                        source={feed02On}>
                     </ImagesFeeds>
                 )
                 break;
-            case ("feed03.png"):
+            case ("feed03On.png"):
                 return (
                     <ImagesFeeds
-                        source={feed03}>
+                        source={feed03On}>
                     </ImagesFeeds>
                 )
                 break;
-            case ("feed04.png"):
+            case ("feed04On.png"):
                 return (
                     <ImagesFeeds
-                        source={feed04}>
+                        source={feed04On}>
                     </ImagesFeeds>
                 )
                 break;
-            case ("feed05.png"):
+            case ("feed05On.png"):
                 return (
                     <ImagesFeeds
-                        source={feed05}>
+                        source={feed05On}>
                     </ImagesFeeds>
                 )
                 break;
-            case ("feed06.png"):
+            case ("feed06On.png"):
                 return (
                     <ImagesFeeds
-                        source={feed06}>
+                        source={feed06On}>
                     </ImagesFeeds>
                 )
                 break;
