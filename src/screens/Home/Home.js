@@ -201,7 +201,9 @@ export default function App({ navigation }) {
                             </SafeAreaView>
                         )
                     }
+                    break;
                 }
+
         }
     }
 
@@ -428,17 +430,20 @@ export default function App({ navigation }) {
             <FlatList
                 data={allFeeds}
                 keyExtractor={item => String(item._id)}
-                renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items} progress={item.progress} show={item.show_lesson}></ListItem>}
+                renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
+                    progress={item.progress} show={item.show_lesson}></ListItem>}
             ></FlatList>
         )
     }
 
+
     function ListItem({ lesson, feeds, progress, show }) {
+
         return (
 
             <Animatable.View style={styles.BgContainer}
                 animation={currentOptionSelected == null
-                    ? "bounceInUp"
+                    ? ""
                     : ""}>
                 {renderLessonTitle(lesson, show)}
                 {renderProgressBar(progress)}
@@ -468,6 +473,7 @@ export default function App({ navigation }) {
                 </ImageBackground>
             </Animatable.View>
         )
+
     }
 
 
@@ -586,7 +592,7 @@ export default function App({ navigation }) {
                     animation={"bounceIn"}
                     useNativeDriver
                     style={{
-                        marginTop: '2%',
+
                         width: 300,
                         height: 100,
                         backgroundColor: "#D2D3D5",
