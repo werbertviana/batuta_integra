@@ -45,7 +45,7 @@ import feed03Off from '../../assets/imgs/feed03Off.png';
 import feed04Off from '../../assets/imgs/feed04Off.png';
 import feed05Off from '../../assets/imgs/feed05Off.png';
 import feed06Off from '../../assets/imgs/feed06Off.png';
-
+import lock from '../../assets/imgs/lock.png';
 // import dados estáticos
 import staticFeeds from '../../data/Feeds.json'
 
@@ -63,7 +63,7 @@ export default function App({ navigation }) {
     const [batutaPoints, setbatutaPoints] = useState(0);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [contador, setContador] = useState(0);
-    const [titulo, setTitulo] = useState(null);
+    const [textColor, setTextColor] = useState(false);
     const [showFeed01, setShowFeed01] = useState(true);
     const [showFeed02, setShowFeed02] = useState(false);
     const [showFeed03, setShowFeed03] = useState(false);
@@ -353,11 +353,15 @@ export default function App({ navigation }) {
                     bg={"#fff"}
                     bordercolor={'#D2D3D5'}
                     borderwidth={'2px'}>
-                    <Text style={styles.TextFeeds}>
+                    <Text style={{
+                        fontSize: 25,
+                        fontFamily: 'GothamCondensed-Medium',
+                        textAlign: 'center'
+                    }} >
                         {title}
                     </Text>
                 </SafeAreaView>
-            </SafeAreaView>
+            </SafeAreaView >
         )
     }
 
@@ -384,7 +388,7 @@ export default function App({ navigation }) {
                     style={styles.ViolaoBackground}
                     source={bgViolao}>
                     {feeds.map((item) =>
-                    
+
                         <TouchableWithoutFeedback
                             onPress={() => selected(item.title)}
                             key={item.id}
@@ -410,13 +414,15 @@ export default function App({ navigation }) {
     }
 
 
-    const Modal = (title, content) => {
+    const Modal01 = (title, content) => {
+
         return (
 
             <Animatable.View
                 animation={"bounceIn"}
                 useNativeDriver
                 style={{
+                    marginTop: '2%',
                     width: '115%',
                     height: '25%',
                     backgroundColor: "#236A79",
@@ -466,55 +472,111 @@ export default function App({ navigation }) {
                 </TouchableWithoutFeedback>
 
             </Animatable.View>
-
-
         )
-
     }
 
+    const Modal02 = (title, content) => {
+
+        return (
+
+            <Animatable.View
+                animation={"bounceIn"}
+                useNativeDriver
+                style={{
+                    marginTop: '2%',
+                    width: '115%',
+                    height: '25%',
+                    backgroundColor: "#D2D3D5",
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                    flexDirection: 'column',
+                    borderRadius: 10,
+
+                }}>
+                {/* <Text style={{
+                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 20,
+                }}>PRATIQUE UMA {"\n"} ATIVIDADE ANTERIOR!</Text> */}
+
+                <SafeAreaView style={{
+
+                    width: '90%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#A9ABAE',
+                    borderRadius: 5,
+                    marginBottom: 4,
+                }}>
+                    {/* <FastImage source={lock} style={{width: 20 , height: 10}}>
+                    </FastImage> */}
+                    <Text style={{
+                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 25,
+                        padding: 5
+                    }}>BLOQUEADA</Text>
+
+                </SafeAreaView>
+
+            </Animatable.View>
+        )
+    }
+
+
     const renderModal = (title, content) => {
-        if (showOptionsModal == true && currentOptionSelected == "Introdução"
-            && title == "Introdução" && showFeed01 == true) {
-            return (
-                Modal(title, content)
-            )
+        if (currentOptionSelected == "Introdução" && title == "Introdução" && showOptionsModal == true) {
+            if (showFeed01 == true) {
+                return (
+                    Modal01(title, content)
+                )
+            } else {
+                return (
+                    Modal02(title, content)
+                )
+            }
+
         }
 
-        if (showOptionsModal == true && currentOptionSelected == "Sons Musicais"
-            && title == "Sons Musicais" && showFeed02 == true) {
-            return (
-                Modal(title, content)
-            )
+        if (currentOptionSelected == "Sons Musicais" && title == "Sons Musicais" && showOptionsModal == true) {
+            if (showFeed02 == true) {
+
+                return (
+                    Modal01(title, content)
+                )
+            } else {
+                return (
+                    Modal02(title, content)
+                )
+            }
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Pauta e Clave" && title == "Pauta e Clave") {
             return (
-                Modal(title, content)
+                Modal01(title, content)
             )
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Figuras de Notas" && title == "Figuras de Notas") {
             return (
-                Modal(title, content)
+                Modal01(title, content)
             )
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Figuras de Pausas" && title == "Figuras de Pausas") {
             return (
-                Modal(title, content)
+                Modal01(title, content)
             )
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Duração dos Valores" && title == "Duração dos Valores") {
             return (
-                Modal(title, content)
+                Modal01(title, content)
             )
         }
     }
 
-    const selected = (selecao) => {
-        setTitulo(selecao)
-        setCurrentOptionSelected(selecao)
+    const selected = (title, content) => {
+        setCurrentOptionSelected(title)
+
+
         if (contador % 2 == 0) {
             setShowOptionsModal(true)
         } else {
