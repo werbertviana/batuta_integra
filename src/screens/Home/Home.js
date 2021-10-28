@@ -494,9 +494,9 @@ export default function App({ navigation }) {
                     borderRadius: 10,
 
                 }}>
-                {/* <Text style={{
+                <Text style={{
                     fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 20,
-                }}>PRATIQUE UMA {"\n"} ATIVIDADE ANTERIOR!</Text> */}
+                }}>PRATIQUE A ATIVIDADE {"\n"}PENDENTE!</Text> 
 
                 <SafeAreaView style={{
 
@@ -508,7 +508,7 @@ export default function App({ navigation }) {
                     marginBottom: 4,
                 }}>
                     {/* <FastImage source={lock} style={{width: 20 , height: 10}}>
-                    </FastImage> */}
+                    </FastImage>  */}
                     <Text style={{
                         fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 25,
                         padding: 5
@@ -549,27 +549,55 @@ export default function App({ navigation }) {
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Pauta e Clave" && title == "Pauta e Clave") {
-            return (
-                Modal01(title, content)
-            )
+            if (showFeed03 == true) {
+
+                return (
+                    Modal01(title, content)
+                )
+            } else {
+                return (
+                    Modal02(title, content)
+                )
+            }
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Figuras de Notas" && title == "Figuras de Notas") {
-            return (
-                Modal01(title, content)
-            )
+            if (showFeed04 == true) {
+
+                return (
+                    Modal01(title, content)
+                )
+            } else {
+                return (
+                    Modal02(title, content)
+                )
+            }
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Figuras de Pausas" && title == "Figuras de Pausas") {
-            return (
-                Modal01(title, content)
-            )
+            if (showFeed05 == true) {
+
+                return (
+                    Modal01(title, content)
+                )
+            } else {
+                return (
+                    Modal02(title, content)
+                )
+            }
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Duração dos Valores" && title == "Duração dos Valores") {
-            return (
-                Modal01(title, content)
-            )
+            if (showFeed06 == true) {
+
+                return (
+                    Modal01(title, content)
+                )
+            } else {
+                return (
+                    Modal02(title, content)
+                )
+            }
         }
     }
 
