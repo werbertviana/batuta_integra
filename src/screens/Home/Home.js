@@ -55,10 +55,12 @@ import staticFeeds from '../../data/Feeds.json'
 export default function App({ navigation }) {
 
     const allFeeds = staticFeeds.feeds;
-    const feed01=[];
+    const feed01 = [];
     feed01.push(allFeeds[0]);
-    
-   
+
+    const feed02 = [];
+    feed02.push(allFeeds[1]);
+
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const ButtonRef = useRef()
@@ -429,10 +431,21 @@ export default function App({ navigation }) {
         )
     }
 
-    const renderFeeds = () => {
+    const renderFeeds01 = () => {
         return (
             <FlatList
                 data={feed01}
+                keyExtractor={item => String(item._id)}
+                renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
+                    progress={item.progress} show={item.show_lesson}></ListItem>}
+            ></FlatList>
+        )
+    }
+
+    const renderFeeds02 = () => {
+        return (
+            <FlatList
+                data={feed02}
                 keyExtractor={item => String(item._id)}
                 renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
                     progress={item.progress} show={item.show_lesson}></ListItem>}
@@ -744,7 +757,8 @@ export default function App({ navigation }) {
             {/* Divisor */}
             {renderDivisor()}
             {/* Feeds */}
-            {renderFeeds()}
+            {renderFeeds01()}
+           
         </Bgcontainer>
     );
 }
