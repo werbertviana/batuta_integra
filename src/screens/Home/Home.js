@@ -14,6 +14,7 @@ import Modal from 'react-native-modal';
 import FastImage from 'react-native-fast-image';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 // import estilos
 import {
     Bgcontainer,
@@ -31,6 +32,7 @@ import iconeBatutas from '../../assets/imgs/iconeBatutas.png';
 import iconeBatuta from '../../assets/imgs/iconeBatuta.png';
 import licao01 from '../../assets/imgs/licao01.png';
 import licao02 from '../../assets/imgs/licao02.png';
+import licao02Off from '../../assets/imgs/licao02Off.png';
 import iconeStar from '../../assets/imgs/iconeStar.png';
 import bgViolao from '../../assets/imgs/bgViolao.png';
 import feed01On from '../../assets/imgs/feed01On.png';
@@ -62,6 +64,7 @@ export default function App({ navigation }) {
     const [xpPoints, setxpPoints] = useState(0);
     const [batutaPoints, setbatutaPoints] = useState(0);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
+    const [showOptionsModal2, setShowOptionsModal2] = useState(false);
     const [contador, setContador] = useState(0);
     const [textColor, setTextColor] = useState(false);
     const [showFeed01, setShowFeed01] = useState(true);
@@ -175,13 +178,29 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("2"):
-                if (show == "true") {
+                if (show == "true" && showFeed03 == true) {
                     return (
                         <Animatable.View style={styles.LessonContainer}>
                             <IconLesson source={licao02}></IconLesson>
                         </Animatable.View>
                     )
+
                     break;
+                } else {
+                    if (show == "true" && showFeed03 == false) {
+                        return (
+                            <SafeAreaView style={{ alignItems: 'center' }}>
+                                <TouchableWithoutFeedback
+                                    onPress={() => selected2()}
+                                >
+                                    <Animatable.View style={styles.LessonContainer}>
+                                        <IconLesson source={licao02Off}></IconLesson>
+                                    </Animatable.View>
+                                </TouchableWithoutFeedback>
+                                {Modal03()}
+                            </SafeAreaView>
+                        )
+                    }
                 }
         }
     }
@@ -513,7 +532,7 @@ export default function App({ navigation }) {
         )
     }
 
-    const Modal02 = (title, content) => {
+    const Modal02 = () => {
 
         return (
 
@@ -524,7 +543,7 @@ export default function App({ navigation }) {
                     marginTop: '2%',
                     width: '115%',
                     height: '25%',
-                    backgroundColor: "#E6E7E8",
+                    backgroundColor: "#D2D3D5",
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     alignContent: 'center',
@@ -541,7 +560,7 @@ export default function App({ navigation }) {
                     width: '90%',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor: '#BDBFC1',
+                    backgroundColor: '#A9ABAE',
                     borderRadius: 5,
                     marginBottom: 4,
                 }}>
@@ -558,6 +577,51 @@ export default function App({ navigation }) {
         )
     }
 
+    const Modal03 = () => {
+        if (showOptionsModal2 == true) {
+
+            return (
+
+                <Animatable.View
+                    animation={"bounceIn"}
+                    useNativeDriver
+                    style={{
+                        marginTop: '2%',
+                        width: 300,
+                        height: 100,
+                        backgroundColor: "#D2D3D5",
+                        alignItems: 'center',
+                        justifyContent: 'space-around',
+                        alignContent: 'center',
+                        flexDirection: 'column',
+                        borderRadius: 10,
+
+                    }}>
+                    <Text style={{
+                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 22,
+                    }}>É PRECISO TERMINAR A LIÇÃO ANTERIOR!</Text>
+
+                    <SafeAreaView style={{
+
+                        width: '90%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: '#A9ABAE',
+                        borderRadius: 5,
+                        marginBottom: 4,
+                    }}>
+                        <Text style={{
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 25,
+                            padding: 5
+                        }}>BLOQUEADO</Text>
+
+                    </SafeAreaView>
+
+                </Animatable.View>
+            )
+        }
+    }
+
 
     const renderModal = (title, content) => {
         if (currentOptionSelected == "Introdução" && title == "Introdução" && showOptionsModal == true) {
@@ -567,7 +631,7 @@ export default function App({ navigation }) {
                 )
             } else {
                 return (
-                    Modal02(title, content)
+                    Modal02()
                 )
             }
 
@@ -581,7 +645,7 @@ export default function App({ navigation }) {
                 )
             } else {
                 return (
-                    Modal02(title, content)
+                    Modal02()
                 )
             }
         }
@@ -594,7 +658,7 @@ export default function App({ navigation }) {
                 )
             } else {
                 return (
-                    Modal02(title, content)
+                    Modal02()
                 )
             }
         }
@@ -607,7 +671,7 @@ export default function App({ navigation }) {
                 )
             } else {
                 return (
-                    Modal02(title, content)
+                    Modal02()
                 )
             }
         }
@@ -620,7 +684,7 @@ export default function App({ navigation }) {
                 )
             } else {
                 return (
-                    Modal02(title, content)
+                    Modal02()
                 )
             }
         }
@@ -633,15 +697,14 @@ export default function App({ navigation }) {
                 )
             } else {
                 return (
-                    Modal02(title, content)
+                    Modal02()
                 )
             }
         }
     }
 
-    const selected = (title, content) => {
+    const selected = (title) => {
         setCurrentOptionSelected(title)
-
 
         if (contador % 2 == 0) {
             setShowOptionsModal(true)
@@ -650,6 +713,17 @@ export default function App({ navigation }) {
         }
         setContador(contador + 1)
     }
+
+    const selected2 = () => {
+
+        if (contador % 2 == 0) {
+            setShowOptionsModal2(true)
+        } else {
+            setShowOptionsModal2(false)
+        }
+        setContador(contador + 1)
+    }
+
 
 
     {/* Main */ }
