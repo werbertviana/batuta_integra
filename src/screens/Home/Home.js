@@ -524,7 +524,7 @@ export default function App({ navigation }) {
                     marginTop: '2%',
                     width: '115%',
                     height: '25%',
-                    backgroundColor: "#D2D3D5",
+                    backgroundColor: "#E6E7E8",
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     alignContent: 'center',
@@ -541,7 +541,7 @@ export default function App({ navigation }) {
                     width: '90%',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor: '#A9ABAE',
+                    backgroundColor: '#BDBFC1',
                     borderRadius: 5,
                     marginBottom: 4,
                 }}>
