@@ -57,8 +57,8 @@ export default function App({ navigation }) {
     const allFeeds = staticFeeds.feeds;
     const feed01 = [];
     feed01.push(allFeeds[0]);
-
     const feed02 = [];
+    feed02.push(allFeeds[0]);
     feed02.push(allFeeds[1]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -757,8 +757,7 @@ export default function App({ navigation }) {
             {/* Divisor */}
             {renderDivisor()}
             {/* Feeds */}
-            {renderFeeds01()}
-           
+            {renderFeeds02()}
         </Bgcontainer>
     );
 }

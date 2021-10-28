@@ -24,12 +24,12 @@
                     "icon": "feed03.png",
                     "content": "3"
                 }
-            ]    
+            ]
         },
         {
             "lesson": "2",
             "show_lesson": "true",
-            "_id":"2",
+            "_id": "2",
             "progress": "true",
             "items": [
                 {
@@ -50,7 +50,7 @@
                     "icon": "feed06.png",
                     "content": "6"
                 }
-            ]    
+            ]
         }
     ]
 }
