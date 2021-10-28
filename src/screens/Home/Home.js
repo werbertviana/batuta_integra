@@ -244,21 +244,27 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderIconsFeeds = (icon) => {
+    const renderIconsFeeds = (icon, title) => {
         switch (icon) {
             case ("feed01.png"):
                 if (showFeed01 == true) {
                     return (
-                        <ImagesFeeds
-                            source={feed01On}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed01On}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed01)}
+                        </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <ImagesFeeds
-                            source={feed01Off}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed01Off}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed01)}
+                        </SafeAreaView>
                     )
                     break;
                 }
@@ -266,87 +272,117 @@ export default function App({ navigation }) {
             case ("feed02.png"):
                 if (showFeed02 == true) {
                     return (
-                        <ImagesFeeds
-                            source={feed02On}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed02On}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed02)}
+                        </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <ImagesFeeds
-                            source={feed02Off}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed02Off}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed02)}
+                        </SafeAreaView>
                     )
                     break;
                 }
             case ("feed03.png"):
                 if (showFeed03 == true) {
                     return (
-                        <ImagesFeeds
-                            source={feed03On}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed03On}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed03)}
+                        </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <ImagesFeeds
-                            source={feed03Off}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed03Off}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed03)}
+                        </SafeAreaView>
                     )
                     break;
                 }
             case ("feed04.png"):
                 if (showFeed04 == true) {
                     return (
-                        <ImagesFeeds
-                            source={feed04On}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed04On}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed04)}
+                        </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <ImagesFeeds
-                            source={feed04Off}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed04Off}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed04)}
+                        </SafeAreaView>
                     )
                     break;
                 }
             case ("feed05.png"):
                 if (showFeed05 == true) {
                     return (
-                        <ImagesFeeds
-                            source={feed05On}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed05On}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed05)}
+                        </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <ImagesFeeds
-                            source={feed05Off}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed05Off}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed05)}
+                        </SafeAreaView>
                     )
                     break;
                 }
             case ("feed06.png"):
                 if (showFeed06 == true) {
                     return (
-                        <ImagesFeeds
-                            source={feed06On}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed06On}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed06)}
+                        </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <ImagesFeeds
-                            source={feed06Off}>
-                        </ImagesFeeds>
+                        <SafeAreaView style={{ alignItems: 'center' }}>
+                            <ImagesFeeds
+                                source={feed06Off}>
+                            </ImagesFeeds>
+                            {renderBoardFeeds(title, showFeed06)}
+                        </SafeAreaView>
                     )
                     break;
                 }
         }
     }
 
-    const renderBoardFeeds = (title) => {
+    const renderBoardFeeds = (title, show) => {
         return (
             <SafeAreaView style={styles.ShadowBoardFeeds}>
                 <SafeAreaView style={styles.BoardFeeds}
@@ -356,7 +392,10 @@ export default function App({ navigation }) {
                     <Text style={{
                         fontSize: 25,
                         fontFamily: 'GothamCondensed-Medium',
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        color: show == true
+                            ? "black"
+                            : "#727376"
                     }} >
                         {title}
                     </Text>
@@ -402,8 +441,7 @@ export default function App({ navigation }) {
                                     margin: '2%', //backgroundColor:'yellow'
                                 }}
                             >
-                                {renderIconsFeeds(item.icon)}
-                                {renderBoardFeeds(item.title)}
+                                {renderIconsFeeds(item.icon, item.title)}
                                 {renderModal(item.title, item.content)}
                             </Animatable.View>
                         </TouchableWithoutFeedback>
@@ -496,7 +534,7 @@ export default function App({ navigation }) {
                 }}>
                 <Text style={{
                     fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 20,
-                }}>PRATIQUE A ATIVIDADE {"\n"}PENDENTE!</Text> 
+                }}>PRATIQUE A ATIVIDADE {"\n"}PENDENTE!</Text>
 
                 <SafeAreaView style={{
 
@@ -512,7 +550,7 @@ export default function App({ navigation }) {
                     <Text style={{
                         fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 25,
                         padding: 5
-                    }}>BLOQUEADA</Text>
+                    }}>BLOQUEADO</Text>
 
                 </SafeAreaView>
 
