@@ -77,7 +77,7 @@ export default function App({ navigation }) {
     const [showFeed01, setShowFeed01] = useState(true);
     const [showFeed02, setShowFeed02] = useState(false);
     const [showFeed03, setShowFeed03] = useState(false);
-    const [showFeed04, setShowFeed04] = useState(false);
+    const [showFeed04, setShowFeed04] = useState(true);
     const [showFeed05, setShowFeed05] = useState(false);
     const [showFeed06, setShowFeed06] = useState(false);
 
@@ -242,7 +242,7 @@ export default function App({ navigation }) {
                 outputRange: [percent, '100%']
             })
             return (
-                 renderProgressBar(progresso) 
+                 renderProgressBar(progresso, progressAnim, progressAnim2) 
             )
         }
     }
