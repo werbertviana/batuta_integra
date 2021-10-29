@@ -74,6 +74,7 @@ export default function App({ navigation }) {
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [showOptionsModal2, setShowOptionsModal2] = useState(false);
     const [contador, setContador] = useState(0);
+    const [contador2, setContador2] = useState(0);
     const [textColor, setTextColor] = useState(false);
     const [showFeed01, setShowFeed01] = useState(true);
     const [showFeed02, setShowFeed02] = useState(false);
@@ -417,7 +418,7 @@ export default function App({ navigation }) {
 
 
     const renderAllFeeds = () => {
-        if (showFeed01 == true && showFeed03 == false) {
+        if (showFeed01 == true && showFeed04 == false) {
             return (
                 <FlatList
                     data={feeds01}
@@ -428,7 +429,7 @@ export default function App({ navigation }) {
             )
         }
 
-        if (showFeed01 == true && showFeed03 == true) {
+        if (showFeed01 == true && showFeed04 == true) {
             return (
                 <FlatList
                     data={feeds02}
@@ -442,7 +443,7 @@ export default function App({ navigation }) {
     }
 
     const renderBlockTitle = () => {
-        if (showFeed03 == false) {
+        if (showFeed04 == false) {
             return (
                 <SafeAreaView style={{ alignItems: 'center', marginTop: 20 }}>
                     <TouchableWithoutFeedback
@@ -745,12 +746,12 @@ export default function App({ navigation }) {
 
     const selected2 = () => {
 
-        if (contador % 2 == 0) {
+        if (contador2 % 2 == 0) {
             setShowOptionsModal2(true)
         } else {
             setShowOptionsModal2(false)
         }
-        setContador(contador + 1)
+        setContador2(contador2 + 1)
     }
 
 
