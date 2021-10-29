@@ -75,8 +75,8 @@ export default function App({ navigation }) {
     const [contador2, setContador2] = useState(0);
     const [textColor, setTextColor] = useState(false);
     const [showFeed01, setShowFeed01] = useState(true);
-    const [showFeed02, setShowFeed02] = useState(true);
-    const [showFeed03, setShowFeed03] = useState(true);
+    const [showFeed02, setShowFeed02] = useState(false);
+    const [showFeed03, setShowFeed03] = useState(false);
     const [showFeed04, setShowFeed04] = useState(false);
     const [showFeed05, setShowFeed05] = useState(false);
     const [showFeed06, setShowFeed06] = useState(false);
@@ -204,21 +204,50 @@ export default function App({ navigation }) {
         )
     }
 
+
     {/* Config Progress Bar */ }
-    const [progress, setProgress] = useState(new Animated.Value(0));
-    let percent = ((100) / 3);
-    percent = Math.round(percent)
-    percent.toString()
-    percent = percent + "%"
-    const progressAnim2 = progress.interpolate({
-        inputRange: [0, 3 - 1],
-        outputRange: ['90%', '90%']
-    })
-    const progressAnim = progress.interpolate({
-        inputRange: [0, 3 - 1],
-        outputRange: [percent, '100%']
-    })
-    const renderProgressBar = (progress) => {
+
+    const ProgressBar = (lesson, progresso) => {
+        if (lesson == "1") {
+            const [progress, setProgress] = useState(new Animated.Value(0));
+            let percent = ((100) / feeds01[0].items.length);
+            percent = Math.round(percent)
+            percent.toString()
+            percent = percent + "%"
+            const progressAnim2 = progress.interpolate({
+                inputRange: [0, feeds01[0].items.length - 1],
+                outputRange: ['90%', '90%']
+            })
+            const progressAnim = progress.interpolate({
+                inputRange: [0, feeds01[0].items.length - 1],
+                outputRange: [percent, '100%']
+            })
+            return (
+                renderProgressBar(progresso, progressAnim, progressAnim2) 
+            )
+        }
+
+        if (lesson == "2") {
+            const [progress, setProgress] = useState(new Animated.Value(0));
+            let percent = ((100) / feeds02[1].items.length);
+            percent = Math.round(percent)
+            percent.toString()
+            percent = percent + "%"
+            const progressAnim2 = progress.interpolate({
+                inputRange: [0, feeds02[1].items.length - 1],
+                outputRange: ['90%', '90%']
+            })
+            const progressAnim = progress.interpolate({
+                inputRange: [0, feeds02[1].items.length - 1],
+                outputRange: [percent, '100%']
+            })
+            return (
+                 renderProgressBar(progresso) 
+            )
+        }
+    }
+
+    const renderProgressBar = (progress, progressAnim, progressAnim2) => {
         if (progress == "true") {
             return (
                 <Animatable.View style={styles.ProgressContainer}>
@@ -463,7 +492,7 @@ export default function App({ navigation }) {
                     ? ""
                     : ""}>
                 {renderLessonTitle(lesson, show)}
-                {renderProgressBar(progress)}
+                {ProgressBar(lesson, progress)}
                 <ImageBackground
                     style={styles.ViolaoBackground}
                     source={bgViolao}>
