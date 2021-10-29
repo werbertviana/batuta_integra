@@ -77,7 +77,7 @@ export default function App({ navigation }) {
     const [showFeed01, setShowFeed01] = useState(true);
     const [showFeed02, setShowFeed02] = useState(true);
     const [showFeed03, setShowFeed03] = useState(true);
-    const [showFeed04, setShowFeed04] = useState(true);
+    const [showFeed04, setShowFeed04] = useState(false);
     const [showFeed05, setShowFeed05] = useState(false);
     const [showFeed06, setShowFeed06] = useState(false);
 
@@ -414,7 +414,6 @@ export default function App({ navigation }) {
         )
     }
 
-
     const renderAllFeeds = () => {
         if (showFeed01 == true && showFeed04 == false) {
             return (
@@ -443,7 +442,7 @@ export default function App({ navigation }) {
     const renderBlockTitle = () => {
         if (showFeed04 == false) {
             return (
-                <SafeAreaView style={{ alignItems: 'center', marginTop: 20 }}>
+                <SafeAreaView style={{ alignItems: 'center', marginTop: 30 }}>
 
                     <Animatable.View style={styles.LessonContainer}>
                         <IconLesson source={licao02Off}></IconLesson>
