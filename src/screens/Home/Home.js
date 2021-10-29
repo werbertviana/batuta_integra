@@ -75,11 +75,11 @@ export default function App({ navigation }) {
     const [contador2, setContador2] = useState(0);
     const [textColor, setTextColor] = useState(false);
     const [showFeed01, setShowFeed01] = useState(true);
-    const [showFeed02, setShowFeed02] = useState(false);
-    const [showFeed03, setShowFeed03] = useState(false);
+    const [showFeed02, setShowFeed02] = useState(true);
+    const [showFeed03, setShowFeed03] = useState(true);
     const [showFeed04, setShowFeed04] = useState(true);
-    const [showFeed05, setShowFeed05] = useState(false);
-    const [showFeed06, setShowFeed06] = useState(false);
+    const [showFeed05, setShowFeed05] = useState(true);
+    const [showFeed06, setShowFeed06] = useState(true);
 
 
     const Stack = createStackNavigator();
@@ -204,7 +204,6 @@ export default function App({ navigation }) {
         )
     }
 
-
     {/* Config Progress Bar */ }
 
     const ProgressBar = (lesson, progresso) => {
@@ -222,8 +221,24 @@ export default function App({ navigation }) {
                 inputRange: [0, feeds01[0].items.length - 1],
                 outputRange: [percent, '100%']
             })
+            
+            if (showFeed02==true && showFeed03==false) {
+                Animated.timing(progress, {
+                    toValue: 1,
+                    duration: 1000,
+                    useNativeDriver: false
+                }).start();
+            }
+            if (showFeed03==true) {
+                Animated.timing(progress, {
+                    toValue: 2,
+                    duration: 1000,
+                    useNativeDriver: false
+                }).start();
+            }
+            
             return (
-                renderProgressBar(progresso, progressAnim, progressAnim2) 
+                renderProgressBar01(progresso, progressAnim, progressAnim2)
             )
         }
 
@@ -241,13 +256,63 @@ export default function App({ navigation }) {
                 inputRange: [0, feeds02[1].items.length - 1],
                 outputRange: [percent, '100%']
             })
+            if (showFeed05==true) {
+                Animated.timing(progress, {
+                    toValue: 1,
+                    duration: 1000,
+                    useNativeDriver: false
+                }).start();
+            }
+            if (showFeed06==true) {
+                Animated.timing(progress, {
+                    toValue: 2,
+                    duration: 1000,
+                    useNativeDriver: false
+                }).start();
+            }
             return (
-                 renderProgressBar(progresso, progressAnim, progressAnim2) 
+                renderProgressBar02(progresso, progressAnim, progressAnim2)
             )
         }
     }
 
-    const renderProgressBar = (progress, progressAnim, progressAnim2) => {
+    const renderProgressBar01 = (progress, progressAnim, progressAnim2) => {
+        if (progress == "true") {
+            return (
+                <Animatable.View style={styles.ProgressContainer}>
+                    {renderStar()}
+                    <SafeAreaView style={{
+                        width: '75%',
+                        height: 20,
+                        borderRadius: 5,
+                        backgroundColor: '#d1d3d5',
+
+                    }}>
+                        <Animated.View style={[{
+                            height: 20,
+                            borderRadius: 5,
+                            backgroundColor: '#61BE4B',
+                        }, {
+                            width: progressAnim
+                        }]}>
+                            <Animated.View style={[{
+                                height: 6,
+                                borderRadius: 1,
+                                marginTop: 4,
+                                alignSelf: 'center',
+                                backgroundColor: '#A1D995',
+                            }, {
+                                width: progressAnim2
+                            }]}>
+                            </Animated.View>
+                        </Animated.View>
+                    </SafeAreaView>
+                </Animatable.View>
+            )
+        }
+    }
+
+    const renderProgressBar02 = (progress, progressAnim, progressAnim2) => {
         if (progress == "true") {
             return (
                 <Animatable.View style={styles.ProgressContainer}>
