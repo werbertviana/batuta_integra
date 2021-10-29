@@ -61,8 +61,6 @@ export default function App({ navigation }) {
     feeds02.push(allFeeds[0]);
     feeds02.push(allFeeds[1]);
 
-
-
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const ButtonRef = useRef()
@@ -77,9 +75,9 @@ export default function App({ navigation }) {
     const [contador2, setContador2] = useState(0);
     const [textColor, setTextColor] = useState(false);
     const [showFeed01, setShowFeed01] = useState(true);
-    const [showFeed02, setShowFeed02] = useState(false);
-    const [showFeed03, setShowFeed03] = useState(false);
-    const [showFeed04, setShowFeed04] = useState(false);
+    const [showFeed02, setShowFeed02] = useState(true);
+    const [showFeed03, setShowFeed03] = useState(true);
+    const [showFeed04, setShowFeed04] = useState(true);
     const [showFeed05, setShowFeed05] = useState(false);
     const [showFeed06, setShowFeed06] = useState(false);
 
@@ -446,14 +444,11 @@ export default function App({ navigation }) {
         if (showFeed04 == false) {
             return (
                 <SafeAreaView style={{ alignItems: 'center', marginTop: 20 }}>
-                    <TouchableWithoutFeedback
-                        onPress={() => selected2()}
-                    >
-                        <Animatable.View style={styles.LessonContainer}>
-                            <IconLesson source={licao02Off}></IconLesson>
-                        </Animatable.View>
-                    </TouchableWithoutFeedback>
-                    {Modal03()}
+
+                    <Animatable.View style={styles.LessonContainer}>
+                        <IconLesson source={licao02Off}></IconLesson>
+                    </Animatable.View>
+
                 </SafeAreaView>
             )
         }
