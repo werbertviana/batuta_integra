@@ -55,11 +55,13 @@ import staticFeeds from '../../data/Feeds.json'
 export default function App({ navigation }) {
 
     const allFeeds = staticFeeds.feeds;
-    const feed01 = [];
-    feed01.push(allFeeds[0]);
-    const feed02 = [];
-    feed02.push(allFeeds[0]);
-    feed02.push(allFeeds[1]);
+    const feeds01 = [];
+    feeds01.push(allFeeds[0]);
+    const feeds02 = [];
+    feeds02.push(allFeeds[0]);
+    feeds02.push(allFeeds[1]);
+
+
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
@@ -184,32 +186,14 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("2"):
-                if (show == "true" && showFeed03 == true) {
+                if (show == "true") {
                     return (
                         <Animatable.View style={styles.LessonContainer}>
                             <IconLesson source={licao02}></IconLesson>
                         </Animatable.View>
                     )
-
-                    break;
-                } else {
-                    if (show == "true" && showFeed03 == false) {
-                        return (
-                            <SafeAreaView style={{ alignItems: 'center' }}>
-                                <TouchableWithoutFeedback
-                                    onPress={() => selected2()}
-                                >
-                                    <Animatable.View style={styles.LessonContainer}>
-                                        <IconLesson source={licao02Off}></IconLesson>
-                                    </Animatable.View>
-                                </TouchableWithoutFeedback>
-                                {Modal03()}
-                            </SafeAreaView>
-                        )
-                    }
                     break;
                 }
-
         }
     }
 
@@ -431,29 +415,47 @@ export default function App({ navigation }) {
         )
     }
 
-    const renderFeeds01 = () => {
-        return (
-            <FlatList
-                data={feed01}
-                keyExtractor={item => String(item._id)}
-                renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
-                    progress={item.progress} show={item.show_lesson}></ListItem>}
-            ></FlatList>
-        )
-    }
-
-    const renderFeeds02 = () => {
-        return (
-            <FlatList
-                data={feed02}
-                keyExtractor={item => String(item._id)}
-                renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
-                    progress={item.progress} show={item.show_lesson}></ListItem>}
-            ></FlatList>
-        )
-    }
 
     const renderAllFeeds = () => {
+        if (showFeed01 == true && showFeed03 == false) {
+            return (
+                <FlatList
+                    data={feeds01}
+                    keyExtractor={item => String(item._id)}
+                    renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
+                        progress={item.progress} show={item.show_lesson}></ListItem>}
+                ></FlatList>
+            )
+        }
+
+        if (showFeed01 == true && showFeed03 == true) {
+            return (
+                <FlatList
+                    data={feeds02}
+                    keyExtractor={item => String(item._id)}
+                    renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
+                        progress={item.progress} show={item.show_lesson}></ListItem>}
+                ></FlatList>
+            )
+        }
+
+    }
+
+    const renderBlockTitle = () => {
+        if (showFeed03 == false) {
+            return (
+                <SafeAreaView style={{ alignItems: 'center', marginTop: 20 }}>
+                    <TouchableWithoutFeedback
+                        onPress={() => selected2()}
+                    >
+                        <Animatable.View style={styles.LessonContainer}>
+                            <IconLesson source={licao02Off}></IconLesson>
+                        </Animatable.View>
+                    </TouchableWithoutFeedback>
+                    {Modal03()}
+                </SafeAreaView>
+            )
+        }
     }
 
 
@@ -491,6 +493,7 @@ export default function App({ navigation }) {
                         </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
+                {renderBlockTitle()}
             </Animatable.View>
         )
 
@@ -760,7 +763,8 @@ export default function App({ navigation }) {
             {/* Divisor */}
             {renderDivisor()}
             {/* Feeds */}
-            {renderFeeds02()}
+            {renderAllFeeds()}
+
         </Bgcontainer>
     );
 }
