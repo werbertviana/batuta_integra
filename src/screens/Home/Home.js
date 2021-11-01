@@ -78,6 +78,7 @@ export default function App({ navigation }) {
     const [showFeed04, setShowFeed04] = useState(true);
     const [showFeed05, setShowFeed05] = useState(false);
     const [showFeed06, setShowFeed06] = useState(false);
+    const [modalTeste, setModalTeste] = useState(false);
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
 
@@ -354,26 +355,28 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderIconsFeeds = (icon, title) => {
+    const renderIconsFeeds = (icon, title, content) => {
         switch (icon) {
             case ("feed01.png"):
                 if (showFeed01 == true) {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center'}}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
                                 source={feed01On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed01)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed01Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed01)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
@@ -383,21 +386,23 @@ export default function App({ navigation }) {
                 if (showFeed02 == true) {
                     setxpPoints(5);
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
                                 source={feed02On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed02)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed02Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed02)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
@@ -406,21 +411,23 @@ export default function App({ navigation }) {
                 if (showFeed03 == true) {
                     setxpPoints(10);
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed03On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed03)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed03Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed03)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
@@ -430,21 +437,23 @@ export default function App({ navigation }) {
                     setxpPoints(15);
                     setBatutaPoints(1);
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed04On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed04)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed04Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed04)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
@@ -452,21 +461,23 @@ export default function App({ navigation }) {
             case ("feed05.png"):
                 if (showFeed05 == true) {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed05On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed05)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed05Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed05)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
@@ -474,21 +485,23 @@ export default function App({ navigation }) {
             case ("feed06.png"):
                 if (showFeed06 == true) {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed06On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed06)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
                 } else {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center', position:'relative', zIndex:1 }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed06Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeed06)}
+                            {renderModal(title, content)}
                         </SafeAreaView>
                     )
                     break;
@@ -559,9 +572,7 @@ export default function App({ navigation }) {
 
 
     function ListItem({ lesson, feeds, progress, show }) {
-
         return (
-
             <SafeAreaView style={styles.BgContainer}>
                 {renderLessonTitle(lesson, show)}
                 {ProgressBar(lesson, progress)}
@@ -574,23 +585,13 @@ export default function App({ navigation }) {
                             onPress={() => selected(item.title)}
                             key={item.id}
                         >
-                            <SafeAreaView
-                                style={{
-                                    alignItems: 'center',
-                                    margin: '2%', //backgroundColor: 'yellow'                                 
-                                }}
-                            >
-                                {renderIconsFeeds(item.icon, item.title)}
-                                {renderModal(item.title, item.content)}
-                            </SafeAreaView>
+                            {renderIconsFeeds(item.icon, item.title, item.content)}
                         </TouchableWithoutFeedback>
                     )}
-
                 </ImageBackground>
                 {renderBlockTitle()}
             </SafeAreaView>
         )
-
     }
 
 
@@ -610,7 +611,7 @@ export default function App({ navigation }) {
                     justifyContent: 'space-around',
                     alignContent: 'center',
                     flexDirection: 'column',
-                    borderRadius: 10, 
+                    borderRadius: 10,
                 }}>
                 <TouchableWithoutFeedback
                     onPress={() => navigation.navigate(content)}
@@ -744,6 +745,69 @@ export default function App({ navigation }) {
         }
     }
 
+    const Modal04 = (title, content) => {
+        return (
+            <Modal isVisible={modalTeste}
+                backdropColor={''}
+                coverScreen={false}
+                onBackdropPress={() => setModalTeste(false)}
+                style={{ alignItems: 'center' }}
+                animationIn={'bounceIn'}
+                useNativeDriver
+            >
+                <SafeAreaView
+                    style={{
+                        width: 180,
+                        height: 100,
+                        backgroundColor: "#236A79",
+                        alignItems: 'center',
+                        justifyContent: 'space-around',
+                        alignContent: 'center',
+                        flexDirection: 'column',
+                        borderRadius: 10,
+                    }}>
+                    <TouchableWithoutFeedback
+                        onPress={() => navigation.navigate(content)}
+                    >
+                        <SafeAreaView style={{
+
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#3CB1C7',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                padding: 5
+                            }}>CONTEÚDO</Text>
+
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                    <TouchableWithoutFeedback
+                        onPress={() => navigation.navigate(title)}
+                    >
+                        <SafeAreaView style={{
+                            width: '90%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            margin: 2
+                        }}>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                padding: 5
+                            }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
+                        </SafeAreaView>
+                    </TouchableWithoutFeedback>
+
+                </SafeAreaView>
+            </Modal>
+        )
+    }
 
     const renderModal = (title, content) => {
         if (currentOptionSelected == "Introdução" && title == "Introdução" && showOptionsModal == true) {
@@ -825,6 +889,87 @@ export default function App({ navigation }) {
         }
     }
 
+    const renderModal02 = (title, content) => {
+        if (currentOptionSelected == "Introdução" && title == "Introdução" && modalTeste == true) {
+            if (showFeed01 == true) {
+                return (
+                    Modal04(title, content)
+                )
+            } else {
+                return (
+                    Modal02()
+                )
+            }
+
+        }
+
+        if (currentOptionSelected == "Sons Musicais" && title == "Sons Musicais" && modalTeste == true) {
+            if (showFeed02 == true) {
+
+                return (
+                    Modal04(title, content)
+                )
+            } else {
+                return (
+                    Modal02()
+                )
+            }
+        }
+
+        if (modalTeste == true && currentOptionSelected == "Pauta e Clave" && title == "Pauta e Clave") {
+            if (showFeed03 == true) {
+
+                return (
+                    Modal04(title, content)
+                )
+            } else {
+                return (
+                    Modal02()
+                )
+            }
+        }
+
+        if (modalTeste == true && currentOptionSelected == "Figuras de Notas" && title == "Figuras de Notas") {
+            if (showFeed04 == true) {
+
+                return (
+                    Modal04(title, content)
+                )
+            } else {
+                return (
+                    Modal02()
+                )
+            }
+        }
+
+        if (modalTeste == true && currentOptionSelected == "Figuras de Pausas" && title == "Figuras de Pausas") {
+            if (showFeed05 == true) {
+
+                return (
+                    Modal04(title, content)
+                )
+            } else {
+                return (
+                    Modal02()
+                )
+            }
+        }
+
+        if (modalTeste == true && currentOptionSelected == "Duração dos Valores" && title == "Duração dos Valores") {
+            if (showFeed06 == true) {
+
+                return (
+                    Modal04(title, content)
+                )
+            } else {
+                return (
+                    Modal02()
+                )
+            }
+        }
+    }
+
+
     const selected = (title) => {
         setCurrentOptionSelected(title)
 
@@ -846,6 +991,14 @@ export default function App({ navigation }) {
         setContador2(contador2 + 1)
     }
 
+    const selected3 = (title) => {
+
+        setCurrentOptionSelected(title)
+
+        setModalTeste(true)
+
+    }
+
 
 
     {/* Main */ }
@@ -857,7 +1010,6 @@ export default function App({ navigation }) {
             {renderDivisor()}
             {/* Feeds */}
             {renderAllFeeds()}
-
         </Bgcontainer>
     );
 }
