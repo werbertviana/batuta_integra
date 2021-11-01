@@ -588,6 +588,7 @@ export default function App({ navigation }) {
                         </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
+                {/*{renderModal02("Sons Musicais", "2")}*/}
                 {renderBlockTitle()}
             </SafeAreaView>
         )
@@ -745,67 +746,197 @@ export default function App({ navigation }) {
     }
 
     const Modal04 = (title, content) => {
-        return (
-            <Modal isVisible={modalTeste}
-                backdropColor={''}
-                coverScreen={false}
-                onBackdropPress={() => setModalTeste(false)}
-                style={{ alignItems: 'center' }}
-                animationIn={'bounceIn'}
-                useNativeDriver
-            >
-                <SafeAreaView
-                    style={{
-                        width: 180,
-                        height: 100,
-                        backgroundColor: "#236A79",
-                        alignItems: 'center',
-                        justifyContent: 'space-around',
-                        alignContent: 'center',
-                        flexDirection: 'column',
-                        borderRadius: 10,
-                    }}>
-                    <TouchableWithoutFeedback
-                        onPress={() => navigation.navigate(content)}
-                    >
-                        <SafeAreaView style={{
-
-                            width: '90%',
-                            justifyContent: 'center',
+        if (title == "Introdução") {
+            return (
+                <Modal isVisible={modalTeste}
+                    backdropColor={''}
+                    coverScreen={false}
+                    onBackdropPress={() => setModalTeste(false)}
+                    style={{ marginTop: 260 }}
+                    animationIn={'bounceIn'}
+                    useNativeDriver
+                >
+                    <SafeAreaView
+                        style={{
+                            width: 180,
+                            height: 100,
+                            backgroundColor: "#236A79",
                             alignItems: 'center',
-                            backgroundColor: '#3CB1C7',
-                            borderRadius: 5,
-                            margin: 2
+                            justifyContent: 'space-around',
+                            alignContent: 'center',
+                            flexDirection: 'column',
+                            borderRadius: 10,
                         }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                padding: 5
-                            }}>CONTEÚDO</Text>
+                        <TouchableWithoutFeedback
+                            onPress={() => navigation.navigate(content)}
+                        >
+                            <SafeAreaView style={{
 
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#3CB1C7',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                    padding: 5
+                                }}>CONTEÚDO</Text>
 
-                    <TouchableWithoutFeedback
-                        onPress={() => navigation.navigate(title)}
-                    >
-                        <SafeAreaView style={{
-                            width: '90%',
-                            justifyContent: 'center',
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback
+                            onPress={() => navigation.navigate(title)}
+                        >
+                            <SafeAreaView style={{
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#fff',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                    padding: 5
+                                }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
+
+                    </SafeAreaView>
+                </Modal>
+            )
+        }
+
+        if (title == "Sons Musicais") {
+            return (
+                <Modal isVisible={modalTeste}
+                    backdropColor={''}
+                    coverScreen={false}
+                    onBackdropPress={() => setModalTeste(false)}
+                    style={{ marginTop: 260, marginLeft: 200 }}
+                    animationIn={'bounceIn'}
+                    useNativeDriver
+                >
+                    <SafeAreaView
+                        style={{
+                            width: 180,
+                            height: 100,
+                            backgroundColor: "#236A79",
                             alignItems: 'center',
-                            backgroundColor: '#fff',
-                            borderRadius: 5,
-                            margin: 2
+                            justifyContent: 'space-around',
+                            alignContent: 'center',
+                            flexDirection: 'column',
+                            borderRadius: 10,
                         }}>
-                            <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                padding: 5
-                            }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
-                        </SafeAreaView>
-                    </TouchableWithoutFeedback>
+                        <TouchableWithoutFeedback
+                            onPress={() => navigation.navigate(content)}
+                        >
+                            <SafeAreaView style={{
 
-                </SafeAreaView>
-            </Modal>
-        )
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#3CB1C7',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                    padding: 5
+                                }}>CONTEÚDO</Text>
+
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback
+                            onPress={() => navigation.navigate(title)}
+                        >
+                            <SafeAreaView style={{
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#fff',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                    padding: 5
+                                }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
+
+                    </SafeAreaView>
+                </Modal>
+            )
+        }
+
+        if (title == "Pauta e Clave") {
+            return (
+                <Modal isVisible={modalTeste}
+                    backdropColor={''}
+                    coverScreen={false}
+                    onBackdropPress={() => setModalTeste(false)}
+                    style={{ marginTop: 610, marginLeft: 110 }}
+                    animationIn={'bounceIn'}
+                    useNativeDriver
+                >
+                    <SafeAreaView
+                        style={{
+                            width: 180,
+                            height: 100,
+                            backgroundColor: "#236A79",
+                            alignItems: 'center',
+                            justifyContent: 'space-around',
+                            alignContent: 'center',
+                            flexDirection: 'column',
+                            borderRadius: 10,
+                        }}>
+                        <TouchableWithoutFeedback
+                            onPress={() => navigation.navigate(content)}
+                        >
+                            <SafeAreaView style={{
+
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#3CB1C7',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
+                                    padding: 5
+                                }}>CONTEÚDO</Text>
+
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
+
+                        <TouchableWithoutFeedback
+                            onPress={() => navigation.navigate(title)}
+                        >
+                            <SafeAreaView style={{
+                                width: '90%',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#fff',
+                                borderRadius: 5,
+                                margin: 2
+                            }}>
+                                <Text style={{
+                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
+                                    padding: 5
+                                }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
+                            </SafeAreaView>
+                        </TouchableWithoutFeedback>
+
+                    </SafeAreaView>
+                </Modal>
+            )
+        }
     }
 
     const renderModal = (title, content) => {
@@ -991,11 +1122,8 @@ export default function App({ navigation }) {
     }
 
     const selected3 = (title) => {
-
         setCurrentOptionSelected(title)
-
         setModalTeste(true)
-
     }
 
     {/* Main */ }
