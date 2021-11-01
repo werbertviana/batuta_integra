@@ -19,7 +19,9 @@ import staticSlides from '../../../data/Conteudo/Licao01/Intro.json'
 
 //import estilos
 import {
-    DivisorLine2
+    DivisorLine2,
+    DivisorLine,
+    Div
 } from '../../../components/style'
 
 export default function App({ navigation }) {
@@ -70,6 +72,10 @@ export default function App({ navigation }) {
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides03} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
                         </FastImage>
+                        <Div>
+                            <DivisorLine></DivisorLine>
+                            <DivisorLine></DivisorLine>
+                        </Div>
                     </SafeAreaView>
                 )
                 break;
@@ -85,6 +91,10 @@ export default function App({ navigation }) {
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides04} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
                         </FastImage>
+                        <Div>
+                            <DivisorLine></DivisorLine>
+                            <DivisorLine></DivisorLine>
+                        </Div>
                     </SafeAreaView>
                 )
                 break;
@@ -100,6 +110,10 @@ export default function App({ navigation }) {
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides05} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
                         </FastImage>
+                        <Div>
+                            <DivisorLine></DivisorLine>
+                            <DivisorLine></DivisorLine>
+                        </Div>
                     </SafeAreaView>
                 )
                 break;
