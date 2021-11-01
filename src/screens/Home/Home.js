@@ -19,7 +19,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {
     Bgcontainer,
     DivisorLine2,
-    Div2,
     ImagesFeeds,
     IconLesson,
     IconImages
@@ -998,8 +997,6 @@ export default function App({ navigation }) {
         setModalTeste(true)
 
     }
-
-
 
     {/* Main */ }
     return (
