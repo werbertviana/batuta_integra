@@ -3,6 +3,9 @@ import React from 'react';
 import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
+//import Sound from 'react-native-sound';
+
+
 
 //import images
 import Introducao from '../../../assets/imgs/introducao.png';
