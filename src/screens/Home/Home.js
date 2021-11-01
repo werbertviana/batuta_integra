@@ -67,8 +67,6 @@ export default function App({ navigation }) {
     const Button2Ref = useRef()
     const Button3Ref = useRef()
     const [lifePoints, setlifePoints] = useState(5);
-    const [xpPoints, setxpPoints] = useState(0);
-    const [batutaPoints, setbatutaPoints] = useState(0);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [showOptionsModal2, setShowOptionsModal2] = useState(false);
     const [contador, setContador] = useState(0);
@@ -80,7 +78,10 @@ export default function App({ navigation }) {
     const [showFeed04, setShowFeed04] = useState(true);
     const [showFeed05, setShowFeed05] = useState(false);
     const [showFeed06, setShowFeed06] = useState(false);
+    let [xpPoints, setxpPoints] = useState(0);
+    let [batutaPoints, setBatutaPoints] = useState(0);
 
+    
 
     const Stack = createStackNavigator();
 
@@ -380,6 +381,7 @@ export default function App({ navigation }) {
 
             case ("feed02.png"):
                 if (showFeed02 == true) {
+                    setxpPoints(5);
                     return (
                         <SafeAreaView style={{ alignItems: 'center' }}>
                             <ImagesFeeds
@@ -402,6 +404,7 @@ export default function App({ navigation }) {
                 }
             case ("feed03.png"):
                 if (showFeed03 == true) {
+                    setxpPoints(10);
                     return (
                         <SafeAreaView style={{ alignItems: 'center' }}>
                             <ImagesFeeds
@@ -424,6 +427,8 @@ export default function App({ navigation }) {
                 }
             case ("feed04.png"):
                 if (showFeed04 == true) {
+                    setxpPoints(15);
+                    setBatutaPoints(1);
                     return (
                         <SafeAreaView style={{ alignItems: 'center' }}>
                             <ImagesFeeds
