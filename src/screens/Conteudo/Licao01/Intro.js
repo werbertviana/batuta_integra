@@ -12,6 +12,7 @@ import slides03 from '../../../assets/imgs/Conteudo/Licao01/slides03.png';
 import slides04 from '../../../assets/imgs/Conteudo/Licao01/slides04.png';
 import slides05 from '../../../assets/imgs/Conteudo/Licao01/slides05.png';
 import iconeX from '../../../assets/imgs/iconeX.png';
+import Elo from '../../../assets/imgs/iconeElo.png';
 
 
 //import slides estaticos
@@ -21,8 +22,10 @@ import staticSlides from '../../../data/Conteudo/Licao01/Intro.json'
 import {
     DivisorLine2,
     DivisorLine,
-    Div
+    Div,
+    ImageNivel
 } from '../../../components/style'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
 
@@ -62,7 +65,7 @@ export default function App({ navigation }) {
                 break;
             case ("slides03.png"):
                 return (
-                    <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ height:'95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
@@ -74,6 +77,10 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
+                            <TouchableWithoutFeedback>
+                                <ImageNivel source={Elo}>
+                                </ImageNivel>
+                            </TouchableWithoutFeedback>
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -81,7 +88,7 @@ export default function App({ navigation }) {
                 break;
             case ("slides04.png"):
                 return (
-                    <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ height:'95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
@@ -93,6 +100,10 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
+                            <TouchableWithoutFeedback>
+                                <ImageNivel source={Elo}>
+                                </ImageNivel>
+                            </TouchableWithoutFeedback>
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -100,7 +111,7 @@ export default function App({ navigation }) {
                 break;
             case ("slides05.png"):
                 return (
-                    <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ height:'95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
@@ -112,6 +123,10 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
+                            <TouchableWithoutFeedback>
+                                <ImageNivel source={Elo}>
+                                </ImageNivel>
+                            </TouchableWithoutFeedback>
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
