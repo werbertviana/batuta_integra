@@ -871,7 +871,6 @@ export default function App({navigation}) {
             {/* Buttons */}
             <ButtonContainer>
                 {renderJumpButton()}
-                {renderElos()}
                 {renderButtonConfirm()}
             </ButtonContainer>
             {/* Show Right Score Modal */}

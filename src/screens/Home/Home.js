@@ -81,7 +81,7 @@ export default function App({ navigation }) {
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
 
-    
+
 
     const Stack = createStackNavigator();
 
@@ -359,7 +359,7 @@ export default function App({ navigation }) {
             case ("feed01.png"):
                 if (showFeed01 == true) {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center'}}>
                             <ImagesFeeds
                                 source={feed01On}>
                             </ImagesFeeds>
@@ -484,7 +484,7 @@ export default function App({ navigation }) {
                     break;
                 } else {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center' }}>
+                        <SafeAreaView style={{ alignItems: 'center', position:'relative', zIndex:1 }}>
                             <ImagesFeeds
                                 source={feed06Off}>
                             </ImagesFeeds>
@@ -577,7 +577,7 @@ export default function App({ navigation }) {
                             <SafeAreaView
                                 style={{
                                     alignItems: 'center',
-                                    margin: '2%', //backgroundColor:'yellow'
+                                    margin: '2%', //backgroundColor: 'yellow'                                 
                                 }}
                             >
                                 {renderIconsFeeds(item.icon, item.title)}
@@ -585,6 +585,7 @@ export default function App({ navigation }) {
                             </SafeAreaView>
                         </TouchableWithoutFeedback>
                     )}
+
                 </ImageBackground>
                 {renderBlockTitle()}
             </SafeAreaView>
@@ -609,8 +610,7 @@ export default function App({ navigation }) {
                     justifyContent: 'space-around',
                     alignContent: 'center',
                     flexDirection: 'column',
-                    borderRadius: 10,
-
+                    borderRadius: 10, 
                 }}>
                 <TouchableWithoutFeedback
                     onPress={() => navigation.navigate(content)}
