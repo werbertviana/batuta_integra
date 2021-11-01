@@ -410,7 +410,7 @@ export default function App({ navigation }) {
                 if (showFeed03 == true) {
                     setxpPoints(10);
                     return (
-                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%'}}>
                             <ImagesFeeds
                                 source={feed03On}>
                             </ImagesFeeds>
@@ -588,7 +588,7 @@ export default function App({ navigation }) {
                         </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
-                {/*{renderModal02("Sons Musicais", "2")}*/}
+               {/* {renderModal02("Pauta e Clave", "3")}*/}
                 {renderBlockTitle()}
             </SafeAreaView>
         )
@@ -752,7 +752,7 @@ export default function App({ navigation }) {
                     backdropColor={''}
                     coverScreen={false}
                     onBackdropPress={() => setModalTeste(false)}
-                    style={{ marginTop: 260 }}
+                    style={{ marginTop: 260}}
                     animationIn={'bounceIn'}
                     useNativeDriver
                 >
@@ -880,7 +880,7 @@ export default function App({ navigation }) {
                     backdropColor={''}
                     coverScreen={false}
                     onBackdropPress={() => setModalTeste(false)}
-                    style={{ marginTop: 610, marginLeft: 110 }}
+                    style={{ marginTop: 610, marginLeft: 110, position:'relative', zIndex:50 }}
                     animationIn={'bounceIn'}
                     useNativeDriver
                 >
@@ -1172,6 +1172,8 @@ const styles = StyleSheet.create({
         marginVertical: '3%',
         width: '100%',
         alignItems: 'center',
+        position:'relative',
+        zIndex:1,
         //backgroundColor: 'red',
     },
     ViolaoBackground: {
