@@ -3,7 +3,9 @@ import React from 'react';
 import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
-//import Sound from 'react-native-sound';
+
+
+
 
 
 
@@ -31,6 +33,10 @@ import {
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
+
+    var Sound = require('react-native-sound');
+
+   
 
     const allSlides = staticSlides.slides;
 
