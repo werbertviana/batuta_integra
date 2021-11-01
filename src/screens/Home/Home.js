@@ -78,8 +78,8 @@ export default function App({ navigation }) {
     const [showFeed02, setShowFeed02] = useState(true);
     const [showFeed03, setShowFeed03] = useState(true);
     const [showFeed04, setShowFeed04] = useState(true);
-    const [showFeed05, setShowFeed05] = useState(true);
-    const [showFeed06, setShowFeed06] = useState(true);
+    const [showFeed05, setShowFeed05] = useState(false);
+    const [showFeed06, setShowFeed06] = useState(false);
 
 
     const Stack = createStackNavigator();
@@ -211,108 +211,113 @@ export default function App({ navigation }) {
             const [progress, setProgress] = useState(new Animated.Value(0));
             let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
-            percent.toString()
-            percent = percent + "%"
-            const progressAnim2 = progress.interpolate({
-                inputRange: [0, feeds01[0].items.length - 1],
-                outputRange: ['90%', '90%']
-            })
-            const progressAnim = progress.interpolate({
-                inputRange: [0, feeds01[0].items.length - 1],
-                outputRange: [percent, '100%']
-            })
-            
-            if (showFeed02==true && showFeed03==false) {
-                Animated.timing(progress, {
-                    toValue: 1,
-                    duration: 1000,
-                    useNativeDriver: false
-                }).start();
-            }
-            if (showFeed03==true) {
-                Animated.timing(progress, {
-                    toValue: 2,
-                    duration: 1000,
-                    useNativeDriver: false
-                }).start();
-            }
-            
-            return (
-                renderProgressBar01(progresso, progressAnim, progressAnim2)
-            )
-        }
 
+            if (showFeed01 == true && showFeed02 == false) {
+                let percent2 = percent
+                percent2.toString()
+                percent2 = percent2 + "%"
+                const progressAnim2 = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['90%', '90%']
+                })
+                const progressAnim = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: [percent2, '100%']
+                })
+                return (
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
+                )
+            }
+
+            if (showFeed01 == true && showFeed02 == true && showFeed03 == false) {
+                percent = percent + percent;
+                let percent2 = percent
+                percent2.toString()
+                percent2 = percent2 + "%"
+                const progressAnim2 = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['90%', '90%']
+                })
+                const progressAnim = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: [percent2, '100%']
+                })
+                return (
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
+                )
+            }
+
+            if (showFeed01 == true && showFeed02 == true && showFeed03 == true) {
+                const progressAnim2 = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['90%', '90%']
+                })
+                const progressAnim = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['100%', '100%']
+                })
+                return (
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
+                )
+            }
+        }
         if (lesson == "2") {
             const [progress, setProgress] = useState(new Animated.Value(0));
-            let percent = ((100) / feeds02[1].items.length);
+            let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
-            percent.toString()
-            percent = percent + "%"
-            const progressAnim2 = progress.interpolate({
-                inputRange: [0, feeds02[1].items.length - 1],
-                outputRange: ['90%', '90%']
-            })
-            const progressAnim = progress.interpolate({
-                inputRange: [0, feeds02[1].items.length - 1],
-                outputRange: [percent, '100%']
-            })
-            if (showFeed05==true) {
-                Animated.timing(progress, {
-                    toValue: 1,
-                    duration: 1000,
-                    useNativeDriver: false
-                }).start();
+
+            if (showFeed04 == true && showFeed05 == false) {
+                let percent2 = percent
+                percent2.toString()
+                percent2 = percent2 + "%"
+                const progressAnim2 = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['90%', '90%']
+                })
+                const progressAnim = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: [percent2, '100%']
+                })
+                return (
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
+                )
             }
-            if (showFeed06==true) {
-                Animated.timing(progress, {
-                    toValue: 2,
-                    duration: 1000,
-                    useNativeDriver: false
-                }).start();
+
+            if (showFeed04 == true && showFeed05 == true && showFeed06 == false) {
+                percent = percent + percent;
+                let percent2 = percent
+                percent2.toString()
+                percent2 = percent2 + "%"
+                const progressAnim2 = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['90%', '90%']
+                })
+                const progressAnim = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: [percent2, '100%']
+                })
+                return (
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
+                )
             }
-            return (
-                renderProgressBar02(progresso, progressAnim, progressAnim2)
-            )
+
+            if (showFeed04 == true && showFeed05 == true && showFeed06 == true) {
+                const progressAnim2 = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['90%', '90%']
+                })
+                const progressAnim = progress.interpolate({
+                    inputRange: [0, feeds01[0].items.length - 1],
+                    outputRange: ['100%', '100%']
+                })
+                return (
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
+                )
+            }
         }
     }
 
-    const renderProgressBar01 = (progress, progressAnim, progressAnim2) => {
-        if (progress == "true") {
-            return (
-                <Animatable.View style={styles.ProgressContainer}>
-                    {renderStar()}
-                    <SafeAreaView style={{
-                        width: '75%',
-                        height: 20,
-                        borderRadius: 5,
-                        backgroundColor: '#d1d3d5',
-
-                    }}>
-                        <Animated.View style={[{
-                            height: 20,
-                            borderRadius: 5,
-                            backgroundColor: '#61BE4B',
-                        }, {
-                            width: progressAnim
-                        }]}>
-                            <Animated.View style={[{
-                                height: 6,
-                                borderRadius: 1,
-                                marginTop: 4,
-                                alignSelf: 'center',
-                                backgroundColor: '#A1D995',
-                            }, {
-                                width: progressAnim2
-                            }]}>
-                            </Animated.View>
-                        </Animated.View>
-                    </SafeAreaView>
-                </Animatable.View>
-            )
-        }
-    }
-
-    const renderProgressBar02 = (progress, progressAnim, progressAnim2) => {
+    const renderProgressBar = (progress, progressAnim, progressAnim2) => {
         if (progress == "true") {
             return (
                 <Animatable.View style={styles.ProgressContainer}>
@@ -552,10 +557,7 @@ export default function App({ navigation }) {
 
         return (
 
-            <Animatable.View style={styles.BgContainer}
-                animation={currentOptionSelected == null
-                    ? ""
-                    : ""}>
+            <SafeAreaView style={styles.BgContainer}>
                 {renderLessonTitle(lesson, show)}
                 {ProgressBar(lesson, progress)}
                 <ImageBackground
@@ -567,10 +569,7 @@ export default function App({ navigation }) {
                             onPress={() => selected(item.title)}
                             key={item.id}
                         >
-                            <Animatable.View
-                                animation=""
-                                useNativeDriver
-                                ref={ButtonRef}
+                            <SafeAreaView
                                 style={{
                                     alignItems: 'center',
                                     margin: '2%', //backgroundColor:'yellow'
@@ -578,12 +577,12 @@ export default function App({ navigation }) {
                             >
                                 {renderIconsFeeds(item.icon, item.title)}
                                 {renderModal(item.title, item.content)}
-                            </Animatable.View>
+                            </SafeAreaView>
                         </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
                 {renderBlockTitle()}
-            </Animatable.View>
+            </SafeAreaView>
         )
 
     }
