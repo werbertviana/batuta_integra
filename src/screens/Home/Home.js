@@ -383,7 +383,6 @@ export default function App({ navigation }) {
 
             case ("feed02.png"):
                 if (showFeed02 == true) {
-                    setxpPoints(5);
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
@@ -408,7 +407,6 @@ export default function App({ navigation }) {
                 }
             case ("feed03.png"):
                 if (showFeed03 == true) {
-                    setxpPoints(10);
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%'}}>
                             <ImagesFeeds
@@ -433,8 +431,6 @@ export default function App({ navigation }) {
                 }
             case ("feed04.png"):
                 if (showFeed04 == true) {
-                    setxpPoints(15);
-                    setBatutaPoints(1);
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
