@@ -234,6 +234,7 @@ export default function App({ navigation }) {
         <AppIntroSlider
             renderItem={renderSlides}
             data={allSlides}
+            style={{backgroundColor:'#FFF'}}
             activeDotStyle={{
                 backgroundColor: '#96989A'
             }}
