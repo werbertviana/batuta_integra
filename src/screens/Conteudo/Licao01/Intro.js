@@ -17,7 +17,7 @@ import slides03 from '../../../assets/imgs/Conteudo/Licao01/slides03.png';
 import slides04 from '../../../assets/imgs/Conteudo/Licao01/slides04.png';
 import slides05 from '../../../assets/imgs/Conteudo/Licao01/slides05.png';
 import iconeX from '../../../assets/imgs/iconeX.png';
-import Elo from '../../../assets/imgs/iconeElo.png';
+import sound from '../../../assets/imgs/sound.png';
 
 
 //import slides estaticos
@@ -104,7 +104,7 @@ export default function App({ navigation }) {
                         <Div>
                             <DivisorLine></DivisorLine>
                             <TouchableWithoutFeedback>
-                                <ImageNivel source={Elo}>
+                                <ImageNivel source={sound}>
                                 </ImageNivel>
                             </TouchableWithoutFeedback>
                             <DivisorLine></DivisorLine>
@@ -127,7 +127,7 @@ export default function App({ navigation }) {
                         <Div>
                             <DivisorLine></DivisorLine>
                             <TouchableWithoutFeedback>
-                                <ImageNivel source={Elo}>
+                                <ImageNivel source={sound}>
                                 </ImageNivel>
                             </TouchableWithoutFeedback>
                             <DivisorLine></DivisorLine>
@@ -150,7 +150,7 @@ export default function App({ navigation }) {
                         <Div>
                             <DivisorLine></DivisorLine>
                             <TouchableWithoutFeedback>
-                                <ImageNivel source={Elo}>
+                                <ImageNivel source={sound}>
                                 </ImageNivel>
                             </TouchableWithoutFeedback>
                             <DivisorLine></DivisorLine>
