@@ -1,5 +1,5 @@
 //import bibliotecas
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
@@ -38,69 +38,80 @@ export default function App({ navigation }) {
 
     const allSlides = staticSlides.slides;
 
-    var sound;
+    var sound1;
 
-    const PlaySound = (title, url) => {
+    const PlaySound = (music) => {
 
-        if (title == "melodia") {
-            sound = new Sound(url => {
-                sound.play(() => {
-                    sound.release();
+        if (music == "melodia") {
+            sound1 = new Sound(require('../../../assets/sounds/melodia.mp3'),(error, sound) => {
+                if (error) {
+                    alert('error');
+                    return;
+                }
+                sound1.play(() => {
+                    sound1.release();
                 });
             });
         }
 
-        if (title == "harmonia") {
-            sound = new Sound(url => {
-                sound.play(() => {
-                    sound.release();
+        if (music == "harmonia") {
+            sound1 = new Sound(require('../../../assets/sounds/harmonia.mp3'),(error, sound) => {
+                if (error) {
+                    alert('error');
+                    return;
+                }
+                sound1.play(() => {
+                    sound1.release();
                 });
             });
         }
 
-        if (title == "ritmo") {
-            sound = new Sound(url => {
-                sound.play(() => {
+        if (music == "ritmo") {
+            sound1 = new Sound(require('../../../assets/sounds/ritmo.mp3'),(error, sound) => {
+                if (error) {
+                    alert('error');
+                    return;
+                }
+                sound1.play(() => {
                     sound.release();
                 });
             });
         }
     }
 
-    const StopSound = (title) => {
+    const StopSound = (music) => {
 
-        if (title == "melodia") {
-            sound.stop(() => {
+        if (music == "melodia") {
+            sound1.stop(() => {
             });
         }
 
-        if (title == "harmonia") {
-            sound.stop(() => {
+        if (music == "harmonia") {
+            sound1.stop(() => {
             });
         }
 
-        if (title == "ritmo") {
-            sound.stop(() => {
+        if (music == "ritmo") {
+            sound1.stop(() => {
             });
         }
     }
 
-    const Selected = (title, url) => {
+    const Selected = (music) => {
         if (contador % 2 == 0) {
-            return (
-                PlaySound(title, url)
-            )
+            PlaySound(music)  
+            //console.log(url)
         } else {
-            return (
-                StopSound(title)
-            )
+            StopSound(music)
+            //console.log(title)
         }
+        setContador(contador + 1)
     }
 
-    const renderSounds = (title, url) => {
+    const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() => Selected(title, url)}
+                onPress={() => Selected(music)}
             >
                 <ImageSound source={som}>
                 </ImageSound>
@@ -154,7 +165,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds(item.title, item.url)}
+                            {renderSounds(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -174,7 +185,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds(item.title, item.url)}
+                            {renderSounds(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -194,7 +205,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds(item.title, item.url)}
+                            {renderSounds(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>

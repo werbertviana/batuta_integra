@@ -17,23 +17,17 @@
         {
             "key": "3",
             "image": "slides03.png",
-            "title": "melodia",
-            "isRequire": "true",
-            "url": "require('../../../assets/sounds/melodia.mp3')"
+            "music": "melodia"
         },
         {
             "key": "4",
             "image": "slides04.png",
-            "title": "harmonia",
-            "isRequire": "true",
-            "url":  "require('../../../assets/sounds/harmonia.mp3')"
+            "music": "harmonia"
         },
         {
             "key": "5",
             "image": "slides05.png",
-            "title": "ritmo",
-            "isRequire": "true",
-            "url":  "require('../../../assets/sounds/ritmo.mp3')"
+            "music": "ritmo"
         }         
     ]
 }
