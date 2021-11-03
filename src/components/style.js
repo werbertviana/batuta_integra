@@ -70,6 +70,12 @@ export const ImageNivel = styled(FastImage)`
     height: 41px;
 `;
 
+export const ImageSound = styled(FastImage)`
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+`;
+
 export const ImageModal = styled(FastImage)`
     width: 35px;
     height: 35px;

@@ -3,10 +3,7 @@ import React from 'react';
 import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
-
-
-
-
+import Sound from 'react-native-sound';
 
 
 //import images
@@ -17,45 +14,99 @@ import slides03 from '../../../assets/imgs/Conteudo/Licao01/slides03.png';
 import slides04 from '../../../assets/imgs/Conteudo/Licao01/slides04.png';
 import slides05 from '../../../assets/imgs/Conteudo/Licao01/slides05.png';
 import iconeX from '../../../assets/imgs/iconeX.png';
-import sound from '../../../assets/imgs/sound.png';
-
+import som from '../../../assets/imgs/sound.png';
 
 //import slides estaticos
 import staticSlides from '../../../data/Conteudo/Licao01/Intro.json'
+
+//import sons estaticos
+
 
 //import estilos
 import {
     DivisorLine2,
     DivisorLine,
     Div,
-    ImageNivel
+    ImageSound
 } from '../../../components/style'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
 
-    var Sound = require('react-native-sound');
-    
-    var whoosh = new Sound('whoosh.mp3', Sound.MAIN_BUNDLE, (error) => {
-        if (error) {
-          console.log('failed to load the sound', error);
-          return;
-        }
-        // loaded successfully
-        console.log('duration in seconds: ' + whoosh.getDuration() + 'number of channels: ' + whoosh.getNumberOfChannels());
-      
-        // Play the sound with an onEnd callback
-        whoosh.play((success) => {
-          if (success) {
-            console.log('successfully finished playing');
-          } else {
-            console.log('playback failed due to audio decoding errors');
-          }
-        });
-      });
-   
+    const [contador, setContador] = useState(0);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
     const allSlides = staticSlides.slides;
+
+    var sound;
+
+    const PlaySound = (title, url) => {
+
+        if (title == "melodia") {
+            sound = new Sound(url => {
+                sound.play(() => {
+                    sound.release();
+                });
+            });
+        }
+
+        if (title == "harmonia") {
+            sound = new Sound(url => {
+                sound.play(() => {
+                    sound.release();
+                });
+            });
+        }
+
+        if (title == "ritmo") {
+            sound = new Sound(url => {
+                sound.play(() => {
+                    sound.release();
+                });
+            });
+        }
+    }
+
+    const StopSound = (title) => {
+
+        if (title == "melodia") {
+            sound.stop(() => {
+            });
+        }
+
+        if (title == "harmonia") {
+            sound.stop(() => {
+            });
+        }
+
+        if (title == "ritmo") {
+            sound.stop(() => {
+            });
+        }
+    }
+
+    const Selected = (title, url) => {
+        if (contador % 2 == 0) {
+            return (
+                PlaySound(title, url)
+            )
+        } else {
+            return (
+                StopSound(title)
+            )
+        }
+    }
+
+    const renderSounds = (title, url) => {
+        return (
+            <TouchableWithoutFeedback
+                onPress={() => Selected(title, url)}
+            >
+                <ImageSound source={som}>
+                </ImageSound>
+            </TouchableWithoutFeedback>
+        )
+    }
 
     function renderSlides({ item }) {
         switch (item.image) {
@@ -91,7 +142,7 @@ export default function App({ navigation }) {
                 break;
             case ("slides03.png"):
                 return (
-                    <SafeAreaView style={{ height:'95%', alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
@@ -103,10 +154,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            <TouchableWithoutFeedback>
-                                <ImageNivel source={sound}>
-                                </ImageNivel>
-                            </TouchableWithoutFeedback>
+                            {renderSounds(item.title, item.url)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -114,7 +162,7 @@ export default function App({ navigation }) {
                 break;
             case ("slides04.png"):
                 return (
-                    <SafeAreaView style={{ height:'95%', alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
@@ -126,10 +174,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            <TouchableWithoutFeedback>
-                                <ImageNivel source={sound}>
-                                </ImageNivel>
-                            </TouchableWithoutFeedback>
+                            {renderSounds(item.title, item.url)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -137,7 +182,7 @@ export default function App({ navigation }) {
                 break;
             case ("slides05.png"):
                 return (
-                    <SafeAreaView style={{ height:'95%', alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
@@ -149,10 +194,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            <TouchableWithoutFeedback>
-                                <ImageNivel source={sound}>
-                                </ImageNivel>
-                            </TouchableWithoutFeedback>
+                            {renderSounds(item.title, item.url)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -234,7 +276,7 @@ export default function App({ navigation }) {
         <AppIntroSlider
             renderItem={renderSlides}
             data={allSlides}
-            style={{backgroundColor:'#FFF'}}
+            style={{ backgroundColor: '#FFF' }}
             activeDotStyle={{
                 backgroundColor: '#96989A'
             }}

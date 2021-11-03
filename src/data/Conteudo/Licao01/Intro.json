@@ -2,23 +2,38 @@
     "slides": [
         {
             "key": "1",
-            "image": "slides01.png"
+            "image": "slides01.png",
+            "title": "",
+            "isRequire": "",
+            "url": "require('')"
         },
         {
             "key": "2",
-            "image": "slides02.png"
+            "image": "slides02.png",
+            "title": "",
+            "isRequire": "",
+            "url": "require('')"
         },
         {
             "key": "3",
-            "image": "slides03.png"
+            "image": "slides03.png",
+            "title": "melodia",
+            "isRequire": "true",
+            "url": "require('../../../assets/sounds/melodia.mp3')"
         },
         {
             "key": "4",
-            "image": "slides04.png"
+            "image": "slides04.png",
+            "title": "harmonia",
+            "isRequire": "true",
+            "url":  "require('../../../assets/sounds/harmonia.mp3')"
         },
         {
             "key": "5",
-            "image": "slides05.png"
+            "image": "slides05.png",
+            "title": "ritmo",
+            "isRequire": "true",
+            "url":  "require('../../../assets/sounds/ritmo.mp3')"
         }         
     ]
 }
