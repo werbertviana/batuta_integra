@@ -34,77 +34,98 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function App({ navigation }) {
 
     const [contador, setContador] = useState(0);
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+    const [music, setMusic] = useState(0)
 
     const allSlides = staticSlides.slides;
 
-    var sound1;
 
-    const PlaySound = (music) => {
+    Sound.setCategory('Playback');
+
+    var sound;
+
+
+    const PlaySound = (music, contador) => {
 
         if (music == "melodia") {
-            sound1 = new Sound(require('../../../assets/sounds/melodia.mp3'),(error, sound) => {
+            sound = new Sound(require('../../../assets/sounds/melodia.mp3'), (error) => {
                 if (error) {
-                    alert('error');
+                    console.log('failed to load the sound', error);
                     return;
                 }
-                sound1.play(() => {
-                    sound1.release();
-                });
+                if (contador % 2 == 0) {
+                    sound.play(() => {
+                        sound.release();
+                    });
+                    setMusic(sound);
+                } else {
+                    sound.stop(() => {
+                        sound.release();
+                    });
+                }
             });
         }
 
         if (music == "harmonia") {
-            sound1 = new Sound(require('../../../assets/sounds/harmonia.mp3'),(error, sound) => {
+            var harmonia = new Sound("harmonia.mp3", Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
-                    alert('error');
+                    console.log('failed to load the sound', error);
                     return;
                 }
-                sound1.play(() => {
-                    sound1.release();
-                });
+                if (contador % 2 == 0) {
+                    harmonia.play((success) => {
+                        if (success) {
+                            console.log('successfully finished playing');
+                        } else {
+                            console.log('playback failed due to audio decoding errors');
+                        }
+                    });
+                } else {
+                    harmonia.pause(() => {
+                        console.log('stop sound')
+                    });
+                }
             });
         }
 
         if (music == "ritmo") {
-            sound1 = new Sound(require('../../../assets/sounds/ritmo.mp3'),(error, sound) => {
+            sound = new Sound(require('../../../assets/sounds/ritmo.mp3'), (error) => {
                 if (error) {
-                    alert('error');
+                    console.log('failed to load the sound', error);
                     return;
                 }
-                sound1.play(() => {
-                    sound.release();
-                });
+                if (contador % 2 == 0) {
+                    sound.play(() => {
+                        sound.release();
+                    });
+                } else {
+                    sound.stop(() => {
+                    });
+                }
             });
         }
     }
 
-    const StopSound = (music) => {
+    const StopSound = (music, sound) => {
 
         if (music == "melodia") {
-            sound1.stop(() => {
+            sound.stop(() => {
             });
         }
 
         if (music == "harmonia") {
-            sound1.stop(() => {
+            sound.stop(() => {
             });
         }
 
         if (music == "ritmo") {
-            sound1.stop(() => {
+            sound.stop(() => {
             });
         }
     }
 
     const Selected = (music) => {
-        if (contador % 2 == 0) {
-            PlaySound(music)  
-            //console.log(url)
-        } else {
-            StopSound(music)
-            //console.log(title)
-        }
+        PlaySound(music, contador)
+        //console.log(url)
         setContador(contador + 1)
     }
 
