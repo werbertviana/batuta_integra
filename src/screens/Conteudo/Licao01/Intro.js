@@ -34,7 +34,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function App({ navigation }) {
 
     const [contador, setContador] = useState(0);
-    const [music, setMusic] = useState(0)
+    const [musica, setMusica] = useState(0)
 
     const allSlides = staticSlides.slides;
 
@@ -42,6 +42,12 @@ export default function App({ navigation }) {
     Sound.setCategory('Playback');
 
     var sound;
+    let harmonia;
+
+
+
+
+
 
 
     const PlaySound = (music, contador) => {
@@ -66,46 +72,37 @@ export default function App({ navigation }) {
         }
 
         if (music == "harmonia") {
-            var harmonia = new Sound("harmonia.mp3", Sound.MAIN_BUNDLE, (error) => {
+            harmonia = new Sound("harmonia.mp3", Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     console.log('failed to load the sound', error);
                     return;
                 }
                 if (contador % 2 == 0) {
-                    harmonia.play((success) => {
-                        if (success) {
-                            console.log('successfully finished playing');
-                        } else {
-                            console.log('playback failed due to audio decoding errors');
-                        }
+                    harmonia.play(() => {
+
                     });
                 } else {
-                    harmonia.pause(() => {
-                        console.log('stop sound')
-                    });
+                    console.log('TESTE')
                 }
             });
         }
 
         if (music == "ritmo") {
-            sound = new Sound(require('../../../assets/sounds/ritmo.mp3'), (error) => {
+            var teste = new Sound("harmonia.mp3", Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     console.log('failed to load the sound', error);
                     return;
                 }
-                if (contador % 2 == 0) {
-                    sound.play(() => {
-                        sound.release();
-                    });
-                } else {
-                    sound.stop(() => {
-                    });
-                }
+                teste.play(() => {
+                   
+                });
             });
+            setMusica(teste);
         }
     }
 
-    const StopSound = (music, sound) => {
+
+    const StopSound = (music) => {
 
         if (music == "melodia") {
             sound.stop(() => {
@@ -117,9 +114,9 @@ export default function App({ navigation }) {
             });
         }
 
+
         if (music == "ritmo") {
-            sound.stop(() => {
-            });
+            musica.stop();
         }
     }
 
@@ -129,10 +126,19 @@ export default function App({ navigation }) {
         setContador(contador + 1)
     }
 
+    const selected2 = (music) => {
+        if (contador % 2 == 0) {
+            PlaySound(music)
+        } else {
+            StopSound(music)
+        }
+        setContador(contador + 1)
+    }
+
     const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() => Selected(music)}
+                onPress={() => selected2(music)}
             >
                 <ImageSound source={som}>
                 </ImageSound>
