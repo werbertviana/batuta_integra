@@ -5,8 +5,7 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
 import Sound from 'react-native-sound';
 
-
-//import images
+//import imagens
 import Introducao from '../../../assets/imgs/introducao.png';
 import slides01 from '../../../assets/imgs/Conteudo/Licao01/slides01.png';
 import slides02 from '../../../assets/imgs/Conteudo/Licao01/slides02.png';
@@ -19,9 +18,6 @@ import som from '../../../assets/imgs/sound.png';
 //import slides estaticos
 import staticSlides from '../../../data/Conteudo/Licao01/Intro.json'
 
-//import sons estaticos
-
-
 //import estilos
 import {
     DivisorLine2,
@@ -31,106 +27,61 @@ import {
 } from '../../../components/style'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
+
 export default function App({ navigation }) {
 
     const [contador, setContador] = useState(0);
-    const [musica, setMusica] = useState(0)
-
+    const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
-
-
-    Sound.setCategory('Playback');
-
     var sound;
-    let harmonia;
 
-
-
-
-
-
-
-    const PlaySound = (music, contador) => {
-
+    const PlaySound = (music) => {
         if (music == "melodia") {
             sound = new Sound(require('../../../assets/sounds/melodia.mp3'), (error) => {
                 if (error) {
                     console.log('failed to load the sound', error);
                     return;
                 }
-                if (contador % 2 == 0) {
-                    sound.play(() => {
-                        sound.release();
-                    });
-                    setMusic(sound);
-                } else {
-                    sound.stop(() => {
-                        sound.release();
-                    });
-                }
-            });
-        }
-
-        if (music == "harmonia") {
-            harmonia = new Sound("harmonia.mp3", Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    console.log('failed to load the sound', error);
-                    return;
-                }
-                if (contador % 2 == 0) {
-                    harmonia.play(() => {
-
-                    });
-                } else {
-                    console.log('TESTE')
-                }
-            });
-        }
-
-        if (music == "ritmo") {
-            var teste = new Sound("harmonia.mp3", Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    console.log('failed to load the sound', error);
-                    return;
-                }
-                teste.play(() => {
-                   
+                sound.play(() => {
                 });
             });
-            setMusica(teste);
-        }
-    }
-
-
-    const StopSound = (music) => {
-
-        if (music == "melodia") {
-            sound.stop(() => {
-            });
+            setMusica(sound);
         }
 
         if (music == "harmonia") {
-            sound.stop(() => {
+            sound = new Sound(require('../../../assets/sounds/harmonia.mp3'), (error) => {
+                if (error) {
+                    console.log('failed to load the sound', error);
+                    return;
+                }
+                sound.play(() => {
+                });
             });
+            setMusica(sound);
         }
-
 
         if (music == "ritmo") {
-            musica.stop();
+            sound = new Sound(require('../../../assets/sounds/ritmo.mp3'), (error) => {
+                if (error) {
+                    console.log('failed to load the sound', error);
+                    return;
+                }
+                sound.play(() => {
+                });
+            });
+            setMusica(sound);
         }
     }
 
-    const Selected = (music) => {
-        PlaySound(music, contador)
-        //console.log(url)
-        setContador(contador + 1)
+    const StopSound = () => {
+        musica.stop();
     }
 
-    const selected2 = (music) => {
+    const selected = (music) => {
         if (contador % 2 == 0) {
             PlaySound(music)
         } else {
-            StopSound(music)
+            StopSound()
         }
         setContador(contador + 1)
     }
@@ -138,7 +89,7 @@ export default function App({ navigation }) {
     const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() => selected2(music)}
+                onPress={() => selected(music)}
             >
                 <ImageSound source={som}>
                 </ImageSound>
@@ -242,6 +193,9 @@ export default function App({ navigation }) {
     }
 
     const nextButton = () => {
+        // if(musica!=null){
+        //     musica.stop();
+        // }
         return (
             <SafeAreaView
                 style={styles.ShadowButtons1}>
