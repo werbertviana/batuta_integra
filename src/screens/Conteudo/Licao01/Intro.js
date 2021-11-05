@@ -31,11 +31,13 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function App({ navigation }) {
 
     const [contador, setContador] = useState(0);
+    const [play, setPlay] = useState(false);
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
     var sound;
 
     const PlaySound = (music) => {
+        setPlay(true)
         if (music == "melodia") {
             sound = new Sound(require('../../../assets/sounds/melodia.mp3'), (error) => {
                 if (error) {
@@ -74,7 +76,17 @@ export default function App({ navigation }) {
     }
 
     const StopSound = () => {
-        musica.stop();
+        setPlay(false)
+        if (musica != null) {
+            musica.stop();
+        }
+    }
+
+    const StopSound2 = () => {
+        if (musica != null) {
+            musica.stop();  
+           
+        }   
     }
 
     const selected = (music) => {
@@ -86,10 +98,18 @@ export default function App({ navigation }) {
         setContador(contador + 1)
     }
 
+    const selected2 = (music) => {
+        if(play==false){
+           PlaySound(music)  
+        }else{
+            StopSound()
+        }
+    }
+
     const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() => selected(music)}
+                onPress={() => selected2(music)}
             >
                 <ImageSound source={som}>
                 </ImageSound>
@@ -101,6 +121,7 @@ export default function App({ navigation }) {
         switch (item.image) {
             case ("slides01.png"):
                 return (
+
                     <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
@@ -193,9 +214,6 @@ export default function App({ navigation }) {
     }
 
     const nextButton = () => {
-        // if(musica!=null){
-        //     musica.stop();
-        // }
         return (
             <SafeAreaView
                 style={styles.ShadowButtons1}>

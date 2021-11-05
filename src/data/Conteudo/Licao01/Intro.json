@@ -3,31 +3,32 @@
         {
             "key": "1",
             "image": "slides01.png",
-            "title": "",
-            "isRequire": "",
-            "url": "require('')"
+            "music": "",
+            "video": ""
         },
         {
             "key": "2",
             "image": "slides02.png",
-            "title": "",
-            "isRequire": "",
-            "url": "require('')"
+            "music": "",
+            "video": ""
         },
         {
             "key": "3",
             "image": "slides03.png",
-            "music": "melodia"
+            "music": "melodia",
+            "video": ""
         },
         {
             "key": "4",
             "image": "slides04.png",
-            "music": "harmonia"
+            "music": "harmonia",
+            "video": ""
         },
         {
             "key": "5",
             "image": "slides05.png",
-            "music": "ritmo"
-        }         
+            "music": "ritmo",
+            "video": ""
+        }
     ]
 }
