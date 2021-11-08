@@ -37,6 +37,10 @@ export default function App({ navigation }) {
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
 
+    const slide01 = [];
+    slide01.push(allSlides[0]);
+    console.log(slide01)
+
     const PlaySound = (music) => {
         if (music == "melodia") {
             var melodia = new Sound(require('../../../assets/sounds/melodia.mp3'), (error) => {
@@ -189,7 +193,7 @@ export default function App({ navigation }) {
         switch (item.image) {
             case ("slides01.png"):
                 return (
-                    <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: 'red'}}>
+                    <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
                             <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
@@ -197,12 +201,14 @@ export default function App({ navigation }) {
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
-                        <FastImage source={slides01} style={{ height: '61%', width: '90%', marginTop: '4%'}}>
-                        </FastImage>
-                        <SafeAreaView style={{ marginTop: '8%', backgroundColor:'yellow'}}>
+                        <SafeAreaView style={{ height: '62%', width: '100%', alignItems: 'center', marginTop: '2%', padding: 2 }}>
+                            <FastImage source={slides01} style={{ height: '100%', width: '90%' }}>
+                            </FastImage>
+                        </SafeAreaView>
+                        {/*<SafeAreaView style={{ marginTop: '8%', backgroundColor:'yellow'}}>
                             {nextButton2()}
                             {skipButton2()}
-                        </SafeAreaView>
+                </SafeAreaView>*/}
                     </SafeAreaView>
                 )
                 break;
@@ -216,8 +222,10 @@ export default function App({ navigation }) {
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
-                        <FastImage source={slides02} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
-                        </FastImage>
+                        <SafeAreaView style={{ height: '62%', width: '100%', alignItems: 'center', marginTop: '2%'}}>
+                            <FastImage source={slides02} style={{ height: '100%', width: '90%' }}>
+                            </FastImage>
+                        </SafeAreaView>
                     </SafeAreaView>
                 )
                 break;
@@ -284,100 +292,6 @@ export default function App({ navigation }) {
         }
     }
 
-    function renderSlides2({ item }) {
-        if (item.image == "slides01.png") {
-            return (
-                <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
-                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
-                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
-                        </TouchableOpacity>
-                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
-                    </SafeAreaView>
-                    <DivisorLine2></DivisorLine2>
-                    <FastImage source={slides01} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
-                    </FastImage>
-                </SafeAreaView>
-            )
-        }
-        if (item.image == "slides02.png") {
-            return (
-                <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
-                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
-                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
-                        </TouchableOpacity>
-                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
-                    </SafeAreaView>
-                    <DivisorLine2></DivisorLine2>
-                    <FastImage source={slides02} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
-                    </FastImage>
-                </SafeAreaView>
-            )
-        }
-        if (item.image == "slides03.png") {
-            return (
-                <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
-                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
-                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
-                        </TouchableOpacity>
-                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
-                    </SafeAreaView>
-                    <DivisorLine2></DivisorLine2>
-                    <FastImage source={slides03} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
-                    </FastImage>
-                    <Div>
-                        <DivisorLine></DivisorLine>
-                        {renderSounds01(item.music)}
-                        <DivisorLine></DivisorLine>
-                    </Div>
-                </SafeAreaView>
-            )
-        }
-        if (item.image == "slides04.png") {
-            return (
-                <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
-                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
-                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
-                        </TouchableOpacity>
-                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
-                    </SafeAreaView>
-                    <DivisorLine2></DivisorLine2>
-                    <FastImage source={slides04} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
-                    </FastImage>
-                    <Div>
-                        <DivisorLine></DivisorLine>
-                        {renderSounds02(item.music)}
-                        <DivisorLine></DivisorLine>
-                    </Div>
-                </SafeAreaView>
-            )
-        }
-        if (item.image == "slides05.png") {
-            return (
-                <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
-                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
-                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
-                        </TouchableOpacity>
-                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
-                    </SafeAreaView>
-                    <DivisorLine2></DivisorLine2>
-                    <FastImage source={slides05} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
-                    </FastImage>
-                    <Div>
-                        <DivisorLine></DivisorLine>
-                        {renderSounds03(item.music)}
-                        <DivisorLine></DivisorLine>
-                    </Div>
-                </SafeAreaView>
-            )
-        }
-    }
-
-
     const nextButton = () => {
         return (
             <SafeAreaView
@@ -392,25 +306,6 @@ export default function App({ navigation }) {
                     </Text>
                 </SafeAreaView>
             </SafeAreaView>
-        );
-    };
-
-    const nextButton2 = () => {
-        return (
-            <TouchableWithoutFeedback>
-                <SafeAreaView
-                    style={styles.ShadowButtons11}>
-                    <SafeAreaView
-                        style={styles.Buttons1}>
-                        <Text
-                            style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 30,
-                            }}>
-                            PRÓXIMO
-                        </Text>
-                    </SafeAreaView>
-                </SafeAreaView>
-            </TouchableWithoutFeedback>
         );
     };
 
@@ -430,26 +325,6 @@ export default function App({ navigation }) {
             </SafeAreaView>
         );
     };
-
-    const skipButton2 = () => {
-        return (
-            <TouchableWithoutFeedback>
-                <SafeAreaView
-                    style={styles.ShadowButtons22}>
-                    <SafeAreaView
-                        style={styles.Buttons2}>
-                        <Text
-                            style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "black", fontSize: 30,
-                            }}>
-                            PULAR
-                        </Text>
-                    </SafeAreaView>
-                </SafeAreaView>
-            </TouchableWithoutFeedback>
-        );
-    };
-
 
     const prevButton = () => {
         return (
@@ -497,17 +372,18 @@ export default function App({ navigation }) {
         <AppIntroSlider
             renderItem={renderSlides}
             data={allSlides}
-            style={{ backgroundColor: '#FFF' }}
+            style={{ backgroundColor: '#FFF'}}
             activeDotStyle={{
-                marginBottom: '48%',
+                marginTop: '6%',
                 backgroundColor: '#96989A'
             }}
             dotStyle={{
-                marginBottom: '48%',
+                marginTop: '6%',
                 backgroundColor: '#D2D3D5'
             }}
             showSkipButton={true}
             showPrevButton={true}
+            bottomButton={true}
             renderNextButton={nextButton}
             renderSkipButton={skipButton}
             renderDoneButton={doneButton}
@@ -520,44 +396,28 @@ export default function App({ navigation }) {
 
 const styles = StyleSheet.create({
     ShadowButtons1: {
-        width: 110,
-        height: 50,
+        marginBottom: 6,
+        height: 48,
+        width: '95%',
         alignItems: 'center',
-        alignContent: 'center',
-        borderRadius: 15,
+        alignSelf: 'center',
+        borderRadius: 12,
         backgroundColor: "#236A79",
-    },
-    ShadowButtons11: {
-        width: 350,
-        height: 50,
-        alignItems: 'center',
-        alignContent: 'center',
-        borderRadius: 15,
-        backgroundColor: "#236A79",
-        margin: '1%'
     },
     Buttons1: {
         width: '100%',
         height: '92%',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 15,
+        borderRadius: 12,
         backgroundColor: '#3CB1C7',
     },
     ShadowButtons2: {
-        width: 110,
-        height: 50,
+        width: '95%',
+        height: 48,
         alignItems: 'center',
-        alignContent: 'center',
-        borderRadius: 15,
-        backgroundColor: "#D2D3D5",
-    },
-    ShadowButtons22: {
-        width: 350,
-        height: 50,
-        alignItems: 'center',
-        alignContent: 'center',
-        borderRadius: 15,
+        alignSelf: 'center',
+        borderRadius: 12,
         backgroundColor: "#D2D3D5",
     },
     Buttons2: {
@@ -565,17 +425,18 @@ const styles = StyleSheet.create({
         height: '92%',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 15,
+        borderRadius: 12,
         borderWidth: 2,
         borderColor: "#D2D3D5",
         backgroundColor: '#FFF',
     },
     ShadowButtons3: {
-        width: 110,
-        height: 50,
+        width: '95%',
+        marginBottom: 6,
+        height: 48,
         alignItems: 'center',
-        alignContent: 'center',
-        borderRadius: 15,
+        alignSelf: 'center',
+        borderRadius: 12,
         backgroundColor: "#DAA520",
     },
     Buttons3: {
@@ -583,7 +444,7 @@ const styles = StyleSheet.create({
         height: '92%',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 15,
+        borderRadius: 12,
         backgroundColor: '#FDC500',
     },
 });
