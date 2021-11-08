@@ -21,7 +21,8 @@ import {
     DivisorLine2,
     ImagesFeeds,
     IconLesson,
-    IconImages
+    IconImages,
+    Div
 } from '../../components/style'
 
 // import ícones
@@ -553,9 +554,18 @@ export default function App({ navigation }) {
         }
     }
 
+    const renderDivisor2 = () => {
+        return (
+            <SafeAreaView style={{width:'100%', marginTop: '15%'}}> 
+                <DivisorLine2></DivisorLine2>
+            </SafeAreaView>
+        )
+    }
+
     function ListItem({ lesson, feeds, progress, show }) {
         return (
             <SafeAreaView style={styles.BgContainer}>
+               
                 {renderLessonTitle(lesson, show)}
                 {ProgressBar(lesson, progress)}
                 <ImageBackground
@@ -816,10 +826,8 @@ const styles = StyleSheet.create({
     BgContainer: {
         padding: 20,
         marginVertical: '3%',
-        width: '100%',
+        //width: '100%',
         alignItems: 'center',
-        position: 'relative',
-        zIndex: 1,
         //backgroundColor: 'red',
     },
     ViolaoBackground: {
