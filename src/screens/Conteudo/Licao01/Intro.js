@@ -30,6 +30,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
 
+    const [contador, setContador] = useState(false);
     const [play1, setPlay1] = useState(false);
     const [play2, setPlay2] = useState(false);
     const [play3, setPlay3] = useState(false);
@@ -119,6 +120,7 @@ export default function App({ navigation }) {
             }
         } else {
             StopSound(music)
+
         }
     }
 
@@ -343,7 +345,7 @@ export default function App({ navigation }) {
         }
     }
 
-    const doneButton = () => {
+    const doneButton = () => {    
         return (
             <SafeAreaView
                 style={styles.ShadowButtons3}>
@@ -360,10 +362,21 @@ export default function App({ navigation }) {
         );
     };
 
+    const teste = () => {
+        if (musica != null) {
+            setPlay1(false)
+            setPlay2(false)
+            setPlay3(false)
+            musica.stop()
+        }
+    }
+
     return (
+
         <AppIntroSlider
             renderItem={renderSlides}
             data={allSlides}
+            onSlideChange={teste}
             style={{ backgroundColor: '#FFF' }}
             activeDotStyle={{
                 marginTop: '6%',
