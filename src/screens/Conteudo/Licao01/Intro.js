@@ -30,12 +30,10 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
 
-    const [contador, setContador] = useState(false);
+    const [second, setSecond] = useState(0);
     const [play, setPlay] = useState(false);
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
-
-
 
     const PlaySound = (music) => {
         if (music == "melodia") {
