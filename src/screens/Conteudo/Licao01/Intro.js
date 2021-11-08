@@ -225,7 +225,7 @@ export default function App({ navigation }) {
                 </SafeAreaView>
             </SafeAreaView>
         );
-    };
+    }
 
     const skipButton = () => {
         return (
@@ -242,7 +242,7 @@ export default function App({ navigation }) {
                 </SafeAreaView>
             </SafeAreaView>
         );
-    };
+    }
 
     const prevButton = () => {
         return (
@@ -259,7 +259,7 @@ export default function App({ navigation }) {
                 </SafeAreaView>
             </SafeAreaView>
         );
-    };
+    }
 
     const Done = () => {
         navigation.navigate('Introdução')
@@ -283,7 +283,7 @@ export default function App({ navigation }) {
                 </SafeAreaView>
             </SafeAreaView>
         );
-    };
+    }
 
     const StopAll = () => {
         if (musica != null) {
