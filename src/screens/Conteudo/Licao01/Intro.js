@@ -80,21 +80,6 @@ export default function App({ navigation }) {
         }
     }
 
-    const StopSound2 = () => {
-        if (play1 == true) {
-            musica.stop()
-            setPlay1(false)
-        }
-        if (play2 == true) {
-            musica.stop()
-            setPlay2(false)
-        }
-        if (play3 == true) {
-            musica.stop()
-            setPlay3(false)
-        }
-    }
-
     const StopSound = (music) => {
 
         if (musica != null && music == "melodia") {
@@ -114,20 +99,14 @@ export default function App({ navigation }) {
     const selected1 = (music) => {
         if (play1 == false) {
             PlaySound(music)
-            if (play2 == true) {
-                musica.stop()
-                setPlay2(false)
-            }
         } else {
             StopSound(music)
-
         }
     }
 
     const selected2 = (music) => {
         if (play2 == false) {
             PlaySound(music)
-            StopSound2()
         } else {
             StopSound(music)
         }
@@ -136,7 +115,6 @@ export default function App({ navigation }) {
     const selected3 = (music) => {
         if (play3 == false) {
             PlaySound(music)
-            StopSound2()
         } else {
             StopSound(music)
         }
@@ -345,7 +323,7 @@ export default function App({ navigation }) {
         }
     }
 
-    const doneButton = () => {    
+    const doneButton = () => {
         return (
             <SafeAreaView
                 style={styles.ShadowButtons3}>
