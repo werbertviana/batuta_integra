@@ -396,7 +396,7 @@ export default function App({ navigation }) {
             case ("feed03.png"):
                 if (showFeed03 == true) {
                     return (
-                        <SafeAreaView style={{ alignItems: 'center', margin: '2%'}}>
+                        <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed03On}>
                             </ImagesFeeds>
@@ -571,7 +571,6 @@ export default function App({ navigation }) {
                         </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
-               {/* {renderModal02("Pauta e Clave", "3")}*/}
                 {renderBlockTitle()}
             </SafeAreaView>
         )
@@ -819,8 +818,8 @@ const styles = StyleSheet.create({
         marginVertical: '3%',
         width: '100%',
         alignItems: 'center',
-        position:'relative',
-        zIndex:1,
+        position: 'relative',
+        zIndex: 1,
         //backgroundColor: 'red',
     },
     ViolaoBackground: {
