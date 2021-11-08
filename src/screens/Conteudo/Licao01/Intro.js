@@ -31,9 +31,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function App({ navigation }) {
 
     const [contador, setContador] = useState(false);
-    const [play1, setPlay1] = useState(false);
-    const [play2, setPlay2] = useState(false);
-    const [play3, setPlay3] = useState(false);
+    const [play, setPlay] = useState(false);
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
 
@@ -50,7 +48,7 @@ export default function App({ navigation }) {
                 });
             });
             setMusica(melodia);
-            setPlay1(true)
+            setPlay(true)
         }
 
         if (music == "harmonia") {
@@ -63,7 +61,7 @@ export default function App({ navigation }) {
                 });
             });
             setMusica(harmonia);
-            setPlay2(true)
+            setPlay(true)
         }
 
         if (music == "ritmo") {
@@ -76,76 +74,29 @@ export default function App({ navigation }) {
                 });
             });
             setMusica(ritmo);
-            setPlay3(true)
+            setPlay(true)
         }
     }
 
     const StopSound = (music) => {
-
-        if (musica != null && music == "melodia") {
+        if (musica != null) {
             musica.stop();
-            setPlay1(false)
-        }
-        if (musica != null && music == "harmonia") {
-            musica.stop();
-            setPlay2(false)
-        }
-        if (musica != null && music == "ritmo") {
-            musica.stop();
-            setPlay3(false)
+            setPlay(false)
         }
     }
 
-    const selected1 = (music) => {
-        if (play1 == false) {
+    const selected = (music) => {
+        if (play == false) {
             PlaySound(music)
         } else {
             StopSound(music)
         }
     }
 
-    const selected2 = (music) => {
-        if (play2 == false) {
-            PlaySound(music)
-        } else {
-            StopSound(music)
-        }
-    }
-
-    const selected3 = (music) => {
-        if (play3 == false) {
-            PlaySound(music)
-        } else {
-            StopSound(music)
-        }
-    }
-
-    const renderSounds01 = (music) => {
+    const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() => selected1(music)}
-            >
-                <ImageSound source={som}>
-                </ImageSound>
-            </TouchableWithoutFeedback>
-        )
-    }
-
-    const renderSounds02 = (music) => {
-        return (
-            <TouchableWithoutFeedback
-                onPress={() => selected2(music)}
-            >
-                <ImageSound source={som}>
-                </ImageSound>
-            </TouchableWithoutFeedback>
-        )
-    }
-
-    const renderSounds03 = (music) => {
-        return (
-            <TouchableWithoutFeedback
-                onPress={() => selected3(music)}
+                onPress={() => selected(music)}
             >
                 <ImageSound source={som}>
                 </ImageSound>
@@ -155,13 +106,7 @@ export default function App({ navigation }) {
 
     const close = () => {
         navigation.navigate('Main')
-        if (play1 == true) {
-            musica.stop()
-        }
-        if (play2 == true) {
-            musica.stop()
-        }
-        if (play3 == true) {
+        if (play == true) {
             musica.stop()
         }
     }
@@ -216,7 +161,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds01(item.music)}
+                            {renderSounds(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -236,7 +181,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds02(item.music)}
+                            {renderSounds(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -256,7 +201,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds03(item.music)}
+                            {renderSounds(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -342,9 +287,7 @@ export default function App({ navigation }) {
 
     const StopAll = () => {
         if (musica != null) {
-            setPlay1(false)
-            setPlay2(false)
-            setPlay3(false)
+            setPlay(false)
             musica.stop()
         }
     }
