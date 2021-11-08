@@ -60,30 +60,18 @@ export default function App({ navigation }) {
     feeds02.push(allFeeds[0]);
     feeds02.push(allFeeds[1]);
 
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
-    const ButtonRef = useRef()
-    const Button2Ref = useRef()
-    const Button3Ref = useRef()
     const [lifePoints, setlifePoints] = useState(5);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
-    const [showOptionsModal2, setShowOptionsModal2] = useState(false);
     const [contador, setContador] = useState(0);
-    const [contador2, setContador2] = useState(0);
-    const [textColor, setTextColor] = useState(false);
     const [showFeed01, setShowFeed01] = useState(true);
     const [showFeed02, setShowFeed02] = useState(true);
     const [showFeed03, setShowFeed03] = useState(true);
     const [showFeed04, setShowFeed04] = useState(true);
     const [showFeed05, setShowFeed05] = useState(false);
     const [showFeed06, setShowFeed06] = useState(false);
-    const [modalTeste, setModalTeste] = useState(false);
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
-
-
-
-    const Stack = createStackNavigator();
 
     const renderLife = () => {
         return (
@@ -694,245 +682,6 @@ export default function App({ navigation }) {
         )
     }
 
-    const Modal03 = () => {
-        if (showOptionsModal2 == true) {
-
-            return (
-
-                <Animatable.View
-                    animation={"bounceIn"}
-                    useNativeDriver
-                    style={{
-
-                        width: 300,
-                        height: 100,
-                        backgroundColor: "#D2D3D5",
-                        alignItems: 'center',
-                        justifyContent: 'space-around',
-                        alignContent: 'center',
-                        flexDirection: 'column',
-                        borderRadius: 10,
-
-                    }}>
-                    <Text style={{
-                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 22,
-                    }}>É PRECISO TERMINAR A LIÇÃO ANTERIOR!</Text>
-
-                    <SafeAreaView style={{
-
-                        width: '90%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: '#A9ABAE',
-                        borderRadius: 5,
-                        marginBottom: 4,
-                    }}>
-                        <Text style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#727376", fontSize: 25,
-                            padding: 5
-                        }}>BLOQUEADO</Text>
-
-                    </SafeAreaView>
-
-                </Animatable.View>
-            )
-        }
-    }
-
-    const Modal04 = (title, content) => {
-        if (title == "Introdução") {
-            return (
-                <Modal isVisible={modalTeste}
-                    backdropColor={''}
-                    coverScreen={false}
-                    onBackdropPress={() => setModalTeste(false)}
-                    style={{ marginTop: 260}}
-                    animationIn={'bounceIn'}
-                    useNativeDriver
-                >
-                    <SafeAreaView
-                        style={{
-                            width: 180,
-                            height: 100,
-                            backgroundColor: "#236A79",
-                            alignItems: 'center',
-                            justifyContent: 'space-around',
-                            alignContent: 'center',
-                            flexDirection: 'column',
-                            borderRadius: 10,
-                        }}>
-                        <TouchableWithoutFeedback
-                            onPress={() => navigation.navigate(content)}
-                        >
-                            <SafeAreaView style={{
-
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#3CB1C7',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                    padding: 5
-                                }}>CONTEÚDO</Text>
-
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-
-                        <TouchableWithoutFeedback
-                            onPress={() => navigation.navigate(title)}
-                        >
-                            <SafeAreaView style={{
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#fff',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                    padding: 5
-                                }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-
-                    </SafeAreaView>
-                </Modal>
-            )
-        }
-
-        if (title == "Sons Musicais") {
-            return (
-                <Modal isVisible={modalTeste}
-                    backdropColor={''}
-                    coverScreen={false}
-                    onBackdropPress={() => setModalTeste(false)}
-                    style={{ marginTop: 260, marginLeft: 200 }}
-                    animationIn={'bounceIn'}
-                    useNativeDriver
-                >
-                    <SafeAreaView
-                        style={{
-                            width: 180,
-                            height: 100,
-                            backgroundColor: "#236A79",
-                            alignItems: 'center',
-                            justifyContent: 'space-around',
-                            alignContent: 'center',
-                            flexDirection: 'column',
-                            borderRadius: 10,
-                        }}>
-                        <TouchableWithoutFeedback
-                            onPress={() => navigation.navigate(content)}
-                        >
-                            <SafeAreaView style={{
-
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#3CB1C7',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                    padding: 5
-                                }}>CONTEÚDO</Text>
-
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-
-                        <TouchableWithoutFeedback
-                            onPress={() => navigation.navigate(title)}
-                        >
-                            <SafeAreaView style={{
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#fff',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                    padding: 5
-                                }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-
-                    </SafeAreaView>
-                </Modal>
-            )
-        }
-
-        if (title == "Pauta e Clave") {
-            return (
-                <Modal isVisible={modalTeste}
-                    backdropColor={''}
-                    coverScreen={false}
-                    onBackdropPress={() => setModalTeste(false)}
-                    style={{ marginTop: 610, marginLeft: 110, position:'relative', zIndex:50 }}
-                    animationIn={'bounceIn'}
-                    useNativeDriver
-                >
-                    <SafeAreaView
-                        style={{
-                            width: 180,
-                            height: 100,
-                            backgroundColor: "#236A79",
-                            alignItems: 'center',
-                            justifyContent: 'space-around',
-                            alignContent: 'center',
-                            flexDirection: 'column',
-                            borderRadius: 10,
-                        }}>
-                        <TouchableWithoutFeedback
-                            onPress={() => navigation.navigate(content)}
-                        >
-                            <SafeAreaView style={{
-
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#3CB1C7',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#fff", fontSize: 25,
-                                    padding: 5
-                                }}>CONTEÚDO</Text>
-
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-
-                        <TouchableWithoutFeedback
-                            onPress={() => navigation.navigate(title)}
-                        >
-                            <SafeAreaView style={{
-                                width: '90%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                backgroundColor: '#fff',
-                                borderRadius: 5,
-                                margin: 2
-                            }}>
-                                <Text style={{
-                                    fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#236A79", fontSize: 25,
-                                    padding: 5
-                                }}>PRATICAR + <Text style={{ color: "#FDC500" }}>10XP</Text></Text>
-                            </SafeAreaView>
-                        </TouchableWithoutFeedback>
-
-                    </SafeAreaView>
-                </Modal>
-            )
-        }
-    }
-
     const renderModal = (title, content) => {
         if (currentOptionSelected == "Introdução" && title == "Introdução" && showOptionsModal == true) {
             if (showFeed01 == true) {
@@ -1013,87 +762,6 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderModal02 = (title, content) => {
-        if (currentOptionSelected == "Introdução" && title == "Introdução" && modalTeste == true) {
-            if (showFeed01 == true) {
-                return (
-                    Modal04(title, content)
-                )
-            } else {
-                return (
-                    Modal02()
-                )
-            }
-
-        }
-
-        if (currentOptionSelected == "Sons Musicais" && title == "Sons Musicais" && modalTeste == true) {
-            if (showFeed02 == true) {
-
-                return (
-                    Modal04(title, content)
-                )
-            } else {
-                return (
-                    Modal02()
-                )
-            }
-        }
-
-        if (modalTeste == true && currentOptionSelected == "Pauta e Clave" && title == "Pauta e Clave") {
-            if (showFeed03 == true) {
-
-                return (
-                    Modal04(title, content)
-                )
-            } else {
-                return (
-                    Modal02()
-                )
-            }
-        }
-
-        if (modalTeste == true && currentOptionSelected == "Figuras de Notas" && title == "Figuras de Notas") {
-            if (showFeed04 == true) {
-
-                return (
-                    Modal04(title, content)
-                )
-            } else {
-                return (
-                    Modal02()
-                )
-            }
-        }
-
-        if (modalTeste == true && currentOptionSelected == "Figuras de Pausas" && title == "Figuras de Pausas") {
-            if (showFeed05 == true) {
-
-                return (
-                    Modal04(title, content)
-                )
-            } else {
-                return (
-                    Modal02()
-                )
-            }
-        }
-
-        if (modalTeste == true && currentOptionSelected == "Duração dos Valores" && title == "Duração dos Valores") {
-            if (showFeed06 == true) {
-
-                return (
-                    Modal04(title, content)
-                )
-            } else {
-                return (
-                    Modal02()
-                )
-            }
-        }
-    }
-
-
     const selected = (title) => {
         setCurrentOptionSelected(title)
 
@@ -1103,21 +771,6 @@ export default function App({ navigation }) {
             setShowOptionsModal(false)
         }
         setContador(contador + 1)
-    }
-
-    const selected2 = () => {
-
-        if (contador2 % 2 == 0) {
-            setShowOptionsModal2(true)
-        } else {
-            setShowOptionsModal2(false)
-        }
-        setContador2(contador2 + 1)
-    }
-
-    const selected3 = (title) => {
-        setCurrentOptionSelected(title)
-        setModalTeste(true)
     }
 
     {/* Main */ }

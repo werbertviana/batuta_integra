@@ -30,8 +30,6 @@ export const ImagesContainer2 = styled.SafeAreaView`
     justify-content: space-around; 
 `;
 
-
-
 export const QuestionsButton = styled.SafeAreaView`
     margin-top: 2%;
     width: 40%;
@@ -106,7 +104,7 @@ export const DivisorLine = styled.SafeAreaView`
 
 export const DivisorLine2 = styled.SafeAreaView`
     width: 100%;
-    height: 1.5px;
+    height: 2px;
     background-color: #D2D3D5;
     `;    
 
