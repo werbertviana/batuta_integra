@@ -30,16 +30,13 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function App({ navigation }) {
 
-    const [contador, setContador] = useState(0);
     const [play1, setPlay1] = useState(false);
     const [play2, setPlay2] = useState(false);
     const [play3, setPlay3] = useState(false);
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
 
-    const slide01 = [];
-    slide01.push(allSlides[0]);
-    console.log(slide01)
+
 
     const PlaySound = (music) => {
         if (music == "melodia") {
@@ -222,7 +219,7 @@ export default function App({ navigation }) {
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
                         </SafeAreaView>
                         <DivisorLine2></DivisorLine2>
-                        <SafeAreaView style={{ height: '62%', width: '100%', alignItems: 'center', marginTop: '2%'}}>
+                        <SafeAreaView style={{ height: '62%', width: '100%', alignItems: 'center', marginTop: '2%' }}>
                             <FastImage source={slides02} style={{ height: '100%', width: '90%' }}>
                             </FastImage>
                         </SafeAreaView>
@@ -368,11 +365,10 @@ export default function App({ navigation }) {
     };
 
     return (
-
         <AppIntroSlider
             renderItem={renderSlides}
             data={allSlides}
-            style={{ backgroundColor: '#FFF'}}
+            style={{ backgroundColor: '#FFF' }}
             activeDotStyle={{
                 marginTop: '6%',
                 backgroundColor: '#96989A'
