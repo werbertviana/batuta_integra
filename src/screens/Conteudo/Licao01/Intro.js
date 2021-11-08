@@ -1,9 +1,11 @@
 //import bibliotecas
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
 import Sound from 'react-native-sound';
+import * as Animatable from 'react-native-animatable';
+
 
 //import imagens
 import Introducao from '../../../assets/imgs/introducao.png';
@@ -31,6 +33,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function App({ navigation }) {
 
     const [second, setSecond] = useState(0);
+    const ButtonRef = useRef();
     const [play, setPlay] = useState(false);
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
@@ -79,6 +82,7 @@ export default function App({ navigation }) {
     const StopSound = (music) => {
         if (musica != null) {
             musica.stop();
+            musica.play();
             setPlay(false)
         }
     }
@@ -94,10 +98,15 @@ export default function App({ navigation }) {
     const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() => selected(music)}
+                onPress={() => ButtonRef.current.bounceIn(selected(music))}
             >
-                <ImageSound source={som}>
-                </ImageSound>
+                <Animatable.View
+                    animation={'bounceIn'}
+                    useNativeDriver
+                    ref={ButtonRef}>
+                    <ImageSound source={som}>
+                    </ImageSound>
+                </Animatable.View>
             </TouchableWithoutFeedback>
         )
     }
