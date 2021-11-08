@@ -31,82 +31,126 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function App({ navigation }) {
 
     const [contador, setContador] = useState(0);
-    const [play, setPlay] = useState(false);
+    const [play1, setPlay1] = useState(false);
+    const [play2, setPlay2] = useState(false);
+    const [play3, setPlay3] = useState(false);
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
-    var sound;
 
     const PlaySound = (music) => {
-        setPlay(true)
         if (music == "melodia") {
-            sound = new Sound(require('../../../assets/sounds/melodia.mp3'), (error) => {
+            var melodia = new Sound(require('../../../assets/sounds/melodia.mp3'), (error) => {
                 if (error) {
                     console.log('failed to load the sound', error);
                     return;
                 }
-                sound.play(() => {
+                melodia.play(() => {
                 });
             });
-            setMusica(sound);
+            setMusica(melodia);
+            setPlay1(true)
         }
 
         if (music == "harmonia") {
-            sound = new Sound(require('../../../assets/sounds/harmonia.mp3'), (error) => {
+            var harmonia = new Sound(require('../../../assets/sounds/harmonia.mp3'), (error) => {
                 if (error) {
                     console.log('failed to load the sound', error);
                     return;
                 }
-                sound.play(() => {
+                harmonia.play(() => {
                 });
             });
-            setMusica(sound);
+            setMusica(harmonia);
+            setPlay2(true)
         }
 
         if (music == "ritmo") {
-            sound = new Sound(require('../../../assets/sounds/ritmo.mp3'), (error) => {
+            var ritmo = new Sound(require('../../../assets/sounds/ritmo.mp3'), (error) => {
                 if (error) {
                     console.log('failed to load the sound', error);
                     return;
                 }
-                sound.play(() => {
+                ritmo.play(() => {
                 });
             });
-            setMusica(sound);
-        }
-    }
-
-    const StopSound = () => {
-        setPlay(false)
-        if (musica != null) {
-            musica.stop();
+            setMusica(ritmo);
+            setPlay3(true)
         }
     }
 
     const StopSound2 = () => {
-        if (musica != null) {
-            musica.stop();  
-           
-        }   
+        if (play1 == true) {
+            musica.stop()
+            setPlay1(false)
+        }
+        if (play2 == true) {
+            musica.stop()
+            setPlay2(false)
+        }
+        if (play3 == true) {
+            musica.stop()
+            setPlay3(false)
+        }
     }
 
-    const selected = (music) => {
-        if (contador % 2 == 0) {
-            PlaySound(music)
-        } else {
-            StopSound()
+    const StopSound = (music) => {
+
+        if (musica != null && music == "melodia") {
+            musica.stop();
+            setPlay1(false)
         }
-        setContador(contador + 1)
+        if (musica != null && music == "harmonia") {
+            musica.stop();
+            setPlay2(false)
+        }
+        if (musica != null && music == "ritmo") {
+            musica.stop();
+            setPlay3(false)
+        }
+    }
+
+    const selected1 = (music) => {
+        if (play1 == false) {
+            PlaySound(music)
+            if (play2 == true) {
+                musica.stop()
+                setPlay2(false)
+            }
+        } else {
+            StopSound(music)
+        }
     }
 
     const selected2 = (music) => {
-        if(play==false){
-           PlaySound(music)  
-        }else{
-            StopSound()
+        if (play2 == false) {
+            PlaySound(music)
+            StopSound2()
+        } else {
+            StopSound(music)
         }
     }
 
-    const renderSounds = (music) => {
+    const selected3 = (music) => {
+        if (play3 == false) {
+            PlaySound(music)
+            StopSound2()
+        } else {
+            StopSound(music)
+        }
+    }
+
+    const renderSounds01 = (music) => {
+        return (
+            <TouchableWithoutFeedback
+                onPress={() => selected1(music)}
+            >
+                <ImageSound source={som}>
+                </ImageSound>
+            </TouchableWithoutFeedback>
+        )
+    }
+
+    const renderSounds02 = (music) => {
         return (
             <TouchableWithoutFeedback
                 onPress={() => selected2(music)}
@@ -117,14 +161,37 @@ export default function App({ navigation }) {
         )
     }
 
+    const renderSounds03 = (music) => {
+        return (
+            <TouchableWithoutFeedback
+                onPress={() => selected3(music)}
+            >
+                <ImageSound source={som}>
+                </ImageSound>
+            </TouchableWithoutFeedback>
+        )
+    }
+
+    const close = () => {
+        navigation.navigate('Main')
+        if (play1 == true) {
+            musica.stop()
+        }
+        if (play2 == true) {
+            musica.stop()
+        }
+        if (play3 == true) {
+            musica.stop()
+        }
+    }
+
     function renderSlides({ item }) {
         switch (item.image) {
             case ("slides01.png"):
                 return (
-
                     <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
@@ -132,6 +199,9 @@ export default function App({ navigation }) {
                         <DivisorLine2></DivisorLine2>
                         <FastImage source={slides01} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
                         </FastImage>
+                        <SafeAreaView style={{ marginTop: 20 }}>
+                            {nextButton2()}
+                        </SafeAreaView>
                     </SafeAreaView>
                 )
                 break;
@@ -139,7 +209,7 @@ export default function App({ navigation }) {
                 return (
                     <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
@@ -154,7 +224,7 @@ export default function App({ navigation }) {
                 return (
                     <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
@@ -164,7 +234,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds(item.music)}
+                            {renderSounds01(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -174,7 +244,7 @@ export default function App({ navigation }) {
                 return (
                     <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
@@ -184,7 +254,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds(item.music)}
+                            {renderSounds02(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -194,7 +264,7 @@ export default function App({ navigation }) {
                 return (
                     <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
                         <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Main')} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
                                 <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
                             </TouchableOpacity>
                             <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
@@ -204,7 +274,7 @@ export default function App({ navigation }) {
                         </FastImage>
                         <Div>
                             <DivisorLine></DivisorLine>
-                            {renderSounds(item.music)}
+                            {renderSounds03(item.music)}
                             <DivisorLine></DivisorLine>
                         </Div>
                     </SafeAreaView>
@@ -212,6 +282,100 @@ export default function App({ navigation }) {
                 break;
         }
     }
+
+    function renderSlides2({ item }) {
+        if (item.image == "slides01.png") {
+            return (
+                <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
+                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
+                        </TouchableOpacity>
+                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                    </SafeAreaView>
+                    <DivisorLine2></DivisorLine2>
+                    <FastImage source={slides01} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
+                    </FastImage>
+                </SafeAreaView>
+            )
+        }
+        if (item.image == "slides02.png") {
+            return (
+                <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
+                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
+                        </TouchableOpacity>
+                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                    </SafeAreaView>
+                    <DivisorLine2></DivisorLine2>
+                    <FastImage source={slides02} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
+                    </FastImage>
+                </SafeAreaView>
+            )
+        }
+        if (item.image == "slides03.png") {
+            return (
+                <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
+                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
+                        </TouchableOpacity>
+                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                    </SafeAreaView>
+                    <DivisorLine2></DivisorLine2>
+                    <FastImage source={slides03} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
+                    </FastImage>
+                    <Div>
+                        <DivisorLine></DivisorLine>
+                        {renderSounds01(item.music)}
+                        <DivisorLine></DivisorLine>
+                    </Div>
+                </SafeAreaView>
+            )
+        }
+        if (item.image == "slides04.png") {
+            return (
+                <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
+                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
+                        </TouchableOpacity>
+                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                    </SafeAreaView>
+                    <DivisorLine2></DivisorLine2>
+                    <FastImage source={slides04} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
+                    </FastImage>
+                    <Div>
+                        <DivisorLine></DivisorLine>
+                        {renderSounds02(item.music)}
+                        <DivisorLine></DivisorLine>
+                    </Div>
+                </SafeAreaView>
+            )
+        }
+        if (item.image == "slides05.png") {
+            return (
+                <SafeAreaView style={{ height: '95%', alignItems: 'center', backgroundColor: '#FFF' }}>
+                    <SafeAreaView style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: '2%' }}>
+                        <TouchableOpacity onPress={close} style={{ alignSelf: 'flex-start', position: 'absolute', marginLeft: '3%', marginBottom: '1%' }}>
+                            <FastImage source={iconeX} style={{ width: 40, height: 40 }}></FastImage>
+                        </TouchableOpacity>
+                        <FastImage source={Introducao} style={{ width: 225, height: 80, marginBottom: '1%' }}></FastImage>
+                    </SafeAreaView>
+                    <DivisorLine2></DivisorLine2>
+                    <FastImage source={slides05} style={{ resizeMode: 'cover', height: '65%', width: '90%', marginTop: '4%' }}>
+                    </FastImage>
+                    <Div>
+                        <DivisorLine></DivisorLine>
+                        {renderSounds03(item.music)}
+                        <DivisorLine></DivisorLine>
+                    </Div>
+                </SafeAreaView>
+            )
+        }
+    }
+
 
     const nextButton = () => {
         return (
@@ -227,6 +391,25 @@ export default function App({ navigation }) {
                     </Text>
                 </SafeAreaView>
             </SafeAreaView>
+        );
+    };
+
+    const nextButton2 = () => {
+        return (
+            <TouchableWithoutFeedback>
+                <SafeAreaView
+                    style={styles.ShadowButtons11}>
+                    <SafeAreaView
+                        style={styles.Buttons1}>
+                        <Text
+                            style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 30,
+                            }}>
+                            PRÓXIMO
+                        </Text>
+                    </SafeAreaView>
+                </SafeAreaView>
+            </TouchableWithoutFeedback>
         );
     };
 
@@ -264,6 +447,13 @@ export default function App({ navigation }) {
         );
     };
 
+    const Done = () => {
+        navigation.navigate('Introdução')
+        if (musica != null) {
+            musica.stop()
+        }
+    }
+
     const doneButton = () => {
         return (
             <SafeAreaView
@@ -288,7 +478,12 @@ export default function App({ navigation }) {
             data={allSlides}
             style={{ backgroundColor: '#FFF' }}
             activeDotStyle={{
+                marginBottom: '45%',
                 backgroundColor: '#96989A'
+            }}
+            dotStyle={{
+                marginBottom: '45%',
+                backgroundColor: '#D2D3D5'
             }}
             showSkipButton={true}
             showPrevButton={true}
@@ -296,7 +491,7 @@ export default function App({ navigation }) {
             renderSkipButton={skipButton}
             renderDoneButton={doneButton}
             renderPrevButton={prevButton}
-            onDone={() => navigation.navigate('Introdução')}
+            onDone={Done}
         >
         </AppIntroSlider>
     )
@@ -305,6 +500,14 @@ export default function App({ navigation }) {
 const styles = StyleSheet.create({
     ShadowButtons1: {
         width: 110,
+        height: 50,
+        alignItems: 'center',
+        alignContent: 'center',
+        borderRadius: 15,
+        backgroundColor: "#236A79",
+    },
+    ShadowButtons11: {
+        width: 350,
         height: 50,
         alignItems: 'center',
         alignContent: 'center',
