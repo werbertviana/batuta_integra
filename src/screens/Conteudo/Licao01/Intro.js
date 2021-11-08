@@ -340,7 +340,7 @@ export default function App({ navigation }) {
         );
     };
 
-    const teste = () => {
+    const StopAll = () => {
         if (musica != null) {
             setPlay1(false)
             setPlay2(false)
@@ -350,11 +350,10 @@ export default function App({ navigation }) {
     }
 
     return (
-
         <AppIntroSlider
             renderItem={renderSlides}
             data={allSlides}
-            onSlideChange={teste}
+            onSlideChange={StopAll}
             style={{ backgroundColor: '#FFF' }}
             activeDotStyle={{
                 marginTop: '6%',
