@@ -73,7 +73,7 @@ export default function Routes(){
                     borderTopColor: '#D2D3D5',
                     padding: 15,
                     //justifyContent:'space-around'
-                    borderTopWidth: 2,
+                    borderTopWidth: 2.5,
                     //width: '90%',
                     //backgroundColor: 'red',
                     //alignSelf: 'center'

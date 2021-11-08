@@ -1,6 +1,6 @@
 //import bibliotecas
 import React from 'react';
-import { SafeAreaView, Text, StyleSheet} from 'react-native';
+import { SafeAreaView, Text, StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 //import imagens
@@ -8,25 +8,55 @@ import foto01 from '../../assets/imgs/Elos/bronze.png';
 import foto02 from '../../assets/imgs/Elos/02.png';
 import foto03 from '../../assets/imgs/Elos/03.png';
 
-export default function Elos(){
+//import estilos
+import {
+    DivisorLine2
+} from '../../components/style'
+
+export default function Elos() {
     return (
         <SafeAreaView style={styles.container}>
-            <FastImage source={foto01} style={{height:'40%', width:'100%'}}></FastImage>
-            <FastImage source={foto02} style={{height:'25%', width:'100%'}}></FastImage>
-            <FastImage source={foto03} style={{height:'24%', width:'87%'}}></FastImage>
-        </SafeAreaView>
+            <FastImage source={foto01} style={{ height: '40%', width: '100%' }}></FastImage>
+            <SafeAreaView style={{
+                marginTop: '3%',
+                width: '100%'
+            }}>
+                <DivisorLine2></DivisorLine2>
+            </SafeAreaView>
+            <SafeAreaView style={{
+                marginTop: '2%',
+                height: '25%',
+                width: '100%',
+                padding: 1,
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <FastImage source={foto02} style={{ height: '100%', width: '100%' }}></FastImage>
+            </SafeAreaView>
+            <SafeAreaView style={{
+                marginTop: '1%',
+                width: '100%',
+            }}>
+                <DivisorLine2></DivisorLine2>
+            </SafeAreaView>
+            <SafeAreaView style={{
+                marginTop: '3%',
+                height: '24%',
+                width: '100%',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <FastImage source={foto03} style={{ height: '100%', width: '95%' }}></FastImage>
+            </SafeAreaView>
+        </SafeAreaView >
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff'
-    },
-    text:{
-        fontSize: 25,
-        fontWeight: 'bold'
     }
 });

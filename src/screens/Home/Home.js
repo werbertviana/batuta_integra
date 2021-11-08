@@ -565,7 +565,6 @@ export default function App({ navigation }) {
         }
     }
 
-
     function ListItem({ lesson, feeds, progress, show }) {
         return (
             <SafeAreaView style={styles.BgContainer}>
@@ -589,7 +588,6 @@ export default function App({ navigation }) {
             </SafeAreaView>
         )
     }
-
 
     const Modal01 = (title, content) => {
 

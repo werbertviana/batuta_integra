@@ -96,13 +96,6 @@ export const Div = styled.SafeAreaView`
     justify-content: center;
   `;
 
-export const Div2 = styled.SafeAreaView`
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const DivisorLine = styled.SafeAreaView`
     width: 40%;
     height: 3px;
@@ -113,9 +106,8 @@ export const DivisorLine = styled.SafeAreaView`
 
 export const DivisorLine2 = styled.SafeAreaView`
     width: 100%;
-    height: 2px;
+    height: 1.5px;
     background-color: #D2D3D5;
-    border-radius: 5px;
     `;    
 
 export const ButtonContainer = styled.SafeAreaView`
