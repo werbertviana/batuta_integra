@@ -202,10 +202,6 @@ export default function App({ navigation }) {
                             <FastImage source={slides01} style={{ height: '100%', width: '90%' }}>
                             </FastImage>
                         </SafeAreaView>
-                        {/*<SafeAreaView style={{ marginTop: '8%', backgroundColor:'yellow'}}>
-                            {nextButton2()}
-                            {skipButton2()}
-                </SafeAreaView>*/}
                     </SafeAreaView>
                 )
                 break;
