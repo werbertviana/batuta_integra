@@ -8,6 +8,7 @@ import ferro from '../../assets/imgs/Elos/ferro.png';
 import bronze from '../../assets/imgs/Elos/bronze.png';
 import foto02 from '../../assets/imgs/Elos/02.png';
 import foto03 from '../../assets/imgs/Elos/03.png';
+import titulo from '../../assets/imgs/Elos/sistemaElos.png';
 
 //import estilos
 import {
@@ -21,19 +22,26 @@ export default function Elos() {
     const Elo = () => {
         if (elo == 'ferro') {
             return (
-                <FastImage source={ferro} style={{ height: '40%', width: '100%' }}></FastImage>
+                <SafeAreaView style={{ height: '20%', width: '100%' }}>
+                    <FastImage source={ferro} style={{ height: '100%', width: '100%' }}></FastImage>
+                </SafeAreaView>
             )
         }
 
         if (elo == 'bronze') {
             return (
-                <FastImage source={bronze} style={{ height: '40%', width: '100%' }}></FastImage>
+                <SafeAreaView style={{ height: '20%', width: '100%' }}>
+                    <FastImage source={bronze} style={{ height: '100%', width: '100%' }}></FastImage>
+                </SafeAreaView>
             )
         }
     }
 
     return (
         <SafeAreaView style={styles.container}>
+            <SafeAreaView style={{ height: '14%', width: '75%'}}>
+                <FastImage source={titulo} style={{ height: '100%', width: '100%' }}></FastImage>
+            </SafeAreaView>
             {Elo()}
             <SafeAreaView style={{
                 marginTop: '3%',

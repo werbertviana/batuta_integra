@@ -98,10 +98,10 @@ export default function App({ navigation }) {
     const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() => ButtonRef.current.bounceIn(selected(music))}
+                onPress={() =>selected(music)}
             >
                 <Animatable.View
-                    animation={'bounceIn'}
+                    animation={''}
                     useNativeDriver
                     ref={ButtonRef}>
                     <ImageSound source={som}>
