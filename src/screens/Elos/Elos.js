@@ -39,7 +39,7 @@ export default function Elos() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <SafeAreaView style={{ height: '14%', width: '75%'}}>
+            <SafeAreaView style={{ height: '12%', width: '75%'}}>
                 <FastImage source={titulo} style={{ height: '100%', width: '100%' }}></FastImage>
             </SafeAreaView>
             {Elo()}
