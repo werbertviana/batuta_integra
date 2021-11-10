@@ -200,7 +200,7 @@ export default function Elos() {
             return (
 
                 <SafeAreaView style={{ margin: 5, alignItems: 'center' }}>
-                    <FastImage source={list03} style={{ width: 300, height: 200 }}></FastImage>
+                    <FastImage source={list03} style={{ width: 400, height: 250 }}></FastImage>
                 </SafeAreaView>
 
             )
