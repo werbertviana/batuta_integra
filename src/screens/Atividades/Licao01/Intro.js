@@ -702,7 +702,7 @@ export default function App({navigation}) {
                     style={styles.Feedbacks}>
                         <Text 
                         style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
                         }}>
                            XP DA ATIVIDADE
                         </Text>
@@ -723,7 +723,7 @@ export default function App({navigation}) {
                     style={styles.Feedbacks}>
                         <Text 
                         style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
                         }}>
                             PONTUAÇÃO DA ATIVIDADE
                         </Text>
@@ -732,7 +732,7 @@ export default function App({navigation}) {
                             }}>{score}
                         </Text>
                         <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 28, 
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 28, 
                             }}>/{allQuestions.length}
                         </Text>
                         <FastImage
@@ -760,7 +760,7 @@ export default function App({navigation}) {
             }}>
 
                 <SafeAreaView>
-                    <Text style={{fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30, padding: 4}}>
+                    <Text style={{fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30, padding: 4}}>
                         Não fique triste, errar faz parte do aprendizado. Vamos praticar novamente?
                     </Text>
                 </SafeAreaView>
@@ -771,7 +771,7 @@ export default function App({navigation}) {
                     style={styles.Feedbacks2}>
                         <Text 
                         style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 30,
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
                         }}>
                             PONTUAÇÃO DA ATIVIDADE
                         </Text>
@@ -780,7 +780,7 @@ export default function App({navigation}) {
                             }}>{score}
                         </Text>
                         <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#A9ABAE", fontSize: 28, 
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 28, 
                             }}>/{allQuestions.length}
                         </Text>
                         <FastImage
