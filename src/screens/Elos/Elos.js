@@ -52,7 +52,7 @@ export default function Elos() {
 
     const renderTitle = () => {
         return (
-            <SafeAreaView style={{ height: '14%', width: '90%', marginTop: '4%' }}>
+            <SafeAreaView style={{ height: '12%', width: '75%', marginTop: '4%' }}>
                 <FastImage source={titulo} style={{ height: '100%', width: '100%' }}></FastImage>
             </SafeAreaView>
         )
