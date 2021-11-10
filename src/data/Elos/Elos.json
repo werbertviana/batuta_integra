@@ -1,0 +1,16 @@
+{
+    "elos": [
+        {
+            "id": "1",
+            "image": "elos01.png"
+        },
+        {
+            "id": "2",
+            "image": "elos02.png"
+        },
+        {
+            "id": "3",
+            "image": "elos03.png"
+        }
+    ]
+}

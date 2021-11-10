@@ -106,7 +106,14 @@ export const DivisorLine2 = styled.SafeAreaView`
     width: 100%;
     height: 2px;
     background-color: #D2D3D5;
-    `;    
+    `;
+
+export const DivisorLine3 = styled.SafeAreaView`
+    width: 30%;
+    height: 2px;
+    background-color: #D2D3D5;
+    transform: { rotate: '90deg' };
+    `;
 
 export const ButtonContainer = styled.SafeAreaView`
     margin-top: 1%;
