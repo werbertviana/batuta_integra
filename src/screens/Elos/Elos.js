@@ -18,6 +18,7 @@ import titulo from '../../assets/imgs/Elos/titulo.png';
 import list01 from '../../assets/imgs/Elos/list01.png';
 import list02 from '../../assets/imgs/Elos/list02.png';
 import list03 from '../../assets/imgs/Elos/list03.png';
+import question from '../../assets/imgs/Elos/questionIcon.png';
 
 //import estilos
 import {
@@ -182,7 +183,21 @@ export default function Elos() {
             return (
 
                 <SafeAreaView style={{ margin: 5, alignItems: 'center' }}>
-                    <FastImage source={list01} style={{ width: 300, height: 300 }}></FastImage>
+                    <SafeAreaView
+                        style={styles.ShadowFeedbacks}>
+                        <SafeAreaView
+                            style={styles.Feedbacks}>
+                            <Text
+                                style={{
+                                    fontFamily: "GothamCondensed-Medium",
+                                    textAlign: 'center', color: "#606062", fontSize: 32,
+                                }}>
+                                COMO FUNCIONA?
+                            </Text>
+                            <FastImage source={question} style={{width: 35, height: 35, marginLeft: 10}}></FastImage>
+                        </SafeAreaView>
+                    </SafeAreaView>
+                    <FastImage source={list01} style={{ width: 400, height: 385 }}></FastImage>
                 </SafeAreaView>
 
             )
@@ -191,8 +206,8 @@ export default function Elos() {
         if (imagem == "elos02.png") {
             return (
                 <SafeAreaView style={{ margin: 5, alignItems: 'center' }}>
-                    <FastImage source={list02} style={{ width: 400, height: 250 }}></FastImage>
-                </SafeAreaView>      
+                    <FastImage source={list02} style={{ width: 400, height: 245 }}></FastImage>
+                </SafeAreaView>
             )
         }
 
@@ -200,6 +215,7 @@ export default function Elos() {
             return (
 
                 <SafeAreaView style={{ margin: 5, alignItems: 'center' }}>
+                    {divisor()}
                     <FastImage source={list03} style={{ width: 400, height: 250 }}></FastImage>
                 </SafeAreaView>
 
@@ -252,6 +268,29 @@ const styles = StyleSheet.create({
         margin: 12
     },
     Feedbacks2: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        backgroundColor: '#FFF',
+        marginLeft: 10,
+        marginTop: -4,
+        borderWidth: 2,
+        borderColor: '#D2D3D5',
+        flexDirection: 'row',
+    },
+    ShadowFeedbacks: {
+        marginTop: 30,
+        width: '60%',
+        height: 45,
+        alignItems: 'center',
+        alignContent: 'center',
+        borderRadius: 10,
+        backgroundColor: '#D2D3D5',
+        margin: 12
+    },
+    Feedbacks: {
         width: '100%',
         height: '100%',
         justifyContent: 'center',
