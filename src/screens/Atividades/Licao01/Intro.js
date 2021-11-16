@@ -1138,7 +1138,7 @@ const styles = StyleSheet.create({
         height: 65,
         alignItems: 'center',
         alignContent: 'center',
-        borderRadius: 20,
+        borderRadius: 15,
         backgroundColor: "#DAA520",
         margin: 8
     },
@@ -1147,7 +1147,7 @@ const styles = StyleSheet.create({
         height: '92%',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 20,
+        borderRadius: 15,
         backgroundColor: '#FDC500',
     },
     ShadowButtons2: {
@@ -1155,7 +1155,7 @@ const styles = StyleSheet.create({
         height: 65,
         alignItems: 'center',
         alignContent: 'center',
-        borderRadius: 20,
+        borderRadius: 15,
         backgroundColor: "#236A79",
         margin: 8
     },
@@ -1164,7 +1164,7 @@ const styles = StyleSheet.create({
         height: '92%',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 20,
+        borderRadius: 15,
         backgroundColor: '#3CB1C7',
     },
     ShadowFeedbacks: {
