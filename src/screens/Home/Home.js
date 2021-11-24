@@ -14,6 +14,8 @@ import Modal from 'react-native-modal';
 import FastImage from 'react-native-fast-image';
 import { createStackNavigator } from '@react-navigation/stack';
 
+//import api
+import api from '../../services/Api';
 
 // import estilos
 import {
@@ -50,6 +52,7 @@ import feed06Off from '../../assets/imgs/feed06Off.png';
 import lock from '../../assets/imgs/lock.png';
 // import dados estáticos
 import staticFeeds from '../../data/Feeds.json'
+import { color } from 'react-native-reanimated';
 
 
 export default function App({ navigation }) {
@@ -60,6 +63,16 @@ export default function App({ navigation }) {
     const feeds02 = [];
     feeds02.push(allFeeds[0]);
     feeds02.push(allFeeds[1]);
+
+//teste conexão api
+
+
+
+
+
+
+
+    //fim teste conexão api
 
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [lifePoints, setlifePoints] = useState(5);
