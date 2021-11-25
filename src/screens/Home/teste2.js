@@ -24,11 +24,13 @@ export default function App() {
         } catch(error){
             console.log(error)
         }
-    }*/
+    }
+    */
 
-    api.get('/feeds').then((response) =>
-        console.log(response.data)
-    )
+    api.get("/feeds").then((response) => {
+        console.log(response.data);
+    });
+    
 
 
     return (
