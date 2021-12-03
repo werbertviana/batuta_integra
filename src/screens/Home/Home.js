@@ -104,8 +104,8 @@ export default function App({ navigation }) {
     const [lifePoints, setlifePoints] = useState(5);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [contador, setContador] = useState(0);
-    const [showFeed01, setShowFeed01] = useState(true);
-    const [showFeed02, setShowFeed02] = useState(true);
+    const [showFeed01, setShowFeed01] = useState(false);
+    const [showFeed02, setShowFeed02] = useState(false);
     const [showFeed03, setShowFeed03] = useState(false);
     const [showFeed04, setShowFeed04] = useState(false);
     const [showFeed05, setShowFeed05] = useState(false);
@@ -714,7 +714,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed01On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed01)}
+                            {renderBoardFeeds2(title, showFeed01)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -725,7 +725,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed01Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed01)}
+                            {renderBoardFeeds2(title, showFeed01)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -739,7 +739,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed02On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed02)}
+                            {renderBoardFeeds2(title, showFeed02)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -750,7 +750,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed02Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed02)}
+                            {renderBoardFeeds2(title, showFeed02)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -763,7 +763,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed03On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed03)}
+                            {renderBoardFeeds2(title, showFeed03)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -774,7 +774,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed03Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed03)}
+                            {renderBoardFeeds2(title, showFeed03)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -787,7 +787,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed04On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed04)}
+                            {renderBoardFeeds2(title, showFeed04)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -798,7 +798,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed04Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed04)}
+                            {renderBoardFeeds2(title, showFeed04)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -811,7 +811,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed05On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed05)}
+                            {renderBoardFeeds2(title, showFeed05)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -822,7 +822,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed05Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed05)}
+                            {renderBoardFeeds2(title, showFeed05)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -835,7 +835,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed06On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed06)}
+                            {renderBoardFeeds2(title, showFeed06)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -846,7 +846,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed06Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed06)}
+                            {renderBoardFeeds2(title, showFeed06)}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -856,6 +856,28 @@ export default function App({ navigation }) {
     }
 
     const renderBoardFeeds = (title, show) => {
+        return (
+            <SafeAreaView style={styles.ShadowBoardFeeds}>
+                <SafeAreaView style={styles.BoardFeeds}
+                    bg={"#fff"}
+                    bordercolor={'#D2D3D5'}
+                    borderwidth={'2px'}>
+                    <Text style={{
+                        fontSize: 25,
+                        fontFamily: 'GothamCondensed-Medium',
+                        textAlign: 'center',
+                        color: show == true
+                            ? "black"
+                            : "#727376"
+                    }} >
+                        {title}
+                    </Text>
+                </SafeAreaView>
+            </SafeAreaView >
+        )
+    }
+
+    const renderBoardFeeds2 = (title, show) => {
         return (
             <SafeAreaView style={styles.ShadowBoardFeeds}>
                 <SafeAreaView style={styles.BoardFeeds}
@@ -912,19 +934,6 @@ export default function App({ navigation }) {
                     progress={item.progress} show={item.show_lesson}></ListItem2>}
             ></FlatList>
         )
-
-
-        // if (showFeed01 == true && showFeed04 == true) {
-        //     return (
-        //         <FlatList
-        //             data={feeds02}
-        //             keyExtractor={item => String(item._id)}
-        //             renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
-        //                 progress={item.progress} show={item.show_lesson}></ListItem>}
-        //         ></FlatList>
-        //     )
-        // }
-
     }
 
     const renderBlockTitle = () => {
