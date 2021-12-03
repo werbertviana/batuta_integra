@@ -71,35 +71,11 @@ export default function App({ navigation }) {
 
     useEffect(()=>{
         api.get("/allfeeds").then((response) => {
-
-            // console.log(response.data);
             setAllFeeds02(response.data);
         });
     },[]);
     
-    
-    console.log(allFeeds02)
-    
-
-    // const getFeeds = async () => {
-    //     api.get("/allfeeds").then((response) => {
-
-    //         // const teste = response.data
-    //         // setAllFeeds02(teste);
-    //         // console.log(response.data)
-    //     });
-    // }
-
-    // const getFeeds2 = async () => {
-    //     const {data} = await api.get("/allfeeds");
-    //     // setAllFeeds02(data);
-    //     console.log(data)
-    // }
-
-
-
-
-
+ 
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [lifePoints, setlifePoints] = useState(5);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
