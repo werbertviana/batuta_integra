@@ -27,7 +27,7 @@ export default function App() {
     }
     */
 
-    api.get("/feeds").then((response) => {
+    api.get("/allfeeds").then((response) => {
         console.log(response.data);
     });
     
