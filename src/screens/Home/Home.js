@@ -64,6 +64,16 @@ export default function App({ navigation }) {
     feeds02.push(allFeeds[1]);
     // console.log(feeds01)
 
+    //solicitando requisição no backend
+    const [content, setContent] = useState([]);
+
+    useEffect(() => {
+        api.get("/items/content/76874e1d-b466-4028-bfb4-419347259a02").then((response) => {
+            setContent(response.data);
+        });
+    }, []);
+    console.log(content)
+
 
     //solicitando requisição no backend
     const [allFeeds02, setAllFeeds02] = useState([]);
@@ -593,7 +603,7 @@ export default function App({ navigation }) {
                 showFeeds.push(allFeeds02[i].items[j].show_feed);
             }
         }
-        console.log(showFeeds)
+        // console.log(showFeeds)
     }
 
     const renderBlockTitle2 = () => {

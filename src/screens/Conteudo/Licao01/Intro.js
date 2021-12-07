@@ -41,6 +41,16 @@ export default function App({ navigation }) {
     const [musica, setMusica] = useState(null)
     const allSlides = staticSlides.slides;
 
+    //solicitando requisição no backend
+    const [content, setContent] = useState([]);
+
+    useEffect(() => {
+        api.get("/items/content/76874e1d-b466-4028-bfb4-419347259a02").then((response) => {
+            setContent(response.data);
+        });
+    }, []);
+    
+
     const PlaySound = (music) => {
         if (music == "melodia") {
             var melodia = new Sound(require('../../../assets/sounds/melodia.mp3'), (error) => {

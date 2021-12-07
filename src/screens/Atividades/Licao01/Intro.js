@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 // import estilos
 import {
     Bgcontainer,
@@ -74,10 +74,12 @@ import * as Animatable from 'react-native-animatable';
 import DivFacil from '../../../components/DivFacil';
 import DivMedio from '../../../components/DivMedio';
 import DivDificil from '../../../components/DivDificil';
+//import api
+import api from '../../../services/Api';
 
 
 
-export default function App({navigation}) {
+export default function App({ navigation }) {
 
     const ButtonRef = useRef()
     const Button2Ref = useRef()
@@ -94,6 +96,16 @@ export default function App({navigation}) {
     const [showRightModal, setShowRightModal] = useState(false);
     const [showWrongModal, setShowWrongModal] = useState(false);
     const [xpPoints, setxpPoints] = useState(0);
+
+    //solicitando requisição no backend
+    const [questions, setQuestions] = useState([]);
+
+    useEffect(() => {
+        api.get("/items/content/76874e1d-b466-4028-bfb4-419347259a02").then((response) => {
+            setQuestions(response.data);
+        });
+    }, []);
+    
 
     const renderQuestion = () => {
         return (
@@ -186,7 +198,7 @@ export default function App({navigation}) {
                 break;
             case ("QF02.png"):
                 return (
-                     <ImageQuestions source={QF02}></ImageQuestions>
+                    <ImageQuestions source={QF02}></ImageQuestions>
                 )
                 break;
             case ("QF03.png"):
@@ -198,12 +210,12 @@ export default function App({navigation}) {
                 return (
                     <ImageQuestions source={QF04}></ImageQuestions>
                 )
-                break; 
+                break;
             case ("QF05.png"):
                 return (
                     <ImageQuestions source={QF05}></ImageQuestions>
                 )
-                    break;
+                break;
             case ("QF06.png"):
                 return (
                     <ImageQuestions source={QF06}></ImageQuestions>
@@ -218,12 +230,12 @@ export default function App({navigation}) {
                 return (
                     <ImageQuestions source={QF08}></ImageQuestions>
                 )
-                break; 
+                break;
             case ("QF09.png"):
                 return (
                     <ImageQuestions source={QF09}></ImageQuestions>
                 )
-                break;                
+                break;
             case ("QF10.png"):
                 return (
                     <ImageQuestions source={QF10}></ImageQuestions>
@@ -238,7 +250,7 @@ export default function App({navigation}) {
                 return (
                     <ImageQuestions source={QF12}></ImageQuestions>
                 )
-                break; 
+                break;
             case ("QB01.png"):
                 return (
                     <ImageQuestions source={QB01}></ImageQuestions>
@@ -258,7 +270,7 @@ export default function App({navigation}) {
                 return (
                     <ImageQuestions source={QB04}></ImageQuestions>
                 )
-                break;  
+                break;
             case ("QB05.png"):
                 return (
                     <ImageQuestions source={QB05}></ImageQuestions>
@@ -267,7 +279,7 @@ export default function App({navigation}) {
             case ("QB06.png"):
                 return (
                     <ImageQuestions source={QB06}></ImageQuestions>
-                ) 
+                )
                 break;
             case ("QB07.png"):
                 return (
@@ -278,7 +290,7 @@ export default function App({navigation}) {
                 return (
                     <ImageQuestions source={QB08}></ImageQuestions>
                 )
-                break;   
+                break;
             case ("QB09.png"):
                 return (
                     <ImageQuestions source={QB09}></ImageQuestions>
@@ -287,7 +299,7 @@ export default function App({navigation}) {
             case ("QB10.png"):
                 return (
                     <ImageQuestions source={QB10}></ImageQuestions>
-                ) 
+                )
                 break;
             case ("QB11.png"):
                 return (
@@ -298,7 +310,7 @@ export default function App({navigation}) {
                 return (
                     <ImageQuestions source={QB12}></ImageQuestions>
                 )
-                break;             
+                break;
         }
     }
 
@@ -523,7 +535,7 @@ export default function App({navigation}) {
             </TouchableWithoutFeedback>
         )
     }
-    
+
     const renderElos = () => {
         let elo = allQuestions[currentQuestionIndex].elo
         switch (elo) {
@@ -531,12 +543,12 @@ export default function App({navigation}) {
                 return (
                     <Image style={{ width: 35, height: 35 }} source={ferro}></Image>
                 )
-            break;
+                break;
             case ("bronze"):
                 return (
                     <Image style={{ width: 35, height: 35 }} source={bronze}></Image>
                 )
-            break;
+                break;
         }
     }
 
@@ -560,7 +572,7 @@ export default function App({navigation}) {
         return (
 
             <CloseButtonContainer
-            onPress={()=>navigation.navigate('Main')}>
+                onPress={() => navigation.navigate('Main')}>
                 <IconImages
                     source={iconeX}>
                 </IconImages>
@@ -687,165 +699,169 @@ export default function App({navigation}) {
     const rightFeedbacks = () => {
         return (
             <SafeAreaView
-            style={{
-                marginTop: 25,
-                padding: 5,
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                //backgroundColor: 'red',
-            }}>
+                style={{
+                    marginTop: 25,
+                    padding: 5,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    //backgroundColor: 'red',
+                }}>
 
                 <SafeAreaView
-                style={styles.ShadowFeedbacks}>
+                    style={styles.ShadowFeedbacks}>
                     <SafeAreaView
-                    style={styles.Feedbacks}>
-                        <Text 
-                        style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
-                        }}>
-                           XP DA ATIVIDADE
+                        style={styles.Feedbacks}>
+                        <Text
+                            style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
+                            }}>
+                            XP DA ATIVIDADE
                         </Text>
                         <FastImage
-                        style={styles.IconImages}
-                        source={iconeXp}>
+                            style={styles.IconImages}
+                            source={iconeXp}>
                         </FastImage>
                         <Text
-                        style={styles.XpText}>
+                            style={styles.XpText}>
                             {xpPoints}
                         </Text>
                     </SafeAreaView>
                 </SafeAreaView>
 
                 <SafeAreaView
-                style={styles.ShadowFeedbacks}>
+                    style={styles.ShadowFeedbacks}>
                     <SafeAreaView
-                    style={styles.Feedbacks}>
-                        <Text 
-                        style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
-                        }}>
+                        style={styles.Feedbacks}>
+                        <Text
+                            style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
+                            }}>
                             PONTUAÇÃO DA ATIVIDADE
                         </Text>
                         <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#61BE4B", fontSize: 28, marginLeft: 8
-                            }}>{score}
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#61BE4B", fontSize: 28, marginLeft: 8
+                        }}>{score}
                         </Text>
                         <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 28, 
-                            }}>/{allQuestions.length}
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 28,
+                        }}>/{allQuestions.length}
                         </Text>
                         <FastImage
-                        style={{margin: 8,
-                            width: 35,
-                            height: 35}}
-                        source={checkIcon}>
+                            style={{
+                                margin: 8,
+                                width: 35,
+                                height: 35
+                            }}
+                            source={checkIcon}>
                         </FastImage>
                     </SafeAreaView>
                 </SafeAreaView>
-            </SafeAreaView>       
+            </SafeAreaView>
         )
     }
 
     const wrongFeedbacks = () => {
         return (
             <SafeAreaView
-            style={{
-                marginTop: 25,
-                padding: 5,
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                //backgroundColor: 'red',
-            }}>
+                style={{
+                    marginTop: 25,
+                    padding: 5,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    //backgroundColor: 'red',
+                }}>
 
                 <SafeAreaView>
-                    <Text style={{fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30, padding: 4}}>
+                    <Text style={{ fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30, padding: 4 }}>
                         Não fique triste, errar faz parte do aprendizado. Vamos praticar novamente?
                     </Text>
                 </SafeAreaView>
 
                 <SafeAreaView
-                style={styles.ShadowFeedbacks2}>
+                    style={styles.ShadowFeedbacks2}>
                     <SafeAreaView
-                    style={styles.Feedbacks2}>
-                        <Text 
-                        style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
-                        }}>
+                        style={styles.Feedbacks2}>
+                        <Text
+                            style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 30,
+                            }}>
                             PONTUAÇÃO DA ATIVIDADE
                         </Text>
                         <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginLeft: 8
-                            }}>{score}
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "red", fontSize: 28, marginLeft: 8
+                        }}>{score}
                         </Text>
                         <Text style={{
-                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 28, 
-                            }}>/{allQuestions.length}
+                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 28,
+                        }}>/{allQuestions.length}
                         </Text>
                         <FastImage
-                        style={{margin: 8,
-                            width: 35,
-                            height: 35}}
-                        source={errorIcon}>
+                            style={{
+                                margin: 8,
+                                width: 35,
+                                height: 35
+                            }}
+                            source={errorIcon}>
                         </FastImage>
                     </SafeAreaView>
                 </SafeAreaView>
-            </SafeAreaView>       
+            </SafeAreaView>
         )
     }
 
     const buttonsModal = () => {
         return (
             <SafeAreaView
-            style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                padding: 5,
-                //backgroundColor: 'red',
-            }}>
+                style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    padding: 5,
+                    //backgroundColor: 'red',
+                }}>
 
                 <TouchableOpacity
-                onPress={restartQuiz}
-                style={styles.ShadowButtons1}>
+                    onPress={restartQuiz}
+                    style={styles.ShadowButtons1}>
                     <SafeAreaView
-                    style={styles.Buttons1}>
-                        <Text 
-                        style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
-                        }}>
+                        style={styles.Buttons1}>
+                        <Text
+                            style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
+                            }}>
                             RECOMEÇAR
                         </Text>
                     </SafeAreaView>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                style={styles.ShadowButtons2}
-                onPress={()=>navigation.navigate('Main')}>
+                    style={styles.ShadowButtons2}
+                    onPress={() => navigation.navigate('Main')}>
                     <SafeAreaView
-                    style={styles.Buttons2}>
-                        <Text 
-                        style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
-                        }}>
+                        style={styles.Buttons2}>
+                        <Text
+                            style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 40,
+                            }}>
                             CONTINUAR
                         </Text>
                     </SafeAreaView>
                 </TouchableOpacity>
             </SafeAreaView>
-               
+
         )
     }
 
     const renderModal = () => {
-        if(score > (allQuestions.length / 2)){
+        if (score > (allQuestions.length / 2)) {
             setScoreRigthModal(true)
-        }else{
+        } else {
             setScoreWrongModal(true)
         }
     }
-    
+
     {/* Main */ }
     return (
 
@@ -878,125 +894,125 @@ export default function App({navigation}) {
                 animationType="slide"
                 transparent={true}
                 visible={scoreRigthModal}
-                >  
-                    <SafeAreaView style={{
-                        flex: 1,
-                        alignItems: 'center',
-                        backgroundColor: '#fff'
-                    }}>
-                        <Animatable.View
-                        animation = "pulse"
-                        useNativeDriver
-                        iterationCount= "infinite">
-                            <FastImage 
-                            style={{height: 210, width: 328, marginTop: 30}}
-                            source={ativConcluida}
-                            >
-                            </FastImage>
-                        </Animatable.View>
-                            {rightFeedbacks()}
-                        <SafeAreaView style={{
-                        flex: 1,
-                        width: '100%',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
-                        alignItems: 'center',
-                        //backgroundColor: 'blue'
-                        }}>
-                            {buttonsModal()}
-                        </SafeAreaView>
-                    </SafeAreaView>
-            </Modal> 
-            {/* Show Wrong Score Modal */} 
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={scoreWrongModal}
-            >  
+            >
                 <SafeAreaView style={{
                     flex: 1,
                     alignItems: 'center',
                     backgroundColor: '#fff'
                 }}>
                     <Animatable.View
-                    animation = "pulse"
-                    useNativeDriver
-                    iterationCount= "infinite">
-                        <FastImage 
-                        style={{height: 212, width: 328, marginTop: 30}}
-                        source={tente}
+                        animation="pulse"
+                        useNativeDriver
+                        iterationCount="infinite">
+                        <FastImage
+                            style={{ height: 210, width: 328, marginTop: 30 }}
+                            source={ativConcluida}
                         >
                         </FastImage>
                     </Animatable.View>
-                        {wrongFeedbacks()}
-                        <SafeAreaView style={{
+                    {rightFeedbacks()}
+                    <SafeAreaView style={{
                         flex: 1,
                         width: '100%',
                         flexDirection: 'column',
                         justifyContent: 'flex-end',
                         alignItems: 'center',
                         //backgroundColor: 'blue'
-                        }}>
+                    }}>
                         {buttonsModal()}
-                        </SafeAreaView>
+                    </SafeAreaView>
                 </SafeAreaView>
-            </Modal>                    
+            </Modal>
+            {/* Show Wrong Score Modal */}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={scoreWrongModal}
+            >
+                <SafeAreaView style={{
+                    flex: 1,
+                    alignItems: 'center',
+                    backgroundColor: '#fff'
+                }}>
+                    <Animatable.View
+                        animation="pulse"
+                        useNativeDriver
+                        iterationCount="infinite">
+                        <FastImage
+                            style={{ height: 212, width: 328, marginTop: 30 }}
+                            source={tente}
+                        >
+                        </FastImage>
+                    </Animatable.View>
+                    {wrongFeedbacks()}
+                    <SafeAreaView style={{
+                        flex: 1,
+                        width: '100%',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        //backgroundColor: 'blue'
+                    }}>
+                        {buttonsModal()}
+                    </SafeAreaView>
+                </SafeAreaView>
+            </Modal>
             {/* Wrong Modal */}
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={showWrongModal}    
+                visible={showWrongModal}
             >
-               <SafeAreaView style={{flexDirection:'column', justifyContent:'flex-end', flex:1}}>
-                <SafeAreaView style={{
-                    width: '100%',
-                    height: '22%',
-                    //opacity: 0.9,
-                    backgroundColor: "#fEE0E2",
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    alignContent: 'center'
-                }}>
+                <SafeAreaView style={{ flexDirection: 'column', justifyContent: 'flex-end', flex: 1 }}>
                     <SafeAreaView style={{
-                        marginTop: '5%',
                         width: '100%',
+                        height: '22%',
+                        //opacity: 0.9,
+                        backgroundColor: "#fEE0E2",
+                        alignItems: 'center',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'row'
+                        alignContent: 'center'
                     }}>
-                        <ImageModal source={errorIcon}></ImageModal>
-                        <Text style={{
-                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
-                        }}>  Resposta correta: {allQuestions[currentQuestionIndex].correct_alternative}  
-                        </Text>
+                        <SafeAreaView style={{
+                            marginTop: '5%',
+                            width: '100%',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexDirection: 'row'
+                        }}>
+                            <ImageModal source={errorIcon}></ImageModal>
+                            <Text style={{
+                                fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
+                            }}>  Resposta correta: {allQuestions[currentQuestionIndex].correct_alternative}
+                            </Text>
 
-                    </SafeAreaView>
+                        </SafeAreaView>
 
-                    <SafeAreaView style={{
+                        <SafeAreaView style={{
 
-                        width: '100%',
-                        height: '75%',
-                        marginTop: '1%',
-                        alignItems: 'center',
-                        alignContent: 'center',
-                    }}>
-                        <TouchableWithoutFeedback
-                            onPress={exitModal}
-                        >
-                            <View style={styles.ShadowWrongButton}>
-                                <StyleButtons
-                                    bg={"#FF4B4C"}
-                                    bordercolor={'#FF4B4C'}
-                                    borderwidth={'0px'}>
-                                    <Text style={{
-                                        fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
-                                    }}>CONTINUAR</Text>
-                                </StyleButtons>
-                            </View>
-                        </TouchableWithoutFeedback>
+                            width: '100%',
+                            height: '75%',
+                            marginTop: '1%',
+                            alignItems: 'center',
+                            alignContent: 'center',
+                        }}>
+                            <TouchableWithoutFeedback
+                                onPress={exitModal}
+                            >
+                                <View style={styles.ShadowWrongButton}>
+                                    <StyleButtons
+                                        bg={"#FF4B4C"}
+                                        bordercolor={'#FF4B4C'}
+                                        borderwidth={'0px'}>
+                                        <Text style={{
+                                            fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "white", fontSize: 32,
+                                        }}>CONTINUAR</Text>
+                                    </StyleButtons>
+                                </View>
+                            </TouchableWithoutFeedback>
+                        </SafeAreaView>
                     </SafeAreaView>
                 </SafeAreaView>
-              </SafeAreaView>
             </Modal>
             {/* Modal Right */}
             <Modal
@@ -1004,7 +1020,7 @@ export default function App({navigation}) {
                 transparent={true}
                 visible={showRightModal}
             >
-                <SafeAreaView style={{flexDirection:'column', justifyContent:'flex-end', flex:1}}>
+                <SafeAreaView style={{ flexDirection: 'column', justifyContent: 'flex-end', flex: 1 }}>
                     <SafeAreaView style={{
                         width: '100%',
                         height: '22%',
@@ -1134,7 +1150,7 @@ const styles = StyleSheet.create({
         borderRadius: 44 / 2
     },
     ShadowButtons1: {
-        width:'90%',
+        width: '90%',
         height: 65,
         alignItems: 'center',
         alignContent: 'center',
@@ -1151,7 +1167,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FDC500',
     },
     ShadowButtons2: {
-        width:'90%',
+        width: '90%',
         height: 65,
         alignItems: 'center',
         alignContent: 'center',
@@ -1168,7 +1184,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#3CB1C7',
     },
     ShadowFeedbacks: {
-        width:'85%',
+        width: '85%',
         height: 70,
         alignItems: 'center',
         alignContent: 'center',
@@ -1186,12 +1202,12 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginTop: -4,
         borderWidth: 2,
-        borderColor:'#D2D3D5',
+        borderColor: '#D2D3D5',
         flexDirection: 'row',
     },
     ShadowFeedbacks2: {
         marginTop: 30,
-        width:'85%',
+        width: '85%',
         height: 70,
         alignItems: 'center',
         alignContent: 'center',
@@ -1209,10 +1225,10 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginTop: -4,
         borderWidth: 2,
-        borderColor:'#D2D3D5',
+        borderColor: '#D2D3D5',
         flexDirection: 'row',
     },
-    IconImages:{
+    IconImages: {
         margin: 8,
         width: 40,
         height: 40
