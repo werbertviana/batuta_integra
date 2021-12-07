@@ -360,7 +360,7 @@ export default function App({ navigation }) {
             let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
 
-            if (teste[0] == true && teste[1] == false) {
+            if (showFeeds[0] == true && showFeeds[1] == false) {
                 let percent2 = percent
                 percent2.toString()
                 percent2 = percent2 + "%"
@@ -377,7 +377,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (teste[0] == true && teste[1] == true && teste[2] == false) {
+            if (showFeeds[0] == true && showFeeds[1] == true && showFeeds[2] == false) {
                 percent = percent + percent;
                 let percent2 = percent
                 percent2.toString()
@@ -395,7 +395,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (teste[0] == true && teste[1] == true && teste[2] == true) {
+            if (showFeeds[0] == true && showFeeds[1] == true && showFeeds[2] == true) {
                 const progressAnim2 = progress.interpolate({
                     inputRange: [0, feeds01[0].items.length - 1],
                     outputRange: ['90%', '90%']
@@ -414,7 +414,7 @@ export default function App({ navigation }) {
             let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
 
-            if (teste[3] == true && teste[4] == false) {
+            if (showFeeds[3] == true && showFeeds[4] == false) {
                 let percent2 = percent
                 percent2.toString()
                 percent2 = percent2 + "%"
@@ -431,7 +431,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (teste[3] == true && teste[4] == true && teste[5] == false) {
+            if (showFeeds[3] == true && showFeeds[4] == true && showFeeds[5] == false) {
                 percent = percent + percent;
                 let percent2 = percent
                 percent2.toString()
@@ -449,7 +449,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (teste[3] == true && teste[4] == true && teste[5] == true) {
+            if (showFeeds[3] == true && showFeeds[4] == true && showFeeds[5] == true) {
                 const progressAnim2 = progress.interpolate({
                     inputRange: [0, feeds01[0].items.length - 1],
                     outputRange: ['90%', '90%']
@@ -692,7 +692,7 @@ export default function App({ navigation }) {
     const renderIconsFeeds2 = (icon, title, content) => {
         switch (icon) {
             case ("feed01.png"):
-                if (teste[0] == true) {
+                if (showFeeds[0] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
@@ -717,7 +717,7 @@ export default function App({ navigation }) {
                 }
 
             case ("feed02.png"):
-                if (teste[1] == true) {
+                if (showFeeds[1] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
@@ -741,7 +741,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed03.png"):
-                if (teste[2] == true) {
+                if (showFeeds[2] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -765,7 +765,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed04.png"):
-                if (teste[3] == true) {
+                if (showFeeds[3] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -789,7 +789,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed05.png"):
-                if (teste[4] == true) {
+                if (showFeeds[4] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -813,7 +813,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed06.png"):
-                if (teste[5] == true) {
+                if (showFeeds[5] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -909,9 +909,9 @@ export default function App({ navigation }) {
     }
 
     const renderAllFeeds2 = () => {
-        showFeeds();
+        renderShowFeeds();
 
-        if (teste[0] == true && teste[3] == false) {
+        if (showFeeds[0] == true && showFeeds[3] == false) {
             return (
                 <FlatList
                     data={Feeds01}
@@ -922,7 +922,7 @@ export default function App({ navigation }) {
             )
         }
 
-        if (teste[0] == true && teste[3] == true) {
+        if (showFeeds[0] == true && showFeeds[3] == true) {
             return (
                 <FlatList
                     data={Feeds02}
@@ -934,21 +934,35 @@ export default function App({ navigation }) {
         }
     }
 
-    let teste = [];
+    let showFeeds = [];
 
-    const showFeeds = () => {
+    const renderShowFeeds = () => {
 
         for (let i = 0; i <= 1; i++) {
             for (let j = 0; j <= 2; j++) {
 
-                teste.push(allFeeds02[i].items[j].show_feed);
+                showFeeds.push(allFeeds02[i].items[j].show_feed);
             }
         }
-        console.log(teste)
+        console.log(showFeeds)
     }
 
     const renderBlockTitle = () => {
         if (showFeed04 == false) {
+            return (
+                <SafeAreaView style={{ alignItems: 'center', marginTop: 30 }}>
+
+                    <Animatable.View style={styles.LessonContainer}>
+                        <IconLesson source={licao02Off}></IconLesson>
+                    </Animatable.View>
+
+                </SafeAreaView>
+            )
+        }
+    }
+
+    const renderBlockTitle2 = () => {
+        if (showFeeds[3] == false) {
             return (
                 <SafeAreaView style={{ alignItems: 'center', marginTop: 30 }}>
 
@@ -1012,6 +1026,7 @@ export default function App({ navigation }) {
                         </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
+                {renderBlockTitle2()}
             </SafeAreaView>
         )
     }
