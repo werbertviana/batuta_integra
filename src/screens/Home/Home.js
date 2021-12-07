@@ -189,30 +189,8 @@ export default function App({ navigation }) {
     }
 
     // Numero da licao
-    const renderLessonTitle = (lesson, show) => {
-        switch (lesson) {
-            case ("1"):
-                if (show == "true") {
-                    return (
-                        <Animatable.View style={styles.LessonContainer}>
-                            <IconLesson source={licao01}></IconLesson>
-                        </Animatable.View>
-                    )
-                    break;
-                }
-            case ("2"):
-                if (show == "true") {
-                    return (
-                        <Animatable.View style={styles.LessonContainer}>
-                            <IconLesson source={licao02}></IconLesson>
-                        </Animatable.View>
-                    )
-                    break;
-                }
-        }
-    }
 
-    const renderLessonTitle2 = (lesson, show) => {
+    const renderLessonTitle = (lesson, show) => {
         switch (lesson) {
             case (1):
                 if (show == true) {
@@ -247,7 +225,7 @@ export default function App({ navigation }) {
     {/* Config Progress Bar */ }
 
 
-    const ProgressBar2 = (lesson, progresso) => {
+    const ProgressBar = (lesson, progresso) => {
         if (lesson == 1) {
             const [progress, setProgress] = useState(new Animated.Value(0));
             let percent = ((100) / feeds01[0].items.length);
@@ -266,7 +244,7 @@ export default function App({ navigation }) {
                     outputRange: [percent2, '100%']
                 })
                 return (
-                    renderProgressBar2(progresso, progressAnim, progressAnim2)
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
                 )
             }
 
@@ -284,7 +262,7 @@ export default function App({ navigation }) {
                     outputRange: [percent2, '100%']
                 })
                 return (
-                    renderProgressBar2(progresso, progressAnim, progressAnim2)
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
                 )
             }
 
@@ -298,7 +276,7 @@ export default function App({ navigation }) {
                     outputRange: ['100%', '100%']
                 })
                 return (
-                    renderProgressBar2(progresso, progressAnim, progressAnim2)
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
                 )
             }
         }
@@ -320,7 +298,7 @@ export default function App({ navigation }) {
                     outputRange: [percent2, '100%']
                 })
                 return (
-                    renderProgressBar2(progresso, progressAnim, progressAnim2)
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
                 )
             }
 
@@ -338,7 +316,7 @@ export default function App({ navigation }) {
                     outputRange: [percent2, '100%']
                 })
                 return (
-                    renderProgressBar2(progresso, progressAnim, progressAnim2)
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
                 )
             }
 
@@ -352,13 +330,13 @@ export default function App({ navigation }) {
                     outputRange: ['100%', '100%']
                 })
                 return (
-                    renderProgressBar2(progresso, progressAnim, progressAnim2)
+                    renderProgressBar(progresso, progressAnim, progressAnim2)
                 )
             }
         }
     }
 
-    const renderProgressBar2 = (progress, progressAnim, progressAnim2) => {
+    const renderProgressBar = (progress, progressAnim, progressAnim2) => {
         if (progress == true) {
             return (
                 <Animatable.View style={styles.ProgressContainer}>
@@ -394,7 +372,7 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderIconsFeeds2 = (icon, title, content) => {
+    const renderIconsFeeds = (icon, title, content) => {
         switch (icon) {
             case ("feed01.png"):
                 if (showFeeds[0] == true) {
@@ -403,7 +381,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed01On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[0])}
+                            {renderBoardFeeds(title, showFeeds[0])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -414,7 +392,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed01Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[0])}
+                            {renderBoardFeeds(title, showFeeds[0])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -428,7 +406,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed02On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[1])}
+                            {renderBoardFeeds(title, showFeeds[1])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -439,7 +417,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed02Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[1])}
+                            {renderBoardFeeds(title, showFeeds[1])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -452,7 +430,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed03On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[2])}
+                            {renderBoardFeeds(title, showFeeds[2])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -463,7 +441,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed03Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[2])}
+                            {renderBoardFeeds(title, showFeeds[2])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -476,7 +454,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed04On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[3])}
+                            {renderBoardFeeds(title, showFeeds[3])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -487,7 +465,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed04Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[3])}
+                            {renderBoardFeeds(title, showFeeds[3])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -500,7 +478,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed05On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[4])}
+                            {renderBoardFeeds(title, showFeeds[4])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -511,7 +489,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed05Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[4])}
+                            {renderBoardFeeds(title, showFeeds[4])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -524,7 +502,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed06On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[5])}
+                            {renderBoardFeeds(title, showFeeds[5])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -535,7 +513,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed06Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds2(title, showFeeds[5])}
+                            {renderBoardFeeds(title, showFeeds[5])}
                             {renderModal(title, content)}
                         </SafeAreaView>
                     )
@@ -544,7 +522,7 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderBoardFeeds2 = (title, show) => {
+    const renderBoardFeeds = (title, show) => {
         return (
             <SafeAreaView style={styles.ShadowBoardFeeds}>
                 <SafeAreaView style={styles.BoardFeeds}
@@ -566,7 +544,7 @@ export default function App({ navigation }) {
         )
     }
 
-    const renderAllFeeds2 = () => {
+    const renderAllFeeds = () => {
         renderShowFeeds();
 
         if (showFeeds[0] == true && showFeeds[3] == false) {
@@ -574,8 +552,8 @@ export default function App({ navigation }) {
                 <FlatList
                     data={Feeds01}
                     keyExtractor={item => String(item.id)}
-                    renderItem={({ item }) => <ListItem2 lesson={item.lesson} feeds={item.items}
-                        progress={item.progress} show={item.show_lesson}></ListItem2>}
+                    renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
+                        progress={item.progress} show={item.show_lesson}></ListItem>}
                 ></FlatList>
             )
         }
@@ -585,8 +563,8 @@ export default function App({ navigation }) {
                 <FlatList
                     data={Feeds02}
                     keyExtractor={item => String(item.id)}
-                    renderItem={({ item }) => <ListItem2 lesson={item.lesson} feeds={item.items}
-                        progress={item.progress} show={item.show_lesson}></ListItem2>}
+                    renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
+                        progress={item.progress} show={item.show_lesson}></ListItem>}
                 ></FlatList>
             )
         }
@@ -606,7 +584,7 @@ export default function App({ navigation }) {
         // console.log(showFeeds)
     }
 
-    const renderBlockTitle2 = () => {
+    const renderBlockTitle = () => {
         if (showFeeds[3] == false) {
             return (
                 <SafeAreaView style={{ alignItems: 'center', marginTop: 30 }}>
@@ -628,12 +606,12 @@ export default function App({ navigation }) {
         )
     }
 
-    function ListItem2({ lesson, feeds, progress, show }) {
+    function ListItem({ lesson, feeds, progress, show }) {
         return (
             <SafeAreaView style={styles.BgContainer}>
 
-                {renderLessonTitle2(lesson, show)}
-                {ProgressBar2(lesson, progress)}
+                {renderLessonTitle(lesson, show)}
+                {ProgressBar(lesson, progress)}
                 <ImageBackground
                     style={styles.ViolaoBackground}
                     source={bgViolao}>
@@ -643,11 +621,11 @@ export default function App({ navigation }) {
                             onPress={() => selected(item.title)}
                             key={item.id}
                         >
-                            {renderIconsFeeds2(item.icon, item.title)}
+                            {renderIconsFeeds(item.icon, item.title)}
                         </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
-                {renderBlockTitle2()}
+                {renderBlockTitle()}
             </SafeAreaView>
         )
     }
@@ -857,7 +835,7 @@ export default function App({ navigation }) {
             {/* Divisor */}
             {renderDivisor()}
             {/* Feeds */}
-            {renderAllFeeds2()}
+            {renderAllFeeds()}
         </Bgcontainer>
     );
 }
