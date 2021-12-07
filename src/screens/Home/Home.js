@@ -67,7 +67,6 @@ export default function App({ navigation }) {
 
     //solicitando requisição no backend
     const [allFeeds02, setAllFeeds02] = useState([]);
-    const [feedsChange, setFeedChange] = useState(false);
 
     useEffect(() => {
         api.get("/allfeeds").then((response) => {
@@ -838,7 +837,6 @@ export default function App({ navigation }) {
         }
         setContador(contador + 1)
     }
-
 
 
     {/* Main */ }
