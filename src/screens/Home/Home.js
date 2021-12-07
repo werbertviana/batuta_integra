@@ -75,6 +75,13 @@ export default function App({ navigation }) {
         });
     }, []);
 
+    //Criando variáveis de controle para exibição de feeds
+    const Feeds01 = [];
+    Feeds01.push(allFeeds02[0]);
+
+    const Feeds02 = [];
+    Feeds02.push(allFeeds02[1]);
+
     // console.log(allFeeds02)
 
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
@@ -685,7 +692,7 @@ export default function App({ navigation }) {
     const renderIconsFeeds2 = (icon, title, content) => {
         switch (icon) {
             case ("feed01.png"):
-                if (teste[0]==true) {
+                if (teste[0] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
@@ -902,23 +909,34 @@ export default function App({ navigation }) {
     }
 
     const renderAllFeeds2 = () => {
-       
+        showFeeds();
+
+        if (teste[0] == true && teste[3] == false) {
             return (
                 <FlatList
-                    data={allFeeds02}
+                    data={Feeds01}
                     keyExtractor={item => String(item.id)}
                     renderItem={({ item }) => <ListItem2 lesson={item.lesson} feeds={item.items}
                         progress={item.progress} show={item.show_lesson}></ListItem2>}
                 ></FlatList>
             )
-          
+        }
 
-              
+        if (teste[0] == true && teste[3] == true) {
+            return (
+                <FlatList
+                    data={Feeds02}
+                    keyExtractor={item => String(item.id)}
+                    renderItem={({ item }) => <ListItem2 lesson={item.lesson} feeds={item.items}
+                        progress={item.progress} show={item.show_lesson}></ListItem2>}
+                ></FlatList>
+            )
+        }
     }
 
     let teste = [];
 
-    const renderAllFeeds3 = () => {
+    const showFeeds = () => {
 
         for (let i = 0; i <= 1; i++) {
             for (let j = 0; j <= 2; j++) {
@@ -1205,8 +1223,6 @@ export default function App({ navigation }) {
             {renderDivisor()}
             {/* Feeds */}
             {renderAllFeeds2()}
-            {/* {getFeeds2()} */}
-            {renderAllFeeds3()}
         </Bgcontainer>
     );
 }
