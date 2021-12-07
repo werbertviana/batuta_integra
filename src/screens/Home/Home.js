@@ -82,7 +82,7 @@ export default function App({ navigation }) {
     const Feeds02 = [];
     Feeds02.push(allFeeds02[1]);
 
-    // console.log(allFeeds02)
+    console.log(allFeeds02)
 
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [lifePoints, setlifePoints] = useState(5);
@@ -465,7 +465,6 @@ export default function App({ navigation }) {
         }
     }
 
-
     const renderProgressBar = (progress, progressAnim, progressAnim2) => {
         if (progress == "true") {
             return (
@@ -537,7 +536,6 @@ export default function App({ navigation }) {
             )
         }
     }
-
 
     const renderIconsFeeds = (icon, title, content) => {
         switch (icon) {
@@ -934,6 +932,7 @@ export default function App({ navigation }) {
         }
     }
 
+  
     let showFeeds = [];
 
     const renderShowFeeds = () => {
