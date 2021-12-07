@@ -10,19 +10,22 @@
                     "id": "1",
                     "title": "Introdução",
                     "icon": "feed01.png",
-                    "content": "1"
+                    "content": "1",
+                    "show_feed": "false"
                 },
                 {
                     "id": "2",
                     "title": "Sons Musicais",
                     "icon": "feed02.png",
-                    "content": "2"
+                    "content": "2",
+                    "show_feed": "false"
                 },
                 {
                     "id": "3",
                     "title": "Pauta e Clave",
                     "icon": "feed03.png",
-                    "content": "3"
+                    "content": "3",
+                    "show_feed": "false"
                 }
             ]
         },
@@ -36,19 +39,22 @@
                     "id": "4",
                     "title": "Figuras de Notas",
                     "icon": "feed04.png",
-                    "content": "4"
+                    "content": "4",
+                    "show_feed": "false"
                 },
                 {
                     "id": "5",
                     "title": "Figuras de Pausas",
                     "icon": "feed05.png",
-                    "content": "5"
+                    "content": "5",
+                    "show_feed": "false"
                 },
                 {
                     "id": "6",
                     "title": "Duração dos Valores",
                     "icon": "feed06.png",
-                    "content": "6"
+                    "content": "6",
+                    "show_feed": "false"
                 }
             ]
         }

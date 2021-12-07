@@ -62,25 +62,26 @@ export default function App({ navigation }) {
     const feeds02 = [];
     feeds02.push(allFeeds[0]);
     feeds02.push(allFeeds[1]);
-    // console.log(feeds02)
+    // console.log(feeds01)
 
 
     //solicitando requisição no backend
     const [allFeeds02, setAllFeeds02] = useState([]);
     const [feedsChange, setFeedChange] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         api.get("/allfeeds").then((response) => {
             setAllFeeds02(response.data);
         });
-    },[]);
-    
- 
+    }, []);
+
+    // console.log(allFeeds02)
+
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [lifePoints, setlifePoints] = useState(5);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [contador, setContador] = useState(0);
-    const [showFeed01, setShowFeed01] = useState(false);
+    const [showFeed01, setShowFeed01] = useState(true);
     const [showFeed02, setShowFeed02] = useState(false);
     const [showFeed03, setShowFeed03] = useState(false);
     const [showFeed04, setShowFeed04] = useState(false);
@@ -208,7 +209,7 @@ export default function App({ navigation }) {
                     return (
                         <Animatable.View style={styles.LessonContainer}>
                             <IconLesson source={licao01}></IconLesson>
-                            
+
                         </Animatable.View>
                     )
                     break;
@@ -352,7 +353,7 @@ export default function App({ navigation }) {
             let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
 
-            if (showFeed01 == true && showFeed02 == false) {
+            if (teste[0] == true && teste[1] == false) {
                 let percent2 = percent
                 percent2.toString()
                 percent2 = percent2 + "%"
@@ -369,7 +370,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed01 == true && showFeed02 == true && showFeed03 == false) {
+            if (teste[0] == true && teste[1] == true && teste[2] == false) {
                 percent = percent + percent;
                 let percent2 = percent
                 percent2.toString()
@@ -387,7 +388,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed01 == true && showFeed02 == true && showFeed03 == true) {
+            if (teste[0] == true && teste[1] == true && teste[2] == true) {
                 const progressAnim2 = progress.interpolate({
                     inputRange: [0, feeds01[0].items.length - 1],
                     outputRange: ['90%', '90%']
@@ -406,7 +407,7 @@ export default function App({ navigation }) {
             let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
 
-            if (showFeed04 == true && showFeed05 == false) {
+            if (teste[3] == true && teste[4] == false) {
                 let percent2 = percent
                 percent2.toString()
                 percent2 = percent2 + "%"
@@ -423,7 +424,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed04 == true && showFeed05 == true && showFeed06 == false) {
+            if (teste[3] == true && teste[4] == true && teste[5] == false) {
                 percent = percent + percent;
                 let percent2 = percent
                 percent2.toString()
@@ -441,7 +442,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed04 == true && showFeed05 == true && showFeed06 == true) {
+            if (teste[3] == true && teste[4] == true && teste[5] == true) {
                 const progressAnim2 = progress.interpolate({
                     inputRange: [0, feeds01[0].items.length - 1],
                     outputRange: ['90%', '90%']
@@ -684,7 +685,7 @@ export default function App({ navigation }) {
     const renderIconsFeeds2 = (icon, title, content) => {
         switch (icon) {
             case ("feed01.png"):
-                if (showFeed01 == true) {
+                if (teste[0]==true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
@@ -709,7 +710,7 @@ export default function App({ navigation }) {
                 }
 
             case ("feed02.png"):
-                if (showFeed02 == true) {
+                if (teste[1] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
@@ -733,7 +734,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed03.png"):
-                if (showFeed03 == true) {
+                if (teste[2] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -757,7 +758,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed04.png"):
-                if (showFeed04 == true) {
+                if (teste[3] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -781,7 +782,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed05.png"):
-                if (showFeed05 == true) {
+                if (teste[4] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -805,7 +806,7 @@ export default function App({ navigation }) {
                     break;
                 }
             case ("feed06.png"):
-                if (showFeed06 == true) {
+                if (teste[5] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
@@ -901,15 +902,31 @@ export default function App({ navigation }) {
     }
 
     const renderAllFeeds2 = () => {
+       
+            return (
+                <FlatList
+                    data={allFeeds02}
+                    keyExtractor={item => String(item.id)}
+                    renderItem={({ item }) => <ListItem2 lesson={item.lesson} feeds={item.items}
+                        progress={item.progress} show={item.show_lesson}></ListItem2>}
+                ></FlatList>
+            )
+          
 
-        return (
-            <FlatList
-                data={allFeeds02}
-                keyExtractor={item => String(item.id)}
-                renderItem={({ item }) => <ListItem2 lesson={item.lesson} feeds={item.items}
-                    progress={item.progress} show={item.show_lesson}></ListItem2>}
-            ></FlatList>
-        )
+              
+    }
+
+    let teste = [];
+
+    const renderAllFeeds3 = () => {
+
+        for (let i = 0; i <= 1; i++) {
+            for (let j = 0; j <= 2; j++) {
+
+                teste.push(allFeeds02[i].items[j].show_feed);
+            }
+        }
+        console.log(teste)
     }
 
     const renderBlockTitle = () => {
@@ -1177,7 +1194,7 @@ export default function App({ navigation }) {
         setContador(contador + 1)
     }
 
-  
+
 
     {/* Main */ }
     return (
@@ -1189,6 +1206,7 @@ export default function App({ navigation }) {
             {/* Feeds */}
             {renderAllFeeds2()}
             {/* {getFeeds2()} */}
+            {renderAllFeeds3()}
         </Bgcontainer>
     );
 }
