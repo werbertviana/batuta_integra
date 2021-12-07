@@ -6,6 +6,9 @@ import FastImage from 'react-native-fast-image';
 import Sound from 'react-native-sound';
 import * as Animatable from 'react-native-animatable';
 
+//import api
+import api from '../../../services/Api';
+
 
 //import imagens
 import Introducao from '../../../assets/imgs/introducao.png';
