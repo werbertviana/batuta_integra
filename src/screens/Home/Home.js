@@ -56,6 +56,7 @@ import api from '../../services/Api';
 export default function App({ navigation }) {
 
     const [allFeeds, setallFeeds] = useState([]);
+    const [allItems, setallItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [lifePoints, setlifePoints] = useState(5);
@@ -66,10 +67,18 @@ export default function App({ navigation }) {
     let showFeeds = [];
     let feedsSize;
 
-    //solicitando requisição no backend
+    //solicitando requisição de feeds no backend
     useEffect(() => {
         api.get("/allfeeds").then((response) => {
             setallFeeds(response.data)
+            setLoading(false);
+        });
+    }, []);
+
+    //solicitando requisição de items no backend
+    useEffect(() => {
+        api.get("/items").then((response) => {
+            setallItems(response.data)
             setLoading(false);
         });
     }, []);
@@ -78,6 +87,7 @@ export default function App({ navigation }) {
     if (loading) {
         return <></>
     }
+
 
     //Criando variáveis de controle para exibição de feeds
     const feeds01 = [];
@@ -528,8 +538,7 @@ export default function App({ navigation }) {
     }
 
     const renderAllFeeds = () => {
-        renderShowFeeds();
-
+        renderShowFeeds()
         if (showFeeds[0] == true && showFeeds[3] == false) {
             return (
                 <FlatList
@@ -552,14 +561,11 @@ export default function App({ navigation }) {
             )
         }
     }
-
+   
     const renderShowFeeds = () => {
-        renderFeedsSize()
-        for (let i = 0; i <= feedsSize; i++) {
-            for (let j = 0; j <= 2; j++) {
-                showFeeds.push(allFeeds[i].items[j].show_feed);
-            }
-        }
+        allItems.map((item) =>
+            showFeeds.push(item.show_feed)
+        )
     }
 
     const renderFeedsSize = () => {
