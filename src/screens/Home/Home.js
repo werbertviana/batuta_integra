@@ -553,12 +553,18 @@ export default function App({ navigation }) {
     }
 
     const renderShowFeeds = () => {
-
-        for (let i = 0; i <= 1; i++) {
+        renderFeedsSize()
+        for (let i = 0; i <= feedsSize; i++) {
             for (let j = 0; j <= 2; j++) {
                 showFeeds.push(allFeeds[i].items[j].show_feed);
             }
         }
+    }
+
+    let feedsSize;
+
+    const renderFeedsSize = () => {
+        feedsSize = (allFeeds.length) - 1;
     }
 
     const renderBlockTitle = () => {
