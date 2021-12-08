@@ -64,6 +64,7 @@ export default function App({ navigation }) {
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
     let showFeeds = [];
+    let feedsSize;
 
     //solicitando requisição no backend
     useEffect(() => {
@@ -560,8 +561,6 @@ export default function App({ navigation }) {
             }
         }
     }
-
-    let feedsSize;
 
     const renderFeedsSize = () => {
         feedsSize = (allFeeds.length) - 1;
