@@ -97,15 +97,36 @@ export default function App({ navigation }) {
     const [showWrongModal, setShowWrongModal] = useState(false);
     const [xpPoints, setxpPoints] = useState(0);
 
-    //solicitando requisição no backend
+    //solicitando requisição das questões no backend
     const [questions, setQuestions] = useState([]);
+    const [allFeeds02, setAllFeeds02] = useState([]);
 
     useEffect(() => {
-        api.get("/items/content/76874e1d-b466-4028-bfb4-419347259a02").then((response) => {
+        api.get("/items/content/"+id).then((response) => {
             setQuestions(response.data);
         });
     }, []);
-    
+
+    useEffect(() => {
+        api.get("/allfeeds").then((response) => {
+            setAllFeeds02(response.data);
+        });
+    }, []);
+
+    // console.log(questions)
+
+    let id;
+
+
+    for (let i = 0; i <= 1; i++) {
+        for (let j = 0; j <= 2; j++) {
+            if (allFeeds02[i].items[j].title == "Introdução") {
+
+                id = allFeeds02[i].items[j].id;
+            }
+        }
+    }
+
 
     const renderQuestion = () => {
         return (

@@ -54,6 +54,8 @@ import { color } from 'react-native-reanimated';
 import api from '../../services/Api';
 
 
+
+
 export default function App({ navigation }) {
 
     const allFeeds = staticFeeds.feeds;
@@ -64,34 +66,24 @@ export default function App({ navigation }) {
     feeds02.push(allFeeds[1]);
     // console.log(feeds01)
 
-    //solicitando requisição no backend
-    const [content, setContent] = useState([]);
-
-    useEffect(() => {
-        api.get("/items/content/76874e1d-b466-4028-bfb4-419347259a02").then((response) => {
-            setContent(response.data);
-        });
-    }, []);
-    console.log(content)
-
 
     //solicitando requisição no backend
     const [allFeeds02, setAllFeeds02] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         api.get("/allfeeds").then((response) => {
-            setAllFeeds02(response.data);
-        });
+            setAllFeeds02(response.data)
+            setLoading(false);
+         });     
     }, []);
+   
+    
+    
+    
+   
 
-    //Criando variáveis de controle para exibição de feeds
-    const Feeds01 = [];
-    Feeds01.push(allFeeds02[0]);
-
-    const Feeds02 = [];
-    Feeds02.push(allFeeds02[1]);
-
-    console.log(allFeeds02)
 
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [lifePoints, setlifePoints] = useState(5);
@@ -99,6 +91,21 @@ export default function App({ navigation }) {
     const [contador, setContador] = useState(0);
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
+
+    
+
+    if(loading){
+        return <></>
+    }
+
+    console.log(allFeeds02)
+
+     //Criando variáveis de controle para exibição de feeds
+     const Feeds01 = [];
+     Feeds01.push(allFeeds02[0]);
+ 
+     const Feeds02 = [];
+     Feeds02.push(allFeeds02[1]);
 
     const renderLife = () => {
         return (
@@ -570,7 +577,7 @@ export default function App({ navigation }) {
         }
     }
 
-  
+
     let showFeeds = [];
 
     const renderShowFeeds = () => {
