@@ -53,9 +53,6 @@ import { color } from 'react-native-reanimated';
 //import api
 import api from '../../services/Api';
 
-
-
-
 export default function App({ navigation }) {
 
     const [allFeeds, setallFeeds] = useState([]);
@@ -559,7 +556,6 @@ export default function App({ navigation }) {
 
         for (let i = 0; i <= 1; i++) {
             for (let j = 0; j <= 2; j++) {
-
                 showFeeds.push(allFeeds[i].items[j].show_feed);
             }
         }
