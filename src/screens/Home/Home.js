@@ -58,33 +58,8 @@ import api from '../../services/Api';
 
 export default function App({ navigation }) {
 
-    const allFeeds = staticFeeds.feeds;
-    const feeds01 = [];
-    feeds01.push(allFeeds[0]);
-    const feeds02 = [];
-    feeds02.push(allFeeds[0]);
-    feeds02.push(allFeeds[1]);
-    // console.log(feeds01)
-
-
-    //solicitando requisição no backend
-    const [allFeeds02, setAllFeeds02] = useState([]);
+    const [allFeeds, setallFeeds] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
-    useEffect(() => {
-        api.get("/allfeeds").then((response) => {
-            setAllFeeds02(response.data)
-            setLoading(false);
-         });     
-    }, []);
-   
-    
-    
-    
-   
-
-
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [lifePoints, setlifePoints] = useState(5);
     const [showOptionsModal, setShowOptionsModal] = useState(false);
@@ -92,20 +67,25 @@ export default function App({ navigation }) {
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
 
-    
+    //solicitando requisição no backend
+    useEffect(() => {
+        api.get("/allfeeds").then((response) => {
+            setallFeeds(response.data)
+            setLoading(false);
+        });
+    }, []);
 
-    if(loading){
+    //loading
+    if (loading) {
         return <></>
     }
 
-    console.log(allFeeds02)
+    //Criando variáveis de controle para exibição de feeds
+    const feeds01 = [];
+    feeds01.push(allFeeds[0]);
 
-     //Criando variáveis de controle para exibição de feeds
-     const Feeds01 = [];
-     Feeds01.push(allFeeds02[0]);
- 
-     const Feeds02 = [];
-     Feeds02.push(allFeeds02[1]);
+    const feeds02 = [];
+    feeds02.push(allFeeds[1]);
 
     const renderLife = () => {
         return (
@@ -196,7 +176,6 @@ export default function App({ navigation }) {
     }
 
     // Numero da licao
-
     const renderLessonTitle = (lesson, show) => {
         switch (lesson) {
             case (1):
@@ -230,8 +209,6 @@ export default function App({ navigation }) {
     }
 
     {/* Config Progress Bar */ }
-
-
     const ProgressBar = (lesson, progresso) => {
         if (lesson == 1) {
             const [progress, setProgress] = useState(new Animated.Value(0));
@@ -557,7 +534,7 @@ export default function App({ navigation }) {
         if (showFeeds[0] == true && showFeeds[3] == false) {
             return (
                 <FlatList
-                    data={Feeds01}
+                    data={feeds01}
                     keyExtractor={item => String(item.id)}
                     renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
                         progress={item.progress} show={item.show_lesson}></ListItem>}
@@ -568,7 +545,7 @@ export default function App({ navigation }) {
         if (showFeeds[0] == true && showFeeds[3] == true) {
             return (
                 <FlatList
-                    data={Feeds02}
+                    data={feeds02}
                     keyExtractor={item => String(item.id)}
                     renderItem={({ item }) => <ListItem lesson={item.lesson} feeds={item.items}
                         progress={item.progress} show={item.show_lesson}></ListItem>}
@@ -585,7 +562,7 @@ export default function App({ navigation }) {
         for (let i = 0; i <= 1; i++) {
             for (let j = 0; j <= 2; j++) {
 
-                showFeeds.push(allFeeds02[i].items[j].show_feed);
+                showFeeds.push(allFeeds[i].items[j].show_feed);
             }
         }
         // console.log(showFeeds)
