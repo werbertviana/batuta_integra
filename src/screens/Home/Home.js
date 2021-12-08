@@ -562,10 +562,16 @@ export default function App({ navigation }) {
     }
 
     let feedsSize;
+    let itemsSize;
 
     const renderFeedsSize = () => {
         feedsSize = (allFeeds.length) - 1;
     }
+
+    const renderItemsSize = () => {
+        feedsSize = (allFeeds.length) - 1;
+    }
+
 
     const renderBlockTitle = () => {
         if (showFeeds[3] == false) {
