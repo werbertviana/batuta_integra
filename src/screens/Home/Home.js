@@ -66,6 +66,7 @@ export default function App({ navigation }) {
     const [contador, setContador] = useState(0);
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
+    let showFeeds = [];
 
     //solicitando requisição no backend
     useEffect(() => {
@@ -554,9 +555,6 @@ export default function App({ navigation }) {
         }
     }
 
-
-    let showFeeds = [];
-
     const renderShowFeeds = () => {
 
         for (let i = 0; i <= 1; i++) {
@@ -565,7 +563,6 @@ export default function App({ navigation }) {
                 showFeeds.push(allFeeds[i].items[j].show_feed);
             }
         }
-        // console.log(showFeeds)
     }
 
     const renderBlockTitle = () => {
