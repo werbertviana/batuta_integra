@@ -96,46 +96,46 @@ export default function App({ navigation }) {
     const [showRightModal, setShowRightModal] = useState(false);
     const [showWrongModal, setShowWrongModal] = useState(false);
     const [xpPoints, setxpPoints] = useState(0);
-    const [questions, setQuestions] = useState([]);
-    const [allFeeds, setallFeeds] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [questions, setQuestions] = useState([]);
+    const [items, setItems] = useState([]);
 
 
-    // useEffect(() => {
-    //     api.get("/allfeeds").then((response) => {
-    //         setallFeeds(response.data);
-    //         setLoading(false)
-    //     });
-    // }, []);
 
+    //Requisição buscar items no backend
+    useEffect(() => {
+        api.get("/items").then((response) => {
+            setItems(response.data);
+        });
+    }, []);
 
-    // useEffect(() => {
-    //     api.get("/items/content/"+id).then((response) => {
-    //         setQuestions(response.data);
-    //     });
-    // }, []);
-
-    //  //loading
-    //  if (loading) {
+     // if (loading) {
     //     return <></>
     // }
 
-    // let id;
 
 
-    // for (let i = 0; i <= 1; i++) {
-    //     for (let j = 0; j <= 2; j++) {
-    //         if (allFeeds[i].items[j].title == "Introdução") {
+    let id;
 
-    //             id = allFeeds[i].items[j].id;
-    //         }
-    //     }
-    // }
+    items.map((i) => {
+        if (i.title == "Introdução") {
+            id = i.id
+        }
+    }
+    )
 
-    // console.log(questions)
+    //Requisição buscar questões no backend
+    useEffect(() => {
+        api.get("/questions/" + id).then((response) => {
+            setQuestions(response.data);
+            // setLoading(false);
+        });
+    }, []);
 
+    console.log(questions)
+
+    
    
-
 
     const renderQuestion = () => {
         return (

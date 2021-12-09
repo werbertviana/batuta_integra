@@ -44,12 +44,31 @@ export default function App({ navigation }) {
     //solicitando requisição no backend
     const [content, setContent] = useState([]);
 
-    useEffect(() => {
-        api.get("/items/content/76874e1d-b466-4028-bfb4-419347259a02").then((response) => {
-            setContent(response.data);
-        });
-    }, []);
     
+    // useEffect(() => {
+    //     api.get("/items/content/" + id).then((response) => {
+    //         setQuestions(response.data);
+    //     });
+    // }, []);
+
+    // //loading
+    // if (loading) {
+    //     return <></>
+    // }
+
+    // let id;
+
+
+    // for (let i = 0; i <= 1; i++) {
+    //     for (let j = 0; j <= 2; j++) {
+    //         if (allFeeds[i].items[j].title == "Introdução") {
+
+    //             id = allFeeds[i].items[j].id;
+    //         }
+    //     }
+    // }
+
+    // console.log(questions)
 
     const PlaySound = (music) => {
         if (music == "melodia") {

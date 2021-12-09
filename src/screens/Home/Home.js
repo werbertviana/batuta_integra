@@ -88,8 +88,6 @@ export default function App({ navigation }) {
         return <></>
     }
 
-   
-
     //Criando variáveis de controle para exibição de feeds
     const feeds01 = [];
     const feeds02 = [];
