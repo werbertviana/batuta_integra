@@ -88,12 +88,14 @@ export default function App({ navigation }) {
         return <></>
     }
 
+   
 
     //Criando variáveis de controle para exibição de feeds
     const feeds01 = [];
+    const feeds02 = [];
+    
     feeds01.push(allFeeds[0]);
 
-    const feeds02 = [];
     feeds02.push(allFeeds[1]);
 
     const renderLife = () => {
@@ -539,7 +541,7 @@ export default function App({ navigation }) {
 
     const renderAllFeeds = () => {
         renderShowFeeds()
-        if (showFeeds[0] == true && showFeeds[3] == false) {
+        if (showFeeds[0] == true && showFeeds[3] == false && feeds01 != 0) {
             return (
                 <FlatList
                     data={feeds01}
@@ -550,7 +552,7 @@ export default function App({ navigation }) {
             )
         }
 
-        if (showFeeds[0] == true && showFeeds[3] == true) {
+        if (showFeeds[0] == true && showFeeds[3] == true && feeds02 != 0) {
             return (
                 <FlatList
                     data={feeds02}
@@ -566,10 +568,6 @@ export default function App({ navigation }) {
         allItems.map((item) =>
             showFeeds.push(item.show_feed)
         )
-    }
-
-    const renderFeedsSize = () => {
-        feedsSize = (allFeeds.length) - 1;
     }
 
     const renderBlockTitle = () => {
