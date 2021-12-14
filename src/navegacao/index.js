@@ -36,12 +36,12 @@ export default function index() {
                 <Stack.Screen name= "Figuras de Notas" component={FigNotas}></Stack.Screen>
                 <Stack.Screen name= "Figuras de Pausas" component={FigPausas}></Stack.Screen>
                 <Stack.Screen name= "Duração dos Valores" component={Valores}></Stack.Screen>
-                <Stack.Screen name= "1" component={contIntro}></Stack.Screen>
-                <Stack.Screen name= "2" component={contSons}></Stack.Screen>
-                <Stack.Screen name= "3" component={contPauta}></Stack.Screen>
-                <Stack.Screen name= "4" component={contFigNotas}></Stack.Screen>
-                <Stack.Screen name= "5" component={contFigPausas}></Stack.Screen>
-                <Stack.Screen name= "6" component={contValores}></Stack.Screen>
+                <Stack.Screen name= "feed01.png" component={contIntro}></Stack.Screen>
+                <Stack.Screen name= "feed02.png" component={contSons}></Stack.Screen>
+                <Stack.Screen name= "feed03.png" component={contPauta}></Stack.Screen>
+                <Stack.Screen name= "feed04.png" component={contFigNotas}></Stack.Screen>
+                <Stack.Screen name= "feed05.png" component={contFigPausas}></Stack.Screen>
+                <Stack.Screen name= "feed06.png" component={contValores}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>      
     )

@@ -83,19 +83,21 @@ export default function App({ navigation }) {
         });
     }, []);
 
+
     //loading
     if (loading) {
         return <></>
     }
 
+
     //Criando variáveis de controle para exibição de feeds
     const feeds01 = [];
     const feeds02 = [];
-    
+
     feeds01.push(allFeeds[0]);
 
     feeds02.push(allFeeds[1]);
-   
+
 
     const renderLife = () => {
         return (
@@ -366,7 +368,7 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderIconsFeeds = (icon, title, content) => {
+    const renderIconsFeeds = (icon, title) => {
         switch (icon) {
             case ("feed01.png"):
                 if (showFeeds[0] == true) {
@@ -376,7 +378,7 @@ export default function App({ navigation }) {
                                 source={feed01On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[0])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -387,7 +389,7 @@ export default function App({ navigation }) {
                                 source={feed01Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[0])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -401,7 +403,7 @@ export default function App({ navigation }) {
                                 source={feed02On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[1])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -412,7 +414,7 @@ export default function App({ navigation }) {
                                 source={feed02Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[1])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -425,7 +427,7 @@ export default function App({ navigation }) {
                                 source={feed03On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[2])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -436,7 +438,7 @@ export default function App({ navigation }) {
                                 source={feed03Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[2])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -449,7 +451,7 @@ export default function App({ navigation }) {
                                 source={feed04On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[3])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -460,7 +462,7 @@ export default function App({ navigation }) {
                                 source={feed04Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[3])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -473,7 +475,7 @@ export default function App({ navigation }) {
                                 source={feed05On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[4])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -484,7 +486,7 @@ export default function App({ navigation }) {
                                 source={feed05Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[4])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -497,7 +499,7 @@ export default function App({ navigation }) {
                                 source={feed06On}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[5])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -508,7 +510,7 @@ export default function App({ navigation }) {
                                 source={feed06Off}>
                             </ImagesFeeds>
                             {renderBoardFeeds(title, showFeeds[5])}
-                            {renderModal(title, content)}
+                            {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
@@ -562,7 +564,7 @@ export default function App({ navigation }) {
             )
         }
     }
-   
+
     const renderShowFeeds = () => {
         allItems.map((item) =>
             showFeeds.push(item.show_feed)
@@ -615,8 +617,7 @@ export default function App({ navigation }) {
         )
     }
 
-    const Modal01 = (title, content) => {
-
+    const Modal01 = (title, icon) => {
         return (
 
             <Animatable.View
@@ -634,7 +635,7 @@ export default function App({ navigation }) {
                     borderRadius: 10,
                 }}>
                 <TouchableWithoutFeedback
-                    onPress={() => navigation.navigate(content)}
+                    onPress={() => navigation.navigate(icon)}
                 >
                     <SafeAreaView style={{
 
@@ -720,11 +721,11 @@ export default function App({ navigation }) {
         )
     }
 
-    const renderModal = (title, content) => {
+    const renderModal = (title, icon) => {
         if (currentOptionSelected == "Introdução" && title == "Introdução" && showOptionsModal == true) {
             if (showFeeds[0] == true) {
                 return (
-                    Modal01(title, content)
+                    Modal01(title, icon)
                 )
             } else {
                 return (
@@ -738,7 +739,7 @@ export default function App({ navigation }) {
             if (showFeeds[1] == true) {
 
                 return (
-                    Modal01(title, content)
+                    Modal01(title, icon)
                 )
             } else {
                 return (
@@ -751,7 +752,7 @@ export default function App({ navigation }) {
             if (showFeeds[2] == true) {
 
                 return (
-                    Modal01(title, content)
+                    Modal01(title, icon)
                 )
             } else {
                 return (
@@ -764,7 +765,7 @@ export default function App({ navigation }) {
             if (showFeeds[3] == true) {
 
                 return (
-                    Modal01(title, content)
+                    Modal01(title, icon)
                 )
             } else {
                 return (
@@ -777,7 +778,7 @@ export default function App({ navigation }) {
             if (showFeeds[4] == true) {
 
                 return (
-                    Modal01(title, content)
+                    Modal01(title, icon)
                 )
             } else {
                 return (
@@ -790,7 +791,7 @@ export default function App({ navigation }) {
             if (showFeeds[5] == true) {
 
                 return (
-                    Modal01(title, content)
+                    Modal01(title, icon)
                 )
             } else {
                 return (

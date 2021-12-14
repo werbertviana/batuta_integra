@@ -115,7 +115,7 @@ export default function App({ navigation }) {
 
 
     let item_id;
-    let question_id;
+   
 
     items.map((i) => {
         if (i.title == "Introdução") {
@@ -127,7 +127,6 @@ export default function App({ navigation }) {
     useEffect(() => {
         if (item_id) {
             api.get("/items/questions/" + item_id).then((response) => {
-                console.log(response.data)
                 setQuestions(response.data);
 
             })
@@ -135,21 +134,14 @@ export default function App({ navigation }) {
 
     }, [item_id]);
 
-    // if (questions) {
-    //     questions.map((n) => {
-    //         if (n.name == "Qual nome não representa um som musical?") {
-    //             question_id = n.id
-    //         }
-    //     }
-    //     )
+
+    // if (loading || !questions) {
+    //     return <></>
     // }
 
-
-    if (loading || !questions) {
+    if (loading) {
         return <></>
     }
-
-
 
 
     console.log(items)
