@@ -98,6 +98,7 @@ export default function App({ navigation }) {
     const [showWrongModal, setShowWrongModal] = useState(false);
     const [xpPoints, setxpPoints] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [loading2, setLoading2] = useState(true);
     const [questions, setQuestions] = useState([]);
     const [items, setItems] = useState([]);
 
@@ -109,42 +110,52 @@ export default function App({ navigation }) {
             setItems(response.data);
             setLoading(false)
         });
+
     }, []);
 
 
-    let id;
+    let item_id;
+    let question_id;
 
     items.map((i) => {
         if (i.title == "Introdução") {
-            id = i.id
+            item_id = i.id
         }
     }
     )
 
-    // //Requisição buscar questões no backend
     useEffect(() => {
-        if (items != 0) {
-            api.get("/items/questions/" + id).then((response) => {
+        if (item_id) {
+            api.get("/items/questions/" + item_id).then((response) => {
+                console.log(response.data)
                 setQuestions(response.data);
-                setLoading(false)
-            });
+
+            })
         }
 
-    }, []);
+    }, [item_id]);
 
-    if (loading) {
+    // if (questions) {
+    //     questions.map((n) => {
+    //         if (n.name == "Qual nome não representa um som musical?") {
+    //             question_id = n.id
+    //         }
+    //     }
+    //     )
+    // }
+
+
+    if (loading || !questions) {
         return <></>
     }
 
 
 
 
-
-
-
     console.log(items)
-    console.log(id)
+    console.log(item_id)
     console.log(questions)
+    // console.log(question_id)
 
     return (
         <Text>OI</Text>

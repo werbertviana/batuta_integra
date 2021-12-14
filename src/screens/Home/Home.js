@@ -95,6 +95,7 @@ export default function App({ navigation }) {
     feeds01.push(allFeeds[0]);
 
     feeds02.push(allFeeds[1]);
+   
 
     const renderLife = () => {
         return (
