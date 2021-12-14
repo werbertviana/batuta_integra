@@ -126,7 +126,7 @@ export default function App({ navigation }) {
 
     useEffect(() => {
         if (item_id) {
-            api.get("/items/questions/" + item_id).then((response) => {
+            api.get("/items/questions/alternatives/" + item_id).then((response) => {
                 setQuestions(response.data);
 
             })
