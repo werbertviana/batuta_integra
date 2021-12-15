@@ -96,7 +96,6 @@ export default function App({ navigation }) {
     const [showWrongModal, setShowWrongModal] = useState(false);
     const [xpPoints, setxpPoints] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [loading2, setLoading2] = useState(true);
     const [questions, setQuestions] = useState();
     const [items, setItems] = useState([]);
     const [progress, setProgress] = useState(new Animated.Value(0));

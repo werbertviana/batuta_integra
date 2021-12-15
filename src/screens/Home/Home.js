@@ -94,21 +94,22 @@ export default function App({ navigation }) {
 
     let life
     let xp
+    let batutas
     if (users) {
         users.map((item) => {
             life = item.vida
             xp = item.xp
+            batutas = item.batutas
         }
         );
     }
-
+  
 
     //loading
     if (loading || !allFeeds) {
         return <></>
     }
-
-    console.log(allFeeds)
+    
 
     //Criando variáveis de controle para exibição de feeds
     const feeds01 = [];
@@ -174,7 +175,7 @@ export default function App({ navigation }) {
         return (
             <SafeAreaView style={{ padding: 2 }}>
                 <Animatable.Text style={styles.BatutasText}>
-                    {batutaPoints}
+                    {batutas}
                 </Animatable.Text>
             </SafeAreaView>
         )

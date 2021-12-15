@@ -1,5 +1,5 @@
 //import bibliotecas
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
@@ -20,9 +20,6 @@ import slides05 from '../../../assets/imgs/Conteudo/Licao01/slides05.png';
 import iconeX from '../../../assets/imgs/iconeX.png';
 import som from '../../../assets/imgs/sound.png';
 
-//import slides estaticos
-import staticSlides from '../../../data/Conteudo/Licao01/Intro.json'
-
 //import estilos
 import {
     DivisorLine2,
@@ -39,36 +36,42 @@ export default function App({ navigation }) {
     const ButtonRef = useRef();
     const [play, setPlay] = useState(false);
     const [musica, setMusica] = useState(null)
-    const allSlides = staticSlides.slides;
+    const [content, setContent] = useState();
+    const [loading, setLoading] = useState(true);
+    const [items, setItems] = useState([]);
+    let item_id;
 
-    //solicitando requisição no backend
-    const [content, setContent] = useState([]);
+    //Requisição buscar items no backend
+    useEffect(() => {
+        api.get("/items").then((response) => {
+            setItems(response.data);
+            setLoading(false)
+        });
 
-    
-    // useEffect(() => {
-    //     api.get("/items/content/" + id).then((response) => {
-    //         setQuestions(response.data);
-    //     });
-    // }, []);
-
-    // //loading
-    // if (loading) {
-    //     return <></>
-    // }
-
-    // let id;
+    }, []);
 
 
-    // for (let i = 0; i <= 1; i++) {
-    //     for (let j = 0; j <= 2; j++) {
-    //         if (allFeeds[i].items[j].title == "Introdução") {
+    items.map((i) => {
+        if (i.title == "Introdução") {
+            item_id = i.id
+        }
+    }
+    )
 
-    //             id = allFeeds[i].items[j].id;
-    //         }
-    //     }
-    // }
+    useEffect(() => {
+        if (item_id) {
+            api.get("/items/content/" + item_id).then((response) => {
+                setContent(response.data);
 
-    // console.log(questions)
+            })
+        }
+
+    }, [item_id]);
+
+
+    if (loading || !content) {
+        return <></>
+    }
 
     const PlaySound = (music) => {
         if (music == "melodia") {
@@ -130,7 +133,7 @@ export default function App({ navigation }) {
     const renderSounds = (music) => {
         return (
             <TouchableWithoutFeedback
-                onPress={() =>selected(music)}
+                onPress={() => selected(music)}
             >
                 <Animatable.View
                     animation={''}
@@ -152,6 +155,7 @@ export default function App({ navigation }) {
 
     function renderSlides({ item }) {
         switch (item.image) {
+
             case ("slides01.png"):
                 return (
                     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -249,6 +253,7 @@ export default function App({ navigation }) {
         }
     }
 
+
     const nextButton = () => {
         return (
             <SafeAreaView
@@ -334,7 +339,7 @@ export default function App({ navigation }) {
     return (
         <AppIntroSlider
             renderItem={renderSlides}
-            data={allSlides}
+            data={content}
             onSlideChange={StopAll}
             style={{ backgroundColor: '#FFF' }}
             activeDotStyle={{
