@@ -102,7 +102,7 @@ export default function App({ navigation }) {
     const [questions, setQuestions] = useState();
     const [items, setItems] = useState([]);
     const [progress, setProgress] = useState(new Animated.Value(0));
-
+    let item_id;
 
 
     //Requisição buscar items no backend
@@ -113,9 +113,6 @@ export default function App({ navigation }) {
         });
 
     }, []);
-
-
-    let item_id;
 
 
     items.map((i) => {
@@ -135,11 +132,9 @@ export default function App({ navigation }) {
 
     }, [item_id]);
 
-
     if (loading || !questions) {
         return <></>
     }
-
 
 
     const renderQuestion = () => {
@@ -436,7 +431,7 @@ export default function App({ navigation }) {
 
     let correct_option
     const validateAnswer = () => {
-        correct_option = questions[currentQuestionIndex].correct_option;
+        correct_option = questions[currentQuestionIndex].correct_alternative;
         if (currentOptionSelected == correct_option) {
             //Set Score
             setScore(score + 1)
