@@ -1,6 +1,6 @@
 //import bibliotecas
 import React, { useState, useRef, useEffect } from 'react';
-import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
 import Sound from 'react-native-sound';
@@ -70,7 +70,15 @@ export default function App({ navigation }) {
 
 
     if (loading || !content) {
-        return <></>
+        return (
+            <SafeAreaView style={styles.containerLoading}>
+                <ActivityIndicator
+                    size="large"
+                    color="black">
+                </ActivityIndicator>
+                <Text>CARREGANDO...</Text>
+            </SafeAreaView>
+        )
     }
 
     const PlaySound = (music) => {
@@ -363,6 +371,11 @@ export default function App({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    containerLoading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     ShadowButtons1: {
         marginBottom: 6,
         height: 48,

@@ -66,7 +66,8 @@ import {
     Animated,
     Image,
     StyleSheet,
-    View
+    View,
+    ActivityIndicator
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 // import niveis de dificuldade
@@ -130,9 +131,16 @@ export default function App({ navigation }) {
     }, [item_id]);
 
     if (loading || !questions) {
-        return <></>
+        return (
+            <SafeAreaView style={styles.containerLoading}>
+                <ActivityIndicator
+                    size="large"
+                    color="black">
+                </ActivityIndicator>
+                <Text>CARREGANDO...</Text>
+            </SafeAreaView>
+        )
     }
-
 
     const renderQuestion = () => {
         return (
@@ -872,9 +880,6 @@ export default function App({ navigation }) {
         )
     }
 
-
-
-
     {/* Main */ }
     return (
         <Bgcontainer>
@@ -1083,6 +1088,11 @@ export default function App({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    containerLoading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     LifeContainer: {
         alignItems: 'center',
         alignContent: 'center',
