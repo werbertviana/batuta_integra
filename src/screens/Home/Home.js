@@ -55,11 +55,12 @@ import api from '../../services/Api';
 
 export default function App({ navigation }) {
 
-    const [allFeeds, setallFeeds] = useState([]);
+    const [allFeeds, setallFeeds] = useState();
     const [allItems, setallItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
-    const [lifePoints, setlifePoints] = useState(5);
+    const [lifePoints, setlifePoints] = useState();
+    const [users, setUsers] = useState();
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [contador, setContador] = useState(0);
     let [xpPoints, setxpPoints] = useState(0);
@@ -83,12 +84,31 @@ export default function App({ navigation }) {
         });
     }, []);
 
+    //solicitando requisição de Usuários no backend
+    useEffect(() => {
+        api.get("/users").then((response) => {
+            setUsers(response.data)
+            setLoading(false);
+        });
+    }, []);
+
+    let life
+    let xp
+    if (users) {
+        users.map((item) => {
+            life = item.vida
+            xp = item.xp
+        }
+        );
+    }
+
 
     //loading
-    if (loading) {
+    if (loading || !allFeeds) {
         return <></>
     }
 
+    console.log(allFeeds)
 
     //Criando variáveis de controle para exibição de feeds
     const feeds01 = [];
@@ -113,7 +133,7 @@ export default function App({ navigation }) {
     const renderTextLife = () => {
         return (
             <Animatable.Text style={styles.LifeText}>
-                {lifePoints}
+                {life}
             </Animatable.Text>
         )
     }
@@ -133,7 +153,7 @@ export default function App({ navigation }) {
         return (
             <SafeAreaView style={{ padding: 2 }}>
                 <Animatable.Text style={styles.XpText}>
-                    {xpPoints}
+                    {xp}
                 </Animatable.Text>
             </SafeAreaView>
         )
@@ -542,7 +562,7 @@ export default function App({ navigation }) {
 
     const renderAllFeeds = () => {
         renderShowFeeds()
-        if (showFeeds[0] == true && showFeeds[3] == false && feeds01 != 0) {
+        if (showFeeds[0] == true && showFeeds[3] == false) {
             return (
                 <FlatList
                     data={feeds01}
@@ -553,7 +573,7 @@ export default function App({ navigation }) {
             )
         }
 
-        if (showFeeds[0] == true && showFeeds[3] == true && feeds02 != 0) {
+        if (showFeeds[0] == true && showFeeds[3] == true) {
             return (
                 <FlatList
                     data={feeds02}
