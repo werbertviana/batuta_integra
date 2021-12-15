@@ -253,7 +253,6 @@ export default function App({ navigation }) {
         }
     }
 
-
     const nextButton = () => {
         return (
             <SafeAreaView

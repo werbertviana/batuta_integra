@@ -7,7 +7,8 @@ import {
     ImageBackground,
     TouchableWithoutFeedback,
     Text,
-    FlatList
+    FlatList,
+    ActivityIndicator
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Modal from 'react-native-modal';
@@ -103,13 +104,21 @@ export default function App({ navigation }) {
         }
         );
     }
-  
+
 
     //loading
     if (loading || !allFeeds) {
-        return <></>
+        return (
+            <SafeAreaView style={styles.containerLoading}>
+                <ActivityIndicator
+                    size="large"
+                    color="black">
+                </ActivityIndicator>
+                <Text>CARREGANDO...</Text>
+            </SafeAreaView>
+        )
     }
-    
+
 
     //Criando variáveis de controle para exibição de feeds
     const feeds01 = [];
@@ -848,6 +857,11 @@ export default function App({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    containerLoading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     HeaderContainer: {
         marginTop: '1%',
         width: '90%',
