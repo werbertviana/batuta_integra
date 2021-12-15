@@ -23,8 +23,7 @@ import errorIcon from '../../../assets/imgs/errorIcon.png'
 import ativConcluida from '../../../assets/imgs/concluida.png'
 import iconeXp from '../../../assets/imgs/iconeXp.png'
 import tente from '../../../assets/imgs/tente.png'
-// import dados estáticos
-import staticData from '../../../data/Alternativas.json'
+
 //import questões
 import QF01 from '../../../assets/imgs/QF01.png'
 import QF02 from '../../../assets/imgs/QF02.png'
@@ -84,7 +83,6 @@ export default function App({ navigation }) {
 
     const ButtonRef = useRef()
     const Button2Ref = useRef()
-    const allQuestions = staticData.data;
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [score, setScore] = useState(0);
@@ -553,17 +551,17 @@ export default function App({ navigation }) {
     }
 
     // {/* Config Progress Bar */ }
-    let percent = ((100) / allQuestions.length);
+    let percent = ((100) / questions.length);
     percent = Math.round(percent)
     percent.toString()
     percent = percent + "%"
     const progressAnim2 = progress.interpolate({
-        inputRange: [0, allQuestions.length - 1],
+        inputRange: [0, questions.length - 1],
         outputRange: ['90%', '90%']
     })
 
     const progressAnim = progress.interpolate({
-        inputRange: [0, allQuestions.length - 1],
+        inputRange: [0, questions.length - 1],
         outputRange: [percent, '100%']
     })
 
@@ -765,7 +763,7 @@ export default function App({ navigation }) {
                         </Text>
                         <Text style={{
                             fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#606062", fontSize: 28,
-                        }}>/{allQuestions.length}
+                        }}>/{questions.length}
                         </Text>
                         <FastImage
                             style={{
@@ -996,7 +994,7 @@ export default function App({ navigation }) {
                             <ImageModal source={errorIcon}></ImageModal>
                             <Text style={{
                                 fontFamily: "GothamCondensed-Medium", textAlign: 'center', color: "#E92C2A", fontSize: 32,
-                            }}>  Resposta correta: {allQuestions[currentQuestionIndex].correct_alternative}
+                            }}>  Resposta correta: {questions[currentQuestionIndex].correct_alternative}
                             </Text>
 
                         </SafeAreaView>
