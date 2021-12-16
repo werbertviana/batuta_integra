@@ -54,8 +54,9 @@ import ferro from '../../../assets/imgs/ferro.png'
 import bronze from '../../../assets/imgs/bronze.png'
 import ferro2 from '../../../assets/imgs/ferro2.png'
 import bronze2 from '../../../assets/imgs/bronze2.png'
-// import bibliotecas
 
+// import bibliotecas
+import Sound from 'react-native-sound';
 import FastImage from 'react-native-fast-image';
 import {
     SafeAreaView,
@@ -84,7 +85,7 @@ export default function App({ navigation }) {
 
     const ButtonRef = useRef()
     const Button2Ref = useRef()
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
     const [score, setScore] = useState(0);
     const [lifePoints, setlifePoints] = useState(5);
@@ -442,6 +443,7 @@ export default function App({ navigation }) {
             setScore(score + 1)
             // Show Right Modal
             setShowRightModal(true);
+            PlaySound();
         } else {
             // Show Wrong Modal        
             setShowWrongModal(true);
@@ -880,6 +882,17 @@ export default function App({ navigation }) {
         )
     }
 
+    const PlaySound = () => {
+        var certa = new Sound(require('../../../assets/sounds/certa.mp3'), (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            certa.play(() => {
+            });
+        });
+    }
+
     {/* Main */ }
     return (
         <Bgcontainer>
@@ -1035,6 +1048,7 @@ export default function App({ navigation }) {
                 transparent={true}
                 visible={showRightModal}
             >
+
                 <SafeAreaView style={{ flexDirection: 'column', justifyContent: 'flex-end', flex: 1 }}>
                     <SafeAreaView style={{
                         width: '100%',
