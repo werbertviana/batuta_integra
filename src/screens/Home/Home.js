@@ -49,7 +49,7 @@ import feed05Off from '../../assets/imgs/feed05Off.png';
 import feed06Off from '../../assets/imgs/feed06Off.png';
 import lock from '../../assets/imgs/lock.png';
 // import dados estáticos
-import staticFeeds from '../../data/Feeds.json'
+
 import { color } from 'react-native-reanimated';
 //import api
 import api from '../../services/Api';

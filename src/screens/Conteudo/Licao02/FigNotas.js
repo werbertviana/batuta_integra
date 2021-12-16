@@ -1,9 +1,14 @@
 //import bibliotecas
-import React, { useState } from 'react';
-import { SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
 import Sound from 'react-native-sound';
+import * as Animatable from 'react-native-animatable';
+
+//import api
+import api from '../../../services/Api';
+
 
 //import imagens
 import Introducao from '../../../assets/imgs/introducao.png';
@@ -13,10 +18,7 @@ import slides03 from '../../../assets/imgs/Conteudo/Licao01/slides03.png';
 import slides04 from '../../../assets/imgs/Conteudo/Licao01/slides04.png';
 import slides05 from '../../../assets/imgs/Conteudo/Licao01/slides05.png';
 import iconeX from '../../../assets/imgs/iconeX.png';
-import som from '../../../assets/imgs/sound.png';
-
-//import slides estaticos
-import staticSlides from '../../../data/Conteudo/Licao01/Intro.json'
+import som from '../../../assets/imgs/play.png';
 
 //import estilos
 import {
@@ -31,9 +33,53 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 export default function App({ navigation }) {
 
     const [second, setSecond] = useState(0);
+    const ButtonRef = useRef();
     const [play, setPlay] = useState(false);
     const [musica, setMusica] = useState(null)
-    const allSlides = staticSlides.slides;
+    const [content, setContent] = useState();
+    const [loading, setLoading] = useState(true);
+    const [items, setItems] = useState([]);
+    let item_id;
+
+    //Requisição buscar items no backend
+    useEffect(() => {
+        api.get("/items").then((response) => {
+            setItems(response.data);
+            setLoading(false)
+        });
+
+    }, []);
+
+
+    items.map((i) => {
+        if (i.title == "Introdução") {
+            item_id = i.id
+        }
+    }
+    )
+
+    useEffect(() => {
+        if (item_id) {
+            api.get("/items/content/" + item_id).then((response) => {
+                setContent(response.data);
+
+            })
+        }
+
+    }, [item_id]);
+
+
+    if (loading || !content) {
+        return (
+            <SafeAreaView style={styles.containerLoading}>
+                <ActivityIndicator
+                    size="large"
+                    color="black">
+                </ActivityIndicator>
+                <Text>CARREGANDO...</Text>
+            </SafeAreaView>
+        )
+    }
 
     const PlaySound = (music) => {
         if (music == "melodia") {
@@ -79,6 +125,7 @@ export default function App({ navigation }) {
     const StopSound = (music) => {
         if (musica != null) {
             musica.stop();
+            musica.play();
             setPlay(false)
         }
     }
@@ -96,8 +143,13 @@ export default function App({ navigation }) {
             <TouchableWithoutFeedback
                 onPress={() => selected(music)}
             >
-                <ImageSound source={som}>
-                </ImageSound>
+                <Animatable.View
+                    animation={''}
+                    useNativeDriver
+                    ref={ButtonRef}>
+                    <ImageSound source={som}>
+                    </ImageSound>
+                </Animatable.View>
             </TouchableWithoutFeedback>
         )
     }
@@ -111,6 +163,7 @@ export default function App({ navigation }) {
 
     function renderSlides({ item }) {
         switch (item.image) {
+
             case ("slides01.png"):
                 return (
                     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
@@ -293,7 +346,7 @@ export default function App({ navigation }) {
     return (
         <AppIntroSlider
             renderItem={renderSlides}
-            data={allSlides}
+            data={content}
             onSlideChange={StopAll}
             style={{ backgroundColor: '#FFF' }}
             activeDotStyle={{
@@ -318,6 +371,11 @@ export default function App({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    containerLoading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     ShadowButtons1: {
         marginBottom: 6,
         height: 48,

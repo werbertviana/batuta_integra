@@ -18,7 +18,7 @@ import slides03 from '../../../assets/imgs/Conteudo/Licao01/slides03.png';
 import slides04 from '../../../assets/imgs/Conteudo/Licao01/slides04.png';
 import slides05 from '../../../assets/imgs/Conteudo/Licao01/slides05.png';
 import iconeX from '../../../assets/imgs/iconeX.png';
-import som from '../../../assets/imgs/sound.png';
+import som from '../../../assets/imgs/play.png';
 
 //import estilos
 import {
