@@ -1,5 +1,5 @@
 //import bibliotecas
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -9,6 +9,9 @@ import {
 
 import * as Animatable from 'react-native-animatable';
 import FastImage from 'react-native-fast-image';
+
+//import api
+import api from '../../services/Api';
 
 //import imagens
 
@@ -31,8 +34,40 @@ import staticElos from '../../data/Elos/Elos.json'
 
 export default function Elos() {
 
-    const [elo, setElo] = useState('ferro')
+    // const [elo, setElo] = useState('ferro');
+    let elo;
+    const [users, setUsers] = useState();
+    const [loading, setLoading] = useState()
     const allElos = staticElos.elos;
+
+
+    //solicitando requisição de Usuários no backend
+    useEffect(() => {
+        api.get("/users").then((response) => {
+            setUsers(response.data)
+            setLoading(false);
+        });
+    }, []);
+
+    if (users) {
+        users.map((item) => {
+            elo = item.elo
+        }
+        );
+    }
+
+    //loading
+    if (loading) {
+        return (
+            <SafeAreaView style={styles.containerLoading}>
+                <ActivityIndicator
+                    size="large"
+                    color="black">
+                </ActivityIndicator>
+                <Text>CARREGANDO...</Text>
+            </SafeAreaView>
+        )
+    }
 
 
     const allElos2 = [
@@ -194,7 +229,7 @@ export default function Elos() {
                                 }}>
                                 COMO FUNCIONA?
                             </Text>
-                            <FastImage source={question} style={{width: 35, height: 35, marginLeft: 10}}></FastImage>
+                            <FastImage source={question} style={{ width: 35, height: 35, marginLeft: 10 }}></FastImage>
                         </SafeAreaView>
                     </SafeAreaView>
                     <FastImage source={list01} style={{ width: 400, height: 385 }}></FastImage>
