@@ -443,10 +443,11 @@ export default function App({ navigation }) {
             setScore(score + 1)
             // Show Right Modal
             setShowRightModal(true);
-            PlaySound();
+            PlaySound1();
         } else {
             // Show Wrong Modal        
             setShowWrongModal(true);
+            PlaySound2();
         }
     }
 
@@ -834,8 +835,10 @@ export default function App({ navigation }) {
     const renderModal = () => {
         if (score > (questions.length / 2)) {
             setScoreRigthModal(true)
+            PlaySound3()
         } else {
             setScoreWrongModal(true)
+            // PlaySound4()
         }
     }
 
@@ -882,13 +885,46 @@ export default function App({ navigation }) {
         )
     }
 
-    const PlaySound = () => {
-        var certa = new Sound(require('../../../assets/sounds/certa.mp3'), (error) => {
+    const PlaySound1 = () => {
+        var win = new Sound(require('../../../assets/sounds/win.mp3'), (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
             }
-            certa.play(() => {
+            win.play(() => {
+            });
+        });
+    }
+
+    const PlaySound2 = () => {
+        var lose = new Sound(require('../../../assets/sounds/lose.mp3'), (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            lose.play(() => {
+            });
+        });
+    }
+
+    const PlaySound3 = () => {
+        var victory = new Sound(require('../../../assets/sounds/win2.mp3'), (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            victory.play(() => {
+            });
+        });
+    }
+
+    const PlaySound4 = () => {
+        var fail = new Sound(require('../../../assets/sounds/fail.mp3'), (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            fail.play(() => {
             });
         });
     }
