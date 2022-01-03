@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import LOGO from '../assets/imgs/LOGO.png'
+import LOGO from '../../assets/imgs/logo02.png'
 import {
   View,
   KeyboardAvoidingView,
@@ -15,7 +15,7 @@ import {
 export default function App() {
   const [offset] = useState(new Animated.ValueXY({ x: 0, y: 95 }));
   const [opacity] = useState(new Animated.Value(0));
-  const [logo] = useState(new Animated.ValueXY({ x: 140, y: 180 }));
+  const [logo] = useState(new Animated.ValueXY({ x: 250, y: 250 }));
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
     keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);

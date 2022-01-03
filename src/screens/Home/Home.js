@@ -76,6 +76,7 @@ export default function App({ navigation }) {
             setLoading(false);
         });
     }, []);
+   
 
     //solicitando requisição de items no backend
     useEffect(() => {
