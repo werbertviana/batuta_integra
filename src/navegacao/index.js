@@ -19,7 +19,8 @@ import contFigNotas from '../screens/Conteudo/Licao02/FigNotas';
 import contFigPausas from '../screens/Conteudo/Licao02/FigPausas';
 import contValores from '../screens/Conteudo/Licao02/Valores';
 
-
+// import login 
+import login from '../screens/Login/Login';
 const Stack = createStackNavigator();
 
 export default function index() {
@@ -29,6 +30,7 @@ export default function index() {
             <Stack.Navigator 
             initialRouteName="Main"
             screenOptions={{ headerShown: false }}>
+               
                 <Stack.Screen name = "Main" component={Main}></Stack.Screen>
                 <Stack.Screen name= "Introdução" component={Intro}></Stack.Screen>
                 <Stack.Screen name= "Sons Musicais" component={Sons}></Stack.Screen>
