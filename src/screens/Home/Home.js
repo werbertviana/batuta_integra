@@ -64,15 +64,10 @@ export default function App({ navigation }) {
     const [users, setUsers] = useState();
     const [showOptionsModal, setShowOptionsModal] = useState(false);
     const [contador, setContador] = useState(0);
-    let showFeed01;
-    let showFeed02;
-    let showFeed03;
-    let showFeed04;
-    let showFeed05;
-    let showFeed06;
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
-    let showFeeds = [];
+    let show_lesson;
+    let show_feed = [];
 
     //solicitando requisição de feeds no backend
     useEffect(() => {
@@ -131,9 +126,22 @@ export default function App({ navigation }) {
     const feeds02 = [];
 
     feeds01.push(allFeeds[0]);
-    
+
     feeds02.push(allFeeds[0]);
     feeds02.push(allFeeds[1]);
+
+    let matriz = [];
+
+    // if (allItems) {
+    //     for (let i = 1; i < allItems.length; i++) {
+    //         if (allItems[i].position == i) {
+    //             matriz.push(allItems[i]);
+    //         }
+    //     }
+    // }
+    // console.log(matriz)
+
+
 
 
     const renderLife = () => {
@@ -264,7 +272,7 @@ export default function App({ navigation }) {
             let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
 
-            if (showFeed01 == true && showFeed02 == false) {
+            if (show_feed[0] == true && show_feed[1] == false) {
                 let percent2 = percent
                 percent2.toString()
                 percent2 = percent2 + "%"
@@ -281,7 +289,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed01 == true && showFeed02 == true && showFeed03 == false) {
+            if (show_feed[0] == true && show_feed[1] == true && show_feed[2] == false) {
                 percent = percent + percent;
                 let percent2 = percent
                 percent2.toString()
@@ -299,7 +307,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed01 == true && showFeed02 == true && showFeed03 == true) {
+            if (show_feed[0] == true && show_feed[1] == true && show_feed[2] == true) {
                 const progressAnim2 = progress.interpolate({
                     inputRange: [0, feeds01[0].items.length - 1],
                     outputRange: ['90%', '90%']
@@ -318,7 +326,7 @@ export default function App({ navigation }) {
             let percent = ((100) / feeds01[0].items.length);
             percent = Math.round(percent)
 
-            if (showFeed04 == true && showFeed05 == false) {
+            if (show_feed[3] == true && show_feed[4] == false) {
                 let percent2 = percent
                 percent2.toString()
                 percent2 = percent2 + "%"
@@ -335,7 +343,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed04 == true && showFeed05 == true && showFeed06 == false) {
+            if (show_feed[3] == true && show_feed[4] == true && show_feed[5] == false) {
                 percent = percent + percent;
                 let percent2 = percent
                 percent2.toString()
@@ -353,7 +361,7 @@ export default function App({ navigation }) {
                 )
             }
 
-            if (showFeed04 == true && showFeed05 == true && showFeed06 == true) {
+            if (show_feed[3] == true && show_feed[4] == true && show_feed[5] == true) {
                 const progressAnim2 = progress.interpolate({
                     inputRange: [0, feeds01[0].items.length - 1],
                     outputRange: ['90%', '90%']
@@ -408,13 +416,13 @@ export default function App({ navigation }) {
     const renderIconsFeeds = (icon, title) => {
         switch (icon) {
             case ("feed01.png"):
-                if (showFeed01 == true) {
+                if (show_feed[0] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
                                 source={feed01On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed01)}
+                            {renderBoardFeeds(title, show_feed[0])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
@@ -425,7 +433,7 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed01Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed01)}
+                            {renderBoardFeeds(title, show_feed[0])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
@@ -433,13 +441,13 @@ export default function App({ navigation }) {
                 }
 
             case ("feed02.png"):
-                if (showFeed02 == true) {
+                if (show_feed[1] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%', position: 'relative', zIndex: 1 }}>
                             <ImagesFeeds
                                 source={feed02On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed02)}
+                            {renderBoardFeeds(title, show_feed[1])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
@@ -450,20 +458,20 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed02Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed02)}
+                            {renderBoardFeeds(title, show_feed[1])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
                 }
             case ("feed03.png"):
-                if (showFeed03 == true) {
+                if (show_feed[2] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed03On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed03)}
+                            {renderBoardFeeds(title, show_feed[2])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
@@ -474,20 +482,20 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed03Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed03)}
+                            {renderBoardFeeds(title, show_feed[2])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
                 }
             case ("feed04.png"):
-                if (showFeed04 == true) {
+                if (show_feed[3] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed04On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed04)}
+                            {renderBoardFeeds(title, show_feed[3])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
@@ -498,20 +506,20 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed04Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed04)}
+                            {renderBoardFeeds(title, show_feed[3])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
                 }
             case ("feed05.png"):
-                if (showFeed05 == true) {
+                if (show_feed[4] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed05On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed05)}
+                            {renderBoardFeeds(title, show_feed[4])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
@@ -522,20 +530,20 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed05Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed05)}
+                            {renderBoardFeeds(title, show_feed[4])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
                 }
             case ("feed06.png"):
-                if (showFeed06 == true) {
+                if (show_feed[5] == true) {
                     return (
                         <SafeAreaView style={{ alignItems: 'center', margin: '2%' }}>
                             <ImagesFeeds
                                 source={feed06On}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed06)}
+                            {renderBoardFeeds(title, show_feed[5])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
@@ -546,25 +554,13 @@ export default function App({ navigation }) {
                             <ImagesFeeds
                                 source={feed06Off}>
                             </ImagesFeeds>
-                            {renderBoardFeeds(title, showFeed06)}
+                            {renderBoardFeeds(title, show_feed[5])}
                             {renderModal(title, icon)}
                         </SafeAreaView>
                     )
                     break;
                 }
         }
-    }
-
-    const renderIconsFeeds2 = (icon, title) => {
-      
-            return (
-              
-                    <ImagesFeeds
-                        source={feed01On}>
-                    </ImagesFeeds>
-                  
-            )
-        
     }
 
     const renderBoardFeeds = (title, show) => {
@@ -592,7 +588,7 @@ export default function App({ navigation }) {
     const renderAllFeeds = () => {
         renderShowFeeds()
 
-        if (showFeed01 == true && showFeed04 == false) {
+        if (show_feed[0] == true && show_feed[3] == false) {
             return (
                 <FlatList
                     data={feeds01}
@@ -603,7 +599,7 @@ export default function App({ navigation }) {
             )
         }
 
-        if (showFeed01 == true && showFeed04 == true) {
+        if (show_feed[0] == true && show_feed[3] == true) {
             return (
                 <FlatList
                     data={feeds02}
@@ -615,34 +611,16 @@ export default function App({ navigation }) {
         }
     }
 
-    console.log(feeds02)
 
     const renderShowFeeds = () => {
         allItems.map((item) => {
-            if (item.position == 1) {
-                showFeed01 = item.show_feed;
-            }
-            if (item.position == 2) {
-                showFeed02 = item.show_feed;
-            }
-            if (item.position == 3) {
-                showFeed03 = item.show_feed;
-            }
-            if (item.position == 4) {
-                showFeed04 = item.show_feed;
-            }
-            if (item.position == 5) {
-                showFeed05 = item.show_feed;
-            }
-            if (item.position == 6) {
-                showFeed06 = item.show_feed;
-            }
+          show_feed.push(item.show_feed)
         }
         )
     }
 
     const renderBlockTitle = () => {
-        if (showFeed04 == false) {
+        if (show_feed[3] == false) {
             return (
                 <SafeAreaView style={{ alignItems: 'center', marginTop: 30 }}>
 
@@ -655,10 +633,26 @@ export default function App({ navigation }) {
         }
     }
 
-    const renderDivisor2 = () => {
+    function ListItem({ lesson, feeds, progress, show }) {
         return (
-            <SafeAreaView style={{ width: '100%', marginTop: '15%' }}>
-                <DivisorLine2></DivisorLine2>
+            <SafeAreaView style={styles.BgContainer}>
+
+                {renderLessonTitle(lesson, show)}
+                {ProgressBar(lesson, progress)}
+                <ImageBackground
+                    style={styles.ViolaoBackground}
+                    source={bgViolao}>
+                    {feeds.map((item) =>
+
+                        <TouchableWithoutFeedback
+                            onPress={() => selected(item.title)}
+                            key={item.id}
+                        >
+                            {renderIconsFeeds(item.icon, item.title)}
+                        </TouchableWithoutFeedback>
+                    )}
+                </ImageBackground>
+                {renderBlockTitle()}
             </SafeAreaView>
         )
     }
@@ -679,13 +673,14 @@ export default function App({ navigation }) {
                             key={item.id}
                         >
                             {renderIconsFeeds(item.icon, item.title)}
-                        </TouchableWithoutFeedback> 
+                        </TouchableWithoutFeedback>
                     )}
                 </ImageBackground>
                 {renderBlockTitle()}
             </SafeAreaView>
         )
     }
+
 
     const Modal01 = (title, icon) => {
         return (
@@ -793,7 +788,7 @@ export default function App({ navigation }) {
 
     const renderModal = (title, icon) => {
         if (currentOptionSelected == "Introdução" && title == "Introdução" && showOptionsModal == true) {
-            if (showFeed01 == true) {
+            if (show_feed[0] == true) {
                 return (
                     Modal01(title, icon)
                 )
@@ -806,7 +801,7 @@ export default function App({ navigation }) {
         }
 
         if (currentOptionSelected == "Sons Musicais" && title == "Sons Musicais" && showOptionsModal == true) {
-            if (showFeed02 == true) {
+            if (show_feed[1] == true) {
 
                 return (
                     Modal01(title, icon)
@@ -819,7 +814,7 @@ export default function App({ navigation }) {
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Pauta e Clave" && title == "Pauta e Clave") {
-            if (showFeed03 == true) {
+            if (show_feed[2] == true) {
 
                 return (
                     Modal01(title, icon)
@@ -832,7 +827,7 @@ export default function App({ navigation }) {
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Figuras de Notas" && title == "Figuras de Notas") {
-            if (showFeed04 == true) {
+            if (show_feed[3] == true) {
 
                 return (
                     Modal01(title, icon)
@@ -845,7 +840,7 @@ export default function App({ navigation }) {
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Figuras de Pausas" && title == "Figuras de Pausas") {
-            if (showFeed05 == true) {
+            if (show_feed[4] == true) {
 
                 return (
                     Modal01(title, icon)
@@ -858,7 +853,7 @@ export default function App({ navigation }) {
         }
 
         if (showOptionsModal == true && currentOptionSelected == "Duração dos Valores" && title == "Duração dos Valores") {
-            if (showFeed06 == true) {
+            if (show_feed[5] == true) {
 
                 return (
                     Modal01(title, icon)
