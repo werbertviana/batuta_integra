@@ -129,18 +129,6 @@ export default function App({ navigation }) {
     feeds02.push(allFeeds[0]);
     feeds02.push(allFeeds[1]);
 
-    //Criando variáveis de controle para exibição de Items 
-    const items01 = [];
-    const items02 = [];
-    if(allItems){
-        //items01
-        items01.push(allItems[0]);
-        items01.push(allItems[1]);
-        items01.push(allItems[2]);
-        //items02
-        
-    }
-
     const renderLife = () => {
         return (
             <Animatable.View style={styles.LifeContainer}>
