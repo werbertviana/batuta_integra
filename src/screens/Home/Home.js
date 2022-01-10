@@ -126,23 +126,20 @@ export default function App({ navigation }) {
     const feeds02 = [];
 
     feeds01.push(allFeeds[0]);
-
     feeds02.push(allFeeds[0]);
     feeds02.push(allFeeds[1]);
 
-    let matriz = [];
-
-    // if (allItems) {
-    //     for (let i = 1; i < allItems.length; i++) {
-    //         if (allItems[i].position == i) {
-    //             matriz.push(allItems[i]);
-    //         }
-    //     }
-    // }
-    // console.log(matriz)
-
-
-
+    //Criando variáveis de controle para exibição de Items 
+    const items01 = [];
+    const items02 = [];
+    if(allItems){
+        //items01
+        items01.push(allItems[0]);
+        items01.push(allItems[1]);
+        items01.push(allItems[2]);
+        //items02
+        
+    }
 
     const renderLife = () => {
         return (
@@ -413,6 +410,13 @@ export default function App({ navigation }) {
         }
     }
 
+    const renderIconsFeeds2 = (icon, title) => {
+        return(
+        <Text>{title}</Text>
+        )
+    }
+
+
     const renderIconsFeeds = (icon, title) => {
         switch (icon) {
             case ("feed01.png"):
@@ -587,7 +591,7 @@ export default function App({ navigation }) {
 
     const renderAllFeeds = () => {
         renderShowFeeds()
-
+        console.log(show_feed);
         if (show_feed[0] == true && show_feed[3] == false) {
             return (
                 <FlatList
@@ -614,10 +618,12 @@ export default function App({ navigation }) {
 
     const renderShowFeeds = () => {
         allItems.map((item) => {
-          show_feed.push(item.show_feed)
+            show_feed.push(item.show_feed)
         }
         )
     }
+    
+  
 
     const renderBlockTitle = () => {
         if (show_feed[3] == false) {
@@ -656,31 +662,6 @@ export default function App({ navigation }) {
             </SafeAreaView>
         )
     }
-
-    function ListItem({ lesson, feeds, progress, show }) {
-        return (
-            <SafeAreaView style={styles.BgContainer}>
-
-                {renderLessonTitle(lesson, show)}
-                {ProgressBar(lesson, progress)}
-                <ImageBackground
-                    style={styles.ViolaoBackground}
-                    source={bgViolao}>
-                    {feeds.map((item) =>
-
-                        <TouchableWithoutFeedback
-                            onPress={() => selected(item.title)}
-                            key={item.id}
-                        >
-                            {renderIconsFeeds(item.icon, item.title)}
-                        </TouchableWithoutFeedback>
-                    )}
-                </ImageBackground>
-                {renderBlockTitle()}
-            </SafeAreaView>
-        )
-    }
-
 
     const Modal01 = (title, icon) => {
         return (
