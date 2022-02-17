@@ -77,8 +77,7 @@ import DivMedio from '../../../components/DivMedio';
 import DivDificil from '../../../components/DivDificil';
 //import api
 import api from '../../../services/Api';
-import { identifier } from '@babel/types';
-
+import { updateItems } from '../../../store/actions/Items';
 
 
 export default function App({ navigation }) {
@@ -100,9 +99,17 @@ export default function App({ navigation }) {
     const [loading, setLoading] = useState(true);
     const [questions, setQuestions] = useState();
     const [items, setItems] = useState([]);
+    const [teste, setTeste] = useState([]);
     const [progress, setProgress] = useState(new Animated.Value(0));
     let item_id;
+    let next_id;
 
+
+    function mapActionCreatorsToProp(){
+        return {
+            
+        }
+    }
 
     //Requisição buscar items no backend
     useEffect(() => {
@@ -121,6 +128,14 @@ export default function App({ navigation }) {
     }
     )
 
+    items.map((i) => {
+        if (i.title == "Sons Musicais") {
+            next_id = i.id
+        }
+    }
+    )
+
+    //Requisição buscar alternativas das questões no backend
     useEffect(() => {
         if (item_id) {
             api.get("/items/questions/alternatives/" + item_id).then((response) => {
@@ -130,6 +145,17 @@ export default function App({ navigation }) {
         }
 
     }, [item_id]);
+
+
+    //Função ativar proximo item no backend
+    const ativar = () => {
+        if (next_id) {
+            api.put("/items/ativar/" + next_id).then((response) => {
+                console.log(response.data)
+            })
+        }
+    }
+
 
     if (loading || !questions) {
         return (
@@ -142,6 +168,7 @@ export default function App({ navigation }) {
             </SafeAreaView>
         )
     }
+
 
     const renderQuestion = () => {
         return (
@@ -509,7 +536,6 @@ export default function App({ navigation }) {
         )
     }
 
-
     const selected = (selecao) => {
         setCurrentOptionSelected(selecao)
         setAnimLife(false)
@@ -834,8 +860,9 @@ export default function App({ navigation }) {
 
     const renderModal = () => {
         if (score > (questions.length / 2)) {
-            setScoreRigthModal(true)
-            PlaySound3()
+            setScoreRigthModal(true);
+            PlaySound3();
+            ativar();
         } else {
             setScoreWrongModal(true)
             // PlaySound4()

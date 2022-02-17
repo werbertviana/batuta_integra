@@ -9,7 +9,7 @@ import Pauta from '../screens/Atividades/Licao01/Pauta';
 import FigNotas from '../screens/Atividades/Licao02/FigNotas';
 import FigPausas from '../screens/Atividades/Licao02/FigPausas';
 import Valores from '../screens/Atividades/Licao02/Valores';
-import Main from '../routes/routes'
+import Main from '../components/TabBar'
 
 //import rotas conteudo
 import contIntro from '../screens/Conteudo/Licao01/Intro';
@@ -20,31 +20,32 @@ import contFigPausas from '../screens/Conteudo/Licao02/FigPausas';
 import contValores from '../screens/Conteudo/Licao02/Valores';
 
 // import login 
-import login from '../screens/Login/Login';
+import Login from '../screens/Login/Login';
 const Stack = createStackNavigator();
 
+
 export default function index() {
-    return(
-    
+
+    return (
         <NavigationContainer>
-            <Stack.Navigator 
-            initialRouteName="Main"
-            screenOptions={{ headerShown: false }}>
-               
-                <Stack.Screen name = "Main" component={Main}></Stack.Screen>
-                <Stack.Screen name= "Introdução" component={Intro}></Stack.Screen>
-                <Stack.Screen name= "Sons Musicais" component={Sons}></Stack.Screen>
-                <Stack.Screen name= "Pauta e Clave" component={Pauta}></Stack.Screen>
-                <Stack.Screen name= "Figuras de Notas" component={FigNotas}></Stack.Screen>
-                <Stack.Screen name= "Figuras de Pausas" component={FigPausas}></Stack.Screen>
-                <Stack.Screen name= "Duração dos Valores" component={Valores}></Stack.Screen>
-                <Stack.Screen name= "feed01.png" component={contIntro}></Stack.Screen>
-                <Stack.Screen name= "feed02.png" component={contSons}></Stack.Screen>
-                <Stack.Screen name= "feed03.png" component={contPauta}></Stack.Screen>
-                <Stack.Screen name= "feed04.png" component={contFigNotas}></Stack.Screen>
-                <Stack.Screen name= "feed05.png" component={contFigPausas}></Stack.Screen>
-                <Stack.Screen name= "feed06.png" component={contValores}></Stack.Screen>
+            <Stack.Navigator
+                initialRouteName="Login"
+                screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Main" component={Main}></Stack.Screen>
+                <Stack.Screen name="Introdução" component={Intro}></Stack.Screen>
+                <Stack.Screen name="Sons Musicais" component={Sons}></Stack.Screen>
+                <Stack.Screen name="Pauta e Clave" component={Pauta}></Stack.Screen>
+                <Stack.Screen name="Figuras de Notas" component={FigNotas}></Stack.Screen>
+                <Stack.Screen name="Figuras de Pausas" component={FigPausas}></Stack.Screen>
+                <Stack.Screen name="Duração dos Valores" component={Valores}></Stack.Screen>
+                <Stack.Screen name="feed01.png" component={contIntro}></Stack.Screen>
+                <Stack.Screen name="feed02.png" component={contSons}></Stack.Screen>
+                <Stack.Screen name="feed03.png" component={contPauta}></Stack.Screen>
+                <Stack.Screen name="feed04.png" component={contFigNotas}></Stack.Screen>
+                <Stack.Screen name="feed05.png" component={contFigPausas}></Stack.Screen>
+                <Stack.Screen name="feed06.png" component={contValores}></Stack.Screen>
+                <Stack.Screen name="Login" component={Login}></Stack.Screen>
             </Stack.Navigator>
-        </NavigationContainer>      
+        </NavigationContainer>
     )
 }

@@ -21,12 +21,12 @@ import iconeElo02 from '../assets/imgs/iconeElo02.png';
 //import estilos
 import {
     IconImages
-} from '../components/style'
+} from './style'
 
 const Tab = createBottomTabNavigator();
 
 
-export default function Routes(){
+export default function TabBar(){
     const renderIcons = (icon, focused) =>{
         switch (icon) {
             case ("home"):

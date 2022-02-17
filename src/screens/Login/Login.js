@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import LOGO from '../../assets/imgs/logo02.png'
+import LOGO from '../../assets/imgs/logo03.png'
 import {
   View,
   KeyboardAvoidingView,
-  Image,
+  SafeAreaView,
   TextInput,
   TouchableOpacity,
   Text,
@@ -12,10 +12,11 @@ import {
   Keyboard
 } from 'react-native';
 
-export default function App() {
+export default function App({ navigation }) {
   const [offset] = useState(new Animated.ValueXY({ x: 0, y: 95 }));
   const [opacity] = useState(new Animated.Value(0));
-  const [logo] = useState(new Animated.ValueXY({ x: 260, y: 260 }));
+  const [logo] = useState(new Animated.ValueXY({ x: 220, y: 220 }));
+
   useEffect(() => {
     keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
     keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
@@ -44,10 +45,11 @@ export default function App() {
       Animated.timing(logo.y, {
         toValue: 126,
         duration: 100,
-       
+
       }),
     ]).start();
   }
+
   function keyboardDidHide() {
     Animated.parallel([
       Animated.timing(logo.x, {
@@ -57,7 +59,7 @@ export default function App() {
       Animated.timing(logo.y, {
         toValue: 180,
         duration: 100,
-       
+
       }),
     ]).start();
   }
@@ -69,8 +71,8 @@ export default function App() {
             width: logo.x,
             height: logo.y,
           }}
+          useNativeDriver
           source={LOGO}>
-
         </Animated.Image>
 
       </View>
@@ -84,6 +86,7 @@ export default function App() {
           ]
         }
         ]}
+        useNativeDriver
       >
         <TextInput
           style={styles.input}
@@ -101,12 +104,17 @@ export default function App() {
         >
         </TextInput>
 
-        <TouchableOpacity style={styles.btnSubmit}>
-          <Text style={styles.submitText}>Entrar</Text>
+        <TouchableOpacity style={styles.ShadowButtons1}
+          onPress={() => navigation.navigate("Main")}>
+          <SafeAreaView style={styles.Buttons1}>
+            <Text style={styles.submitText}>ENTRAR</Text>
+          </SafeAreaView>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.btnRegister}>
-          <Text style={styles.registerText}>Criar conta</Text>
+        <TouchableOpacity style={styles.ShadowButtons2}>
+          <SafeAreaView style={styles.Buttons2}>
+            <Text style={styles.registerText}>CRIAR CONTA</Text>
+          </SafeAreaView>
         </TouchableOpacity>
 
       </Animated.View>
@@ -121,11 +129,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F4EAE0'
   },
   containerLogo: {
-    flex: 1,
+    // backgroundColor: 'blue',
     justifyContent: 'center',
   },
   container: {
-    flex: 1,
+    marginTop: 20,
+    // backgroundColor:'red',
     alignItems: 'center',
     justifyContent: 'center',
     width: '90%',
@@ -139,29 +148,48 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     padding: 10,
   },
-  btnSubmit: {
-    backgroundColor: '#DAA520',
-    width: '90%',
-    height: 45,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 7
-  },
   submitText: {
     color: '#FFF',
-    fontSize: 18
-  },
-  btnRegister: {
-    marginTop: 10,
-    backgroundColor: '#E6BA54',
-    width: '90%',
-    height: 45,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 7,
-    
+    fontSize: 30,
+    fontFamily: 'GothamCondensed-Medium',
   },
   registerText: {
-    color: '#FFF'
-  }
+    color: '#FFF',
+    fontSize: 30,
+    fontFamily: 'GothamCondensed-Medium',
+  },
+  ShadowButtons1: {
+    width: '90%',
+    height: 65,
+    alignItems: 'center',
+    alignContent: 'center',
+    borderRadius: 15,
+    backgroundColor: "#DAA520",
+    margin: 8
+  },
+  Buttons1: {
+    width: '100%',
+    height: '92%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 15,
+    backgroundColor: '#FDC500',
+  },
+  ShadowButtons2: {
+    width: '90%',
+    height: 65,
+    alignItems: 'center',
+    alignContent: 'center',
+    borderRadius: 15,
+    backgroundColor: "#236A79",
+    margin: 8
+  },
+  Buttons2: {
+    width: '100%',
+    height: '92%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 15,
+    backgroundColor: '#3CB1C7',
+  },
 });

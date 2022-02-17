@@ -13,7 +13,6 @@ import {
 import * as Animatable from 'react-native-animatable';
 import Modal from 'react-native-modal';
 import FastImage from 'react-native-fast-image';
-import { createStackNavigator } from '@react-navigation/stack';
 
 // import estilos
 import {
@@ -24,6 +23,8 @@ import {
     IconImages,
     Div
 } from '../../components/style'
+
+import { connect } from 'react-redux';
 
 // import ícones
 import iconeLife from '../../assets/imgs/iconeLife.png';
@@ -48,13 +49,14 @@ import feed04Off from '../../assets/imgs/feed04Off.png';
 import feed05Off from '../../assets/imgs/feed05Off.png';
 import feed06Off from '../../assets/imgs/feed06Off.png';
 import lock from '../../assets/imgs/lock.png';
-// import dados estáticos
-
-import { color } from 'react-native-reanimated';
 //import api
 import api from '../../services/Api';
 
-export default function App({ navigation }) {
+
+
+function Home({ navigation }, props) {
+
+    // console.log(props.numeros)
 
     const [allFeeds, setallFeeds] = useState();
     const [allItems, setallItems] = useState([]);
@@ -66,37 +68,39 @@ export default function App({ navigation }) {
     const [contador, setContador] = useState(0);
     let [xpPoints, setxpPoints] = useState(0);
     let [batutaPoints, setBatutaPoints] = useState(0);
-    let show_lesson;
     let show_feed = [];
+    let life;
+    let xp;
+    let batutas;
 
-    //solicitando requisição de feeds no backend
-    useEffect(() => {
+    
+
+    function getFeeds() {
         api.get("/allfeeds").then((response) => {
             setallFeeds(response.data)
-            setLoading(false);
         });
-    }, []);
+    }
 
-
-    //solicitando requisição de items no backend
-    useEffect(() => {
+    function getItems() {
         api.get("/items").then((response) => {
             setallItems(response.data)
-            setLoading(false);
         });
-    }, []);
+    }
 
-    //solicitando requisição de Usuários no backend
-    useEffect(() => {
+    function getUsers() {
         api.get("/users").then((response) => {
             setUsers(response.data)
-            setLoading(false);
         });
+    }
+
+    useEffect(() => {
+        getFeeds();
+        getItems();
+        getUsers();
+        setLoading(false);
     }, []);
 
-    let life
-    let xp
-    let batutas
+
     if (users) {
         users.map((item) => {
             life = item.vida
@@ -105,7 +109,6 @@ export default function App({ navigation }) {
         }
         );
     }
-
 
     //loading
     if (loading || !allFeeds) {
@@ -119,6 +122,7 @@ export default function App({ navigation }) {
             </SafeAreaView>
         )
     }
+
 
 
     //Criando variáveis de controle para exibição de feeds
@@ -399,8 +403,8 @@ export default function App({ navigation }) {
     }
 
     const renderIconsFeeds2 = (icon, title) => {
-        return(
-        <Text>{title}</Text>
+        return (
+            <Text>{title}</Text>
         )
     }
 
@@ -579,7 +583,6 @@ export default function App({ navigation }) {
 
     const renderAllFeeds = () => {
         renderShowFeeds()
-        console.log(show_feed);
         if (show_feed[0] == true && show_feed[3] == false) {
             return (
                 <FlatList
@@ -610,8 +613,8 @@ export default function App({ navigation }) {
         }
         )
     }
-    
-  
+
+
 
     const renderBlockTitle = () => {
         if (show_feed[3] == false) {
@@ -849,16 +852,25 @@ export default function App({ navigation }) {
 
     {/* Main */ }
     return (
-        <Bgcontainer>
-            {/* Header*/}
-            {renderHeader()}
-            {/* Divisor */}
-            {renderDivisor()}
-            {/* Feeds */}
-            {renderAllFeeds()}
-        </Bgcontainer>
+            <Bgcontainer>
+                {/* Header*/}
+                {renderHeader()}
+                {/* Divisor */}
+                {renderDivisor()}
+                {/* Feeds */}
+                {renderAllFeeds()}
+            </Bgcontainer>
     );
 }
+
+function mapStateToProps(state){
+    return {
+       numeros: state.numeros
+    }
+}
+
+// export default connect(mapStateToProps)(Home)
+export default Home
 
 const styles = StyleSheet.create({
     containerLoading: {
