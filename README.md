@@ -26,6 +26,7 @@
   
 # Tecnologias utilizadas no projeto
 1. React Native
+2. React Redux
 
    
 //<img src="src/assets/Tec.jpg"> </image>
