@@ -7,8 +7,6 @@
 
 * O diferencial do BATUTA está na abordagem lúdica e inovadora da gamificação, que motiva e estimula o aprendizado, proporcionando uma experiência educacional envolvente.
 
-//<img src="src/assets/BG2.jpg"> </image>
-
 # Batuta - Frontend
 * Para a criação do front-end do BATUTA foi utilizado o React-Native, uma biblioteca escrita em JavaScript e criada para construir a interface do usuário em aplicativos móveis.
   
@@ -22,9 +20,6 @@
 # Tecnologias utilizadas no projeto
 1. React Native
 2. React Redux
-
-   
-//<img src="src/assets/Tec.jpg"> </image>
    
 # Documentações
 * Google Drive: https://drive.google.com/drive/folders/16pzUi5dBZzBNEeTaJ1ZWaqkdO2dMC76z?usp=sharing
