@@ -20,6 +20,8 @@
 # Prototipagem
 * As decisões tomadas durante a prototipagem tiveram como referência os princípios e recursos de gamificação.
   
+<img src="https://github.com/werbertviana/apibatuta/blob/main/src/assets/Proto.jpg"> </image>
+
 # Tecnologias utilizadas no projeto
 1. React Native
 2. React Redux
