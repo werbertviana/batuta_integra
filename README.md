@@ -10,20 +10,23 @@
 //<img src="src/assets/BG2.jpg"> </image>
 
 # Batuta - Frontend
-* O Back-End teve sua implementação realizada em Node JS juntamente com o uso das tecnologias do Typescript e TypeORM. Para os testes de requisição da API foi utilizado o Insomnia.
+* Para a criação do front-end do BATUTA foi utilizado o React-Native, uma biblioteca escrita em JavaScript e criada para construir a interface do usuário em aplicativos móveis.
+  
+* Criado pelo Facebook e baseado no React, que cria interfaces voltadas para aplicações web, o React-Native é a solução para criar aplicativos nativos tanto para Android quanto para iOS.
+  
+* O diferencial do React-Native é escrever um único código que cria binários executáveis de aplicativos móveis tanto para o Android quanto para o iOS. Um exemplo disso é que o mesmo código de um botão vai ter a aparência de um botão Android, quando executado em um dispositivo Android e vai ter uma aparência de botão iOS quando executado em um dispositivo baseado no iOS. 
+
+
 
 //<img src="src/assets/insomnia.jpg"> </image>
 
   
-# Arquitetura da API
-* O padrão de arquitetura de software escolhido foi o RESTful, juntamente com a estrutura de acesso ao banco de dados estabelecida pelo TypeORM.
+# Prototipagem
+* As decisões tomadas durante a prototipagem tiveram como referência os princípios e recursos de gamificação.
   
 # Tecnologias utilizadas no projeto
-1. Node.Js
-2. Typescript
-3. TypeORM
-4. Express
-5. Docker
+1. React Native
+
    
 //<img src="src/assets/Tec.jpg"> </image>
    
