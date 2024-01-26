@@ -15,12 +15,7 @@
 * Criado pelo Facebook e baseado no React, que cria interfaces voltadas para aplicações web, o React-Native é a solução para criar aplicativos nativos tanto para Android quanto para iOS.
   
 * O diferencial do React-Native é escrever um único código que cria binários executáveis de aplicativos móveis tanto para o Android quanto para o iOS. Um exemplo disso é que o mesmo código de um botão vai ter a aparência de um botão Android, quando executado em um dispositivo Android e vai ter uma aparência de botão iOS quando executado em um dispositivo baseado no iOS. 
-
-
-
-//<img src="src/assets/insomnia.jpg"> </image>
-
-  
+ 
 # Prototipagem
 * As decisões tomadas durante a prototipagem tiveram como referência os princípios e recursos de gamificação.
   
