@@ -6,6 +6,9 @@
 * Na aplicação BATUTA, os conteúdos serão abordados de maneira envolvente e interativa, utilizando o formato lúdico dos jogos "quiz" para testar e consolidar o conhecimento. 
 
 * O diferencial do BATUTA está na abordagem lúdica e inovadora da gamificação, que motiva e estimula o aprendizado, proporcionando uma experiência educacional envolvente.
+ 
+  <img src="https://github.com/werbertviana/apibatuta/blob/main/src/assets/BG2.jpg"> </image>
+
 
 # Batuta - Frontend
 * Para a criação do front-end do BATUTA foi utilizado o React-Native, uma biblioteca escrita em JavaScript e criada para construir a interface do usuário em aplicativos móveis.
